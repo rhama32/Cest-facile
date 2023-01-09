@@ -54,3 +54,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#フォントオーサムのダウンロード
+gem 'font-awesome-sass'
+
+#ブートストラップのダウンロード
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
+#雷のダウンロード
+gem 'kaminari', '~> 0.17.0'
+
+#enum導入（定義は未設定）
+gem "enum_help"
+
+gem 'devise'
