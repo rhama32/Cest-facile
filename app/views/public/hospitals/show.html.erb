@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-2">
+      <!--ジャンル検索-->
+      <%= render 'genrevar', genres: @genres %>
+    </div>
+
+   <div class="col-4 ">
+    <%= image_tag @hospital.image, class:"img-thumbnail" %></p><br>
+   </div>
+   <div class="col-6 ">
+    <div>
+     <h2><%= @hospital.name %></h2>
+          <%= @hospital.introduction %>
+          <br><br>
+    </div>
+   </div>
+  </div>
+</div>

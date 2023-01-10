@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
 
+  #会員側 病院検索
+  resources :hospitals, only: [:index, :show]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
