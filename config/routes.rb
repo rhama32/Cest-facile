@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
 
+  #管理者トップページ
+  get '/admin' => 'admin/homes#top'
+
   # 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'customers_mypage'
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     patch 'customers/information' => 'customers#update', as: 'customers_update'
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+
+    resources :hospitals, only: [:index, :show]
   end
 
   #会員側 病院検索
@@ -32,6 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources:customers, only: [:index, :show, :edit, :update]
+  resources :hospitals, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
