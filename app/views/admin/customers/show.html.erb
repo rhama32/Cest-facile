@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row-lg-10">
+    <div class="col-11 offset-md-1">
+      <div class="bg-light text-center">
+       <%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細
+      </div>
+    </div>
+
+ <table class="table">
+  <div class="row-lg-11">
+  <tbody>
+   <div class="row-lg-11">
+   <tr></tr>
+    <tr>
+     <th>会員ID</th>
+     <th>
+     <%= @admin_customer.id %>
+     </th>
+    </tr>
+    <tr>
+     <th>氏名</th>
+     <th>
+     <%= @admin_customer.last_name + @admin_customer.first_name %>
+     </th>
+    </tr>
+    <tr>
+     <th>フリガナ</th>
+     <th>
+     <%= @admin_customer.last_name_kana + @admin_customer.first_name_kana %>
+     </th>
+    </tr>
+    <tr>
+     <th>郵便番号</th>
+     <th>
+     <%= @admin_customer.postal_code %>
+     </th>
+    </tr>
+    <tr>
+     <th>住所</th>
+     <th>
+     <%= @admin_customer.address %>
+     </th>
+    </tr>
+    <tr>
+     <th>電話番号</th>
+     <th>
+     <%= @admin_customer.telephone_number %>
+     </th>
+    </tr>
+    <tr>
+     <th>メールアドレス</th>
+     <th>
+     <%= @admin_customer.email %>
+     </th>
+    </tr>
+    <tr>
+     <th>会員ステータス</th>
+     <th>
+     <% @admin_customer.is_deleted %>
+    <% if @admin_customer.is_deleted == false %><p class= "text-success" >有効</p>
+    <% elsif @admin_customer.is_deleted == true %>退会
+    <% end %>
+     </th>
+    </tr>
+    </div>
+   </tbody>
+</table>
+     <div class="form-group">
+      <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %>
