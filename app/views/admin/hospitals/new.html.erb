@@ -20,25 +20,49 @@
               <td><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
             <tr>
+              <td>郵便番号</td>
+              <td><%= f.text_field :postal_code,:placeholder => "0000000",size:"40" %></td>
+            </tr>
+            <tr>
               <td>病院名</td>
-              <td><%= f.text_field :name,:placeholder => "病院名",size:"40" %></td>
+              <td><%= f.text_field :name,:placeholder => "病院名", size:"40" %></td>
+            </tr>
+            <tr>
+              <td>病院名（カナ）</td>
+              <td><%= f.text_field :hospital_name_kana,:placeholder => "ビョウインメイ", size:"40" %></td>
             </tr>
             <tr>
               <td>病院説明</td>
-              <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll',size:"40x7" %></td>
+              <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll', size:"40x7" %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= f.text_area :telephone_number,:placeholder => "00011110000", size:"40" %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= f.collection_select :genre_id, Genre.all, :id, :name,include_blank: "選択して下さい" %> </td>
+              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %> </td>
+            </tr>
+            <tr>
+              <td>診療科目</td>
+              <td><%= f.text_field :subject,:placeholder => "診療科目", size:"40" %> </td>
+            </tr>
+            <tr>
+              <td>診療時間</td>
+              <td><%= f.text_field :hospital_time,:placeholder => "診療時間", size:"40" %> </td>
+            </tr>
+            <tr>
+              <td>駐車場</td>
+              <td><%= f.text_area :parking,:placeholder => "有or無", size:"40" %></td>
             </tr>
             <tr>
               <td>ステータス</td>
-              <td><%= f.radio_button :is_active, true %>販売中　<%= f.radio_button :is_active, :false %>販売停止中</td>
+              <td><%= f.radio_button :is_active, true %>対応中　<%= f.radio_button :is_active, :false %>対応停止中</td>
             </tr>
           </tbody>
         </table>
         <div class="col text-center">
-        <%= f.submit "　　新規登録　　",class:"btn btn-success center-block" %>
+        <%= f.submit "新規登録", class:"btn btn-success center-block" %>
         </div>
       <% end %>
     </div>

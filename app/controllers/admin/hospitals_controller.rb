@@ -42,6 +42,6 @@ class Admin::HospitalsController < ApplicationController
   private
   # ストロングパラメータ
   def hospital_params
-    params.require(:hospital).permit(:name,:introduction,:price,:is_active,:image,:genre_id)
+    params.require(:hospital).permit(:name, :introduction, :hospital_name_kana, :is_active, :subject, :image, :genre_id, :hospital_time, :postal_code, :telephone_number, :parking)
   end
 end

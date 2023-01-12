@@ -10,7 +10,7 @@
     </div>
   </div>
 
-    <%= form_for(resource, as: resource_name, url: customer_session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: customer_session_path) do |f| %>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit "　　ログイン　　",class:"btn btn-primary center-block" %></td>
+            <td><%= f.submit "ログイン",class:"btn btn-primary center-block" %></td>
           </tr>
         </tbody>
       </table>

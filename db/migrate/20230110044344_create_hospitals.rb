@@ -13,6 +13,6 @@ class CreateHospitals < ActiveRecord::Migration[6.1]
  t.boolean :is_active, default: true, null: false
  t.text :parking, null: false
  t.timestamps
+   end
   end
- end
 end
