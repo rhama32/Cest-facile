@@ -29,10 +29,11 @@ Rails.application.routes.draw do
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
   end
 
-    #会員側 病院検索/予約/
+    #会員側 病院検索/予約/レビュー投稿
     namespace :public do
     resources :hospitals, only: [:index, :show]
     resources :reservations, only: [:new, :show, :create, :index]
+    resources :reviews, only: [:index, :show]
   end
 
   namespace :admin do
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
   resources :reservations, only: [:index, :show, :update]
+  resources :reviews, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
