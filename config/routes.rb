@@ -27,12 +27,13 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     patch 'customers/information' => 'customers#update', as: 'customers_update'
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
-
-    resources :hospitals, only: [:index, :show]
   end
 
-  #会員側 病院検索
-  resources :hospitals, only: [:index, :show]
+    #会員側 病院検索/予約/
+    namespace :public do
+    resources :hospitals, only: [:index, :show]
+    resources :reservations, only: [:new, :show, :create, :index]
+  end
 
   namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
