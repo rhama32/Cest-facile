@@ -1,0 +1,43 @@
+<%= flash[:notice] %>
+
+<div class="container">
+  <div class="row">
+    <h2>病院詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <span><%= image_tag @hospital.image, class:"img-thumbnail" %></span>
+    </div>
+    <div class="col-6 offset-md-1">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>病院名</td>
+            <td><%= @hospital.name %></td>
+          </tr>
+          <tr>
+            <td>病院説明</td>
+            <td><%= @hospital.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @hospital.genre.name %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td>
+              <% if @hospital.is_active == true %>
+                対応中
+              <% else %>
+                対応停止中
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col text-center">
+  <%= link_to "　　編集する　　", edit_admin_hospital_path(params[:id]),class:"btn btn-success center-block" %>
+</div>

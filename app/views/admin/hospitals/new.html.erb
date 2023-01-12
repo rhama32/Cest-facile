@@ -1,0 +1,46 @@
+<%= flash[:notice] %>
+<% if @hospital.errors.any? %>
+  <%= @hospital.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @hospital.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+  <div class="row-lg-10">
+    <h2>病院新規登録</h2>
+    <div class="col-10 offset-md-1">
+      <%= form_with model: @hospital, url: admin_hospitals_path do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>病院画像</td>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <td>病院名</td>
+              <td><%= f.text_field :name,:placeholder => "病院名",size:"40" %></td>
+            </tr>
+            <tr>
+              <td>病院説明</td>
+              <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll',size:"40x7" %></td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td><%= f.collection_select :genre_id, Genre.all, :id, :name,include_blank: "選択して下さい" %> </td>
+            </tr>
+            <tr>
+              <td>ステータス</td>
+              <td><%= f.radio_button :is_active, true %>販売中　<%= f.radio_button :is_active, :false %>販売停止中</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col text-center">
+        <%= f.submit "　　新規登録　　",class:"btn btn-success center-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

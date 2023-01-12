@@ -1,0 +1,51 @@
+<%= flash[:notice] %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <h2>病院一覧</h2>
+    </div>
+    <div class="col-1">
+      <h1>
+        <%= link_to new_admin_hospital_path do %>
+          <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row-lg-10">
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th>病院ID</th>
+          <th>病院名</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </tread>
+      <tbody>
+        <% @hospitals.each do |hospital| %>
+          <tr>
+            <th><%= hospital.id %></th>
+            <th>
+              <%= link_to admin_hospital_path(hospital.id) do %>
+                <%= hospital.name %>
+              <% end %>
+            </th>
+            <th><%= hospital.genre.name %></th>
+            <th>
+              <% if hospital.is_active == true %>
+                <p class="text-success font-weight-bold">対応中</p>
+              <% else %>
+                <p class="text-secondary font-weight-bold">対応停止中</p>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="pagination justify-content-center"><%= paginate @hospitals %></div>
