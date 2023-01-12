@@ -2,14 +2,15 @@
  <nav class="navbar navbar-light mb-2" style="background-color:#fff7ef;">
   <div class="container">
    <p class="text-left"><%= link_to root_path, data: {"turbolinks" => false} do %>
-    <%= image_tag 'haikei.jpg',size: '110x110' %>
+    <%= image_tag 'img01.jpg',size: '110x110' %>
     <% end %>
    </p>
 
 <!-- 顧客サインイン後-->
 <!--コメント ルーティング修正、その他修正が必要、ようこそ○○さんをクリックしたら、-->
-<%# if customer_signed_in? %>
- <span>ようこそ！<%#= current_customer.last_name + current_customer.first_name %>さん</span>
+<% if customer_signed_in? %>
+ <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
+ <% end %>
   <ul class="nav justify-content-end">
    <li class="nav-item">
     <%= link_to "マイページ", customers_mypage_path, class: "nav-link" %>

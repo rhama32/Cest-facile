@@ -25,6 +25,8 @@ class Public::HospitalsController < ApplicationController
 
  #病院の詳細画面
  def show
+ @genres = Genre.all
+ @hospital = Hospital.find(params[:id])
  end
 
  def item_params
