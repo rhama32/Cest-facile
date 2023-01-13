@@ -1,2 +1,35 @@
 <h2>予約一覧画面</h2>
+  <div class="row-lg-10">
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th>来院日</th>
+          <th>来院時間</th>
+          <th>予約院</th>
+          <th>予約ステータス</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @reservations.each do |reservation| %>
+        <% @public_customers.each do |customer| %>
+        <% @hospitals.each do |hospital| %>
+          <tr>
+            <th><%= reservations.hope_day %></th>
+            <th><%= reservations.hope_time %></th>
+            <th><%= hospitals.name %></th>
+            <th><% if reservations.status == true %></th>
+                <p class="text-success font-weight-bold">予約完了</p>
+                <% elsif %>
+                <p class="text-secondary font-weight-bold">仮予約中</p>
+                <% else %>
+                <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
+                <% end %>
+          </tr>
+        <% end %>
+        <% end %>
+        <% end %>
+            </th>
+          </tr>
+        <tr></tr>
+      </tbody>
