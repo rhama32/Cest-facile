@@ -13,5 +13,16 @@ class Admin::ReservationsController < ApplicationController
  end
 
  def update
+  @reservation = Reservation.find(params[:id])
  end
 end
+
+ def update
+  @reservation = Reservation.find(params[:id])
+  if @reservation.update(admin_reservation_params)
+   flash[:notice] = "情報の変更が完了しました."
+   redirect_to admin_reservation_path
+  else
+   flash[:alret] = "変更の保存に失敗しました"
+  end
+ end
