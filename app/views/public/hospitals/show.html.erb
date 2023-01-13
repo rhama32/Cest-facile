@@ -5,15 +5,69 @@
       <%= render 'genrevar', genres: @genres %>
     </div>
 
-   <div class="col-4 ">
-    <%= image_tag @hospital.image, class:"img-thumbnail" %></p><br>
-   </div>
-   <div class="col-6 ">
-    <div>
-     <h2><%= @hospital.name %></h2>
-          <%= @hospital.introduction %>
-          <br><br>
+<div class="container">
+  <div class="row">
+    <h2>病院詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <span><%#= image_tag @hospital.image, class:"img-thumbnail" %></span>
     </div>
-   </div>
+    <div class="col-6 offset-md-1">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>病院画像</td>
+            <td><%= image_tag @hospital.image, class:"img-thumbnail" %></td>
+            </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @hospital.postal_code %></td>
+          </tr>
+          <tr>
+            <td>病院名</td>
+            <td><%= @hospital.name %></td>
+          </tr>
+          <tr>
+            <td>病院名（カナ）</td>
+            <td><%= @hospital.hospital_name_kana %></td>
+          </tr>
+          <tr>
+            <td>病院説明</td>
+            <td><%= @hospital.introduction %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @hospital.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @hospital.genre.name %></td>
+          </tr>
+          <tr>
+            <td>診療科目</td>
+            <td><%= @hospital.subject %> </td>
+          </tr>
+          <tr>
+            <td>診療時間</td>
+            <td><%= @hospital.hospital_time %> </td>
+          </tr>
+          <tr>
+            <td>駐車場</td>
+            <td><%= @hospital.parking %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td>
+              <% if @hospital.is_active == true %>
+                対応中
+              <% else %>
+                対応停止中
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
