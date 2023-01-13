@@ -1,1 +1,59 @@
-<h2>予約履歴一覧画面</h2>
+<h2>会員予約履歴一覧画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+      <h1>
+        <%= link_to admin_reservations_path do %>
+          <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row-lg-10">
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th>予約者ID</th>
+          <th>予約者氏名</th>
+          <th>病院ID</th>
+          <th>予約院</th>
+          <th>予約日</th>
+          <th>予約時間</th>
+          <th>予約ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+        <% @admin_customers.each do |customer| %>
+        <% @hospitals.each do |hospital| %>
+          <tr>
+            <th><%= reservations.id %></th>
+            <!-- 会員の予約詳細に進む-->
+            <th><%= link_to admin_reservations_path(reservation.id) do %>
+                <%= admin_customers.name %>
+                <% end %>
+            </th>
+            <th><%= hospitals.id %></th>
+            <th><%= hospitals.name %></th>
+            <th><%= reservations.hope_day %></th>
+            <th><%= reservations.hope_time %></th>
+            <th><% if reservations.status == true %></th>
+                <p class="text-success font-weight-bold">予約完了</p>
+                <% elsif %>
+                <p class="text-secondary font-weight-bold">仮予約中</p>
+                <% else %>
+                <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
+                <% end %>
+          </tr>
+        <% end %>
+        <% end %>
+        <% end %>
+            </th>
+          </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="pagination justify-content-center"><%#= paginate @reservations %></div>
