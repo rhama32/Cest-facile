@@ -56,6 +56,7 @@
    <h2>既に登録済みの方</h2>
    <div class="col-11">
      <p><%= render "public/shared/links" %>からログインしてください。</p>
+    <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
    </div>
  </div>
 </div>

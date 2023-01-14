@@ -29,8 +29,13 @@ Rails.application.routes.draw do
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
   end
 
-    #会員側 病院検索/予約/レビュー投稿
-    namespace :public do
+  devise_scope :customer do
+  #ゲストログインのルーティング
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
+  #会員側 病院検索/予約/レビュー投稿
+  namespace :public do
     resources :hospitals, only: [:index, :show]
     resources :reservations, only: [:new, :show, :create, :index]
     resources :reviews, only: [:index, :show]

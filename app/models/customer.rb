@@ -14,7 +14,25 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true, numericality: {only_integer: true}
 
-   def active_for_authentication?
+  def active_for_authentication?
     super && (is_deleted == false)
-   end
+  end
+
+  def self.guest
+    user = find_by(email: 'guest@example.com')
+    unless user
+      user = create!(
+        email: 'guest@example.com',
+        password: SecureRandom.urlsafe_base64,
+        first_name: 'ゲスト',
+        last_name: '太郎',
+        first_name_kana: 'げすと',
+        last_name_kana: 'たろう',
+        postal_code: '1234567',
+        address: '東京県渋谷市新宿区1-11-111',
+        telephone_number: '09012345678'
+      )
+    end
+    user.password = SecureRandom.urlsafe_base64
+  end
 end
