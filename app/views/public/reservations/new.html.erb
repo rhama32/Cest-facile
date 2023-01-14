@@ -1,1 +1,31 @@
 <h2>予約情報入力画面</h2>
+<%= form_with model: @reservation, url: public_reservations_path do |f| %>
+ <table class="table">
+  <div class="row-lg-11">
+  <tbody>
+   <div class="row-lg-11">
+   <tr></tr>
+      <th>
+       予約希望日
+       <%= @reservation.hope_day %>
+
+       <%= f.date_select :hope_day, {:default => Date.today} %>
+      </th>
+      <th>
+       予約希望時間
+       <%= @reservation.hope_time %>
+       <%= f.time_select :hope_time, {:default => Time.now } %>
+      </th>
+      <th>
+       予約希望院
+       <%= @hospital.name %>
+       <!-- nameからidとして引き渡す。-->
+       <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
+      </th>
+      <th>
+      <%= f.submit "予約する", class:"btn btn-success" %>
+      </th>
+      </table>
+      <% end %>
+  </div>
+ </div>

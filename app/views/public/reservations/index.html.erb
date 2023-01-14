@@ -15,7 +15,7 @@
         <% @public_customers.each do |customer| %>
         <% @hospitals.each do |hospital| %>
           <tr>
-            <th><%= reservations.hope_day %></th>
+            <th><%= link_to reservations.hope_day, public_reservation_path %></th>
             <th><%= reservations.hope_time %></th>
             <th><%= hospitals.name %></th>
             <th><% if reservations.status == true %></th>
