@@ -36,9 +36,11 @@ Rails.application.routes.draw do
 
   #会員側 病院検索/予約/レビュー投稿
   namespace :public do
-    resources :hospitals, only: [:index, :show]
+    resources :hospitals, only: [:index, :show] do
+      resources :reviews, only: :new
+    end
     resources :reservations, only: [:new, :show, :create, :index]
-    resources :reviews, only: [:new, :show, :create, :index]
+    resources :reviews, only: [:show, :create, :index]
   end
 
   namespace :admin do

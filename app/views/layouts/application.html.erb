@@ -12,8 +12,10 @@
 
 <!-- ヘッダーの呼び出し-->
   <body>
-   <%= render "layouts/header" %>
-   <%= yield %>
+    <%= render "layouts/header" %>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= yield %>
   </body>
 <!--フッター呼び出し-->
    <%= render "layouts/footer" %>

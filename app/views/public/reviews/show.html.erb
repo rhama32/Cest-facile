@@ -1,10 +1,12 @@
 <h2>レビュー投稿履歴詳細画面</h2>
-<%= @hospital.name %>
+<%#= @hospital.name %>
 <!--○月○日に来院などを追加したい。 -->
  <div class="row-lg-10">
   <table class="table">
    <thead>
     <tr class="table-secondary">
+      <th>病院・クリニック名</th>
+      <th>レビュー投稿日</th>
       <th>診療の満足度</th>
       <th>院内の清潔さ</th>
       <th>スタッフの対応満足度</th>
@@ -15,6 +17,8 @@
    </thead>
 
    <tbody>
+     <td><%= @hospitals.name %></td>
+     <td><%= @reviews.created_at %></td>
      <td><%= @reviews.doctor_satisfaction %></td>
      <td><%= @reviews.room_clean %></td>
      <td><%= @reviews.staff_satisfaction %></td>
