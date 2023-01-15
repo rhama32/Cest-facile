@@ -1,33 +1,28 @@
 <h2>予約履歴詳細画面</h2>
-<%= @public_customers.last_name + @public_customers.first_name %>さんの会員詳細
-  <div class="row">
-    <div class="col-6 offset-md-1">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <td>予約日</td>
-            <td><%= image_tag @reservations.hope_day, class:"img-thumbnail" %></td>
-            </tr>
-          <tr>
-            <td>予約時間</td>
-            <td><%= image_tag @reservations.hope_time, class:"img-thumbnail" %></td>
-            </tr>
-          <tr>
-            <td>予約院</td>
-            <td><%= @hospitals.name %></td>
-          </tr>
-          <tr>
-            <td>予約ステータス</td>
-            <td><% if @reservations.status == true %></td>
-                予約完了
-              　<% elsif %>
-                仮予約中
-                <% else %>
-                キャンセル済
-              <% end %>
-          </tr>
+<%= @public_customers.last_name + @public_customers.first_name %>さんの予約詳細
+ <div class="row-lg-10">
+  <table class="table">
+   <thead>
+    <tr class="table-secondary">
+     <th>予約日</th>
+     <th>来院予約時間</th>
+     <th>予約院</th>
+     <th>予約ステータス</th>
+    </tr>
+   </thead>
+   <tbody>
+     <td><%= @reservations.hope_day %></td>
+     <td><%= @reservations.hope_time %></td>
+     <td><%= @hospitals.name %></td>
+     <td><% if @reservations.status == 0 %>
+          <p class="text-secondary font-weight-bold">仮予約中</p>
+         <% elsif reservation.status == 1 %>
+          <p class="text-success font-weight-bold">予約完了</p>
+         <% else %>
+          <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
+         <% end %>
+      </td>
         </tbody>
       </table>
     </div>
   </div>
-</div>
