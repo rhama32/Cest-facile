@@ -1,1 +1,29 @@
-<h2>レビュー投稿画面</h2>
+<h2>レビュー投稿一覧画面</h2>
+<div class="row-lg-10">
+<table class="table">
+  <thead>
+    <tr class="table-secondary">
+      <!--レビュー投稿日も追加したい。 -->
+      <th>診療の満足度</th>
+      <th>院内の清潔さ</th>
+      <th>スタッフの対応満足度</th>
+      <th>待ち時間</th>
+      <th>コメント</th>
+      <th>総合満足度</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= link_to review.doctor_satisfaction, public_review_path(review.id) %></td>
+        <td><%= review.room_clean %></td>
+        <td><%= review.staff_satisfaction %></td>
+        <td><%= review.waiting_time %></td>
+        <td><%= review.comment %></td>
+        <td><%= review.total_point %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+</div>

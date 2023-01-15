@@ -1,0 +1,47 @@
+<%= flash[:notice] %>
+<h2>レビュー情報入力画面</h2>
+<%= form_with model: @review, url: public_reviews_path do |f| %>
+ <table class="table">
+  <div class="row-lg-11">
+  <tbody>
+   <div class="row-lg-11">
+   <tr></tr>
+    <th>
+     診療の満足度
+      <%= @review.doctor_satisfaction %>
+      <%= f.select :doctor_satisfaction %>
+    </th>
+    <th>
+     院内の清潔さ
+       <%= @review.room_clean %>
+       <%= f.select :room_clean %>
+    </th>
+    <th>
+      スタッフの対応満足度
+       <%= @review.staff_satisfaction %>
+       <%= f.select :staff_satisfaction %>
+       <!-- nameからidとして引き渡す。-->
+       <%#= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
+    </th>
+    <th>
+      待ち時間(10分単位)
+       <%= @review.waiting_time %>
+       <%= f.time_select :waiting_time %>
+    </th>
+    <th>
+      コメント
+       <%= @review.comment %>
+       <%= f.select :comment %>
+    </th>
+    <th>
+      総合満足度
+       <%= @review.total_point %>
+       <%= f.select :total_point %>
+    </th>
+    <th>
+       <%= f.submit "投稿する", class:"btn btn-success" %>
+    </th>
+    </table>
+       <% end %>
+    </div>
+   </div>

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :hospitals, only: [:index, :show]
     resources :reservations, only: [:new, :show, :create, :index]
-    resources :reviews, only: [:index, :show]
+    resources :reviews, only: [:new, :show, :create, :index]
   end
 
   namespace :admin do
