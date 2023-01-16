@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  #医者用
+  # URL /doctors/sign_in ...
+  devise_for :doctors,skip:[:passwords], controllers: {
+  registrations: "doctor/registrations",
+  sessions: 'doctor/sessions'
+}
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -40,7 +47,10 @@ Rails.application.routes.draw do
       resources :reviews, only: :new
     end
     resources :reservations, only: [:new, :show, :create, :index]
-    resources :reviews, only: [:show, :create, :index]
+    resources :reviews, only: [:show, :create, :index] do
+     resource :favorites, only: [:create, :destroy]
+    end
+
   end
 
   namespace :admin do

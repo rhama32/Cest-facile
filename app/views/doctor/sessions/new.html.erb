@@ -1,4 +1,4 @@
-<h2>管理者ログイン</h2>
+<h2>医療関係者ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -23,7 +23,4 @@
   </div>
 <% end %>
 
-<%= render "admin/shared/links" %>
-
-  <h4>医療関係者の方で新規登録がお済みでない方</h4>
-  <p class="text-center"><%= render "doctor/shared/links" %>から新規登録を行ってください。</p>
+<%= render "doctor/shared/links" %>

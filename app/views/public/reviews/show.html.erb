@@ -23,7 +23,20 @@
      <td><%= @reviews.room_clean %></td>
      <td><%= @reviews.staff_satisfaction %></td>
      <td><%= @reviews.waiting_time %></td>
-     <td><%= @reviews.comment %></td>
+
+     <% if @reviews.favorited_by?(current_customer) %>
+       <p>
+         <%= link_to public_review_favorites_path(@reviews.id), method: :delete do %>
+           ♥<%= @reviews.favorites.count %> いいね
+         <% end %>
+       </p>
+     <% else %>
+       <p>
+         <%= link_to public_review_favorites_path(@reviews.id), method: :post do %>
+           ♡<%= @reviews.favorites.count %> いいね
+         <% end %>
+       </p>
+      <% end %>
      <td><%= @reviews.total_point %></td>
    </tbody>
   </table>
