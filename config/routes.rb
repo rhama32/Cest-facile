@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       resources :reviews, only: :new
     end
     resources :reservations, only: [:new, :show, :create, :index]
+    resources :hospital_doctors, only: [:index, :show, :create, :destroy]
     resources :reviews, only: [:show, :create, :index] do
      resource :favorites, only: [:create, :destroy]
     end
@@ -59,6 +60,10 @@ Rails.application.routes.draw do
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
   resources :reservations, only: [:index, :show, :update]
   resources :reviews, only: [:index, :show, :edit, :update]
+  end
+
+  namespace :doctor do
+  resources :hospital_doctors, only: [:index, :show, :create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
