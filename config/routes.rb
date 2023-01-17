@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   end
 
   namespace :doctor do
-  resources :hospital_doctors, only: [:index, :show, :create, :destroy]
+  resources :hospital_doctors, only: [:show, :edit, :update, :unscribe, :withdraw]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

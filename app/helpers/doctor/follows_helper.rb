@@ -1,0 +1,2 @@
+module Doctor::FollowsHelper
+end
