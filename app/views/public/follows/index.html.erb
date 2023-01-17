@@ -1,1 +1,16 @@
 <h2>フォロー一覧画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <!--一覧部分-->
+      <h2 style="margin: 20px 0;">フォロー一覧(全<%= @count %>人)</h2>
+      <div class="text-center row">
+        <% @follows.each do |follow| %>
+              <%#= link_to public_hospital_path(hospital) do %>
+                <%#= image_tag hospital.image, size:"200x200"  %>
+                <%= link_to "病院詳細" , follows.hospital_id, root_path(follow) %>
+              <% end %>
+            </div>
+      </div>
+    </div>
+  </div>

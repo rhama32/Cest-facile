@@ -9,25 +9,12 @@
   <tr></tr>
    <tr>
     <td class="table-secondary">氏名</td>
-    <td><%= @hospital_doctor.name %></td>
+    <td><%= @doctor.name %></td>
    </tr>
    <tr>
     <td class="table-secondary">メールアドレス</td>
-    <td><%= @hospital_doctor.email %></td>
+    <td><%= @doctor.email %></td>
    </tr>
-   <tr>
-    <td class="table-secondary">所属院名</td>
-    <td><%= @hospital_doctor.name %></td>
-   </tr>
-   <tr>
-     <td class="table-secondary">会員ステータス</td>
-     <th>
-     <% @hospital_doctor.is_deleted %>
-    <% if @hospital_doctor.is_deleted == false %><p class= "text-success" >有効</p>
-    <% elsif @hospital_doctor.is_deleted == true %>退会
-    <% end %>
-     </th>
-    </tr>
   </tbody>
 </table>
   </div>
@@ -36,4 +23,4 @@
 
 <%= link_to 'レビュー一覧', root_path, class: "btn btn-success" %>
 <%= link_to 'フォロワー一覧', root_path, class: "btn btn-success" %>
-<%= link_to '予約一覧', root_path, class: "btn btn-success" %>
+<%#= link_to '予約一覧', public_reservations_path, class: "btn btn-success" %>
