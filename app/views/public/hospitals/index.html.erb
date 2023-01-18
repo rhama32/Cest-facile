@@ -13,7 +13,7 @@
           <% if hospital.is_active == true %>
             <div class="col-md-3 shadow p-3 mb-4 m-4">
               <%= link_to public_hospital_path(hospital) do %>
-                <%#= image_tag hospital.image, size:"200x200"  %>
+                <%= image_tag hospital.image, size:"100x100"  %>
                 <%= hospital.name %>
               <% end %>
               <br><%#= hospital.price %>

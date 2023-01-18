@@ -25,20 +25,20 @@
       </thead>
       <tbody>
         <% @reservations.each do |reservation| %>
-        <% @admin_customers.each do |customer| %>
+        <% @admin_customers.each do |admin_customer| %>
         <% @hospitals.each do |hospital| %>
           <tr>
-            <th><%= reservations.id %></th>
+            <th><%= reservation.id %></th>
             <!-- 会員の予約詳細に進む-->
             <th><%= link_to admin_reservations_path(reservation.id) do %>
-                <%= admin_customers.name %>
+                <%= admin_customer.last_name + admin_customer.first_name %>
                 <% end %>
             </th>
-            <th><%= hospitals.id %></th>
-            <th><%= hospitals.name %></th>
-            <th><%= reservations.hope_day %></th>
-            <th><%= reservations.hope_time %></th>
-            <th><% if reservations.status == true %></th>
+            <th><%= hospital.id %></th>
+            <th><%= hospital.name %></th>
+            <th><%= reservation.hope_day %></th>
+            <th><%= reservation.hope_time %></th>
+            <th><% if reservation.status == true %></th>
                 <p class="text-success font-weight-bold">予約完了</p>
                 <% elsif %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
