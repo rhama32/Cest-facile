@@ -12,7 +12,7 @@ class Public::HospitalsController < ApplicationController
   elsif @search_hospitals
     @hospitals = @search_hospitals.page(params[:page])
     @hospitals_count = @search_hospitals.all.count
- end
+  end
 
  #一覧表示の病院数
   @count = 0

@@ -8,7 +8,7 @@
         <% @follows.each do |follow| %>
               <%#= link_to public_hospital_path(hospital) do %>
                 <%#= image_tag hospital.image, size:"200x200"  %>
-                <%= link_to "病院詳細" , follows.hospital_id, root_path(follow) %>
+                <%= link_to "病院詳細" , follows.hospital_id, public_hospital_path(follow) %>
               <% end %>
             </div>
       </div>
