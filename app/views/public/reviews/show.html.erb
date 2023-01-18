@@ -40,4 +40,9 @@
      <td><%= @reviews.total_point %></td>
    </tbody>
   </table>
+  <p><%= @reviews.comment %></p>
+  <p><%= @reviews.created_at %></p>
+  <p><%= @reply.comment if @reply %></p>
+  <p><%= @reply.created_at if @reply %></p>
+
  </div>

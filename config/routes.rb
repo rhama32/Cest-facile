@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:index,:create,:edit,:update]
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
-  resources :reservations, only: [:index, :show, :update]
+  resources :reservations, only: [:index, :show, :update, :edit]
   resources :reviews, only: [:index, :show, :edit, :update]
   end
 

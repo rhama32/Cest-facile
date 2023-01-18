@@ -29,6 +29,7 @@ class Public::ReviewsController < ApplicationController
  def show
   @hospitals = Hospital.find(params[:id])
   @reviews = Review.find(params[:id])
+  @reply = @reviews.reply
  end
 
  private

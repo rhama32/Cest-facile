@@ -2,8 +2,6 @@ class Admin::ReservationsController < ApplicationController
 
  def index
   @reservations = Reservation.all
-  @admin_customers = Customer.all
-  @hospitals = Hospital.all
  end
 
  def show
@@ -14,11 +12,6 @@ class Admin::ReservationsController < ApplicationController
 
  def update
   @reservation = Reservation.find(params[:id])
- end
-end
-
- def update
-  @reservation = Reservation.find(params[:id])
   if @reservation.update(admin_reservation_params)
    flash[:notice] = "情報の変更が完了しました."
    redirect_to admin_reservation_path
@@ -26,3 +19,4 @@ end
    flash[:alret] = "変更の保存に失敗しました"
   end
  end
+end

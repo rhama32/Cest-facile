@@ -7,4 +7,5 @@ class Reservation < ApplicationRecord
   validates :status, presence: true
 
   belongs_to :hospital
+  belongs_to :customer
 end

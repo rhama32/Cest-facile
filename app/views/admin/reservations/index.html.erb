@@ -21,33 +21,32 @@
           <th>予約日</th>
           <th>予約時間</th>
           <th>予約ステータス</th>
+          <th>ステータス編集</th>
         </tr>
       </thead>
       <tbody>
         <% @reservations.each do |reservation| %>
-        <% @admin_customers.each do |admin_customer| %>
-        <% @hospitals.each do |hospital| %>
           <tr>
-            <th><%= reservation.id %></th>
+            <td><%= reservation.id %></td>
             <!-- 会員の予約詳細に進む-->
-            <th><%= link_to admin_reservations_path(reservation.id) do %>
-                <%= admin_customer.last_name + admin_customer.first_name %>
+            <td><%= link_to admin_customer_path(reservation.customer.id) do %>
+                <%= reservation.customer.last_name + reservation.customer.first_name %>
                 <% end %>
-            </th>
-            <th><%= hospital.id %></th>
-            <th><%= hospital.name %></th>
-            <th><%= reservation.hope_day %></th>
-            <th><%= reservation.hope_time %></th>
-            <th><% if reservation.status == true %></th>
+            </td>
+            <td><%= reservation.hospital.id %></td>
+            <td><%= reservation.hospital.name %></td>
+            <td><%= reservation.hope_day %></td>
+            <td><%= reservation.hope_time %></td>
+            <td><% if reservation.status == true %>
                 <p class="text-success font-weight-bold">予約完了</p>
                 <% elsif %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
                 <% else %>
                 <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
                 <% end %>
+            </td>
+            <td><%= link_to "ステータス変更", edit_admin_reservation_path(reservation.id) %></td>
           </tr>
-        <% end %>
-        <% end %>
         <% end %>
             </th>
           </tr>

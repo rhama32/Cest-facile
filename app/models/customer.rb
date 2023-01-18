@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :follows
+  has_many :follows, foreign_key: "customer_id"
   has_many :doctors, through: :follows
 
   def active_for_authentication?
