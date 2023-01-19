@@ -1,4 +1,4 @@
-class Admin::ReservationsController < ApplicationController
+class Doctor::ReservationsController < ApplicationController
 
  def index
   @reservations = Reservation.all
@@ -19,11 +19,11 @@ class Admin::ReservationsController < ApplicationController
    flash[:notice] = "情報の変更が完了しました."
    redirect_to admin_reservation_path
   else
-   render :show, flash[:alret] = "変更の保存に失敗しました"
+   flash[:alret] = "変更の保存に失敗しました"
   end
  end
 
-   def reservation_params
+    def reservation_params
     params.require(:reservation).permit(:status_method)
   end
 end

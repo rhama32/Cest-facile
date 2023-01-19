@@ -16,8 +16,21 @@ class Customer < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :follows, foreign_key: "customer_id"
   has_many :doctors, through: :follows
+
+  has_many :follows, foreign_key: "customer_id", dependent: :destroy
+  # フォローしたときの処理
+  def follow(customer_id)
+   relationships.create(followed_id: hospital_doctor_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(customer_id)
+   relationships.find_by(followed_id: hospital_doctor_id).destroy
+  end
+  # フォローしているか判定
+  def following?(hospital_doctor)
+   followings.include?(hospital_doctor)
+  end
 
   def active_for_authentication?
     super && (is_deleted == false)

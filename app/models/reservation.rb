@@ -8,4 +8,6 @@ class Reservation < ApplicationRecord
 
   belongs_to :hospital
   belongs_to :customer
+
+  enum status_method: { reservation_confirmed: 0, tentative_reservation: 1, reception_cancellation: 2 }
 end

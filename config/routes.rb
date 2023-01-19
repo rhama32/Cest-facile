@@ -43,8 +43,11 @@ Rails.application.routes.draw do
 
   #会員側 病院検索/予約/レビュー投稿
   namespace :public do
+    resource :follows, only: [:create, :destroy]
+    get 'followings' => 'follows#followings', as: 'followings'
+    get 'followers' => 'follows#followers', as: 'followers'
     resources :hospitals, only: [:index, :show] do
-      resources :reviews, only: :new
+     resources :reviews, only: :new
     end
     resources :reservations, only: [:new, :show, :create, :index]
     resources :hospital_doctors, only: [:index, :show, :create, :destroy]
@@ -63,7 +66,11 @@ Rails.application.routes.draw do
   end
 
   namespace :doctor do
-  resources :hospital_doctors, only: [:show, :edit, :update, :unscribe, :withdraw]
+   resource :follows, only: [:create, :destroy]
+    get 'followings' => 'follows#followings', as: 'followings'
+    get 'followers' => 'follows#followers', as: 'followers'
+   resources :hospital_doctors, only: [:show, :edit, :update, :unscribe, :withdraw]
+   resources :reservations, only: [:index, :show, :update, :edit]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

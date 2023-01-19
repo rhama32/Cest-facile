@@ -8,8 +8,6 @@ class Public::ReservationsController < ApplicationController
  def confirm
  end
 
-
-
  def create
   @reservation = Reservation.new(reservation_params)
   @reservation.customer_id = current_customer.id
@@ -34,6 +32,9 @@ end
   @reservations = Reservation.find(params[:id])
   @public_customers = current_customer
   @hospitals = Hospital.find(params[:id])
+ end
+
+ def edit
  end
 
  private

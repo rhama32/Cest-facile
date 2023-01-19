@@ -18,7 +18,7 @@
         <tbody>
           <tr>
             <td>病院画像</td>
-            <td><%= image_tag @hospital.image, class:"img-thumbnail" %></td>
+            <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto" %></td>
             </tr>
           <tr>
             <td>郵便番号</td>
@@ -31,6 +31,17 @@
           <tr>
             <td>病院名（カナ）</td>
             <td><%= @hospital.hospital_name_kana %></td>
+          </tr>
+          <tr>
+            <td>医師名</td>
+            <td><%#= hospital.hospital_doctor.name %></td>
+            <td>
+                <% if customer.following?(hospital_doctor) %>
+                <%= link_to "フォロー外す", public_follows_path(customer.id), method: :delete %>
+                <% else %>
+                <%= link_to "フォローする", public_follows_path(customer.id), method: :post %>
+                <% end %>
+            </td>
           </tr>
           <tr>
             <td>病院説明</td>
