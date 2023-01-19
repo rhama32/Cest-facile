@@ -4,10 +4,9 @@ class Reservation < ApplicationRecord
   validates :hospital_id, presence: true
   validates :hope_day, presence: true
   validates :hope_time, presence: true
-  validates :status, presence: true
 
   belongs_to :hospital
   belongs_to :customer
 
-  enum status_method: { reservation_confirmed: 0, tentative_reservation: 1, reception_cancellation: 2 }
+  enum status: { reservation_confirmed: 0, tentative_reservation: 1, reception_cancellation: 2 }
 end

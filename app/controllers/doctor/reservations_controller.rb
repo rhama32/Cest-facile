@@ -23,7 +23,7 @@ class Doctor::ReservationsController < ApplicationController
   end
  end
 
-    def reservation_params
-    params.require(:reservation).permit(:status_method)
+    def admin_reservation_params
+    params.require(:reservation).permit(:status)
   end
 end

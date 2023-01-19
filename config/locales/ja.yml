@@ -1,7 +1,7 @@
   ja: #日本語の設定
     enums: #enumの設定
       reservation: #モデル名
-        status_method: #カラム名
+        status: #カラム名
           reservation_confirmed: "予約確定"
           tentative_reservation: "仮予約中"
           reception_cancellation: "受付キャンセル"
