@@ -37,6 +37,16 @@ end
  def edit
  end
 
+  def update
+  @reservations = Reservation.find(params[:id])
+  if @reservations.update(admin_reservation_params)
+   flash[:notice] = "情報の変更が完了しました."
+   redirect_to public_reservation_path
+  else
+   flash[:alret] = "変更の保存に失敗しました"
+  end
+ end
+
  private
   def reservation_params
    params.require(:reservation).permit(:customer_id, :hospital_id, :hope_day, :hope_time)

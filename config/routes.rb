@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     resources :hospitals, only: [:index, :show] do
      resources :reviews, only: :new
     end
-    resources :reservations, only: [:new, :show, :create, :index]
+    resources :reservations, only: [:new, :show, :create, :index, :update]
     resources :hospital_doctors, only: [:index, :show, :create, :destroy]
     resources :reviews, only: [:show, :create, :index] do
      resource :favorites, only: [:create, :destroy]

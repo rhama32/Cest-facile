@@ -27,13 +27,13 @@ class Public::HospitalsController < ApplicationController
  def show
  @genres = Genre.all
  @hospital = Hospital.find(params[:id])
- end
 
  def add_doctor
     @doctor = Doctor.find(params[:hospital_doctor_id])
-    customer = Customer.find(params[:customer_id])
-    @doctor.customers << customer
+    current_customer = Customer.find(params[:customer_id])
+    @doctor.current_customer << current_customer
     redirect_to root_path, notice: "ドクターを追加しました。"
+ end
  end
 
  def item_params
