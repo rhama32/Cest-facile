@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <h2>会員情報編集</h2>
+      <h4>会員情報編集</h4>
       <%= form_with model: @customer, url: customers_update_path, method: :PATCH do |f| %>
         <table class="table table-borderless">
           <tbody>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
               <td><%= f.label :"住所" %></td>
-              <td><%= f.text_field :address %></td>
+              <td><%= f.text_field :address, size:"50" %></td>
             </tr>
             <tr>
               <td><%= f.label :"電話番号" %></td>
@@ -29,7 +29,7 @@
             </tr>
             <tr>
               <td><%= f.label :"メールアドレス" %></td>
-              <td><%= f.text_field :email %></td>
+              <td><%= f.text_field :email,size:"50" %></td>
             </tr>
             <tr>
               <td></td>

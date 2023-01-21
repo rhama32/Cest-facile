@@ -2,8 +2,8 @@
  <div class ="row">
   <div class = "col-10">
 
-<h2>マイページ</h2>
-<p class="font-weight-bold h5"> 登録情報 <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
+<h4>マイページ</h4>
+<p class="font-weight-bold h6"> 登録情報 <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
 <table class="table table-bordered">
  <tbody>
   <tr></tr>
@@ -37,6 +37,12 @@
  </div>
 </div>
 
-<%= link_to '過去投稿の口コミ', root_path, class: "btn btn-success" %>
-<%= link_to 'フォロー一覧', root_path, class: "btn btn-success" %>
-<%= link_to '予約一覧', public_reservations_path, class: "btn btn-success" %>
+<div class="container">
+ <div class ="row">
+  <div class = "col-10">
+    <%= link_to '過去のレビュー', public_reviews_path, class: "btn btn-success" %>
+    <%= link_to 'フォロー一覧', public_follows_path, class: "btn btn-success" %>
+    <%= link_to '予約一覧', public_reservations_path, class: "btn btn-success" %>
+  </div>
+ </div>
+</div>

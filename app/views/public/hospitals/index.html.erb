@@ -4,10 +4,9 @@
      <!--ジャンル検索-->
      <%= render 'genrevar', genres: @genres %>
     </div>
-
     <div class="col-10">
       <!--一覧部分-->
-      <h2 style="margin: 20px 0;">病院一覧(全<%= @count %>件)</h2>
+      <h4 style="margin: 0;">病院一覧(全<%= @count %>件)</h4>
       <div class="text-center row">
         <% @hospitals.each do |hospital| %>
           <% if hospital.is_active == true %>
@@ -16,7 +15,6 @@
                 <%= image_tag hospital.image, size:"100x100"  %>
                 <%= hospital.name %>
               <% end %>
-              <br><%#= hospital.price %>
             </div>
           <% end %>
         <% end %>

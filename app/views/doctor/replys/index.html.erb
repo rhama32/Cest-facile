@@ -11,7 +11,7 @@
       <th>待ち時間</th>
       <th>コメント</th>
       <th>総合満足度</th>
-      <th>レビューを書く</th>
+      <th>コメント確認</th>
     </tr>
   </thead>
 
@@ -20,13 +20,12 @@
       <tr>
         <td><%= review.hospital.name %></td>
         <td><%= review.created_at %></td>
-        <td><%= link_to review.doctor_satisfaction, public_review_path(review.id) %></td>
+        <td><%= link_to review.doctor_satisfaction, doctor_reply_path(reply.id) %></td>
         <td><%= review.room_clean %></td>
         <td><%= review.staff_satisfaction %></td>
         <td><%= review.waiting_time %></td>
         <td><%= review.comment %></td>
         <td><%= review.total_point %></td>
-        <td><%= link_to '作成', new_public_hospital_review_path(review.hospital.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
    </tbody>

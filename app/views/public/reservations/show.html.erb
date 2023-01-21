@@ -14,14 +14,14 @@
      <th><%= @reservations.hope_day %></th>
      <th><%= @reservations.hope_time %></th>
      <th><%= @hospitals.name %></th>
-     <th><% if @reservations.status == "reservation_confirmed"  %>
-          <p class="text-secondary font-weight-bold">予約確定</p>
-         <% elsif @reservations.status == "tentative_reservation" %>
-          <p class="text-success font-weight-bold">仮予約中</p>
-         <% elsif @reservations.status == "reception_cancellation" %>
-          <p class="text-secondary font-weight-bold">受付キャンセル</p>
-         <% end %>
-      </th>
+             <td><% if @reservations.status == 'reservation_confirmed' %>
+                <p class="text-success font-weight-bold">予約確定</p>
+                <% elsif @reservations.status == 'tentative_reservation' %>
+                <p class="text-secondary font-weight-bold">仮予約中</p>
+                <% else %>
+                <p class="text-secondary font-weight-bold">受付キャンセル</p>
+                <% end %>
+            </td>
         </tbody>
       </table>
     </div>

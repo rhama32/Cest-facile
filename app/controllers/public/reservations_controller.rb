@@ -39,7 +39,7 @@ end
 
   def update
   @reservations = Reservation.find(params[:id])
-  if @reservations.update(admin_reservation_params)
+  if @reservations.update(reservation_params)
    flash[:notice] = "情報の変更が完了しました."
    redirect_to public_reservation_path
   else

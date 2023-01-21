@@ -23,7 +23,7 @@ class Admin::ReservationsController < ApplicationController
   end
  end
 
-   def reservation_params
+   def admin_reservation_params
     params.require(:reservation).permit(:status)
   end
 end

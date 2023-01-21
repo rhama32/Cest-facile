@@ -10,6 +10,8 @@ class Doctor::ReplysController < ApplicationController
  end
 
  def index
+  @hospital = Hospital.all
+  @reviews = Review.all
  end
 
  def show

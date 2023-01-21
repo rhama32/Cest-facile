@@ -1,37 +1,40 @@
+
+<% if current_doctor.is_active %>
+
 <div class="container">
  <div class="row">
-  <div class="col-md-3">
-   <div class="col-11">
+  <div class="col-md-2">
+   <div class="col-10">
     <!--ジャンル検索-->
     <%= render 'public/hospitals/genrevar', genres: @genres %>
    </div>
   </div>
-
 <h2>
   Cest-facile</br>
   誰でも手軽に安心を
 </h2>
-
-  <div class="container">
-  <div class="row">
-  <div class="col-md-8 offset-md-3">
-  <h3 style="margin: 20px 0;">新着病院</h3>
-  <div class="row">
-  <% @hospitals.each do |hospital| %>
-   <div class="col-md-3 ">
-    <div class="w-95 h-95 shadow">
-     <%= link_to public_hospital_path(hospital) do %>
-      <%= image_tag hospital.image,class:"img-fluid d-block mx-auto" %>
-      <div><%= hospital.name %></div>
-     <% end %>
-    </div>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-8 offset-md-3">
+      <h3 style="margin: 20px 0;">新着病院</h3>
+       <div class="row">
+        <% @hospitals.each do |hospital| %>
+         <div class="col-md-3 ">
+         <div class="w-95 h-95 shadow">
+          <%= link_to public_hospital_path(hospital) do %>
+          <%= image_tag hospital.image,class:"img-fluid d-block mx-auto" %>
+         <div><%= hospital.name %></div>
+          <% end %>
+         </div>
+         </div>
+         <% end %>
+       </div>
+      </div>
+     </div>
    </div>
+  <div class="text-right">
+   <%= link_to "全ての病院を見る> ", public_hospitals_path %>
+  </div>
+  <% else %>
+  申請の承認をお待ちください。
   <% end %>
-</div>
-</div>
-</div>
-</div>
-
-<div class="text-right">
-<%= link_to "全ての病院を見る> ", public_hospitals_path %>
-</div>

@@ -38,16 +38,14 @@
             <td><%= reservation.hospital.name %></td>
             <td><%= reservation.hope_day %></td>
             <td><%= reservation.hope_time %></td>
-            <td><% if reservation.status == true %>
+            <td><% if reservation.status == 'reservation_confirmed' %>
                 <p class="text-success font-weight-bold">予約確定</p>
-                <% elsif %>
+                <% elsif reservation.status == 'tentative_reservation' %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
                 <% else %>
                 <p class="text-secondary font-weight-bold">受付キャンセル</p>
                 <% end %>
             </td>
-            <td><%= link_to "ステータス変更", edit_doctor_reservation_path(reservation.id) %></td>
-            <%#= f.select :status_methods, Reservation.status_methods.keys.map {|k| [I18n.t("enums.reservation.status_method.#{k}"), k]} %>
             <td><%= f.select :status, Reservation.statuses_i18n.invert, {} %>
                 <%= f.submit "変更" %>
                 <% end %>

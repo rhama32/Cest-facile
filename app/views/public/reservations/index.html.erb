@@ -17,14 +17,14 @@
         <th><%= link_to reservation.hope_day, public_reservation_path(reservation.id) %></th>
         <td><%= reservation.hope_time %></td>
         <td><%= reservation.hospital.name %></td>
-        <td><% if reservation.status == 0 %>
-            <p class="text-secondary font-weight-bold">仮予約中</p>
-            <% elsif reservation.status == 1 %>
-            <p class="text-success font-weight-bold">予約完了</p>
-            <% else %>
-            <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
-            <% end %>
-        </td>
+             <td><% if reservation.status == 'reservation_confirmed' %>
+                <p class="text-success font-weight-bold">予約確定</p>
+                <% elsif reservation.status == 'tentative_reservation' %>
+                <p class="text-secondary font-weight-bold">仮予約中</p>
+                <% else %>
+                <p class="text-secondary font-weight-bold">受付キャンセル</p>
+                <% end %>
+            </td>
       </tr>
     <% end %>
    </tbody>

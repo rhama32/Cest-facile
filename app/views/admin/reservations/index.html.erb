@@ -26,30 +26,31 @@
       </thead>
       <tbody>
         <% @reservations.each do |reservation| %>
+        <%= form_with(model: reservation, url: admin_reservation_path(reservation), method: :patch, local: true) do |f| %>
           <tr>
             <td><%= reservation.id %></td>
             <!-- 会員の予約詳細に進む-->
-            <td><%= link_to admin_customer_path(reservation.customer.id) do %>
+            <td><%#= link_to admin_customer_path(reservation.customer.id) do %>
                 <%= reservation.customer.last_name + reservation.customer.first_name %>
-                <% end %>
+                <%# end %>
             </td>
             <td><%= reservation.hospital.id %></td>
             <td><%= reservation.hospital.name %></td>
             <td><%= reservation.hope_day %></td>
             <td><%= reservation.hope_time %></td>
-            <td><% if reservation.status == true %>
-                <p class="text-success font-weight-bold">予約完了</p>
-                <% elsif %>
+            <td><% if reservation.status == 'reservation_confirmed' %>
+                <p class="text-success font-weight-bold">予約確定</p>
+                <% elsif reservation.status == 'tentative_reservation' %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
                 <% else %>
-                <p class="text-secondary font-weight-bold">仮予約キャンセル</p>
+                <p class="text-secondary font-weight-bold">受付キャンセル</p>
                 <% end %>
             </td>
-            <td><%= link_to "ステータス変更", edit_admin_reservation_path(reservation.id) %></td>
+            <td><%= f.select :status, Reservation.statuses_i18n.invert, {} %>
+                <%= f.submit "変更" %>
+                <% end %>
           </tr>
-        <% end %>
-            </th>
-          </tr>
+          <% end %>
         <tr></tr>
       </tbody>
     </table>

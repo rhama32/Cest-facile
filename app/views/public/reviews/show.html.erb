@@ -23,6 +23,7 @@
      <td><%= @reviews.room_clean %></td>
      <td><%= @reviews.staff_satisfaction %></td>
      <td><%= @reviews.waiting_time %></td>
+     <td><%= @reviews.comment %></td>
 
      <% if @reviews.favorited_by?(current_customer) %>
        <p>
@@ -40,9 +41,11 @@
      <td><%= @reviews.total_point %></td>
    </tbody>
   </table>
-  <p><%= @reviews.comment %></p>
-  <p><%= @reviews.created_at %></p>
-  <p><%= @reply.comment if @reply %></p>
-  <p><%= @reply.created_at if @reply %></p>
-
+  <table class="table">
+  <th>コメント返信欄</th>
+  <th><%= @reviews.comment %></th>
+  <th><%= @reviews.created_at %></th>
+  <th><%= @reply.comment if @reply %></th>
+  <th><%= @reply.created_at if @reply %><th>
+  </table>
  </div>

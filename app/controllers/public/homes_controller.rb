@@ -1,5 +1,7 @@
 class Public::HomesController < ApplicationController
 
+  before_action :authenticate_doctor!
+
 def top
   @genres = Genre.all
   @hospitals = Hospital.all

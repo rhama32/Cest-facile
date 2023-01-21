@@ -15,15 +15,15 @@ class Doctor::ReservationsController < ApplicationController
 
  def update
   @reservation = Reservation.find(params[:id])
-  if @reservation.update(admin_reservation_params)
+  if @reservation.update(doctor_reservation_params)
    flash[:notice] = "情報の変更が完了しました."
-   redirect_to admin_reservation_path
+   redirect_to doctor_reservation_path
   else
    flash[:alret] = "変更の保存に失敗しました"
   end
  end
 
-    def admin_reservation_params
+    def doctor_reservation_params
     params.require(:reservation).permit(:status)
   end
 end

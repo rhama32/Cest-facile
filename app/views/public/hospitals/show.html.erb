@@ -7,20 +7,15 @@
 
 <div class="container">
   <div class="row">
-    <h2>病院詳細</h2>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <span><%#= image_tag @hospital.image, class:"img-thumbnail" %></span>
-    </div>
-    <div class="col-6 offset-md-1">
-      <table class="table table-borderless">
+    <div class="col-10">
+      <h4>病院詳細</h4>
+       <table class="table table-borderless">
         <tbody>
-          <tr>
+         <tr>
             <td>病院画像</td>
             <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto" %></td>
-            </tr>
-          <tr>
+         </tr>
+         <tr>
             <td>郵便番号</td>
             <td><%= @hospital.postal_code %></td>
           </tr>
@@ -36,11 +31,11 @@
             <td>医師名</td>
             <td><%#= hospital.hospital_doctor.name %></td>
             <td>
-                <% if customer.following?(hospital_doctor) %>
-                <%= link_to "フォロー外す", public_follows_path(customer.id), method: :delete %>
-                <% else %>
-                <%= link_to "フォローする", public_follows_path(customer.id), method: :post %>
-                <% end %>
+                <%# if customer.following?(hospital_doctor) %>
+                <%#= link_to "フォロー外す", public_follows_path(customer.id), method: :delete %>
+                <%# else %>
+                <%#= link_to "フォローする", public_follows_path(customer.id), method: :post %>
+                <%# end %>
             </td>
           </tr>
           <tr>
@@ -79,8 +74,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+
 
 <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital) %>
