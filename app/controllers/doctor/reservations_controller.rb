@@ -1,5 +1,5 @@
 class Doctor::ReservationsController < ApplicationController
-
+ before_action :authenticate_doctor!
  def index
   @reservations = Reservation.all
  end

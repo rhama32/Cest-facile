@@ -1,3 +1,4 @@
+<% if current_doctor.is_active %>
 <h2>予約履歴詳細画面</h2>
 <div class="container">
   <div class="row-lg-10">
@@ -40,3 +41,6 @@
 
      <div class="form-group">
       <%= link_to '会員予約一覧に戻る', doctor_reservations_path, class: "btn btn-success" %>
+  <% else %>
+  申請の承認をお待ちください。
+  <% end %>

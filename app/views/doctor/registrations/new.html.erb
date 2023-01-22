@@ -24,8 +24,8 @@
        </tr>
       <tr>
         <td>医療者免許</td>
-        <td><%= f.file_field :image,:placeholder => "医療免許の表を添付してください。",size:"20" %></td>
-        <td><%= f.file_field :image,:placeholder => "医療免許の裏を添付してください。",size:"20" %></td>
+        <td>(表)<%= f.file_field :image,:placeholder => "医療免許の表を添付してください。", size:"20" %></td>
+        <td>(裏)<%= f.file_field :image,:placeholder => "医療免許の裏を添付してください。", size:"20" %></td>
        </tr>
       <tr>
        <tr>
@@ -47,9 +47,9 @@
  </div>
  </div>
 
+<div class="container">
   <div class="row-lg-11">
    <h4>既に申請完了済みの方</h4>
-   <div class="col-11">
-     <p><%= render "doctor/shared/links" %>からログインしてください。</p>
+     <%= render "doctor/shared/links" %>からログインしてください。
    </div>
-   </div>
+  </div>
