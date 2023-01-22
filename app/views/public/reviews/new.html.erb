@@ -5,10 +5,27 @@
   <table class="table">
     <tbody>
       <tr></tr>
-      <th>
-       診療の満足度
-        <%= @review.doctor_satisfaction %>
-        <%= f.select :doctor_satisfaction, (1..5) %>
+      <th class="star-form-group" id="star1">
+       <div class="detail-review">診療の満足度</div>
+       <div class="detail-value", id="star-comf-<%= @review.id %>"></div>
+       <div class="eval-star"><%= @review.doctor_satisfaction %>/5点</div>
+        <%= f.label :doctor_satisfaction, class:'star-title' %>
+
+        <script>
+         $('#star1').raty({
+         size     : 38,                                    //星のサイズ
+         starOff:  '<%= asset_path('star-off.png') %>',    //imagesフォルダより星画像の呼び出し
+         starOn : '<%= asset_path('star-on.png') %>',
+         starHalf: '<%= asset_path('star-half.png') %>',
+         scoreName: 'review[comfort]',     //reviewモデルのcomfortカラムに保存
+         half: true,                       //星半分を許可する。DBには0.5単位の数値が保存される
+         readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
+         score: <%= @review.doctor_satisfaction %>,
+         });
+        </script>
+
+        <%#= @review.doctor_satisfaction %>
+        <%#= f.select :doctor_satisfaction, (1..5) %>
       </th>
       <th>
        院内の清潔さ

@@ -6,6 +6,5 @@ class Hospital < ApplicationRecord
  #genreに対して多対１の記ÿ
  belongs_to :genre
  has_many :reviews
-
- has_many :docotors
+ has_many :doctors
 end
