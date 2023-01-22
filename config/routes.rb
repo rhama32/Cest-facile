@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   #会員側 病院検索/予約/レビュー投稿
   namespace :public do
-    resource :follows, only: [:index, :show, :create, :destroy]
+    resources :follows, only: [:index, :show, :create, :destroy]
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
     resources :hospitals, only: [:index, :show] do
