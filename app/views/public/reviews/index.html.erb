@@ -1,14 +1,26 @@
-<h2>レビュー投稿一覧画面</h2>
-<div class="row-lg-10">
+<div class="container">
+ <div class="row">
+  <div class="col-md-2">
+   <div class="col-10">
+     <!--ジャンル検索-->
+     <%= render 'search', searches: @searches %>
+    </div>
+  </div>
+
+ <div class="row-lg-10">
+<h4>レビュー投稿一覧画面<br>
+    ※得点は5段階評価となっております。
+</h4>
 <table class="table">
   <thead>
     <tr class="table-secondary">
+      <th>投稿者名</th>
       <th>病院・クリニック名</th>
       <th>レビュー投稿日</th>
       <th>診療の満足度</th>
       <th>院内の清潔さ</th>
       <th>スタッフの対応満足度</th>
-      <th>待ち時間</th>
+      <th>待ち時間(分)</th>
       <th>コメント</th>
       <th>総合満足度</th>
       <th>レビューを書く</th>
@@ -18,6 +30,8 @@
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
+        <%#= review.customer.last_name %><%#= review.customer.first_name %>
+        <td><%= review.customer_id %></td>
         <td><%= review.hospital.name %></td>
         <td><%= review.created_at %></td>
         <td><%= link_to review.doctor_satisfaction, public_review_path(review.id) %></td>

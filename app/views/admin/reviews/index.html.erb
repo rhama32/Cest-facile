@@ -1,1 +1,44 @@
-<h2>レビュー一覧画面</h2>
+<div class="container">
+ <div class="row">
+  <div class="col-md-2">
+   <div class="col-10">
+      <%#= render 'search', searches: @searches %>
+    </div>
+  </div>
+  <h4>レビュー一覧管理画面</h4>
+
+<table class="table">
+  <thead>
+    <tr class="table-secondary">
+      <th>投稿者名</th>
+      <th>病院・クリニック名</th>
+      <th>レビュー投稿日</th>
+      <th>診療の満足度</th>
+      <th>院内の清潔さ</th>
+      <th>スタッフの対応満足度</th>
+      <th>待ち時間(分)</th>
+      <th>コメント</th>
+      <th>総合満足度</th>
+      <th>レビュー削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+
+        <td><%= "#{review.customer.last_name} #{review.customer.first_name}" %></td>
+        <td><%= review.hospital.name %></td>
+        <td><%= review.created_at %></td>
+        <td><%= review.doctor_satisfaction %></td>
+        <td><%= review.room_clean %></td>
+        <td><%= review.staff_satisfaction %></td>
+        <td><%= review.waiting_time %></td>
+        <td><%= review.comment %></td>
+        <td><%= review.total_point %></td>
+        <td><%= link_to '削除する', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+</div>

@@ -53,4 +53,19 @@ class Customer < ApplicationRecord
     end
     user.password = SecureRandom.urlsafe_base64
   end
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @customer = Customer.where("first_name LIKE? or last_name LIKE?", "#{word}","#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("first_name LIKE? or last_name LIKE?", "#{word}%","#{word}%")
+    elsif search == "backward_match"
+      @customer = Customer.where("first_name LIKE? or last_name LIKE?", "%#{word}","%#{word}")
+    elsif search == "partial_match"
+      @customer = Customer.where("first_name LIKE? or last_name LIKE?", "%#{word}%","%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
 end

@@ -10,10 +10,27 @@ class Review < ApplicationRecord
   validates :total_point, presence: true
 
   belongs_to :hospital
+  belongs_to :customer
   has_many :favorites,dependent: :destroy
   has_one :reply
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @review = Review.where("comment LIKE?","#{word}")
+    elsif search == "forward_match"
+      @review = Review.where("comment LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @review = Review.where("comment LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @review = Review.where("comment LIKE?","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
+
 end

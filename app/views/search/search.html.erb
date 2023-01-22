@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+     <%= render 'public/reviews/search' %>
+    </div>
+
+<h4>レビュー検索結果</h4>
+<table class="table table-hover table-inverse">
+  <% if @range == "Customer" %>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= "#{customer.last_name} #{customer.first_name}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

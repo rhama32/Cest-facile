@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   #管理者トップページ
   get '/admin' => 'admin/homes#top'
 
+  #検索機能の追加
+  get "search" => "search#search"
+
   # 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'customers_mypage'
@@ -63,7 +66,7 @@ Rails.application.routes.draw do
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update, :destroy] # 商品一覧・・・等の記述
   resources :reservations, only: [:index, :show, :update, :edit]
-  resources :reviews, only: [:index, :show, :edit, :update]
+  resources :reviews, only: [:index, :show, :edit, :update, :destroy]
    resources :doctors, only: [:index, :show, :update, :unscribe, :withdraw]
   end
 
