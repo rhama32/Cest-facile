@@ -9,7 +9,6 @@
         <th>所属院</th>
         <th>医療者免許</th>
         <th>申請ステータス</th>
-        <th>ステータス編集</th>
       </tr>
     </thead>
     <tbody>
@@ -22,10 +21,19 @@
             </td>
             <td><%= doctor.hospital&.id %></td>
             <td><%= doctor.hospital&.name %></td>
-            <td><%= doctor.image %></td>
             <td>
-  　　　　    　　　<%= link_to "承認する", root_path , method: :patch,  class:"btn btn-danger", data: { confilm: "本当に承認しますか？" }  %>
-              <%= link_to "承認しない", root_path , class:"btn btn-secondary", data: { confilm: "本当に承認を拒否しますか？" }  %>
+              <% if doctor.image.attached? %>
+               <%= image_tag doctor.image, size: "100x100" %>
+              <% end %>
+            </td>
+            <td>
+              <% if doctor.unapproved? %>
+               <%= link_to "承認する", admin_doctor_path(doctor, approved_status: 'approved'), method: :patch,  class:"btn btn-danger", data: { confilm: "本当に承認しますか？" }  %>
+               <%= link_to "承認しない", admin_doctor_path(doctor, approved_status: 'denied'), method: :patch, class:"btn btn-secondary", data: { confilm: "本当に承認を拒否しますか？" }  %>
+              <% else %>
+　　　　　　　 <%= doctor.approved_status_i18n %>
+              <% end %>
+
             </td>
           </tr>
         <% end %>

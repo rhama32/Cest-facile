@@ -5,3 +5,9 @@
           reservation_confirmed: "予約確定"
           tentative_reservation: "仮予約中"
           reception_cancellation: "受付キャンセル"
+      doctor: #モデル名
+        approved_status: #カラム名
+          unapproved: "未承認"
+          approved: "承認済"
+          denied: "承認却下"
+

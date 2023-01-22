@@ -8,8 +8,8 @@ class DeviseCreateDoctors < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :name, null: false
       t.string :hospital_name, null: false
-      t.string :telephone_number, null:false
-      t.boolean :is_active, default: false
+      t.string :telephone_number, null: false
+      t.integer :approved_status, default: 1, null: false
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

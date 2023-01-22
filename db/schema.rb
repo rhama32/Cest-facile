@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_01_21_121725) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.string "telephone_number", null: false
-    t.boolean "is_active", default: false
+    t.integer "approved_status", default: 1, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
