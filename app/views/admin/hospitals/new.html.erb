@@ -9,9 +9,11 @@
 <% end %>
 
 <div class="container">
-  <div class="row-lg-10">
-    <h2>病院新規登録</h2>
-    <div class="col-10 offset-md-1">
+  <div class="row-lg-11">
+    <div class="col-3">
+    <h4 class="bg-light text-center">病院新規登録</h4>
+    </div>
+   </div>
       <%= form_with model: @hospital, url: admin_hospitals_path do |f| %>
         <table class="table table-borderless">
           <tbody>
@@ -33,7 +35,9 @@
             </tr>
             <tr>
               <td>病院説明</td>
-              <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll', size:"40x7" %></td>
+              <td><%= f.text_area :introduction,:placeholder => "専門外来、院の特徴、
+その他説明文をご記載ください。",
+                      class:'form-controll', size:"40x7" %></td>
             </tr>
             <tr>
               <td>電話番号</td>
@@ -62,7 +66,7 @@
           </tbody>
         </table>
         <div class="col text-center">
-        <%= f.submit "新規登録", class:"btn btn-success center-block" %>
+        <%= f.submit "新規登録" ,class:"btn btn-success center-block" %>
         </div>
       <% end %>
     </div>

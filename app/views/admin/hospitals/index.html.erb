@@ -1,7 +1,8 @@
+
 <div class="container">
-  <div class="row">
-    <div class="col-11">
-      <h2>病院一覧</h2>
+  <div class="row-lg-11">
+    <div class="col-3">
+      <h4 class="bg-light text-center">病院一覧</h4>
     </div>
     <div class="col-1">
       <h1>
@@ -20,8 +21,9 @@
           <th>病院名</th>
           <th>ジャンル</th>
           <th>ステータス</th>
+          <th>削除ボタン</th>
         </tr>
-      </tread>
+      </thead>
       <tbody>
         <% @hospitals.each do |hospital| %>
           <tr>
@@ -39,9 +41,9 @@
                 <p class="text-secondary font-weight-bold">対応停止中</p>
               <% end %>
             </th>
+            <th><%= link_to '削除する', "/hospitals/#{hospital.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></th>
           </tr>
         <% end %>
-        <tr></tr>
       </tbody>
     </table>
   </div>
