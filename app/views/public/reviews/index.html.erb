@@ -34,7 +34,26 @@
         <td><%= review.customer_id %></td>
         <td><%= review.hospital.name %></td>
         <td><%= review.created_at %></td>
-        <td><%= link_to review.doctor_satisfaction, public_review_path(review.id) %></td>
+        
+        <div class="star-group">
+        <div class="detail-review">診療の満足度</div>
+        <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
+        <div class="eval-star"><%= review.doctor_satisfaction %>/5点</div>
+        </div>
+        
+        <script>
+         $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
+          size: 38,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
+          score: <%= review.doctor_satisfaction %>,              //scoreオプションで評価内容を取得
+          });
+        </script>
+        
+        <td><%#= link_to review.doctor_satisfaction, public_review_path(review.id) %></td>
         <td><%= review.room_clean %></td>
         <td><%= review.staff_satisfaction %></td>
         <td><%= review.waiting_time %></td>

@@ -1,6 +1,7 @@
 class Public::FollowsController < ApplicationController
 
  def index
+  @doctor = Doctor.find(params[:id])
  end
 
  def show

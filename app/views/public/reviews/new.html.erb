@@ -6,9 +6,25 @@
     <tbody>
       <tr></tr>
       <th>
-       診療の満足度
-        <%= @review.doctor_satisfaction %>
-        <%= f.select :doctor_satisfaction, (1..5) %>
+       <%= form_with(model: @review, local: true, url: public_reviews_path ) do |f| %>
+        <div class="star-form-group" id="post_raty">
+        <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
+        <% end %>
+
+        <script>
+        var elem = document.getElementById('post_raty');
+        var opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[doctor_satisfaction]',
+        half: true,
+        };
+        raty(elem,opt);
+        </script>
+        
+        <%#= @review.doctor_satisfaction %>
+        <%#= f.select :doctor_satisfaction, (1..5) %>
       </th>
       <th>
        院内の清潔さ

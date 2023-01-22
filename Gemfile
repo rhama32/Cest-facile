@@ -72,9 +72,8 @@ gem "enum_help"
 gem 'devise'
 
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+
+gem 'mysql2', group: :production
 
 gem "net-smtp"
 gem "net-pop"
