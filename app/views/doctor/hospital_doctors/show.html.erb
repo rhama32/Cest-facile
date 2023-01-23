@@ -1,3 +1,4 @@
+<% if current_doctor.approved? %>
 <div class="container">
  <div class ="row">
   <div class = "col-10">
@@ -37,3 +38,7 @@
 <%= link_to 'レビュー一覧', root_path, class: "btn btn-success" %>
 <%= link_to 'フォロワー一覧', root_path, class: "btn btn-success" %>
 <%= link_to '予約一覧', root_path, class: "btn btn-success" %>
+
+  <% else %>
+  申請の承認をお待ちください。
+  <% end %>

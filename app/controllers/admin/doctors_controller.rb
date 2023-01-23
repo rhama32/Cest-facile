@@ -8,10 +8,11 @@ def update
  doctor = Doctor.find(params[:id])
  if params[:approved_status] == 'approved'
   doctor.update(approved_status: 'approved')
-  flash[:notice] = "承認"
+  doctor.save_notification_doctor!(current_admin)
+  flash[:notice] = "承認されました。"
  else
   doctor.update(approved_status: 'denied')
-  flash[:notice] = "承認却下"
+  flash[:notice] = "承認が却下されました。"
  end
  redirect_to admin_doctors_path
  end

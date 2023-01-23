@@ -7,10 +7,10 @@
      <th>
       <%= form_with(model: @review, local: true, url: public_reviews_path ) do |f| %>
         
-        <div class="star-form-group" id="post_raty">
+        <div class="star-form-group" id="post_doctor_satisfaction">
         <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
         <script>
-        var elem = document.getElementById('post_raty');
+        var elem = document.getElementById('post_doctor_satisfaction');
         var opt = {  
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
@@ -21,29 +21,29 @@
         raty(elem,opt);
         </script>
 
-        <div class="star-form-group" id="post_raty">
+        <div class="star-form-group" id="post_room_clean">
         <%= f.label :room_clean, '院内の清潔さ', class:'star-title' %>
         <script>
-        var elem = document.getElementById('post_raty');
+        var elem = document.getElementById('post_room_clean');
         var opt = {  
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[doctor_satisfaction]',
+        scoreName: 'review[room_clean]',
         half: true,
         };
         raty(elem,opt);
         </script>
 
-        <div class="star-form-group" id="post_raty">
+        <div class="star-form-group" id="post_staff_satisfaction">
         <%= f.label :staff_satisfaction, 'スタッフの対応満足度', class:'star-title' %>
         <script>
-        var elem = document.getElementById('post_raty');
+        var elem = document.getElementById('post_staff_satisfaction');
         var opt = {  
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[doctor_satisfaction]',
+        scoreName: 'review[staff_satisfaction]',
         half: true,
         };
         raty(elem,opt);
@@ -61,15 +61,15 @@
         <%= f.text_field :comment %>
         </th>
 
-        <div class="star-form-group" id="post_raty">
+        <div class="star-form-group" id="post_total_point">
         <%= f.label :total_point, '総合満足度', class:'star-title' %>
         <script>
-        var elem = document.getElementById('post_raty');
+        var elem = document.getElementById('post_total_point');
         var opt = {  
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[doctor_satisfaction]',
+        scoreName: 'review[total_point]',
         half: true,
         };
         raty(elem,opt);

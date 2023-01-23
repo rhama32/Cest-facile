@@ -1,4 +1,4 @@
-
+<% if current_doctor.approved? %>
 <% if customers.exists? %>
   <% customers.each do |customer| %>
     <table>
@@ -20,4 +20,8 @@
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
+<% end %>
+
+<% else %>
+申請の承認をお待ちください。
 <% end %>
