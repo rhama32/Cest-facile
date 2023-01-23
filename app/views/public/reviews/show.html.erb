@@ -1,52 +1,48 @@
-
-<h2>レビュー投稿履歴詳細画面</h2>
-<%#= @hospital.name %>
-<!--○月○日に来院などを追加したい。 -->
- <div class="row-lg-10">
+<div class="row-lg-10">
+ <h4>レビュー投稿履歴詳細</h4>
   <table class="table">
-   <thead>
-    <tr class="table-secondary">
-      <th>病院・クリニック名</th>
-      <th>レビュー投稿日</th>
-      <th>診療の満足度</th>
-      <th>院内の清潔さ</th>
-      <th>スタッフの対応満足度</th>
-      <th>待ち時間</th>
-      <th>コメント</th>
-      <th>総合満足度</th>
-    </tr>
-   </thead>
+    <thead>
+      <tr class="table-secondary">
+        <th>病院・クリニック名</th>
+        <th>レビュー投稿日</th>
+        <th>診療の満足度</th>
+        <th>院内の清潔さ</th>
+        <th>スタッフの対応満足度</th>
+        <th>待ち時間</th>
+        <th>コメント</th>
+        <th>総合満足度</th>
+      </tr>
+    </thead>
 
-   <tbody>
-     <td><%= @hospitals.name %></td>
-     <td><%= @reviews.created_at %></td>
-     <td><%= @reviews.doctor_satisfaction %></td>
-     <td><%= @reviews.room_clean %></td>
-     <td><%= @reviews.staff_satisfaction %></td>
-     <td><%= @reviews.waiting_time %></td>
-     <td><%= @reviews.comment %></td>
-
-     <% if @reviews.favorited_by?(current_customer) %>
-       <p>
-         <%= link_to public_review_favorites_path(@reviews.id), method: :delete do %>
-           ♥<%= @reviews.favorites.count %> いいね
-         <% end %>
-       </p>
-     <% else %>
-       <p>
-         <%= link_to public_review_favorites_path(@reviews.id), method: :post do %>
-           ♡<%= @reviews.favorites.count %> いいね
-         <% end %>
-       </p>
-      <% end %>
-     <td><%= @reviews.total_point %></td>
-   </tbody>
+    <tbody>
+        <td><%= @hospitals.name %></td>
+        <td><%= @reviews.created_at %></td>
+        <td><%= @reviews.doctor_satisfaction %>/5点</td>
+        <td><%= @reviews.room_clean %>/5点</td>
+        <td><%= @reviews.staff_satisfaction %>/5点</td>
+        <td><%= @reviews.waiting_time %>分</td>
+        <td><%= @reviews.comment %></td>
+            <% if @reviews.favorited_by?(current_customer) %>
+        <p>
+            <%= link_to public_review_favorites_path(@reviews.id), method: :delete do %>
+            ♥<%= @reviews.favorites.count %> いいね
+            <% end %>
+        </p>
+            <% else %>
+        <p>
+            <%= link_to public_review_favorites_path(@reviews.id), method: :post do %>
+            ♡<%= @reviews.favorites.count %> いいね
+            <% end %>
+        </p>
+            <% end %>
+        <td><%= @reviews.total_point %>/5点</td>
+    </tbody>
   </table>
-  <table class="table">
-  <th>コメント返信欄</th>
-  <th><%= @reviews.comment %></th>
-  <th><%= @reviews.created_at %></th>
-  <th><%= @reply.comment if @reply %></th>
-  <th><%= @reply.created_at if @reply %><th>
-  </table>
- </div>
+        <table class="table">
+          <td>コメント返信欄</td>
+          <td><%= @reviews.comment %></td>
+          <td><%= @reviews.created_at %></td>
+          <td><%= @reply.comment if @reply %></td>
+          <td><%= @reply.created_at if @reply %><td>
+        </table>
+</div>

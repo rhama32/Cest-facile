@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  #GoogleMapの使用
+    get 'maps/index'
+    resources :maps, only: [:index]
 
   #医者用
   # URL /doctors/sign_in ...
@@ -67,7 +71,8 @@ Rails.application.routes.draw do
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update, :destroy] # 商品一覧・・・等の記述
   resources :reservations, only: [:index, :show, :update, :edit]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
-   resources :doctors, only: [:index, :show, :update, :unscribe, :withdraw]
+  resources :doctors, only: [:index, :show, :update, :unscribe, :withdraw]
+  resources :notifications, only: [:index]
   end
 
   namespace :doctor do
@@ -77,6 +82,7 @@ Rails.application.routes.draw do
    resources :hospital_doctors, only: [:show, :edit, :update, :unscribe, :withdraw]
    resources :reservations, only: [:index, :show, :update]
    resources :replys, only: [:new, :create, :confirm, :index, :show]
+   resources :notifications, only: [:index]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

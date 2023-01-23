@@ -1,0 +1,13 @@
+
+<div>
+<%= @notifications = @notifications.where.not(admin_id: doctor.id) %>
+</div>
+<%= if @notifications.exists? %>
+<%= render notifications %>
+<% else %>
+<% end %>
+'通知はありません。'
+
+<% @notificaitons.each do |notification| %>
+  <%= notification.doctor.approved_status_i18n %>
+   承認済 or 承認却下

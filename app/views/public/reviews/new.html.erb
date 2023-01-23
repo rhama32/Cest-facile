@@ -1,16 +1,42 @@
 
-<h2>レビュー情報入力画面</h2>
+<h4>レビュー情報入力画面</h4>
 <%= form_with model: @review, url: public_reviews_path do |f| %>
   <%= f.hidden_field :hospital_id %>
   <table class="table">
     <tbody>
-      <tr></tr>
-      <th>
-       <%= form_with(model: @review, local: true, url: public_reviews_path ) do |f| %>
+     <th>
+      <%= form_with(model: @review, local: true, url: public_reviews_path ) do |f| %>
+        
         <div class="star-form-group" id="post_raty">
         <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
-        <% end %>
+        <script>
+        var elem = document.getElementById('post_raty');
+        var opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[doctor_satisfaction]',
+        half: true,
+        };
+        raty(elem,opt);
+        </script>
 
+        <div class="star-form-group" id="post_raty">
+        <%= f.label :room_clean, '院内の清潔さ', class:'star-title' %>
+        <script>
+        var elem = document.getElementById('post_raty');
+        var opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[doctor_satisfaction]',
+        half: true,
+        };
+        raty(elem,opt);
+        </script>
+
+        <div class="star-form-group" id="post_raty">
+        <%= f.label :staff_satisfaction, 'スタッフの対応満足度', class:'star-title' %>
         <script>
         var elem = document.getElementById('post_raty');
         var opt = {  
@@ -23,39 +49,35 @@
         raty(elem,opt);
         </script>
         
-        <%#= @review.doctor_satisfaction %>
-        <%#= f.select :doctor_satisfaction, (1..5) %>
-      </th>
-      <th>
-       院内の清潔さ
-         <%= @review.room_clean %>
-         <%= f.select :room_clean, (1..5) %>
-      </th>
-      <th>
-        スタッフの対応満足度
-         <%= @review.staff_satisfaction %>
-         <%= f.select :staff_satisfaction, (1..5) %>
-         <!-- nameからidとして引き渡す。-->
-         <%#= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
-      </th>
-      <th>
+        <th>
         待ち時間(10分単位)
-         <%= @review.waiting_time %>
-         <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
-      </th>
-      <th>
+        <%= @review.waiting_time %>
+        <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
+        </th>
+
+        <th>
         コメント
-         <%= @review.comment %>
-         <%= f.text_field :comment %>
-      </th>
-      <th>
-        総合満足度
-         <%= @review.total_point %>
-         <%= f.select :total_point, (1..5) %>
-      </th>
-      <th>
-         <%= f.submit "投稿する", class:"btn btn-success" %>
-      </th>
+        <%= @review.comment %>
+        <%= f.text_field :comment %>
+        </th>
+
+        <div class="star-form-group" id="post_raty">
+        <%= f.label :total_point, '総合満足度', class:'star-title' %>
+        <script>
+        var elem = document.getElementById('post_raty');
+        var opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[doctor_satisfaction]',
+        half: true,
+        };
+        raty(elem,opt);
+        </script>        
+        <% end %>
+        <th>
+        <%= f.submit "投稿する", class:"btn btn-success" %>
+        </th>
     </tbody>
   </table>
 <% end %>
