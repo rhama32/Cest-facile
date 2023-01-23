@@ -1,7 +1,8 @@
 class Public::FollowsController < ApplicationController
 
  def index
-  @follows = Follow.all
+  @follows = current_customer.follows
+  @doctor = Doctor.all
  end
 
  def show

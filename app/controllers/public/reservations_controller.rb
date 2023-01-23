@@ -26,6 +26,9 @@ end
   @reservations = Reservation.all
   @public_customers = Customer.all
   @hospitals = Hospital.all
+  
+  #@reservations = Reservation.ransack
+  #@reservations = @Reservation.result(distinct: true).order(total_point: :asc)
  end
 
  def show

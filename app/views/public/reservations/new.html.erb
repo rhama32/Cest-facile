@@ -4,17 +4,13 @@
   <div class="row-lg-11">
   <tbody>
    <div class="row-lg-11">
-   <tr></tr>
       <th>
        予約希望日
-       <%= @reservation.hope_day %>
-
-       <%= f.date_select :hope_day, {:default => Date.today} %>
+       <%= f.date_field :hope_day %>
       </th>
       <th>
        予約希望時間
-       <%= @reservation.hope_time %>
-       <%= f.time_select :hope_time, {:default => Time.now } %>
+       <%= f.time_select :hope_time %>
       </th>
       <th>
        予約希望院
