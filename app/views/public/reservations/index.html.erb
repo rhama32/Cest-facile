@@ -8,8 +8,8 @@
     <label for="label1">予約を絞り込む</label>
     <div class="accshow">
      2ヶ月以上先の予約のみを選択<br>
-     <%= f.text :hope_day %>
-     <%= f.checkbox "絞り込む", class: "btn btn-primary" %>
+     <%= f.text_field :hope_day %>
+     <%= f.check_box "絞り込む", class: "btn btn-primary" %>
     </div>
   </div>
   <% end %>

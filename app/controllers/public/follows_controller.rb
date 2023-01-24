@@ -10,12 +10,12 @@ class Public::FollowsController < ApplicationController
 
 # フォローするとき
  def create
-  current_customer.follow(params[:customer_id])
+  current_customer.follow(params[:doctor_id])
   redirect_to request.referer
  end
 # フォロー外すとき
  def destroy
-  current_customer.unfollow(params[:customer_id])
+  current_customer.unfollow(params[:doctor_id])
   redirect_to request.referer
  end
 # フォロー一覧

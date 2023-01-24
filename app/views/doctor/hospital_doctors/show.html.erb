@@ -3,8 +3,8 @@
  <div class ="row">
   <div class = "col-10">
 
-<h2>マイページ</h2>
-<p class="font-weight-bold h5"> 登録情報 <%= link_to "編集する", doctor_hospital_doctor_path, class:"btn btn-success" %></p>
+<h2>医療提供者マイページ</h2>
+<p class="font-weight-bold h5"> 登録情報 <%= link_to "編集する", edit_doctor_hospital_doctor_path, class:"btn btn-success" %></p>
 <table class="table table-bordered">
  <tbody>
   <tr></tr>
@@ -23,9 +23,9 @@
    <tr>
      <td class="table-secondary">会員ステータス</td>
      <th>
-     <% @hospital_doctor.is_deleted %>
-    <% if @hospital_doctor.is_deleted == false %><p class= "text-success" >有効</p>
-    <% elsif @hospital_doctor.is_deleted == true %>退会
+     <% @hospital_doctor.approved_status %>
+    <% if @hospital_doctor.approved_status == false %><p class= "text-success" >承認済</p>
+    <% elsif @hospital_doctor.approved_status == true %>承認却下
     <% end %>
      </th>
     </tr>
@@ -35,9 +35,9 @@
  </div>
 </div>
 
-<%= link_to 'レビュー一覧', root_path, class: "btn btn-success" %>
+<%= link_to 'レビュー一覧', public_reviews_path, class: "btn btn-success" %>
 <%= link_to 'フォロワー一覧', root_path, class: "btn btn-success" %>
-<%= link_to '予約一覧', root_path, class: "btn btn-success" %>
+<%= link_to '予約一覧', doctor_reservations_path, class: "btn btn-success" %>
 
   <% else %>
   申請の承認をお待ちください。

@@ -32,7 +32,7 @@ class Doctor::HospitalDoctorsController < ApplicationController
 
   private
   def hospital_doctor_params
-   params.require(:hospital_doctor).permit(:hospital_id, :email, :name, :is_deleted)
+   params.require(:hospital_doctor).permit(:hospital_id, :email, :name, :approved_status)
   end
 
 end

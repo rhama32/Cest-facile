@@ -31,12 +31,12 @@
             <td>医師名</td>
             <td>
 　　　　　　  <% @hospital.doctors.each do |doctor| %>
-              <%= doctor.name %>
-              <% if current_customer.following?(doctor) %>
-              <%= link_to "フォロー外す", public_follows_path(customer.id), method: :delete %>
-              <% else %>
-              <%= link_to "フォローする", public_follows_path(customer.id), method: :post %>
-              <% end %>
+                <%= doctor.name %>
+                <% if current_customer.following?(doctor) %>
+                  <%= link_to "フォロー外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
+                <% else %>
+                  <%= link_to "フォローする", public_follows_path(doctor_id: doctor.id), method: :post %>
+                <% end %>
               <% end %>
             </td>
           </tr>
@@ -82,4 +82,4 @@
       </table>
 
 
-<%= link_to "レビューを書く", new_public_hospital_review_path(@hospital) %>
+<%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-success" %>

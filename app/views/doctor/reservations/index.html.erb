@@ -1,13 +1,10 @@
 <% if current_doctor.approved? %>
-<h2>会員予約履歴一覧画面</h2>
-<div class="container">
-  <div class="row">
-    <div class="col-1">
-      <h1>
+<div class="row-lg-10">
+ <h4>会員予約履歴一覧画面</h4>
+  <table class="table">
+    <thead>
         <%= link_to doctor_reservations_path do %>
-          <i class="fas fa-plus-circle"></i>
         <% end %>
-      </h1>
     </div>
   </div>
 

@@ -23,13 +23,18 @@ class Public::ReservationsController < ApplicationController
 end
 
  def index
-  @reservations = Reservation.all
+  @reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
   @public_customers = Customer.all
   @hospitals = Hospital.all
-  
   #@reservations = Reservation.ransack
   #@reservations = @Reservation.result(distinct: true).order(total_point: :asc)
  end
+ 
+ #def search
+  #@reservations = Reservation.where(hope_day: Time.currents.since(2.month)..)
+ #end
+ 
+ 
 
  def show
   @reservations = Reservation.find(params[:id])
