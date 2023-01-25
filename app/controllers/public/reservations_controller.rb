@@ -23,10 +23,16 @@ before_action :authenticate_customer!
 end
 
  def index
-  @reservations = Reservation.all
+  if params[:name] == "two_month"
+   @reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
+  elsif params[:name] == "four_month"
+   @reservations = Reservation.where(hope_day: Time.current.since(4.month)..)
+  else
+   @reservations = Reservation.all
+  end
   @public_customers = Customer.all
   @hospitals = Hospital.all
-  #@reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
+  
  end
 
  def show

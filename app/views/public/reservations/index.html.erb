@@ -1,12 +1,12 @@
-  <%= form_with model: @reservation, url: public_reservations_path do |f| %>
+
     予約を絞り込みますか？
     <div class="accshow">
      2ヶ月以上先の予約のみを選択<br>
-     <%= f.date_field :hope_day %>
-     <%= f.check_box "絞り込む", class: "btn btn-primary" %>
+     <%= link_to "2ヶ月先の予約", public_reservations_path(name: "two_month"), class: "btn btn-primary" %>
+     <%= link_to "4ヶ月先の予約", public_reservations_path(name: "four_month"), class: "btn btn-primary" %>
     </div>
-     <% end %>
-  
+
+     
 <h4>予約一覧画面</h4>
 <div class="row-lg-10">
 <table class="table">

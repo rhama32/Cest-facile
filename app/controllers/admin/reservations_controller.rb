@@ -6,8 +6,6 @@ class Admin::ReservationsController < ApplicationController
 
  def show
   @reservation = Reservation.find(params[:id])
-  @admin_customer = Customer.find(params[:id])
-  @hospital = Hospital.find(params[:id])
  end
 
  def edit

@@ -15,33 +15,33 @@
     </thead>
 
     <tbody>
-        <td><%= @hospitals.name %></td>
-        <td><%= @reviews.created_at %></td>
-        <td><%= @reviews.doctor_satisfaction %>/5点</td>
-        <td><%= @reviews.room_clean %>/5点</td>
-        <td><%= @reviews.staff_satisfaction %>/5点</td>
-        <td><%= @reviews.waiting_time %>分</td>
-        <td><%= @reviews.comment %></td>
-            <% if @reviews.favorited_by?(current_customer) %>
+        <td><%= @review.hospital.name %></td>
+        <td><%= @review.created_at %></td>
+        <td><%= @review.doctor_satisfaction %>/5点</td>
+        <td><%= @review.room_clean %>/5点</td>
+        <td><%= @review.staff_satisfaction %>/5点</td>
+        <td><%= @review.waiting_time %>分</td>
+        <td><%= @review.comment %></td>
+            <% if @review.favorited_by?(current_customer) %>
         <p>
-            <%= link_to public_review_favorites_path(@reviews.id), method: :delete do %>
-            ♥<%= @reviews.favorites.count %> いいね
+            <%= link_to public_review_favorites_path(@review.id), method: :delete do %>
+            ♥<%= @review.favorites.count %> いいね
             <% end %>
         </p>
             <% else %>
         <p>
-            <%= link_to public_review_favorites_path(@reviews.id), method: :post do %>
-            ♡<%= @reviews.favorites.count %> いいね
+            <%= link_to public_review_favorites_path(@review.id), method: :post do %>
+            ♡<%= @review.favorites.count %> いいね
             <% end %>
         </p>
             <% end %>
-        <td><%= @reviews.total_point %>/5点</td>
+        <td><%= @review.total_point %>/5点</td>
     </tbody>
   </table>
         <table class="table">
           <td>コメント返信欄</td>
-          <td><%= @reviews.comment %></td>
-          <td><%= @reviews.created_at %></td>
+          <td><%= @review.comment %></td>
+          <td><%= @review.created_at %></td>
           <td><%= @reply.comment if @reply %></td>
           <td><%= @reply.created_at if @reply %><td>
         </table>

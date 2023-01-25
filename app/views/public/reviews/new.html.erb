@@ -1,12 +1,8 @@
 
-<h4>レビュー情報入力画面</h4>
 <%= form_with model: @review, url: public_reviews_path do |f| %>
   <%= f.hidden_field :hospital_id %>
-  <table class="table">
-    <tbody>
-     <th>
-      <%= form_with(model: @review, local: true, url: public_reviews_path ) do |f| %>
-        
+    <div class="text-center" >
+        <h4>レビュー情報入力画面</h4>
         <div class="star-form-group" id="post_doctor_satisfaction">
         <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
         <script>
@@ -16,7 +12,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[doctor_satisfaction]',
-        half: true,
+        half: false,
         };
         raty(elem,opt);
         </script>
@@ -30,7 +26,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[room_clean]',
-        half: true,
+        half: false,
         };
         raty(elem,opt);
         </script>
@@ -44,23 +40,12 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[staff_satisfaction]',
-        half: true,
+        half: false,
         };
         raty(elem,opt);
         </script>
         
-        <th>
-        待ち時間(10分単位)
-        <%= @review.waiting_time %>
-        <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
-        </th>
-
-        <th>
-        コメント
-        <%= @review.comment %>
-        <%= f.text_field :comment %>
-        </th>
-
+       
         <div class="star-form-group" id="post_total_point">
         <%= f.label :total_point, '総合満足度', class:'star-title' %>
         <script>
@@ -70,14 +55,30 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[total_point]',
-        half: true,
+        half: false,
         };
         raty(elem,opt);
-        </script>        
-        <% end %>
-        <th>
+        </script>      
+        <br>
+        <div class="mt-2">
+         待ち時間(10分単位)
+        <%= @review.waiting_time %>
+        <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
+        </div>
+        <br>
+        <div class="mt-2">
+        コメント
+        <%= @review.comment %>
+        <%= f.text_field :comment %>
+        </div>
+        <br>
+        <div class="mt-2">
         <%= f.submit "投稿する", class:"btn btn-success" %>
-        </th>
-    </tbody>
-  </table>
+        </div>
+    </div>
 <% end %>
+
+
+
+
+

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'customers_mypage'
     get 'customers/information/edit' => 'customers#edit', as: 'customers_edit'
-    get 'unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
+    get 'unsubscribe/:id' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     patch 'customers/information' => 'customers#update', as: 'customers_update'
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
   end

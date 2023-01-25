@@ -12,14 +12,15 @@ before_action :authenticate_doctor!
   end
  end
  
- def reservation_search.looks(reservation)
-   params check = true
-   @reservations = Reservation.all
-   @customer = Customer.where("reservation.hope_day.today < two_months LIKE?", "#{hope_day}")
-   @public_customers = Customer.all
-   @hospitals = Hospital.all
-   redirect_to public_reservation_path
+   @range = params[:range]
+
+ def hospital_search
+  if @range == "Hospital"
+     @hospitals = Hospital.name.looks(params[:search], params[:word])
+  elsif
+     @hospitals = Hospital.subject.looks(params[:search], params[:word])
+  else
+     @hospitals = Hospital.parking.looks(params[:search], params[:word])
+  end
  end
-
-
 end

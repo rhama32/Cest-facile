@@ -67,4 +67,8 @@ class Customer < ApplicationRecord
       @customer = Customer.all
     end
   end
+  
+  def full_name
+    "#{last_name}#{first_name}"
+  end
 end

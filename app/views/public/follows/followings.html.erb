@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col-10">
       <!--一覧部分-->
-      <h2 style="margin: 20px 0;">フォロー一覧(全<%= @follows.count %>人)</h2>
+      <h2 style="margin: 20px 0;">フォロー一覧(全<%= @doctors.count %>人)</h2>
       <div class="text-center row">
-        <% @current_customer.each do |current_customer| %>
+        <% @doctors.each do |doctor| %>
               <%= link_to public_followings_path(doctor) do %>
               <% end %>
               <% end %>

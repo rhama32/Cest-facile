@@ -21,11 +21,11 @@ class Public::FollowsController < ApplicationController
  end
 # フォロー一覧
  def followings
-  current_customer = current_customer.followings(params[:doctor_id])
+  @doctors = current_customer.doctors
  end
 # フォロワー一覧
  def followers
-  current_customer = current_customer.followers(params[:doctor_id])
+  current_customer.followers
  end
 
 end

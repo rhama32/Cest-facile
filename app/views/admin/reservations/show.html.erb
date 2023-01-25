@@ -3,7 +3,7 @@
   <div class="row-lg-10">
     <div class="col-11 offset-md-1">
       <div class="bg-light text-center">
-       <%= @admin_customer.last_name + @admin_customer.first_name %>さんの予約詳細
+       <%= @reservation.customer.full_name %>さんの予約詳細
       </div>
     </div>
 
@@ -20,7 +20,7 @@
       <tbody>
           <th><%= @reservation.hope_day %></th>
           <th><%= @reservation.hope_time %></th>
-          <th><%= @hospital.name %></th>
+          <th><%= @reservation.hospital.name %></th>
              <td><% if @reservation.status == 'reservation_confirmed' %>
                 <p class="text-success font-weight-bold">予約確定</p>
                 <% elsif @reservation.status == 'tentative_reservation' %>

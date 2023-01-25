@@ -46,7 +46,7 @@
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
           starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
+          half: false,
           readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
           score: <%= review.doctor_satisfaction %>,              //scoreオプションで評価内容を取得
           });
@@ -64,7 +64,7 @@
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
           starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
+          half: false,
           readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
           score: <%= review.room_clean %>,              //scoreオプションで評価内容を取得
           });
@@ -82,7 +82,7 @@
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
           starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
+          half: false,
           readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
           score: <%= review.staff_satisfaction %>,              //scoreオプションで評価内容を取得
           });
@@ -103,13 +103,13 @@
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
           starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
+          half: false,
           readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
           score: <%= review.total_point %>,              //scoreオプションで評価内容を取得
           });
         </script>
 
-        <td><%= link_to 'レビュー詳細', public_review_path(review.hospital.id), class: "btn btn-success" %></td>
+        <td><%= link_to 'レビュー詳細', public_review_path(review.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
    </tbody>
