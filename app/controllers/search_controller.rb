@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+before_action :authenticate_customer!
+before_action :authenticate_doctor!
 
  def search
   @range = params[:range]
@@ -18,5 +20,6 @@ class SearchController < ApplicationController
    @hospitals = Hospital.all
    redirect_to public_reservation_path
  end
+
 
 end

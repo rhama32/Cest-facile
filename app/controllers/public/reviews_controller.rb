@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-
+before_action :authenticate_customer!
  def new
   @hospital = Hospital.find(params[:hospital_id])
   @review = @hospital.reviews.build

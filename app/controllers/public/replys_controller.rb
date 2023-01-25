@@ -1,5 +1,6 @@
 class Public::ReplysController < ApplicationController
-
+before_action :authenticate_customer!
+before_action :authenticate_doctor!
  def new
  end
 

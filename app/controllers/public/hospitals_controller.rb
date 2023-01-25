@@ -1,7 +1,6 @@
 class Public::HospitalsController < ApplicationController
  #認証されたユーザーのみしか操作を許可しない。
  before_action :authenticate_customer!, except: [:index,:show]
-
 #病院の一覧画面
  def index
   @genres = Genre.all

@@ -1,3 +1,4 @@
+
 <header>
  <nav class="navbar navbar-light mb-2">
   <div class="container">
@@ -10,32 +11,33 @@
 <% if customer_signed_in? %>
  <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
   <ul class="nav justify-content-end">
-   <li class="nav-item">
-    <%= link_to "マイページ", customers_mypage_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-    <%= link_to "病院一覧(レビューを書く方はこちらをクリック)", public_hospitals_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-    <%= link_to "病院検索", public_hospitals_path, class: "nav-link" %>
-   </li>
-      <li class="nav-item">
-    <%= link_to "予約一覧", public_reservations_path, class: "nav-link" %>
-   </li>
-   </li>
-      <li class="nav-item">
-    <%= link_to "レビュー一覧", public_reviews_path, class: "nav-link" %>
-   </li>
-   </li>
-      <li class="nav-item">
-     <%= link_to "フォロー一覧", public_follows_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-    <%= link_to "症状検索", public_symptoms_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
-   </li>
+    <i class="fa-solid fa-building">
+     <%= link_to "About", about_path %>
+    </i>
+    <i class="fa-solid fa-user">
+    <%= link_to "マイページ", customers_mypage_path %>
+    </i>
+    <i class="fa-solid fa-hospital">
+    <%= link_to "病院一覧(レビューはこちら)", public_hospitals_path %>
+    </i>
+    <i class="fa-solid fa-magnifying-glass">
+    <%= link_to "病院検索", public_hospitals_path %>
+    </i>
+    <i class="fa-solid fa-flag">
+    <%= link_to "予約一覧", public_reservations_path %>
+    </i>
+   <i class="fa-solid fa-file">
+    <%= link_to "レビュー一覧", public_reviews_path %>
+   </i>
+    <i class="fa-solid fa-users">
+     <%= link_to "フォロー一覧", public_followings_path %>
+    </i>
+   <i class="fa-solid fa-head-side-cough">
+    <%= link_to "症状検索", public_symptoms_path %>
+   </i>
+   <i class="fa-solid fa-right-from-bracket">
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+   </i>
   </ul>
 
 <!--管理者がログインした場合-->
@@ -84,22 +86,20 @@
 
 <!--＜サインインしていない場合＞-->
 <% else %>
-  <ul class="nav justify-content-end">
-   <li class="nav-item">
-     <%= link_to "About", about_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-     <%= link_to "病院一覧", public_hospitals_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-     <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-     <%= link_to "ログイン", customer_session_path, class: "nav-link" %>
-   </li>
-   <li class="nav-item">
-     <%= link_to "管理者の方はこちら", admin_session_path, class: "nav-link" %>
-   </li>
-  </ul>
+   <i class="fa-solid fa-building">
+     <%= link_to "About", about_path %>
+   </i>
+   <i class="fa-solid fa-hospital">
+     <%= link_to "病院一覧", public_hospitals_path %>
+   </i>
+   <i class="fa-solid fa-user-plus">
+     <%= link_to "新規登録", new_customer_registration_path %>
+   </i>
+   <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
+     <%= link_to "ログイン", customer_session_path %>
+   </i>
+   <i class="fa-solid fa-lock">
+     <%= link_to "管理者の方はこちら", admin_session_path %>
+   </i>
   <% end %>
 </header>

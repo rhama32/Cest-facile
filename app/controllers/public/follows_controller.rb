@@ -1,4 +1,5 @@
 class Public::FollowsController < ApplicationController
+ before_action :authenticate_customer!
 
  def index
   @follows = current_customer.follows
@@ -20,13 +21,11 @@ class Public::FollowsController < ApplicationController
  end
 # フォロー一覧
  def followings
-  customer = Customer.find(params[:customer_id])
-  @customer = customer.followings
+  current_customer = current_customer.followings(params[:doctor_id])
  end
 # フォロワー一覧
  def followers
-  customer = Customer.find(params[:customer_id])
-  @customers = customer.followers
+  current_customer = current_customer.followers(params[:doctor_id])
  end
 
 end

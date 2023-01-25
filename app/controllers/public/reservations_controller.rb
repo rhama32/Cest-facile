@@ -1,5 +1,5 @@
 class Public::ReservationsController < ApplicationController
-
+before_action :authenticate_customer!
  def new
   @reservation = Reservation.new
   @hospital = Hospital.all
@@ -23,18 +23,11 @@ class Public::ReservationsController < ApplicationController
 end
 
  def index
-  @reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
+  @reservations = Reservation.all
   @public_customers = Customer.all
   @hospitals = Hospital.all
-  #@reservations = Reservation.ransack
-  #@reservations = @Reservation.result(distinct: true).order(total_point: :asc)
+  #@reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
  end
- 
- #def search
-  #@reservations = Reservation.where(hope_day: Time.currents.since(2.month)..)
- #end
- 
- 
 
  def show
   @reservations = Reservation.find(params[:id])
