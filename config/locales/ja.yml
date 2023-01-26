@@ -2,6 +2,7 @@
     enums: #enumの設定
       reservation: #モデル名
         status: #カラム名
+          reservation_pending: "申請中"
           reservation_confirmed: "予約確定"
           tentative_reservation: "仮予約中"
           reception_cancellation: "受付キャンセル"

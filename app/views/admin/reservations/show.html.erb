@@ -21,7 +21,10 @@
           <th><%= @reservation.hope_day %></th>
           <th><%= @reservation.hope_time %></th>
           <th><%= @reservation.hospital.name %></th>
-             <td><% if @reservation.status == 'reservation_confirmed' %>
+            <td>
+                <% if @reservation.status == 'reservation_pending' %>
+                <p class="text-success font-weight-bold">申請中</p>
+                <% elsif @reservation.status == 'reservation_confirmed' %>
                 <p class="text-success font-weight-bold">予約確定</p>
                 <% elsif @reservation.status == 'tentative_reservation' %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
@@ -36,4 +39,4 @@
   </div>
 
      <div class="form-group">
-      <%= link_to '会員予約一覧に戻る', doctor_reservations_path, class: "btn btn-success" %>
+      <%= link_to '会員予約一覧に戻る', admin_reservations_path, class: "btn btn-success" %>
