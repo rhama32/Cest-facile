@@ -16,6 +16,7 @@
       <th>来院時間</th>
       <th>予約院</th>
       <th>予約ステータス</th>
+      <th>予約削除</th>
     </tr>
   </thead>
 
@@ -25,7 +26,7 @@
         <th><%= link_to reservation.hope_day, public_reservation_path(reservation.id) %></th>
         <td><%= reservation.hope_time %></td>
         <td><%= reservation.hospital.name %></td>
-                <td>
+        <td>
                 <% if reservation.status == 'reservation_pending' %>
                 <p class="text-success font-weight-bold">申請中</p>
                 <% elsif reservation.status == 'reservation_confirmed' %>
@@ -35,7 +36,8 @@
                 <% else %>
                 <p class="text-secondary font-weight-bold">受付キャンセル</p>
                 <% end %>
-            </td>
+        </td>
+        <td><%= link_to '削除する', public_reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しても宜しいですか？" }, class: "btn btn-success" %></td>
       </tr>
     <% end %>
    </tbody>

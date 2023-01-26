@@ -127,9 +127,12 @@ ActiveRecord::Schema.define(version: 2023_01_23_055004) do
     t.string "subject", null: false
     t.string "hospital_time", null: false
     t.string "postal_code", null: false
+    t.string "hospital_address", null: false
     t.string "telephone_number", null: false
     t.boolean "is_active", default: true, null: false
     t.text "parking", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

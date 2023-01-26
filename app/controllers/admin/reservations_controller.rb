@@ -20,6 +20,12 @@ class Admin::ReservationsController < ApplicationController
    render :show, flash[:alret] = "変更の保存に失敗しました"
   end
  end
+ 
+ def destroy
+  @reservation = Reservation.find(params[:id])
+  @reservation.destroy
+  redirect_to admin_reservations_path
+ end
 
    def admin_reservation_params
     params.require(:reservation).permit(:status)

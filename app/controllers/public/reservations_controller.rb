@@ -28,17 +28,16 @@ end
   elsif params[:name] == "four_month"
    @reservations = Reservation.where(hope_day: Time.current.since(4.month)..)
   else
-   @reservations = Reservation.all
+   @reservations = Reservation.where(customer_id: current_customer.id)
   end
   @public_customers = Customer.all
   @hospitals = Hospital.all
-  
  end
 
  def show
-  @reservations = Reservation.find(params[:id])
+  @reservation = Reservation.find(params[:id])
   @public_customers = current_customer
-  @hospitals = Hospital.find(params[:id])
+  @hospital = @reservation.hospital
  end
 
  def edit
@@ -52,6 +51,12 @@ end
   else
    flash[:alret] = "変更の保存に失敗しました"
   end
+ end
+ 
+ def destroy
+  @reservation = Reservation.find(params[:id])
+  @reservation.destroy
+  redirect_to public_reservations_path
  end
 
  private

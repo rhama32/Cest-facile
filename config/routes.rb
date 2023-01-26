@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   #検索機能の追加
   get "search" => "search#search"
+  get "hospital_search" => "search#hospital_search"
 
   # 顧客のマイページ、編集画面、退会画面
   scope module: :public do
@@ -56,7 +57,7 @@ Rails.application.routes.draw do
     resources :hospitals, only: [:index, :show] do
      resources :reviews, only: :new
     end
-    resources :reservations, only: [:new, :show, :create, :index, :update]
+    resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
     resources :hospital_doctors, only: [:index, :show, :create, :destroy]
     resources :symptoms, only: [:index, :show]
     resources :reviews, only: [:show, :create, :index] do
@@ -69,7 +70,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:index,:create,:edit,:update]
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update, :destroy] # 商品一覧・・・等の記述
-  resources :reservations, only: [:index, :show, :update, :edit]
+  resources :reservations, only: [:index, :show, :update, :edit, :destroy]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   resources :doctors, only: [:index, :show, :update, :unscribe, :withdraw]
   resources :notifications, only: [:index]

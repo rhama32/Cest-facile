@@ -9,9 +9,12 @@ class CreateHospitals < ActiveRecord::Migration[6.1]
  t.string :subject, null: false
  t.string :hospital_time, null: false
  t.string :postal_code, null: false
+ t.string :hospital_address, null: false
  t.string :telephone_number, null: false
  t.boolean :is_active, default: true, null: false
  t.text :parking, null: false
+ t.float :latitude
+ t.float :longitude
  t.timestamps
    end
   end

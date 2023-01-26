@@ -60,9 +60,66 @@
           </tr>
         </tbody>
       </table>
+      
+<!--Googleマップの記載 89行目までと101行目から-->
+      <h4>Googleマップ</h4>
+<input id="address" type="textbox" value="GeekSalon">
+<input type="button" value="Encode" onclick="codeAddress()">
+<div id="display">表示までしばらくお待ちください。</div>
+<div id='map'></div>
+
     </div>
   </div>
 </div>
 <div class="col text-center">
   <%= link_to "　　編集する　　", edit_admin_hospital_path(params[:id]),class:"btn btn-success center-block" %>
 </div>
+
+
+<!--Googleマップの記載-->
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<script>
+let map
+let geocoder
+const display = document.getElementById('display')
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    //latが緯度、lngが経度
+    center: test
+    //数値は0〜21まで指定できます。数値が大きいほど拡大
+    zoom: 12,
+  });
+   //positionに指定した座標にピンを表示
+  marker = new google.maps.Marker({
+    position:  test,
+    map: map
+  });
+}
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>

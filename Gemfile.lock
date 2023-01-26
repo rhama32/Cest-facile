@@ -103,6 +103,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.2.1)
       sassc (~> 2.0)
+    geocoder (1.8.1)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -270,6 +271,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.7)
   jquery-rails
   kaminari (~> 0.17.0)

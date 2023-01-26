@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
 before_action :authenticate_customer!
-before_action :authenticate_doctor!
 
  def search
   @range = params[:range]
@@ -11,16 +10,12 @@ before_action :authenticate_doctor!
      @reviews = Review.looks(params[:search], params[:word])
   end
  end
- 
-   @range = params[:range]
 
  def hospital_search
+  @range = params[:range]
+  
   if @range == "Hospital"
-     @hospitals = Hospital.name.looks(params[:search], params[:word])
-  elsif
-     @hospitals = Hospital.subject.looks(params[:search], params[:word])
-  else
-     @hospitals = Hospital.parking.looks(params[:search], params[:word])
+     @hospitals = Hospital.looks(params[:search], params[:word])
   end
  end
 end

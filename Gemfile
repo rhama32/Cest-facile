@@ -80,3 +80,5 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'ransack'
+
+gem 'geocoder'
