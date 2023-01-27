@@ -1,9 +1,11 @@
+<div class="container">
+
 <h4>フォロー一覧画面</h4>
 <div class="container">
   <div class="row">
     <div class="col-10">
       <!--一覧部分-->
-      <h2 style="margin: 20px 0;">フォロー一覧(全<%= @doctors.count %>人)</h2>
+      <h4 style="margin: 20px 0;">フォロー一覧(全<%= @doctors.count %>人)</h4>
       <div class="text-center row">
         <% @doctors.each do |doctor| %>
               <%= link_to public_followings_path(doctor) do %>

@@ -1,15 +1,14 @@
 
     予約を絞り込みますか？
     <div class="accshow">
-     2ヶ月以上先の予約のみを選択<br>
-     <%= link_to "2ヶ月先の予約", public_reservations_path(name: "two_month"), class: "btn btn-primary" %>
-     <%= link_to "4ヶ月先の予約", public_reservations_path(name: "four_month"), class: "btn btn-primary" %>
+     <%= link_to "2ヶ月先の予約", public_reservations_path(name: "two_month"), class: "btn btn-outline-primary" %>
+     <%= link_to "4ヶ月先の予約", public_reservations_path(name: "four_month"), class: "btn btn-outline-primary" %>
+     <%= link_to "予約一覧の再表示", public_reservations_path, class: "btn btn-warning" %>
     </div>
 
      
 <h4>予約一覧画面</h4>
-<div class="row-lg-10">
-<table class="table">
+<table class="table table-bordered table-hover">
   <thead>
     <tr class="table-secondary">
       <th>来院日</th>
@@ -24,11 +23,11 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <th><%= link_to reservation.hope_day, public_reservation_path(reservation.id) %></th>
-        <td><%= reservation.hope_time %></td>
-        <td><%= reservation.hospital.name %></td>
+        <th><%= reservation.hope_time %></th>
+        <th><%= reservation.hospital.name %></th>
         <td>
                 <% if reservation.status == 'reservation_pending' %>
-                <p class="text-success font-weight-bold">申請中</p>
+                <p class="text-primary font-weight-bold">申請中</p>
                 <% elsif reservation.status == 'reservation_confirmed' %>
                 <p class="text-success font-weight-bold">予約確定</p>
                 <% elsif reservation.status == 'tentative_reservation' %>
@@ -37,7 +36,7 @@
                 <p class="text-secondary font-weight-bold">受付キャンセル</p>
                 <% end %>
         </td>
-        <td><%= link_to '削除する', public_reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しても宜しいですか？" }, class: "btn btn-success" %></td>
+        <td><%= link_to '削除する', public_reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
    </tbody>

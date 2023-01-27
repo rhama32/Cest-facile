@@ -1,27 +1,23 @@
-<h2>ネットde診療予約</h2>
+<h4>ネットde診療予約</h4>
+<div class="row-lg-10">
 <%= form_with model: @reservation, url: public_reservations_path, method: :post do |f| %>
- <table class="table">
-  <div class="row-lg-11">
+<table class="table table-bordered table-hover">
+  <thead>
+   <tr class="table-secondary">
+      <th>予約希望日</th>
+      <th>予約希望時間</th>
+      <th>予約希望院</th>
+      <th>実行ボタン</th>
+  </thead>
   <tbody>
-   <div class="row-lg-11">
-      <th>
-       予約希望日
-       <%= f.date_field :hope_day %>
-      </th>
-      <th>
-       予約希望時間
-       <%= f.time_select :hope_time %>
-      </th>
-      <th>
-       予約希望院
-       <%= @hospital.name %>
-       <!-- nameからidとして引き渡す。-->
-       <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
-      </th>
-      <th>
-      <%= f.submit "予約する", class:"btn btn-success" %>
-      </th>
-      </table>
-      <% end %>
-  </div>
- </div>
+       <th><%= f.date_field :hope_day %></th>
+       <th><%= f.time_select :hope_time %></th>
+       <th>
+           <%= @hospital.name %>
+           <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
+       </th>
+      <th><%= f.submit "予約する", class:"btn btn-success" %></th>
+   </tbody> 
+ </table>
+  <% end %>
+</div>

@@ -1,25 +1,21 @@
-
-     <%= render 'search', searches: @searches %>
-    </div>
-  </div>
-
-
 <div class="container">
-  <div class="row">
-    <div class="col-2">
+     <%= render 'search', searches: @searches %>
      <!--ジャンル検索-->
      <%= render 'genrevar', genres: @genres %>
-    </div>
+
     <div class="col-10">
       <!--一覧部分-->
       <h4 style="margin: 0;">病院一覧(全<%= @count %>件)</h4>
       <div class="text-center row">
         <% @hospitals.each do |hospital| %>
           <% if hospital.is_active == true %>
-            <div class="col-md-3 shadow p-3 mb-4 m-4">
+            <div class="col-md-4 shadow p-3 mb-4 m-4">
+                診療科目：<%= hospital.subject %><br>
+                住所：<%= hospital.hospital_address %><br>
               <%= link_to public_hospital_path(hospital) do %>
-                <%= image_tag hospital.image, size:"100x100"  %>
+                <%= image_tag hospital.image, size:"150x150"  %>
                 <%= hospital.name %>
+
               <% end %>
             </div>
           <% end %>

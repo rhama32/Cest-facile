@@ -1,8 +1,11 @@
-<div class="row-lg-10">
- <h4>レビュー投稿履歴詳細</h4>
+
+  <div class="row-lg-10">
+    <table class="table">
+ <h4 class="bg-light text-center">レビュー投稿履歴詳細</h4>
   <table class="table">
     <thead>
       <tr class="table-secondary">
+        <th>投稿者名</th>
         <th>病院・クリニック名</th>
         <th>レビュー投稿日</th>
         <th>診療の満足度</th>
@@ -15,6 +18,7 @@
     </thead>
 
     <tbody>
+        <td><%= @review.hospital.name %></td>
         <td><%= @review.hospital.name %></td>
         <td><%= @review.created_at %></td>
         <td><%= @review.doctor_satisfaction %>/5点</td>
@@ -39,7 +43,7 @@
     </tbody>
   </table>
         <table class="table">
-          <td>コメント返信欄</td>
+          <td>[コメント欄]</td>
           <td><%= @review.comment %></td>
           <td><%= @review.created_at %></td>
           <td><%= @reply.comment if @reply %></td>

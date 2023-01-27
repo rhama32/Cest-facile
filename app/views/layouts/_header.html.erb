@@ -15,7 +15,6 @@
   <ul class="nav justify-content-end">
     <i class="fa-solid fa-building font-color">
      <%= link_to "About", about_path, class: "font-color" %>
-     
     </i>
     <i class="fa-solid fa-user font-color">
     <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
@@ -43,29 +42,27 @@
 
 <!--管理者がログインした場合-->
 <% elsif admin_signed_in? %>
-  <ul class="nav justify-content-end">
-   <li class="nav-item">
-　　 <%= link_to "病院一覧", admin_hospitals_path, class: "nav-link"%>
+   <li class="fa-solid fa-file font-color">
+　　 <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "会員一覧", admin_customers_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link"%>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "ジャンル一覧", admin_genres_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "予約一覧", admin_reservations_path, class: "nav-link" %>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "予約一覧", admin_reservations_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "レビュー管理一覧", admin_reviews_path, class: "nav-link" %>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "レビュー管理一覧", admin_reviews_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "医療提供者申請一覧", admin_doctors_path, class: "nav-link" %>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "医療提供者申請一覧", admin_doctors_path, class: "font-color" %>
    </li>
-   <li class="nav-item">
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+   <li class="fa-solid fa-file font-color">
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "font-color" %>
    </li>
-   </ul>
 
 
 <!--医療提供者がログインした場合-->
@@ -87,10 +84,10 @@
 
 <!--＜サインインしていない場合＞-->
 <% else %>
-   <i class="fa-solid fa-building">
+    <i class="fa-solid fa-file font-color">
      <%= link_to "About", about_path %>
-   </i>
-   <i class="fa-solid fa-hospital">
+    </i>
+    <i class="fa-solid fa-hospital">
      <%= link_to "病院一覧", public_hospitals_path %>
    </i>
    <i class="fa-solid fa-user-plus">

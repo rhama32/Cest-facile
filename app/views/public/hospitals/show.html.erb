@@ -1,20 +1,18 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-2">
       <!--ジャンル検索-->
       <%= render 'genrevar', genres: @genres %>
-    </div>
-
+</div>
 <div class="container">
-  <div class="row">
-    <div class="col-10">
-      <h4>病院詳細</h4>
-       <table class="table table-borderless">
-        <tbody>
+      <h4><%= @hospital.name %>
+      <div class="container text-right">
+       <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
+      <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
+      </h4>   
          <tr>
-            <td>病院画像</td>
-            <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto" %></td>
+           <td><%= image_tag @hospital.image, size: "300x300" %></td>
          </tr>
+           <table class="table table-bordered table-hover">
+           <tbody>
          <tr>
             <td>郵便番号</td>
             <td><%= @hospital.postal_code %></td>
@@ -29,8 +27,7 @@
           </tr>
           <tr>
             <td>医師名</td>
-            <td>
-　　　　　　  <% @hospital.doctors.each do |doctor| %>
+            <td><% @hospital.doctors.each do |doctor| %>
                 <%= doctor.name %>
                 <% if current_customer.following?(doctor) %>
                   <%= link_to "フォロー外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
@@ -40,9 +37,6 @@
               <% end %>
             </td>
           </tr>
-
-
-            </td>
           </tr>
           <tr>
             <td>病院説明</td>
@@ -78,63 +72,63 @@
               <% end %>
             </td>
           </tr>
+      <!--Googleマップの記載 89行目までと101行目から-->
+          <tr>
+            <td>Googleマップ</td>
+            <td>
+              <input id="address" type="textbox" value="GeekSalon">
+              <input type="button" value="Encode" onclick="codeAddress()">
+              <div id="display">表示までしばらくお待ちください。</div>
+              <div id='map'></div>
+            </td>
+          </tr>
         </tbody>
       </table>
 
-<!--Googleマップの記載 89行目までと101行目から-->
-      <h4>Googleマップ</h4>
-<input id="address" type="textbox" value="GeekSalon">
-<input type="button" value="Encode" onclick="codeAddress()">
-<div id="display">表示までしばらくお待ちください。</div>
-<div id='map'></div>
-
-<%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-success", data: {"turbolinks" => false} %>
-<%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
-
-<!--Googleマップの記載-->
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
-
-<script>
-let map
-let geocoder
-const display = document.getElementById('display')
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    //latが緯度、lngが経度
-    center: test
-    //数値は0〜21まで指定できます。数値が大きいほど拡大
-    zoom: 12,
-  });
-   //positionに指定した座標にピンを表示
-  marker = new google.maps.Marker({
-    position:  test,
-    map: map
-  });
-}
-
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-      display.textContent = "検索結果：" + results[ 0 ].geometry.location
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
+            <!--Googleマップの記載-->
+            <style>
+            #map {
+              height: 200px;
+              width: 200px;
+            }
+            </style>
+            
+            <script>
+            let map
+            let geocoder
+            const display = document.getElementById('display')
+            
+            function initMap(){
+              geocoder = new google.maps.Geocoder()
+            
+              map = new google.maps.Map(document.getElementById('map'), {
+                //latが緯度、lngが経度
+                center: test
+                //数値は0〜21まで指定できます。数値が大きいほど拡大
+                zoom: 12,
+              });
+               //positionに指定した座標にピンを表示
+              marker = new google.maps.Marker({
+                position:  test,
+                map: map
+              });
+            }
+            
+            function codeAddress(){
+              let inputAddress = document.getElementById('address').value;
+            
+              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                if (status == 'OK') {
+                  map.setCenter(results[0].geometry.location);
+                  var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                  });
+                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
+                } else {
+                  alert('該当する結果がありませんでした：' + status);
+                }
+              });
+            }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
