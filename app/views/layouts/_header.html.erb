@@ -1,9 +1,11 @@
 
 <header>
+ <div class="header">
+  
  <nav class="navbar navbar-light mb-2">
   <div class="container">
    <p class="text-left"><%= link_to root_path, data: {"turbolinks" => false} do %>
-     <%= image_tag 'cest-facile.jpeg',size: '110x110' %>
+     <%= image_tag 'cest-facile.jpeg',size: '80x80' %>
      <% end %>
    </p>
 
@@ -11,30 +13,31 @@
 <% if customer_signed_in? %>
  <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
   <ul class="nav justify-content-end">
-    <i class="fa-solid fa-building">
-     <%= link_to "About", about_path %>
+    <i class="fa-solid fa-building font-color">
+     <%= link_to "About", about_path, class: "font-color" %>
+     
     </i>
-    <i class="fa-solid fa-user">
-    <%= link_to "マイページ", customers_mypage_path %>
+    <i class="fa-solid fa-user font-color">
+    <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
     </i>
-    <i class="fa-solid fa-hospital">
-    <%= link_to "病院一覧(レビューはこちら)", public_hospitals_path %>
+    <i class="fa-solid fa-hospital font-color">
+    <%= link_to "病院一覧(レビューはこちら)", public_hospitals_path, class: "font-color" %>
     </i>
-    <i class="fa-solid fa-magnifying-glass">
-    <%= link_to "病院検索", public_hospitals_path %>
+    <i class="fa-solid fa-magnifying-glass font-color">
+    <%= link_to "病院検索", public_hospitals_path, class: "font-color" %>
     </i>
-    <i class="fa-solid fa-flag">
-    <%= link_to "予約一覧", public_reservations_path %>
+    <i class="fa-solid fa-flag font-color">
+    <%= link_to "予約一覧", public_reservations_path, class: "font-color" %>
     </i>
-   <i class="fa-solid fa-file">
-    <%= link_to "レビュー一覧", public_reviews_path %>
+   <i class="fa-solid fa-file font-color">
+    <%= link_to "レビュー一覧", public_reviews_path, class: "font-color" %>
    </i>
-    <i class="fa-solid fa-users">
-     <%= link_to "フォロー一覧", public_followings_path %>
+    <i class="fa-solid fa-users font-color">
+     <%= link_to "フォロー一覧", public_followings_path, class: "font-color" %>
     </i>
    </i>
-   <i class="fa-solid fa-right-from-bracket">
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+   <i class="fa-solid fa-right-from-bracket font-color">
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "font-color" %>
    </i>
   </ul>
 
@@ -100,4 +103,5 @@
      <%= link_to "管理者の方はこちら", admin_session_path %>
    </i>
   <% end %>
+  </div>
 </header>

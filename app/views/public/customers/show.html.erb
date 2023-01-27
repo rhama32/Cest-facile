@@ -1,48 +1,44 @@
 <div class="container">
- <div class ="row">
-  <div class = "col-10">
-
 <h4>マイページ</h4>
-<p class="font-weight-bold h6"> 登録情報 <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
-<table class="table table-bordered">
+<p class="font-weight-bold h6">登録情報
+<%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
+<table class="table table-bordered table-hover">
  <tbody>
-  <tr></tr>
    <tr>
     <td class="table-secondary">氏名</td>
-    <td><%= @customer.last_name %><%= @customer.first_name %></td>
+    <td class="table-active"><%= @customer.last_name %><%= @customer.first_name %></td>
    </tr>
    <tr>
+    <!--td class="bg-primary text-body-emphasis">カナ</td-->
     <td class="table-secondary">カナ</td>
-    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+    <td class="table-active"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
    </tr>
    <tr>
     <td class="table-secondary">郵便番号</td>
-    <td><%= @customer.postal_code %></td>
+    <td class="table-active"><%= @customer.postal_code %></td>
    </tr>
    <tr>
     <td class="table-secondary">住所</td>
-    <td><%= @customer.address %></td>
+    <td class="table-active"><%= @customer.address %></td>
    </tr>
    <tr>
     <td class="table-secondary">電話番号</td>
-    <td><%= @customer.telephone_number %></td>
+    <td class="table-active"><%= @customer.telephone_number %></td>
    </tr>
    <tr>
     <td class="table-secondary">メールアドレス</td>
-    <td><%= @customer.email %></td>
+    <td class="table-active"><%= @customer.email %></td>
    </tr>
   </tbody>
 </table>
-  </div>
- </div>
-</div>
+    <i class="fa-solid fa-magnifying-glass">
+    <%= link_to '過去のレビュー', public_reviews_path, class: "btn btn-primary" %>
+    </i>
+    <i class="fa-solid fa-users">
+    <%= link_to 'フォロー一覧', public_follows_path, class: "btn btn-primary" %>
+    </i>
+    <i class="fa-solid fa-book">
+    <%= link_to '予約一覧', public_reservations_path, class: "btn btn-primary" %>
+    </i>
+ 
 
-<div class="container">
- <div class ="row">
-  <div class = "col-10">
-    <%= link_to '過去のレビュー', public_reviews_path, class: "btn btn-success" %>
-    <%= link_to 'フォロー一覧', public_follows_path, class: "btn btn-success" %>
-    <%= link_to '予約一覧', public_reservations_path, class: "btn btn-success" %>
-  </div>
- </div>
-</div>

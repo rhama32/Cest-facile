@@ -16,11 +16,51 @@
 
  @import "font-awesome";
  @import "bootstrap";
+ 
 
- body {
-  background-image: image-url("hoge.jpg");}
-  
- .pagetop {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%; /* 横幅いっぱい */
+  height: 130px; /* 高さ120px */
+  background-color: #6b8e23; 
+}
+
+.main {
+  width: 100%; /* 横幅いっぱい */
+  height: 2500px; /* 高さ1400px（多めに設定） */
+  background-color: #fdf5e6;
+}
+
+.footer {
+  background-color: #6b8e23; 
+}
+
+.font-color {
+  color: white;
+}
+
+.font-color2 {
+ color: black;
+}
+
+/*フッタを常に下に表示したい*/
+.body {
+ display: flex;
+ flex-flow: column;
+ min-height: 100vh;
+}
+
+.main {
+ flex: 1;
+}
+
+//ホームへ戻るの実装
+.pagetop {
     display: none;
     position: fixed;
     bottom: 30px;
@@ -31,7 +71,7 @@
     background-color: #ccc;
     text-align: center;
     color: #222;
-    font-size: 12px;
+    font-size: 35px;
     text-decoration: none;
     padding: 5px 10px;
 	filter:alpha(opacity=50);
@@ -43,10 +83,34 @@
     background-color: #b2d1fb;
     text-align: center;
     color: #fff;
-    font-size: 12px;
+    font-size: 35px;
     text-decoration: none;
     padding:5px 10px;
 	filter:alpha(opacity=50);
     -moz-opacity: 0.5;
     opacity: 0.5;
 }
+
+.background {
+  background-image: image-url('haikei20.jpg');
+  height: 450px;
+  width: 100%;
+}
+
+h4 {
+  padding: 15px;
+}
+
+//aboutページのCSS
+.about-content {
+  position: relative;
+  height: 200px;
+}
+
+.about-content p {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
