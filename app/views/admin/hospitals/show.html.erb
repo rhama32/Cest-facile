@@ -94,22 +94,25 @@
 <!--Googleマップの記載-->
 <style>
 #map {
-  height: 200px;
-  width: 200px;
+  height: 400px;
+  width: 400px;
 }
 </style>
 
 <script>
+
 let map
 let geocoder
 const display = document.getElementById('display')
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
+  test ={lat: <%= @hospital.latitude %>, lng: <%= @hospital.longitude %>};
+  //test = {lat: 34.73348, lng:135.500109}
 
   map = new google.maps.Map(document.getElementById('map'), {
     //latが緯度、lngが経度
-    center: test
+    center: test,
     //数値は0〜21まで指定できます。数値が大きいほど拡大
     zoom: 12,
   });
