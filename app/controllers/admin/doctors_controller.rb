@@ -10,6 +10,7 @@ end
 
 def edit
  @doctor = Doctor.find(params[:id])
+ #redirect_to edit_admin_doctor_path
 end
 
 #doctorの承認画面で使用

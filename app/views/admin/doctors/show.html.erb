@@ -3,7 +3,7 @@
   <div class="row-lg-10">
     <div class="col-11 offset-md-1">
       <div class="bg-light text-center">
-       <%= @doctor.name %>さんの会員詳細
+       <%= @doctor.name %>さんの医療者情報詳細
       </div>
     </div>
 
@@ -50,4 +50,4 @@
 </table>
      <div class="form-group">
       <%= link_to '編集する', edit_admin_doctor_path, class: "btn btn-success" %>
-      <%= link_to '会員一覧に戻る', admin_customers_path, class: "btn btn-primary" %>
+      <%= link_to '病院詳細に戻る', admin_hospitals_path, class: "btn btn-primary" %>

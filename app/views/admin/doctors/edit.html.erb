@@ -2,66 +2,41 @@
   <div class="row-lg-10">
     <div class="col-11 offset-md-1">
       <div class="bg-light text-center">
-<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員情報編集</p>
+<p><%= @doctor.name %>さんの医療者情報編集</p>
 </div>
 </div>
 
-<%= form_with model: @admin_customer, url: admin_customer_path, method: :patch do |f| %>
+<%= form_with model: @doctor, url: admin_doctors_path(@doctor), method: :patch do |f| %>
 <table class="table table-bordered table-hover">
  <tbody>
   <tr></tr>
   <tr>
    <th>会員ID</th>
    <th>
-   <%= @admin_customer.id %>
+   <%= @doctor.id %>
    </th>
   </tr>
   <tr>
    <th>氏名</th>
-   <th>
-   <%= f.text_field :last_name %> <%= f.text_field :first_name %>
-   </th>
-  </tr>
-  <tr>
-   <th>フリガナ</th>
-   <th>
-   <%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %>
-   </th>
-  </tr>
-  <tr>
-   <th>郵便番号</th>
-   <th>
-   <%= f.text_field :postal_code %>
-   </th>
-  </tr>
-  <tr>
-   <th>住所</th>
-   <th>
-   <%= f.text_field :address, :size => "70*70" %>
-   </th>
-  </tr>
-  <tr>
-   <th>電話番号</th>
-   <th>
-   <%= f.text_field :telephone_number %>
-   </th>
+   <th><%= f.text_field :name %></th>
   </tr>
   <tr>
    <th>メールアドレス</th>
-   <th>
-   <%= f.text_field :email %>
-   </th>
+   <th><%= f.text_field :email %></th>
   </tr>
   <tr>
-   <th>会員ステータス</th>
-   <th>
-    <% if @admin_customer.is_deleted == false %>
-    <%= f.radio_button :is_deleted, false, checked:true, class:"text-success" %>有効　<%= f.radio_button :is_deleted, true %>退会
-    <% else %>
-    <%= f.radio_button :is_deleted, false, class: "text-success" %>有効　<%= f.radio_button :is_deleted, true, checked: true %>退会
-    <% end %>
-   </th>
+   <th>電話番号</th>
+   <th><%= f.text_field :telephone_number %></th>
   </tr>
+  <tr>
+   <th>承認ステータス</th>
+   <th>
+      <% @doctor.approved_status %>
+      <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+      <% elsif @doctor.approved_status == 'denied' %>承認却下
+      <% end %>
+   </th>
+ </tr>
  </tbody>
 </table>
 <%= f.submit "変更を保存", class: "btn btn-success" %>
