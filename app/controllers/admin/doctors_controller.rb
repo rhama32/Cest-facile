@@ -4,6 +4,16 @@ def index
  @doctors = Doctor.all
 end
 
+def show
+ @doctor = Doctor.find(params[:id])
+ @doctors = hospital_doctors.is_deleted
+end
+
+def edit
+ @doctor = Doctor.find(params[:id])
+end
+
+#doctorの承認画面で使用
 def update
  doctor = Doctor.find(params[:id])
  if params[:approved_status] == 'approved'

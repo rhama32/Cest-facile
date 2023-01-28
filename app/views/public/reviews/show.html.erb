@@ -18,7 +18,7 @@
     </thead>
 
     <tbody>
-        <td><%= @review.hospital.name %></td>
+        <td><%= @review.customer.full_name %></td>
         <td><%= @review.hospital.name %></td>
         <td><%= @review.created_at %></td>
         <td><%= @review.doctor_satisfaction %>/5点</td>
@@ -40,13 +40,20 @@
         </p>
             <% end %>
         <td><%= @review.total_point %>/5点</td>
+        </div>
     </tbody>
   </table>
-        <table class="table">
-          <td>[コメント欄]</td>
+  
+        <table class="table table-bordered table-hover">
+          [コメント欄]
+          <th>投稿者名</th>
+          <th>コメント</th>
+          <th>投稿日時</th>
+    
+          
+          <td><%= @review.customer.full_name %></td>
           <td><%= @review.comment %></td>
           <td><%= @review.created_at %></td>
           <td><%= @reply.comment if @reply %></td>
           <td><%= @reply.created_at if @reply %><td>
         </table>
-</div>

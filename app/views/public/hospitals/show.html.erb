@@ -8,12 +8,12 @@
        <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
       <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
       </h4>   
-         <tr>
-           <td><%= image_tag @hospital.image, size: "300x300" %></td>
-         </tr>
-           <table class="table table-bordered table-hover">
-           <tbody>
-         <tr>
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"200x200" %></td>
+          </tr>
+          <tr>
             <td>郵便番号</td>
             <td><%= @hospital.postal_code %></td>
           </tr>

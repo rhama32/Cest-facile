@@ -6,8 +6,8 @@
     </div>
     </div>
     <div class="row-lg-10">
-     <table class="table">
-       <thead>
+     <table class="table table-bordered table-hover">
+       <tbody>
           <tr>
             <td>病院画像</td>
             <td><%= image_tag @hospital.image , class:"img-fluid d-block mx-auto", size:"200x200" %></td>
@@ -28,6 +28,13 @@
             <td>病院説明</td>
             <td><%= @hospital.introduction %></td>
           </tr>
+          <tr>
+            <td>医師名</td>
+            <td>
+                <% @hospital.doctors.each do |doctor| %>
+                <%= link_to doctor.name, admin_doctor_path %>
+                <% end %>
+            </td>
           <tr>
             <td>電話番号</td>
             <td><%= @hospital.telephone_number %></td>
@@ -58,19 +65,23 @@
               <% end %>
             </td>
           </tr>
-        </tbody>
-      </table>
-      
-<!--Googleマップの記載 89行目までと101行目から-->
-      <h4>Googleマップ</h4>
-<input id="address" type="textbox" value="GeekSalon">
-<input type="button" value="Encode" onclick="codeAddress()">
-<div id="display">表示までしばらくお待ちください。</div>
-<div id='map'></div>
+          <!--Googleマップの記載 89行目までと101行目から-->
+        <tr>
+          <td>Googleマップ</td>
+          <td>
+            <input id="address" type="textbox" value="GeekSalon">
+            <input type="button" value="Encode" onclick="codeAddress()">
+              <div id="display">表示までしばらくお待ちください。</div>
+              <div id='map'></div>
+          </td>
+        </tr>
 
+  </tbody>
+</table>
+
+      </div>
     </div>
-  </div>
-</div>
+
 <div class="col text-center">
   <%= link_to "　　編集する　　", edit_admin_hospital_path(params[:id]),class:"btn btn-success center-block" %>
 </div>
@@ -79,8 +90,8 @@
 <!--Googleマップの記載-->
 <style>
 #map {
-  height: 600px;
-  width: 600px;
+  height: 200px;
+  width: 200px;
 }
 </style>
 

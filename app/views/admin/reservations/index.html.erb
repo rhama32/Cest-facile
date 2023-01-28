@@ -8,7 +8,7 @@
   </div>
 
   <div class="row-lg-10">
-    <table class="table">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr class="table-secondary">
           <th>予約者ID</th>
@@ -20,6 +20,7 @@
           <th>予約ステータス</th>
           <th>ステータス編集</th>
           <th>削除ボタン</th>
+          <th>予約詳細</th>
         </tr>
       </thead>
       <tbody>
@@ -27,11 +28,7 @@
         <%= form_with(model: reservation, url: admin_reservation_path(reservation), method: :patch, local: true) do |f| %>
           <tr>
             <td><%= reservation.id %></td>
-            <!-- 会員の予約詳細に進む-->
-            <td><%#= link_to admin_customer_path(reservation.customer.id) do %>
-                <%= reservation.customer.last_name + reservation.customer.first_name %>
-                <%# end %>
-            </td>
+            <td><%= reservation.customer.last_name + reservation.customer.first_name %></td>
             <td><%= reservation.hospital.id %></td>
             <td><%= reservation.hospital.name %></td>
             <td><%= reservation.hope_day %></td>
@@ -53,6 +50,7 @@
                 <% end %>
             </td>
             <td><%= link_to '削除する', admin_reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+            <td><%= link_to '予約詳細', admin_reservation_path(reservation), class: "btn btn-primary" %></td>
           </tr>
           <% end %>
         <tr></tr>

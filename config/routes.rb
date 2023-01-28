@@ -70,9 +70,9 @@ Rails.application.routes.draw do
   resources :genres, only: [:index,:create,:edit,:update]
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:new,:create,:show,:edit,:update, :destroy] # 商品一覧・・・等の記述
-  resources :reservations, only: [:index, :show, :update, :edit, :destroy]
-  resources :reviews, only: [:index, :show, :edit, :update, :destroy]
-  resources :doctors, only: [:index, :show, :update, :unscribe, :withdraw]
+  resources :reservations, only: [:index, :show, :update, :destroy]
+  resources :reviews, only: [:index, :show, :update, :destroy]
+  resources :doctors, only: [:index, :show, :edit, :update, :unscribe, :withdraw]
   resources :notifications, only: [:index]
   end
 

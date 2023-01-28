@@ -1,13 +1,12 @@
 <div class="container">
- <div class="row">
   <div class="col-md-2">
-   <div class="col-10">
+
       <%#= render 'search', searches: @searches %>
     </div>
   </div>
   <h4>レビュー一覧管理画面</h4>
 
-<table class="table">
+<table class="table table-bordered table-hover">
   <thead>
     <tr class="table-secondary">
       <th>投稿者名</th>
@@ -20,6 +19,7 @@
       <th>コメント</th>
       <th>総合満足度</th>
       <th>レビュー削除</th>
+      <th>レビュー詳細</th>
     </tr>
   </thead>
 
@@ -36,7 +36,8 @@
         <td><%= review.waiting_time %></td>
         <td><%= review.comment %></td>
         <td><%= review.total_point %></td>
-        <td><%= link_to '削除する', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-success" %></td>
+        <td><%= link_to '削除する', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+        <td><%= link_to '詳細', admin_review_path(review.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
    </tbody>

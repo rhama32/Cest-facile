@@ -1,6 +1,6 @@
 <h4>医療提供者申請一覧</h4>
 <div class="row-lg-10">
-  <table class="table">
+  <table class="table table-bordered table-hover">
     <thead>
       <tr class="table-secondary">
         <th>申請者ID</th>
@@ -28,8 +28,8 @@
             </td>
             <td>
               <% if doctor.unapproved? %>
-               <%= link_to "承認する", admin_doctor_path(doctor, approved_status: 'approved'), method: :patch,  class:"btn btn-danger", data: { confilm: "本当に承認しますか？" }  %>
-               <%= link_to "承認しない", admin_doctor_path(doctor, approved_status: 'denied'), method: :patch, class:"btn btn-secondary", data: { confilm: "本当に承認を拒否しますか？" }  %>
+               <%= link_to "承認する", admin_doctor_path(doctor, approved_status: 'approved'), method: :patch, "data-confirm" => "本当に承認しますか？",  class:"btn btn-danger" %>
+               <%= link_to "承認しない", admin_doctor_path(doctor, approved_status: 'denied'), method: :patch, "data-confirm" => "本当に承認を拒否しますか？", class:"btn btn-secondary" %>
               <% else %>
 　　　　　　　 <%= doctor.approved_status_i18n %>
               <% end %>
@@ -40,5 +40,8 @@
       <% end %>
     </tbody>
   </table>
+  <%= link_to '病院一覧に戻る', admin_hospitals_path, class: "btn btn-primary" %>
+  <%= link_to '会員一覧に戻る', admin_customers_path, class: "btn btn-warning" %>
+  <%= link_to '予約一覧に戻る', admin_reservations_path, class: "btn btn-success" %>
 </div>
 <div class="pagination justify-content-center"><%#= paginate @reservations %></div>

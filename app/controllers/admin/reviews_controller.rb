@@ -6,9 +6,8 @@ class Admin::ReviewsController < ApplicationController
  end
 
  def show
-  @hospitals = Hospital.find(params[:id])
-  @reviews = Review.find(params[:id])
-  @reply = @reviews.reply
+  @review = Review.find(params[:id])
+  #@reply = @reviews.reply
  end
 
  def edit
