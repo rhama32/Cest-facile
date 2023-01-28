@@ -23,6 +23,6 @@ class Hospital < ApplicationRecord
   end
   
    #Googleマップの記載
-   #geocoded_by :hospital_address
-   #after_validation :geocode, if: :hospital_address_changed?
+   geocoded_by :address
+   after_validation :geocode#, if: :address_changed?
 end

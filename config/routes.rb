@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/homes#top'
 
   #検索機能の追加
-  get "search" => "search#search"
-  get "hospital_search" => "search#hospital_search"
+  get "search" => "searches#search"
+  get "hospital_search" => "searches#hospital_search"
 
   # 顧客のマイページ、編集画面、退会画面
   scope module: :public do

@@ -13,7 +13,6 @@
        <th><%= f.date_field :hope_day %></th>
        <th><%= f.time_select :hope_time %></th>
        <th>
-           <%= @hospital.name %>
            <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
        </th>
       <th><%= f.submit "予約する", class:"btn btn-success" %></th>

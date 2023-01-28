@@ -8,8 +8,8 @@ class Public::HospitalsController < ApplicationController
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals
-  elsif @search_hospitals
-    @hospitals = @search_hospitals.page(params[:page])
+  elsif @hospital_search
+    @hospitals = @hospitals_search.page(params[:page])
     @hospitals_count = @search_hospitals.all.count
   end
 

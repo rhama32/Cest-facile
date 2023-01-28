@@ -1,5 +1,5 @@
 <div class="container">
-     <%= render 'hospital_search', searches: @searches %>
+     <%= render 'search', searches: @searches %>
      <!--ジャンル検索-->
      <%= render 'genrevar', genres: @genres %>
 
@@ -11,7 +11,7 @@
           <% if hospital.is_active == true %>
             <div class="col-md-4 shadow p-3 mb-4 m-4">
                 診療科目：<%= hospital.subject %><br>
-                住所：<%= hospital.hospital_address %><br>
+                住所：<%= hospital.address %><br>
               <%= link_to public_hospital_path(hospital) do %>
                 <%= image_tag hospital.image, size:"150x150"  %>
                 <%= hospital.name %>
