@@ -29,11 +29,13 @@
             <td>医師名</td>
             <td><% @hospital.doctors.each do |doctor| %>
                 <%= doctor.name %>
+                <% if customer_signed_in? %>
                 <% if current_customer.following?(doctor) %>
                   <%= link_to "フォロー外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
                 <% else %>
                   <%= link_to "フォローする", public_follows_path(doctor_id: doctor.id), method: :post %>
                 <% end %>
+              <% end %>
               <% end %>
             </td>
           </tr>

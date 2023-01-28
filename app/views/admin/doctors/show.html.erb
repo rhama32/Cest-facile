@@ -37,11 +37,11 @@
      </th>
     </tr>
     <tr>
-     <th>会員ステータス</th>
+     <th>承認ステータス</th>
      <th>
-     <% @doctors.hospital_doctors.is_deleted %>
-    <% if @doctors.hospital_doctors.is_deleted == false %><p class= "text-success" >有効</p>
-    <% elsif @doctors.hospital_doctors.is_deleted == true %>退会
+     <% @doctor.approved_status %>
+    <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+    <% elsif @doctor.approved_status == 'denied' %>承認却下
     <% end %>
      </th>
     </tr>

@@ -31,6 +31,8 @@
             </tr>
         </tbody>
       </table>
+            <% if @customer.last_name != "guestuser" %>
+     
               <div class="text-center">
               <div class="fa-solid fa-book">
               <%= f.submit :"編集を保存",class:"btn btn-success"%>
@@ -40,13 +42,6 @@
               <div class="text-center">
               <div class="fa-solid fa-user-xmark">
               <%= link_to "退会する", customers_unsubscribe_path(@customer), class:"btn btn-danger" %>
-              
-              
-      <% end %>
-
-      <% if @customer.last_name != "guestuser" %>
-      <div class='row'>
-      <%= link_to 'ゲストユーザー', customers_edit_path(@customer),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@customer.id}" %>
-      </div>
+              <% end %>
       <% end %>
     </div>

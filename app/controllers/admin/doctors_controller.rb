@@ -6,7 +6,6 @@ end
 
 def show
  @doctor = Doctor.find(params[:id])
- @doctors = hospital_doctors.is_deleted
 end
 
 def edit
