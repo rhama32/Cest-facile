@@ -24,11 +24,11 @@ end
 
  def index
   if params[:name] == "two_month"
-   @reservations = Reservation.where(hope_day: Time.current.since(2.month)..)
+   @reservations = current_customer.reservations.where(hope_day: Time.current.since(2.month)..)
   elsif params[:name] == "four_month"
-   @reservations = Reservation.where(hope_day: Time.current.since(4.month)..)
+   @reservations = current_customer.reservations.where(hope_day: Time.current.since(4.month)..)
   else
-   @reservations = Reservation.where(customer_id: current_customer.id)
+   @reservations = current_customer.reservations
   end
   @public_customers = Customer.all
   @hospitals = Hospital.all

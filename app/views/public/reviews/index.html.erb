@@ -29,7 +29,7 @@
     <% @reviews.each do |review| %>
       
         <td><%= review.customer.last_name %><%= review.customer.first_name %></td>
-        <td><%= review.hospital.name %></td>
+        <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
         <td><%= review.created_at %></td>
         
         <td>

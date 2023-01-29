@@ -6,7 +6,8 @@ class Hospital < ApplicationRecord
  belongs_to :genre
  has_many :reviews
  has_many :doctors
- 
+ has_many :reservations
+
    # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

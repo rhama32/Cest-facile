@@ -1,7 +1,11 @@
 class Doctor::ReservationsController < ApplicationController
  before_action :authenticate_doctor!
  def index
-  @reservations = Reservation.all
+  @reservations = []
+  # 所属先医療施設がある場合
+  if current_doctor.hospital != nil
+   @reservations = current_doctor.hospital.reservations
+  end
  end
 
  def show

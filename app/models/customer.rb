@@ -18,6 +18,7 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :follows, foreign_key: "customer_id", dependent: :destroy
   has_many :doctors, through: :follows
+  has_many :reservations, dependent: :destroy
   # フォローしたときの処理
   def follow(doctor_id)
     follows.create(doctor_id: doctor_id)
