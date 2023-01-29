@@ -1,17 +1,23 @@
 <div class="container">
 
-<h4>フォロー一覧画面</h4>
-<div class="container">
-  <div class="row">
-    <div class="col-10">
-      <!--一覧部分-->
-      <h4 style="margin: 20px 0;">フォロー一覧(全<%= @doctors.count %>人)</h4>
-      <div class="text-center row">
-        <% @doctors.each do |doctor| %>
-              <%= link_to public_followings_path(doctor) do %>
+  <div class="row-lg-10">
+  <table class="table">
+    <thead>
+      <tr class="table-secondary">
+         <th>医療者ID</th>
+         <th>フォロー中の医療者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <h4><%= @customer.full_name %>さんのフォロー一覧(全<%= @doctors.count %>人)</h4>
+            <% @doctors.each do |doctor| %>
+        <tr>
+          <th><%#= @doctors.id %></th>
+          <th><%#= @doctors.name %>
+              <%#= link_to "医師詳細に進む", public_hospital_doctor_path(doctor) %>
+          </th>
               <% end %>
-              <% end %>
-            </div>
+        </tr>
       </div>
-    </div>
-  </div>
+    </tbody>
+  </table>

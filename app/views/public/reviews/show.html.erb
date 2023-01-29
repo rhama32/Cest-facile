@@ -57,3 +57,4 @@
           <td><%= @reply.comment if @reply %></td>
           <td><%= @reply.created_at if @reply %><td>
         </table>
+        <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "btn btn-primary" %>

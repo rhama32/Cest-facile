@@ -4,7 +4,7 @@
     <tbody>
       <% @hospitals.each do |hospital| %>
         <tr>
-          <td><%= "#{hospital.name}" %></td>
+          <td><%= link_to "#{hospital.name}", public_hospitals_path(hospital) %></td>
         </tr>
       <% end %>
     </tbody>

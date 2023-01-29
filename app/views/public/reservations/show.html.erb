@@ -16,16 +16,17 @@
      <th><%= @hospital.name %></th>
                      <td>
                 <% if @reservation.status == 'reservation_pending' %>
-                <--p class="text-success font-weight-bold">申請中</p-->
+                <p class="text-primary font-weight-bold">申請中</p-->
                 <% elsif @reservation.status == 'reservation_confirmed' %>
                 <p class="text-success font-weight-bold">予約確定</p>
                 <% elsif @reservation.status == 'tentative_reservation' %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
                 <% else %>
-                <p class="text-secondary font-weight-bold">受付キャンセル</p>
+                <p class="text-danger font-weight-bold">受付キャンセル</p>
                 <% end %>
             </td>
         </tbody>
       </table>
+      <%= link_to "予約一覧に戻る", public_reservations_path, class: "btn btn-primary" %>
     </div>
   </div>

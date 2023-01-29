@@ -10,12 +10,12 @@
 <div class="container">
   <div class="row-lg-11">
     <div class="col-3">
-      <h4 class="bg-light text-center">病院・クリニック編集</h4>
+      <h4 class="bg-light text-center">病院クリニック編集</h4>
     </div>
     </div>
 <%= form_with model: @hospital, url: admin_hospital_path, method: :patch do |f| %>
 
-        <table class="table table-borderless">
+ <table class="table table-bordered table-hover">
           <tbody>
             <tr>
               <td>病院画像</td>
@@ -68,6 +68,7 @@
           </tbody>
         </table>
 <div class="col text-center">
+  <%= link_to '病院詳細に戻る', admin_hospital_path, class: "btn btn-primary" %>
   <%= f.submit "　変更を保存　",class:"btn btn-success center-block"  %>
 </div>
 <% end %>

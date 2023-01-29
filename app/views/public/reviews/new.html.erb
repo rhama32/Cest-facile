@@ -2,7 +2,8 @@
 <%= form_with model: @review, url: public_reviews_path do |f| %>
   <%= f.hidden_field :hospital_id %>
     <div class="text-center" >
-        <h4>レビュー情報入力画面</h4>
+        <h4><%= @hospital.name %><br>
+        レビュー入力画面</h4>
         <div class="star-form-group" id="post_doctor_satisfaction">
         <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
         <script>

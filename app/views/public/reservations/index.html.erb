@@ -33,7 +33,7 @@
                 <% elsif reservation.status == 'tentative_reservation' %>
                 <p class="text-secondary font-weight-bold">仮予約中</p>
                 <% else %>
-                <p class="text-secondary font-weight-bold">受付キャンセル</p>
+                <p class="text-danger font-weight-bold">受付キャンセル</p>
                 <% end %>
         </td>
         <td><%= link_to '削除する', public_reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しても宜しいですか？" }, class: "btn btn-danger" %></td>

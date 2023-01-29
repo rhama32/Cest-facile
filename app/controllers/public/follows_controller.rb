@@ -7,6 +7,10 @@ class Public::FollowsController < ApplicationController
  end
 
  def show
+  @customer = current_customer
+  @follows = current_customer.follows
+  @doctors = current_customer.doctors
+  #@doctor = Doctor.find(params[:id])
  end
 
 # フォローするとき
@@ -21,6 +25,7 @@ class Public::FollowsController < ApplicationController
  end
 # フォロー一覧
  def followings
+  @customer = current_customer
   @doctors = current_customer.doctors
  end
 # フォロワー一覧
