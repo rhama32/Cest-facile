@@ -36,7 +36,7 @@
         <td><%= review.waiting_time %></td>
         <td><%= review.comment %></td>
         <td><%= review.total_point %></td>
-        <td><%= link_to '削除する', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+        <td><%= link_to '　削除　', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
         <td><%= link_to '　詳細　', admin_review_path(review.id), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
