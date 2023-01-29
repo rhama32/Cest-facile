@@ -1,15 +1,16 @@
 <% doctors.each do |doctor| %>
     <tr>
         <th><%= doctor.id %></th>
-        <th><%= doctor.name %>
-        
-          <%= link_to "医師詳細に進む", public_hospital_doctor_path(doctor) %>
-        </th>
+        <th><%= doctor.name %></th>
         <th>
           <% if current_customer.following?(doctor) %>
               <%= link_to "フォロー外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
           <% else %>
               <%= link_to "フォローする", public_follows_path(doctor_id: doctor.id), method: :post %>
           <% end %>
-    </th>
+        </th>
+        <th>
+        <%= link_to "医師詳細に進む", public_hospital_doctor_path(doctor) %>
+        </th>
+    </tr>
 <% end %>
