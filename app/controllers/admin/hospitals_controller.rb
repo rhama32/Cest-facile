@@ -42,7 +42,7 @@ class Admin::HospitalsController < ApplicationController
   def destroy
   @hospital = Hospital.find(params[:id])
    if @hospital.destroy
-  redirect_to admin_hospital_path
+  redirect_to admin_hospitals_path
    end
   end
 

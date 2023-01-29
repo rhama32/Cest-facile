@@ -24,7 +24,14 @@ def update
   doctor.update(approved_status: 'denied')
   flash[:notice] = "承認が却下されました。"
  end
- redirect_to admin_doctors_path
+ 
+ doctor.update(list_params) if params[:m]
+
+ if params[:m] == 'doctor'
+  redirect_to admin_doctor_path(doctor), notice: '更新しました'
+ else
+  redirect_to admin_doctors_path
+ end
  end
  
 

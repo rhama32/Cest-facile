@@ -9,14 +9,7 @@
     </thead>
     <tbody>
       <h4><%= @customer.full_name %>さんのフォロー一覧(全<%= @follows.count %>人)</h4>
-            <% @doctors.each do |doctor| %>
-        <tr>
-          <th><%#= @doctors.id %></th>
-          <th><%#= @doctors.name %>
-              <%#= link_to "医師詳細に進む", public_followings_path(doctor) %>
-          </th>
-              <% end %>
-        </tr>
+      <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
       </div>
     </tbody>
   </table>

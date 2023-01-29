@@ -6,17 +6,12 @@
       <tr class="table-secondary">
          <th>医療者ID</th>
          <th>フォロー中の医療者</th>
+         <th>フォロー機能</th>
       </tr>
     </thead>
     <tbody>
       <h4><%= @customer.full_name %>さんのフォロー一覧(全<%= @doctors.count %>人)</h4>
-            <% @doctors.each do |doctor| %>
-        <tr>
-          <th><%#= @doctors.id %></th>
-          <th><%#= @doctors.name %>
-              <%#= link_to "医師詳細に進む", public_hospital_doctor_path(doctor) %>
-          </th>
-              <% end %>
+            <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
         </tr>
       </div>
     </tbody>

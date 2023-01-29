@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<%= form_with model: @doctor, url: admin_doctors_path(@doctor), method: :patch do |f| %>
+<%= form_with model: @doctor, url: admin_doctor_path(@doctor, m: 'doctor'), method: :patch do |f| %>
 <table class="table table-bordered table-hover">
  <tbody>
   <tr></tr>
