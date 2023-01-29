@@ -26,6 +26,8 @@ def update
  end
  redirect_to admin_doctors_path
  end
+ 
+
 
 private
  def list_params

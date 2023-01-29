@@ -41,13 +41,10 @@ class Admin::HospitalsController < ApplicationController
 
   def destroy
   @hospital = Hospital.find(params[:id])
-  if @hospital.destroy
-   flash[:notice] = '対象院が削除されました。'
-  else
-   flash[:alert] = '対象院の削除に失敗しました。'
-  end
+   if @hospital.destroy
   redirect_to admin_hospital_path
- end
+   end
+  end
 
   private
   # ストロングパラメータ

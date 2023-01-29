@@ -41,7 +41,7 @@
                 <p class="text-secondary font-weight-bold">対応停止中</p>
               <% end %>
             </th>
-            <th><%= link_to '削除する', "/hospitals/#{hospital.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></th>
+            <th><%= link_to '削除する', admin_hospital_path(hospital.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></th>
           </tr>
         <% end %>
       </tbody>
