@@ -44,7 +44,7 @@
 <!--管理者がログインした場合-->
 <% elsif admin_signed_in? %>
    <li class="fa-solid fa-file font-color">
-      <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
+    <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
    </li>
    <li class="fa-solid fa-file font-color">
       <%= link_to "会員一覧", admin_customers_path, class: "font-color" %>
