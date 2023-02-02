@@ -80,7 +80,10 @@ Rails.application.routes.draw do
    resource :follows, only: [:index, :create, :destroy]
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
-   resources :hospital_doctors, only: [:show, :edit, :update, :unscribe, :withdraw]
+    
+    get "/hospital_doctors/unsubscribe" => "hospital_doctors#unscribe", as: "unsubscribe"
+    patch "/hospital_doctors/withdraw" => "hospital_doctors#withdraw", as: "withdraw"
+   resources :hospital_doctors, only: [:show, :edit, :update]
    resources :reservations, only: [:index, :show, :update]
    resources :replys, only: [:new, :create, :confirm, :index, :show]
    resources :notifications, only: [:index]

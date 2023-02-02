@@ -73,9 +73,14 @@
      <%= link_to "About us", about_path, class: "nav-link" %>
    </li>
    <li class="nav-item">
+     <%= link_to "通知確認画面", doctor_notifications_path, class: "nav-link" %>
+   </li>
+   <li class="nav-item">
      <%= link_to "予約確認画面", doctor_reservations_path, class: "nav-link" %>
    </li>
-
+   <li class="nav-item">
+     <%#= link_to "医療提供者マイページ", doctor_hospital_doctor_path(), class: "nav-link" %>
+   </li>
    <li class="nav-item">
      <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
    </li>

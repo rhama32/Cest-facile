@@ -2,6 +2,7 @@ class Doctor::HospitalDoctorsController < ApplicationController
 
  def show
   @hospital_doctor = current_doctor
+  @hospital = Hospital.find(@hospital_doctor.hospital_id)
  end
 
  def edit
@@ -9,9 +10,9 @@ class Doctor::HospitalDoctorsController < ApplicationController
  end
 
  def update
-  @hospital_doctor = current_customer
+  @hospital_doctor = current_doctor
   if @hospital_doctor.update(hospital_doctor_params)
-     redirect_to doctors_update_path
+     redirect_to edit_doctor_hospital_doctor_path(@hospital_doctor)
   else
      render 'edit'
   end
@@ -32,7 +33,7 @@ class Doctor::HospitalDoctorsController < ApplicationController
 
   private
   def hospital_doctor_params
-   params.require(:hospital_doctor).permit(:hospital_id, :email, :name, :approved_status)
+   params.require(:doctor).permit(:hospital_id, :email, :name, :name, :approved_status)
   end
 
 end

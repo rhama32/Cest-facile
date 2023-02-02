@@ -1,13 +1,16 @@
 <% if current_doctor.approved? %>
 <div class="container">
- <div class ="row">
-  <div class = "col-10">
+  <div class="row-lg-10">
+    <div class="col-11 offset-md-1">
+      <div class="bg-light text-center">
+       <%= @hospital_doctor.name %>さんの医療提供者情報詳細
+      </div>
+    </div>
 
-<h2>医療提供者マイページ</h2>
-<p class="font-weight-bold h5"> 登録情報 <%= link_to "編集する", edit_doctor_hospital_doctor_path, class:"btn btn-success" %></p>
+<h4>医療提供者マイページ</h4>
+<p class="font-weight h5"> 登録情報 <%= link_to "編集する", edit_doctor_hospital_doctor_path(@hospital_doctor), class:"btn btn-success" %></p>
 <table class="table table-bordered">
  <tbody>
-  <tr></tr>
    <tr>
     <td class="table-secondary">氏名</td>
     <td><%= @hospital_doctor.name %></td>
@@ -18,15 +21,15 @@
    </tr>
    <tr>
     <td class="table-secondary">所属院名</td>
-    <td><%= @hospital_doctor.name %></td>
+    <td><%= @hospital.name %></td>
    </tr>
    <tr>
      <td class="table-secondary">会員ステータス</td>
      <th>
-     <% @hospital_doctor.approved_status %>
-    <% if @hospital_doctor.approved_status == false %><p class= "text-success" >承認済</p>
-    <% elsif @hospital_doctor.approved_status == true %>承認却下
-    <% end %>
+        <% @hospital_doctor.approved_status %>
+          <% if @hospital_doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+          <% elsif @hospital_doctor.approved_status == 'denied' %>承認却下
+        <% end %>
      </th>
     </tr>
   </tbody>
