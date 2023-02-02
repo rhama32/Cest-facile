@@ -9,6 +9,8 @@
         <th>所属院</th>
         <th>医療者免許</th>
         <th>申請ステータス</th>
+        <th>医療提供者削除</th>
+         <th>医療提供者詳細</th>
       </tr>
     </thead>
     <tbody>
@@ -33,8 +35,9 @@
               <% else %>
 　　　　　　　 <%= doctor.approved_status_i18n %>
               <% end %>
-
             </td>
+            <td><%= link_to '　削除　', admin_doctor_path(doctor.id), method: :delete, data: { confirm: "医療提供者を削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+            <td><%= link_to '　詳細　', admin_doctor_path(doctor.id), class: "btn btn-primary" %></td>
           </tr>
         <% end %>
       <% end %>

@@ -1,31 +1,32 @@
 class Doctor::HospitalDoctorsController < ApplicationController
-
+before_action :authenticate_doctor!
  def show
-  @hospital_doctor = current_doctor
-  @hospital = Hospital.find(@hospital_doctor.hospital_id)
+  @doctor = current_doctor
+  @hospital = Hospital.find(@doctor.hospital_id)
  end
 
  def edit
-  @hospital_doctor = current_doctor
+  @doctor = current_doctor
  end
 
  def update
-  @hospital_doctor = current_doctor
-  if @hospital_doctor.update(hospital_doctor_params)
-     redirect_to edit_doctor_hospital_doctor_path(@hospital_doctor)
+  @doctor = current_doctor
+  if @doctor.update(hospital_doctor_params)
+   flash[:notice] = "編集に成功しました。"
+   redirect_to edit_doctor_hospital_doctor_path(@doctor)
   else
+     flash[:alert] = "編集に失敗しました。"
      render 'edit'
   end
   end
-
+  
  def unsubscribe
-  @hospital_doctor = current_doctor
+  @doctor = current_doctor
  end
 
  def withdraw
-  @hospital_doctor = current_doctor
-  @hospital_doctor = current_doctor
-  @hospital_doctor.update(is_deleted: true)
+  @doctor = current_doctor
+  @doctor.unsubscribe
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path

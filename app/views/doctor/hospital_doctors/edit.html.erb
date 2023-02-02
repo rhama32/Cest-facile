@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-10">
       <h4>医療提供者情報編集</h4>
-      <%= form_with model: @hospital_doctor, url: doctor_hospital_doctor_path, method: :PATCH do |f| %>
+      <%= form_with model: @doctor, url: doctor_hospital_doctor_path, method: :PATCH do |f| %>
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -21,11 +21,10 @@
             <tr>
               <td>会員ステータス</td>
               <td>
-                  <% if @hospital_doctor.approved_status != "approved" %>
-                  <%= f.radio_button :approved_status, "unapproved", checked: true, class: "text-success" %>退会 <%= f.radio_button :approved_status, "approved" %>有効
-                  <% else %>
-                  <%= f.radio_button :approved_status, "unapproved", class: "text-success" %>退会 <%= f.radio_button :approved_status, "approved", checked: true %>有効
-                  <% end %>
+        　　　　　　　　<% @doctor.approved_status %>
+          　　　　　　<% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+          　　　　　　<% elsif @doctor.approved_status == 'denied' %>承認却下
+        　　　　　　　　<% end %>
               </td>
             </tr>
             <tr>

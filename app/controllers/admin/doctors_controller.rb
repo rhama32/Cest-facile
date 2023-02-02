@@ -34,6 +34,11 @@ def update
  end
  end
  
+ def destroy
+  @doctor = Doctor.find(params[:id])
+  @doctor.destroy
+  redirect_to admin_doctors_path
+ end
 
 
 private

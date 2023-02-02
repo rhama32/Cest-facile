@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   resources :hospitals, only: [:index,:new, :create, :show, :edit, :update, :destroy]
   resources :reservations, only: [:index, :show, :update, :destroy]
   resources :reviews, only: [:index, :show, :update, :destroy]
-  resources :doctors, only: [:index, :show, :edit, :update, :unscribe, :withdraw]
+  resources :doctors, only: [:index, :show, :edit, :update, :destroy]
   resources :notifications, only: [:index]
   end
 
@@ -81,7 +81,7 @@ Rails.application.routes.draw do
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
     
-    get "/hospital_doctors/unsubscribe" => "hospital_doctors#unscribe", as: "unsubscribe"
+    get "/hospital_doctors/unsubscribe" => "hospital_doctors#unsubscribe", as: "unsubsubscribe"
     patch "/hospital_doctors/withdraw" => "hospital_doctors#withdraw", as: "withdraw"
    resources :hospital_doctors, only: [:show, :edit, :update]
    resources :reservations, only: [:index, :show, :update]
