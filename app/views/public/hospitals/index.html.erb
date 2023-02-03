@@ -6,10 +6,10 @@
     <div class="col-10">
       <!--一覧部分-->
       <h4 style="margin: 0;">病院一覧(全<%= @count %>件)</h4>
-      <div class="text-center row">
+      <div class="row">
         <% @hospitals.each do |hospital| %>
           <% if hospital.is_active == true %>
-            <div class="col-md-4 shadow p-3 mb-4 m-4">
+            <div class="col-md-4 shadow p-6 mb-3">
                 診療科目：<%= hospital.subject %><br>
                 住所：<%= hospital.address %><br>
               <%= link_to public_hospital_path(hospital) do %>
