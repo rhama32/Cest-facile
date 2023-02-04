@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
 def top
   @genres = Genre.all
-  @hospitals = Hospital.all
+  @hospitals = Hospital.all.page(params[:page]).per(4)
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals

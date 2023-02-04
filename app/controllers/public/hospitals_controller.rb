@@ -4,12 +4,12 @@ class Public::HospitalsController < ApplicationController
 #病院の一覧画面
  def index
   @genres = Genre.all
-  @hospitals = Hospital.all
+  @hospitals = Hospital.all.page(params[:page]).per(3)
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals
   elsif @hospital_search
-    @hospitals = @hospitals_search.page(params[:page])
+    @hospitals = @hospitals_search.page(params[:page]).per(3)
     @hospitals_count = @search_hospitals.all.count
   end
 

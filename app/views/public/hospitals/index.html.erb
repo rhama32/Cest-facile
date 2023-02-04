@@ -15,12 +15,12 @@
               <%= link_to public_hospital_path(hospital) do %>
                 <%= image_tag hospital.image, size:"100x100"  %>
                 <%= hospital.name %>
-
               <% end %>
             </div>
           <% end %>
         <% end %>
+        <%= paginate @hospitals %>
       </div>
     </div>
   </div>
-</div>
+

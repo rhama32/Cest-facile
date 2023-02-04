@@ -60,11 +60,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'font-awesome-sass'
 
 #ブートストラップのダウンロード
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap'
 gem 'jquery-rails'
 
 #雷のダウンロード
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari'
 
 #enum導入（定義は未設定）
 gem "enum_help"

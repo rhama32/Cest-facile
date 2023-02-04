@@ -22,6 +22,7 @@ window.raty = function(elem,opt){
     raty.init();
     return raty;
 }
+
 //= require jquery3
 //= require popper
 //= require bootstrap
