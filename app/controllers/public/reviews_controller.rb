@@ -23,7 +23,7 @@ before_action :authenticate_customer!
 
  def index
   @hospital = Hospital.all
-  @reviews = Review.all
+  @reviews = current_customer.reviews
  end
 
  def show

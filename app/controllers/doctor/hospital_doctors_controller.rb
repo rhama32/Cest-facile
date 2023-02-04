@@ -2,7 +2,7 @@ class Doctor::HospitalDoctorsController < ApplicationController
 before_action :authenticate_doctor!
  def show
   @doctor = current_doctor
-  @hospital = Hospital.find(@doctor.hospital_id)
+  @hospital = Hospital.find_by(id: @doctor.hospital_id)
  end
 
  def edit
@@ -26,7 +26,7 @@ before_action :authenticate_doctor!
 
  def withdraw
   @doctor = current_doctor
-  @doctor.unsubscribe
+  @doctor.destroy
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path

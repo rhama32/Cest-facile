@@ -5,6 +5,7 @@ class Public::HospitalsController < ApplicationController
  def index
   @genres = Genre.all
   @hospitals = Hospital.all.page(params[:page]).per(3)
+
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals
