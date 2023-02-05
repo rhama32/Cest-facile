@@ -1,1 +1,24 @@
 <h4>医師詳細</h4>
+  <%= @hospital_doctor.name %>さんの医療者情報詳細
+ <table class="table">
+  <div class="row-lg-11">
+  <tbody>
+   <div class="row-lg-11">
+    <tr>
+     <th>医療者ID</th>
+     <th><%= @hospital_doctor.id %></th>
+    </tr>
+    <tr>
+     <th>氏名</th>
+     <th><%= @hospital_doctor.name %></th>
+    </tr>
+    <tr>
+     <th>所属院</th>
+     <th><%= @hospital_doctor.hospital.name %></th>
+    </tr>
+    </div>
+   </tbody>
+  </table>
+     <div class="form-group">
+      <%= link_to '医師一覧に戻る', public_hospital_doctors_path, class: "btn btn-primary" %>
+     </div>

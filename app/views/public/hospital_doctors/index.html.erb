@@ -1,1 +1,44 @@
-<h4>医師一覧</h4>
+<div class="container">
+  <div class="row-lg-11">
+    <div class="col-3">
+      <h4 class="bg-light text-center"><h4><%#= @hospital.name %>　医師一覧</h4>
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+  <div class="row-lg-10">
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th>医療者ID</th>
+          <th>医療提供者名</th>
+        　<th>病院ID</th>
+          <th>病院名</th>
+          <th>フォロー機能</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hospital_doctors.each do |hospital_doctor| %>
+          <tr>
+            <th><%= hospital_doctor.id %></th>
+            <th>
+                <%= link_to public_hospital_doctor_path(hospital_doctor.id) do %>
+                <%= hospital_doctor.name %>
+                <% end %>
+            </th>
+            <th><%#= hospital_doctor.hospital.id %></th>
+            <th><%#= hospital_doctor.hospital.name %></th>
+            <th>
+                <%# if current_customer.following?(doctor) %>
+                  <%#= link_to "フォロー外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
+                <%# else %>
+                  <%#= link_to "フォローする", public_follows_path(doctor_id: doctor.id), method: :post %>
+                <%# end %>    
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="pagination justify-content-center"></div>
