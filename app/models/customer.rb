@@ -72,4 +72,28 @@ class Customer < ApplicationRecord
   def full_name
     "#{last_name}#{first_name}"
   end
+  
+  
+  def last_name?
+    last_name == "guestuser"
+  end
+  
+  
+  def  me?(user)
+    self == user
+  end
+  
 end
+
+
+
+
+
+users/1
+
+
+<% if current_user.me?(@user) %>
+
+
+
+<&end&>

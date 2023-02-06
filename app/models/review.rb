@@ -32,5 +32,9 @@ class Review < ApplicationRecord
       @review = Review.all
     end
   end
+  
+  def customer_full_name
+     scustomer.full_name 
+  end
 
 end

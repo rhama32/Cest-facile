@@ -55,10 +55,11 @@ Rails.application.routes.draw do
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
     resources :hospitals, only: [:index, :show] do
+     resources :hospital_doctors, only: [:index, :show, :create, :destroy]
      resources :reviews, only: :new
     end
     resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
-    resources :hospital_doctors, only: [:index, :show, :create, :destroy]
+    
     resources :symptoms, only: [:index, :show]
     resources :reviews, only: [:show, :create, :index] do
      resource :favorites, only: [:create, :destroy]
