@@ -1,77 +1,67 @@
-<% if @hospital.errors.any? %>
-  <%= @hospital.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @hospital.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <div class="container">
   <div class="row-lg-11">
     <div class="col-3">
       <h4 class="bg-light text-center">病院クリニック編集</h4>
     </div>
-    </div>
-<%= form_with model: @hospital, url: admin_hospital_path, method: :patch do |f| %>
-
- <table class="table table-bordered table-hover">
-          <tbody>
-            <tr>
-              <td>病院画像</td>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
-            </tr>
-            <tr>
-              <td>郵便番号</td>
-              <td><%= f.text_field :postal_code,:placeholder => "0000000",size:"40" %></td>
-            </tr>
-            <tr>
-              <td>住所</td>
-              <td><%= f.text_field :address, :placeholder => "大阪府大阪市中央区0-0-0", size:"40" %></td>
-            </tr>
-            <tr>
-              <td>病院名</td>
-              <td><%= f.text_field :name,:placeholder => "病院名", size:"40" %></td>
-            </tr>
-            <tr>
-              <td>病院名（カナ）</td>
-              <td><%= f.text_field :hospital_name_kana,:placeholder => "ビョウインメイ", size:"40" %></td>
-            </tr>
-            <tr>
-              <td>病院説明</td>
-              <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll', size:"40x7" %></td>
-            </tr>
-            <tr>
-              <td>電話番号</td>
-              <td><%= f.text_area :telephone_number,:placeholder => "00011110000", size:"40" %></td>
-            </tr>
-            <tr>
-              <td>ジャンル</td>
-              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %> </td>
-            </tr>
-            <tr>
-              <td>診療科目</td>
-              <td><%= f.text_field :subject,:placeholder => "診療科目", size:"40" %> </td>
-            </tr>
-            <tr>
-              <td>診療時間</td>
-              <td><%= f.text_field :hospital_time,:placeholder => "診療時間", size:"40" %> </td>
-            </tr>
-            <tr>
-              <td>駐車場</td>
-              <td><%= f.text_area :parking,:placeholder => "有or無", size:"40" %></td>
-            </tr>
-            <tr>
-              <td>ステータス</td>
-              <td><%= f.radio_button :is_active, true %>対応中　<%= f.radio_button :is_active, :false %>対応停止中</td>
-            </tr>
-          </tbody>
-        </table>
-<div class="col text-center">
-  <%= link_to '病院詳細に戻る', admin_hospital_path, class: "btn btn-primary" %>
-  <%= f.submit "　変更を保存　",class:"btn btn-success center-block"  %>
-</div>
-<% end %>
-      </div>
   </div>
-</div>
+        <%= form_with model: @hospital, url: admin_hospital_path, method: :patch do |f| %>
+          <table class="table table-bordered table-hover">
+            <tbody>
+              <tr>
+                <td>病院画像</td>
+                <td><%= f.file_field :image, accept: "image/*" %></td>
+              </tr>
+              <tr>
+                <td>郵便番号</td>
+                <td><%= f.text_field :postal_code,:placeholder => "0000000",size:"40" %></td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= f.text_field :address, :placeholder => "大阪府大阪市中央区0-0-0", size:"40" %></td>
+              </tr>
+              <tr>
+                <td>病院名</td>
+                <td><%= f.text_field :name,:placeholder => "病院名", size:"40" %></td>
+              </tr>
+              <tr>
+                <td>病院名（カナ）</td>
+                <td><%= f.text_field :hospital_name_kana,:placeholder => "ビョウインメイ", size:"40" %></td>
+              </tr>
+              <tr>
+                <td>病院説明</td>
+                <td><%= f.text_area :introduction,:placeholder => "ここに説明文を記述します",class:'form-controll', size:"40x7" %></td>
+              </tr>
+              <tr>
+                <td>電話番号</td>
+                <td><%= f.text_area :telephone_number,:placeholder => "00011110000", size:"40" %></td>
+              </tr>
+              <tr>
+                <td>ジャンル</td>
+                <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %> </td>
+              </tr>
+              <tr>
+                <td>診療科目</td>
+                <td><%= f.text_field :subject,:placeholder => "診療科目", size:"40" %> </td>
+              </tr>
+              <tr>
+                <td>診療時間</td>
+                <td><%= f.text_field :hospital_time,:placeholder => "診療時間", size:"40" %> </td>
+              </tr>
+              <tr>
+                <td>駐車場</td>
+                <td><%= f.text_area :parking,:placeholder => "有or無", size:"40" %></td>
+              </tr>
+              <tr>
+                <td>ステータス</td>
+                <td><%= f.radio_button :is_active, true %>対応中　<%= f.radio_button :is_active, :false %>対応停止中</td>
+              </tr>
+            </tbody>
+          </table>
+        <div class="col text-center">
+          <%= link_to '病院詳細に戻る', admin_hospital_path, class: "btn btn-primary" %>
+          <%= f.submit "　変更を保存　",class:"btn btn-success center-block"  %>
+        </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
