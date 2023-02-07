@@ -3,35 +3,31 @@
     <div class="col-3">
       <h4 class="bg-light text-center">会員一覧</h4>
     </div>
-
-  <div class="row-lg-10">
-    <table class="table">
-      <thead>
-        <tr class="table-secondary">
-         <th>会員ID</th>
-         <th>会員氏名</th>
-         <th>メールアドレス</th>
-         <th>ステータス</th>
-        </tr>
-      </thead>
-     <tbody>
-     <%# 顧客一覧情報の繰り返し処理 %>
-      <% @admin_customers.each do |admin_customer| %>
-　     <tr>
-        <th><%= admin_customer.id %></th>
-        <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
-        <th><%= admin_customer.email %></th>
-        <th>
-            <% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
-            <% elsif admin_customer.is_deleted == true %>退会
-            <% end %>
-            <% end %>
-        </th>
-       </tr>
-    <tr></tr>
+    <div class="row-lg-10">
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>会員ID</th>
+            <th>会員氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @admin_customers.each do |admin_customer| %>
+　          <tr>
+              <th><%= admin_customer.id %></th>
+              <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
+              <th><%= admin_customer.email %></th>
+              <th><% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
+                  <% elsif admin_customer.is_deleted == true %>退会
+                  <% end %>
+                  <% end %>
+              </th>
+            </tr>
+          </div>
+        </tbody>
+      </table>
+    <div class="pagination justify-content-center">
+      <%= paginate @admin_customers %>
     </div>
-   </tbody>
-  </table>
- <div class="pagination justify-content-center">
-  <%= paginate @admin_customers %>
- </div>

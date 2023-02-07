@@ -2,43 +2,39 @@
   <div class="row-lg-10">
     <div class="col-11 offset-md-1">
       <div class="bg-light text-center">
-<p><%= @doctor.name %>さんの医療者情報編集</p>
-</div>
-</div>
-
-<%= form_with model: @doctor, url: admin_doctor_path(@doctor, m: 'doctor'), method: :patch do |f| %>
-<table class="table table-bordered table-hover">
- <tbody>
-  <tr></tr>
-  <tr>
-   <th>会員ID</th>
-   <th>
-   <%= @doctor.id %>
-   </th>
-  </tr>
-  <tr>
-   <th>氏名</th>
-   <th><%= f.text_field :name %></th>
-  </tr>
-  <tr>
-   <th>メールアドレス</th>
-   <th><%= f.text_field :email %></th>
-  </tr>
-  <tr>
-   <th>電話番号</th>
-   <th><%= f.text_field :telephone_number %></th>
-  </tr>
-  <tr>
-   <th>承認ステータス</th>
-   <th>
-      <% @doctor.approved_status %>
-      <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
-      <% elsif @doctor.approved_status == 'denied' %>承認却下
-      <% end %>
-   </th>
- </tr>
- </tbody>
-</table>
-
-<%= f.submit "変更を保存", class: "btn btn-success" %>
-<% end %>
+        <p><%= @doctor.name %>さんの医療者情報編集</p>
+      </div>
+    </div>
+          <%= form_with model: @doctor, url: admin_doctor_path(@doctor, m: 'doctor'), method: :patch do |f| %>
+            <table class="table table-bordered table-hover">
+              <tbody>
+                <tr>
+                  <th>会員ID</th>
+                  <th><%= @doctor.id %></th>
+                </tr>
+                <tr>
+                  <th>氏名</th>
+                  <th><%= f.text_field :name %></th>
+                </tr>
+                <tr>
+                  <th>メールアドレス</th>
+                  <th><%= f.text_field :email %></th>
+                </tr>
+                <tr>
+                  <th>電話番号</th>
+                  <th><%= f.text_field :telephone_number %></th>
+                </tr>
+                <tr>
+                  <th>承認ステータス</th>
+                  <th><% @doctor.approved_status %>
+                      <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+                      <% elsif @doctor.approved_status == 'denied' %>承認却下
+                      <% end %>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
