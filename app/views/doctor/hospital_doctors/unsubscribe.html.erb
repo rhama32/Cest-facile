@@ -1,13 +1,12 @@
 <div class = "text-center">
-<h4>本当に退会しますか？</h4>
-<p>
-  退会すると、会員登録情報や<br>
-  予約情報が閲覧できなくなります。<br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
-
-<p>
-  <%= link_to "退会する", doctor_withdraw_path, method: :patch,  class: "btn btn-danger", data: { confirm: "本当に退会しますか？" }  %>
-  <%= link_to "退会しない", doctor_hospital_doctor_path(current_doctor), class: "btn btn-secondary" %>
-</p>
+  <h4>本当に退会しますか？</h4>
+    <p>
+      退会すると、会員登録情報や<br>
+      予約情報が閲覧できなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+    <p>
+      <%= link_to "退会する", doctor_withdraw_path, method: :patch,  class: "btn btn-danger", data: { confirm: "本当に退会しますか？" }  %>
+      <%= link_to "退会しない", doctor_hospital_doctor_path(current_doctor), class: "btn btn-secondary" %>
+    </p>
 </div>

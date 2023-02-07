@@ -1,27 +1,26 @@
 <% if current_doctor.approved? %>
-<% if customers.exists? %>
-  <% customers.each do |customer| %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= cutomer.name %></td>
-          <td>フォロー数: <%= customer.followings.count %></td>
-          <td>フォロワー数: <%= customer.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
+  <% if customers.exists? %>
+    <% customers.each do |customer| %>
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= cutomer.name %></td>
+            <td>フォロー数: <%= customer.followings.count %></td>
+            <td>フォロワー数: <%= customer.followers.count %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <p>ユーザーはいません</p>
   <% end %>
 <% else %>
-  <p>ユーザーはいません</p>
-<% end %>
-
-<% else %>
-申請の承認をお待ちください。
+  申請の承認をお待ちください。
 <% end %>

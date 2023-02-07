@@ -14,7 +14,7 @@
           <th>総合満足度</th>
         </tr>
       </thead>
-        <tbody>
+      <tbody>
           <td><%= "#{@review.customer.last_name} #{@review.customer.first_name}" %></td>
           <td><%= @review.hospital.name %></td>
           <td><%= @review.created_at %></td>
@@ -23,28 +23,26 @@
           <td><%= @review.staff_satisfaction %>/5点</td>
           <td><%= @review.waiting_time %>分</td>
           <td><%= @review.comment %></td>
-        　<p>
-              <%= @review.favorites.count %>いいね
-          </p>  
+        　<p><%= @review.favorites.count %>いいね</p>  
           <td><%= @review.total_point %>/5点</td>
       </tbody>
     </table>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="table-secondary">
-            [コメント欄]
-          <th>投稿者名</th>
-          <th>コメント</th>
-          <th>投稿日時</th>
-          <th>医療者コメント</th>
-          <th>投稿日時</th>
-        </tr>
-      </thead>
-      <tbody>
-          <td><%= "#{@review.customer.last_name} #{@review.customer.first_name}" %></td>
-          <td><%= @review.comment %></td>
-          <td><%= @review.created_at %></td>
-          <td><%#= @reply.comment if @reply %></td>
-          <td><%#= @reply.created_at if @reply %></td>
-      </tbody> 
-    </table>
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr class="table-secondary">
+                  [コメント欄]
+                  <th>投稿者名</th>
+                  <th>コメント</th>
+                  <th>投稿日時</th>
+                  <th>医療者コメント</th>
+                  <th>投稿日時</th>
+                </tr>
+              </thead>
+              <tbody>
+                <td><%= "#{@review.customer.last_name} #{@review.customer.first_name}" %></td>
+                <td><%= @review.comment %></td>
+                <td><%= @review.created_at %></td>
+                <td><%#= @reply.comment if @reply %></td>
+                <td><%#= @reply.created_at if @reply %></td>
+              </tbody> 
+            </table>

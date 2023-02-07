@@ -1,55 +1,52 @@
 <div class="container">
- <div class="row-lg-11">
-  <h4 class="bg-light">新規医療提供者登録フォーム<h4><br>
-  <h6>※厳正な審査を行うため、申請通過まで１週間ほどお時間がかかる場合がございます。<br>
-  　予めご了承くださいますようお願いいたします。
-  </h6>
-   <div class="col-11">
-<%= form_for(resource, as: resource_name, url: doctor_registration_path) do |f| %>
-  <%= render "doctor/shared/error_messages", resource: resource %>
-
-      <table class="table table-borderless">
-      <tbody>
-       <tr>
-        <td>名前</td>
-        <td><%= f.text_field :name,:placeholder => "大正太郎",size:"20" %> </td>
-       </tr>
-       <tr>
-        <td>メールアドレス</td>
-        <td><%= f.email_field :email,:placeholder => "sample@example.com",size:"20" %></td>
-       </tr>
-      <tr>
-        <td>電話番号（ハイフンなし）</td>
-        <td><%= f.text_field :telephone_number,:placeholder => "00055552222",size:"20" %></td>
-       </tr>
-      <tr>
-        <td>医療者免許</td>
-        <td>(表)<%= f.file_field :image, accept:"image/*", :placeholder => "医療免許の表を添付してください。", size:"20" %></td>
-            <%#= f.file_field :image, accept:"image/*", :placeholder => "医療免許の裏を添付してください。", size:"20" %>
-       </tr>
-      <tr>
-       <tr>
-        <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
-        <td><%= f.password_field :password, autocomplete: "new-password",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>パスワード(確認用)</td>
-        <td><%= f.password_field :password_confirmation,size:"20" %></td>
-       </tr>
-       <tr>
-        <td></td>
-        <td><%= f.submit "新規登録申請", class:"btn btn-success center-block" %></td>
-       </tr>
-      </tbody>
-     </table>
-       <% end %>
-   </div>
- </div>
- </div>
-
+  <div class="row-lg-11">
+    <h4 class="bg-light">新規医療提供者登録フォーム<h4><br>
+    <h6>※厳正な審査を行うため、申請通過まで１週間ほどお時間がかかる場合がございます。<br>
+         予めご了承くださいますようお願いいたします。
+    </h6>
+      <div class="col-11">
+        <%= form_for(resource, as: resource_name, url: doctor_registration_path) do |f| %>
+        <%= render "doctor/shared/error_messages", resource: resource %>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>名前</td>
+                <td><%= f.text_field :name,:placeholder => "大正太郎",size:"20" %> </td>
+              </tr>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= f.email_field :email,:placeholder => "sample@example.com",size:"20" %></td>
+              </tr>
+              <tr>
+                <td>電話番号（ハイフンなし）</td>
+                <td><%= f.text_field :telephone_number,:placeholder => "00055552222",size:"20" %></td>
+              </tr>
+              <tr>
+                <td>医療者免許</td>
+                <td>(表)<%= f.file_field :image, accept:"image/*", :placeholder => "医療免許の表を添付してください。", size:"20" %></td>
+                        <%#= f.file_field :image, accept:"image/*", :placeholder => "医療免許の裏を添付してください。", size:"20" %>
+              </tr>
+              <tr>
+                <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
+                <td><%= f.password_field :password, autocomplete: "new-password",size:"20" %></td>
+              </tr>
+              <tr>
+                <td>パスワード(確認用)</td>
+                <td><%= f.password_field :password_confirmation,size:"20" %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit "新規登録申請", class:"btn btn-success center-block" %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <div class="container">
   <div class="row-lg-11">
-   <h4>既に申請完了済みの方</h4>
-     <%= render "doctor/shared/links" %>からログインしてください。
-   </div>
+    <h4>既に申請完了済みの方</h4>
+      <%= render "doctor/shared/links" %>からログインしてください。
   </div>
+</div>

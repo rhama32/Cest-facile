@@ -1,66 +1,60 @@
 <% if current_doctor.approved? %>
-<div class="row-lg-10">
- <h4>会員予約履歴一覧画面</h4>
-  <table class="table">
-    <thead>
-        <%= link_to doctor_reservations_path do %>
-        <% end %>
-    </div>
-  </div>
-
   <div class="row-lg-10">
-    <table class="table">
-      <thead>
-        <tr class="table-secondary">
-          <th>予約者ID</th>
-          <th>予約者氏名</th>
-          <th>病院ID</th>
-          <th>予約院</th>
-          <th>予約日</th>
-          <th>予約時間</th>
-          <th>予約ステータス</th>
-          <th>ステータス編集</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @reservations.each do |reservation| %>
-        <%= form_with(model: reservation, url: doctor_reservation_path(reservation), method: :patch, local: true) do |f| %>
-          <tr>
-            <td><%= reservation.id %></td>
-            <!-- 会員の予約詳細に進む-->
-            <td><%#= link_to admin_customer_path(reservation.customer.id) do %>
-                <%= reservation.customer.last_name + reservation.customer.first_name %>
-                <%# end %>
-            </td>
-            <td><%= reservation.hospital.id %></td>
-            <td><%= reservation.hospital.name %></td>
-            <td><%= reservation.hope_day %></td>
-            <td><%= reservation.hope_time %></td>
-            <td>
-                <% if reservation.status == 'reservation_pending' %>
-                <p class="text-primary font-weight-bold">申請中</p>  
-                <% elsif reservation.status == 'reservation_confirmed' %>
-                <p class="text-success font-weight-bold">予約確定</p>
-                <% elsif reservation.status == 'tentative_reservation' %>
-                <p class="text-secondary font-weight-bold">仮予約中</p>
-                <% else %>
-                <p class="text-danger font-weight-bold">受付キャンセル</p>
-                <% end %>
-            </td>
-            <td><%= f.select :status, Reservation.statuses_i18n.invert, {} %>
-                <%= f.submit "変更" %>
-                <% end %>
-            </td>
-          </tr>
-        <% end %>
-            </th>
-          </tr>
-        <tr></tr>
-      </tbody>
-    </table>
+    <h4>会員予約履歴一覧画面</h4>
+      <table class="table">
+        <thead>
+          <%= link_to doctor_reservations_path do %>
+          <% end %>
   </div>
-</div>
-<div class="pagination justify-content-center"><%#= paginate @reservations %></div>
+          <div class="row-lg-10">
+            <table class="table">
+              <thead>
+                <tr class="table-secondary">
+                  <th>予約者ID</th>
+                  <th>予約者氏名</th>
+                  <th>病院ID</th>
+                  <th>予約院</th>
+                  <th>予約日</th>
+                  <th>予約時間</th>
+                  <th>予約ステータス</th>
+                  <th>ステータス編集</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reservations.each do |reservation| %>
+                <%= form_with(model: reservation, url: doctor_reservation_path(reservation), method: :patch, local: true) do |f| %>
+                  <tr>
+                    <td><%= reservation.id %></td>
+                    <td><%#= link_to admin_customer_path(reservation.customer.id) do %>
+                        <%= reservation.customer.last_name + reservation.customer.first_name %>
+                        <%# end %>
+                    </td>
+                    <td><%= reservation.hospital.id %></td>
+                    <td><%= reservation.hospital.name %></td>
+                    <td><%= reservation.hope_day %></td>
+                    <td><%= reservation.hope_time %></td>
+                    <td>
+                        <% if reservation.status == 'reservation_pending' %>
+                          <p class="text-primary font-weight-bold">申請中</p>  
+                        <% elsif reservation.status == 'reservation_confirmed' %>
+                          <p class="text-success font-weight-bold">予約確定</p>
+                        <% elsif reservation.status == 'tentative_reservation' %>
+                          <p class="text-secondary font-weight-bold">仮予約中</p>
+                        <% else %>
+                          <p class="text-danger font-weight-bold">受付キャンセル</p>
+                        <% end %>
+                    </td>
+                    <td><%= f.select :status, Reservation.statuses_i18n.invert, {} %>
+                        <%= f.submit "変更" %>
+                        <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <div class="pagination justify-content-center"><%#= paginate @reservations %></div>
   <% else %>
   申請の承認をお待ちください。
   <% end %>

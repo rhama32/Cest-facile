@@ -1,17 +1,16 @@
 <% if current_doctor.approved? %>
-<h2>フォロワー一覧</h2>
-<div class="container">
-  <div class="row">
-    <div class="col-10">
-      <!--一覧部分-->
-      <h2 style="margin: 20px 0;">フォロワー一覧(全<%= @follows.count %>人)</h2>
-      <div class="text-center row">
-        <% @follows.each do |follow| %>
+  <h4>フォロワー一覧</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col-10">
+          <h4 style="margin: 20px 0;">フォロワー一覧(全<%= @follows.count %>人)</h4>
+            <div class="text-center row">
+              <% @follows.each do |follow| %>
               <% end %>
             </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <% else %>
+<% else %>
   申請の承認をお待ちください。
-  <% end %>
+<% end %>

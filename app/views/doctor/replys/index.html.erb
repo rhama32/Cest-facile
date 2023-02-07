@@ -1,37 +1,36 @@
 <% if current_doctor.approved? %>
-<h4>レビュー投稿一覧画面</h4
-<div class="row-lg-10">
-<table class="table">
-  <thead>
-    <tr class="table-secondary">
-      <th>病院・クリニック名</th>
-      <th>レビュー投稿日</th>
-      <th>診療の満足度</th>
-      <th>院内の清潔さ</th>
-      <th>スタッフの対応満足度</th>
-      <th>待ち時間</th>
-      <th>コメント</th>
-      <th>総合満足度</th>
-      <th>コメント確認</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.hospital.name %></td>
-        <td><%= review.created_at %></td>
-        <td><%= link_to review.doctor_satisfaction, doctor_reply_path(reply.id) %></td>
-        <td><%= review.room_clean %></td>
-        <td><%= review.staff_satisfaction %></td>
-        <td><%= review.waiting_time %></td>
-        <td><%= review.comment %></td>
-        <td><%= review.total_point %></td>
-      </tr>
-    <% end %>
-   </tbody>
-  </table>
-</div>
-  <% else %>
+  <h4>レビュー投稿一覧画面</h4>
+    <div class="row-lg-10">
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>病院・クリニック名</th>
+            <th>レビュー投稿日</th>
+            <th>診療の満足度</th>
+            <th>院内の清潔さ</th>
+            <th>スタッフの対応満足度</th>
+            <th>待ち時間</th>
+            <th>コメント</th>
+            <th>総合満足度</th>
+            <th>コメント確認</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.hospital.name %></td>
+            <td><%= review.created_at %></td>
+            <td><%= link_to review.doctor_satisfaction, doctor_reply_path(reply.id) %></td>
+            <td><%= review.room_clean %></td>
+            <td><%= review.staff_satisfaction %></td>
+            <td><%= review.waiting_time %></td>
+            <td><%= review.comment %></td>
+            <td><%= review.total_point %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+<% else %>
   申請の承認をお待ちください。
-  <% end %>
+<% end %>
