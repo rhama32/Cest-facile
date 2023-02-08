@@ -1,14 +1,13 @@
 <h4>病院検索結果</h4>
-<table class="table table-hover table-inverse">
-  <% if @range == "Hospital" %>
-    <tbody>
-      <% @hospitals.each do |hospital| %>
-        <tr>
-          <td><%= link_to "#{hospital.name}", public_hospital_path(hospital) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-
-      <% end %>
-</table>
-<%= link_to '病院一覧に戻る', public_hospitals_path, class: "btn btn-success" %>
+  <table class="table table-hover table-inverse">
+    <% if @range == "Hospital" %>
+      <tbody>
+        <% @hospitals.each do |hospital| %>
+          <tr>
+            <td><%= link_to "#{hospital.name}", public_hospital_path(hospital) %></td>
+          </tr>
+    <% end %>
+      </tbody>
+        <% end %>
+  </table>
+    <%= link_to '病院一覧に戻る', public_hospitals_path, class: "btn btn-success" %>
