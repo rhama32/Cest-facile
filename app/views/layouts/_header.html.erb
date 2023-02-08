@@ -9,7 +9,7 @@
         </p>
           <!-- 顧客サインイン後-->
             <% if customer_signed_in? %>
-             <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
+             <span>ようこそ！<%= current_customer.last_name %> <%= current_customer.first_name %>さん</span>
                <ul class="nav justify-content-end">
                  <i class="fa-solid fa-building font-color">
                    <%= link_to "About", about_path, class: "font-color" %>

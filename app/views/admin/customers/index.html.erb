@@ -22,7 +22,7 @@
               <th><% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
                   <% elsif admin_customer.is_deleted == true %>退会
                   <% end %>
-                  <% end %>
+            <% end %>
               </th>
             </tr>
           </div>
@@ -31,3 +31,5 @@
     <div class="pagination justify-content-center">
       <%= paginate @admin_customers %>
     </div>
+  </div>
+</div>

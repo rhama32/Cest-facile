@@ -28,12 +28,14 @@ class Public::HospitalsController < ApplicationController
  @genres = Genre.all
  @hospital = Hospital.find(params[:id])
 
- def add_doctor
+
+ end
+ 
+  def add_doctor
     @doctor = Doctor.find(params[:hospital_doctor_id])
     current_customer = Customer.find(params[:customer_id])
     @doctor.current_customer << current_customer
     redirect_to root_path, notice: "ドクターを追加しました。"
- end
  end
 
  def item_params

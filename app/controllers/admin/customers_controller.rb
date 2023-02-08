@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
 #管理者でログインしていない場合、ログイン画面へ遷移。
-#before_action :authenticate_admin!
+before_action :authenticate_admin!
 
 #顧客一覧画面
 def index

@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
 
- #before_action :authenticate_admin!
+ before_action :authenticate_admin!
 
   def top
   @admin = Customer.all.page(params[:page])

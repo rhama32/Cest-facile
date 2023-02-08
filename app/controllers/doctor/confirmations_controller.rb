@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Doctor::ConfirmationsController < Devise::ConfirmationsController
+  before_action :authenticate_doctor!
   # GET /resource/confirmation/new
   # def new
   #   super

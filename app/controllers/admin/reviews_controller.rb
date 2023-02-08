@@ -1,5 +1,5 @@
 class Admin::ReviewsController < ApplicationController
-
+before_action :authenticate_admin!
  def index
   @hospital = Hospital.all
   @reviews = Review.all

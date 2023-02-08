@@ -1,7 +1,9 @@
 <div class="container">
 <h4>マイページ</h4>
 <p class="font-weight-bold h6">登録情報
-<%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
+<% unless @customer.email == "guest@example.com"%>
+  <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
+<% end %>
 <table class="table table-bordered table-hover">
  <tbody>
    <tr>
@@ -40,5 +42,3 @@
     <i class="fa-solid fa-book">
     <%= link_to '予約一覧', public_reservations_path, class: "btn btn-primary" %>
     </i>
- 
-

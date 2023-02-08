@@ -37,21 +37,16 @@ class Customer < ApplicationRecord
   end
 
   def self.guest
-    user = find_by(email: 'guest@example.com')
-    unless user
-      user = create!(
-        email: 'guest@example.com',
-        password: SecureRandom.urlsafe_base64,
-        first_name: 'ゲスト',
-        last_name: '太郎',
-        first_name_kana: 'げすと',
-        last_name_kana: 'たろう',
-        postal_code: '1234567',
-        address: '東京県渋谷市新宿区1-11-111',
-        telephone_number: '09012345678'
-      )
-    end
-    user.password = SecureRandom.urlsafe_base64
+     find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64,
+      first_name = 'ゲスト',
+      last_name = '太郎',
+      first_name_kana =  'げすと',
+      last_name_kana =  'たろう',
+      postal_code = '1234567',
+      address = '東京県渋谷市新宿区1-11-111',
+      telephone_number =  '09012345678'
+      end
   end
 
   # 検索方法分岐
@@ -82,18 +77,4 @@ class Customer < ApplicationRecord
   def  me?(user)
     self == user
   end
-  
 end
-
-
-
-
-
-users/1
-
-
-<% if current_user.me?(@user) %>
-
-
-
-<&end&>
