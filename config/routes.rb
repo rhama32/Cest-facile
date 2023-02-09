@@ -54,7 +54,7 @@ Rails.application.routes.draw do
     resource :follows, only: [:index, :show, :create, :destroy]
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
-    resources :hospitals, only: [:index, :show] do
+    resources :hospitals, only: [:create, :index, :show] do
      resources :hospital_doctors, only: [:index, :show, :create, :destroy]
      resources :reviews, only: :new
     end

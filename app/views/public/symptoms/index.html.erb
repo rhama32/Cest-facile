@@ -1,19 +1,10 @@
 <h4>症状検索画面</h4>
-<%= form_with model: @symptom, url: public_symptoms_path do |f| %>
-  <%= f.hidden_field :hospital_id %>
+<%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>
   <table class="table">
     <tbody>
-      <tr></tr>
       <th>
-       <!--予め登録していたものを検索させる形を予定-->
        症状一覧
-         <%= @symptom.personal_symptoms %>
          <%= f.select :personal_symptoms, (1..5) %>
-      </th>
-    　<th>
-       診療希望科目
-        <%= @symptom.subject %>
-        <%= f.select :subject, (1..5) %>
       </th>
       <th>
          <%= f.submit "検索する", class:"btn btn-success" %>

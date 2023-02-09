@@ -1,9 +1,9 @@
 class Public::ReservationsController < ApplicationController
 before_action :authenticate_customer!
  def new
- 
   @reservation = Reservation.new
   @hospital = Hospital.all
+  
  end
 
  def confirm
