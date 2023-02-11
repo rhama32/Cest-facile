@@ -11,8 +11,8 @@
     </tr>
    </thead>
    <tbody>
-     <th><%= @reservation.hope_day %></th>
-     <th><%= @reservation.hope_time %></th>
+     <th><%= @reservation.hope_day.strftime("%Y年 %m月 %d日") %></th>
+     <th><%= @reservation.hope_time.strftime("%H:%M") %></th>
      <th><%= @hospital.name %></th>
                      <td>
                 <% if @reservation.status == 'reservation_pending' %>

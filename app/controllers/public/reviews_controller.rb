@@ -73,7 +73,7 @@ def update
 
  def show
   @review = Review.find(params[:id])
-  @reply = @review.reply
+  #@reply = @review.reply
  end
 
  def edit

@@ -22,8 +22,8 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <th><%= link_to reservation.hope_day, public_reservation_path(reservation.id) %></th>
-        <th><%= reservation.hope_time %></th>
+        <th><%= link_to reservation.hope_day.strftime("%Y年 %m月 %d日"), public_reservation_path(reservation.id) %></th>
+        <th><%= reservation.hope_time.strftime("%H:%M") %></th>
         <th><% if reservation.hospital != nil %><%= reservation.hospital.name %><% end %></th>
         <td>
                 <% if reservation.status == 'reservation_pending' %>
