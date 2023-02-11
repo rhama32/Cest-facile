@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index, :show, :update, :destroy]
   resources :reviews, only: [:index, :show, :update, :destroy]
   resources :doctors, only: [:index, :show, :edit, :update, :destroy]
+  resources :symptoms, only: [:index, :create, :edit, :update]
   resources :notifications, only: [:index]
   end
 

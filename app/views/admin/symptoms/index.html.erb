@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row-lg-11">
+    <div class="col-3">
+      <h4 class="bg-light text-center">症状登録一覧</h4>
+    </div>
+      <table class="table">
+        <thead>
+          <%= form_with model: @symptom, url: admin_symptoms_path do |f| %>
+            <td class="col-2"><%= f.label :name, "症状名"  %></td>
+            <td class="col-2"><%= f.text_field :name %></td>
+            <td class="col-4"><%= f.submit '新規登録', class: "btn btn-primary"%></td>
+          <% end %>
+              <tr class="table-secondary">
+                <th>各症状</th>
+              </tr>
+        </thead>
+          <tbody>
+            <% @symptoms.each do |symptoms| %>
+              <tr class="border-bottom">
+                <td><%= symptoms.personal_symptom %></td>
+                <td><%= link_to '編集する', edit_admin_symptom_path(symptoms.id), class: "btn btn-warning" %></td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

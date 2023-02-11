@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row-lg-11">
+    <div class="col-3">
+      <h4 class="bg-light text-center">症状編集</h4>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-8">
+        <%= form_with model: @symptom, url: admin_symptom_path(@symptom.id) do |f| %>
+          <table>
+            <td class="col-3 font-weight-bold"><%= f.label :name, "症状名" %></td>
+            <td class="col-3"><%= f.text_field :name %></td>
+            <td class="col-4"><%= f.submit '変更を保存', class: "btn btn-success"%></td>
+          </table>
+        <% end %>
+      </div>
+    </div>

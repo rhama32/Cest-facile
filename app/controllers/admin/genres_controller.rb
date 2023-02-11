@@ -28,5 +28,4 @@ before_action :authenticate_admin!
  def genre_params
   params.require(:genre).permit(:name)
  end
-
 end

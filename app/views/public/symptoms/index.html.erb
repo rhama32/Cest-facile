@@ -4,9 +4,10 @@
     <tbody>
       <th>
        症状一覧
-         <% @personal_symptoms.each do |symptom| %>
-          <%= f.select :personal_symptom, symptom %>
-         <% end %>
+         <%# @personal_symptoms.each do |symptom| %>
+          <%#= f.select :personal_symptom, symptom %>
+          <%= f.select :symptom_id, Symptom.all, :id, :name, include_blank: "選択して下さい"  %>
+         <%# end %>
       </th>
       <th>
          <%= f.submit "検索する", class:"btn btn-success" %>
