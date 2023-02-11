@@ -1,8 +1,7 @@
+  <%= form_with model: @review, url: public_reviews_path, local:true do |f| %>
 
-<%= form_with model: @review, url: public_reviews_path do |f| %>
-  <%= f.hidden_field :hospital_id %>
     <div class="text-center" >
-        <h4><%= @hospital.name %><br>
+        <h4><%= @review.hospital.name %><br>
         レビュー入力画面</h4>
         <div class="star-form-group" id="post_doctor_satisfaction">
         <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
@@ -73,11 +72,21 @@
         コメント
         <%= @review.comment %>
         <%= f.text_field :comment %>
-        </div>
-        <br>
-        <div class="mt-2">
-        <%= f.submit "投稿する", :name => 'post', class:"btn btn-success" %>
-        <%= f.submit '下書きを保存', :name => 'draft', class:"btn btn-success" %>
-        </div>
+
+
+
+
+    <div class="row mt-4">
+      <div class="form-inline mx-auto">
+        <% if @review.is_draft == true %>
+          <%= f.submit "レビューを公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
+          <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+        <% else %>
+          <%= f.submit "レビューを更新", :name => 'update_post', class:'btn btn-sm btn-warning text-light' %>
+        <% end %>
+      </div>
     </div>
-<% end %>
+    <div class="mt-4 pb-3 text-center">
+      <u><%= link_to "下書きを削除", "#{@review.id}", method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'text-danger' %></u>
+    </div>
+  <% end %>

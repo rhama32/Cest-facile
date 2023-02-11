@@ -34,7 +34,7 @@ class Review < ApplicationRecord
   end
   
   def customer_full_name
-     scustomer.full_name 
+    customer.full_name 
   end
 
 end

@@ -56,12 +56,12 @@ Rails.application.routes.draw do
     get 'followers' => 'follows#followers', as: 'followers'
     resources :hospitals, only: [:create, :index, :show] do
      resources :hospital_doctors, only: [:index, :show, :create, :destroy]
-     resources :reviews, only: :new
+     resources :reviews, only: [:new, :edit, :update]
     end
     resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
     
     resources :symptoms, only: [:index, :show]
-    resources :reviews, only: [:show, :create, :index] do
+    resources :reviews, only: [:index, :show, :edit, :create] do
      resource :favorites, only: [:create, :destroy]
     end
 
@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources:customers, only: [:index, :show, :edit, :update]
-  resources :hospitals, only: [:index,:new, :create, :show, :edit, :update, :destroy]
+  resources :hospitals, only: [:index,:new, :show, :edit, :update, :destroy]
   resources :reservations, only: [:index, :show, :update, :destroy]
   resources :reviews, only: [:index, :show, :update, :destroy]
   resources :doctors, only: [:index, :show, :edit, :update, :destroy]

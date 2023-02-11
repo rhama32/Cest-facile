@@ -2,20 +2,6 @@ class Public::HospitalsController < ApplicationController
  #認証されたユーザーのみしか操作を許可しない。
  before_action :authenticate_customer!, except: [:index,:show]
 
- #タグ機能
- def create
-   @hospital = Hospital.new(hospital_params)
-   @hospital.customer_id = current_customer.id
-#受け取った値を,で区切って配列にする
-    tag_list = params[:hospital][:name].split(',')
-    if @hospital.save
-      @hospital.save_tag(tag_list)
-      redirect_to posts_path(@hospital),notice: '完了しました:'
-    else
-      render:new
-    end
- end
-
  def index
   @genres = Genre.all
   @hospitals = Hospital.all.page(params[:page]).per(3)

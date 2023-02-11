@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_08_102123) do
+ActiveRecord::Schema.define(version: 2023_02_11_045156) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 2023_02_08_102123) do
     t.integer "total_point"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_draft", default: true
   end
 
   create_table "symptoms", force: :cascade do |t|

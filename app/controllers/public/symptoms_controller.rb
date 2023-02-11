@@ -5,7 +5,7 @@ class Public::SymptomsController < ApplicationController
    if params[:personal_symptom].present?
    @hospitals = Hospital.where(subject: Symptom.where(personal_symptom:params[:personal_symptom]).pluck(:subject)).page(params[:page]).per(5)
  else
-   @hospitals = Hospital.page(params[:page]).per(5)
+  # @hospitals = Hospital.page(params[:page]).per(5)
  end 
    @personal_symptoms = Symptom.all
  end
