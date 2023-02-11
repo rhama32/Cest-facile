@@ -27,7 +27,7 @@ before_action :authenticate_customer!
     @review.update(is_draft: true)
     if @review.save
      flash[:notice] = "レビューの下書きを保存しました。"
-     redirect_to public_review_path(@review.id)
+     redirect_to edit_public_review_path(@review.id)
     else
     render :new, alert: "下書きの保存に失敗しました。"
     end
@@ -67,7 +67,7 @@ def update
 
  def index
   @hospital = Hospital.all
-  @reviews = current_customer.reviews
+  @reviews = current_customer.reviews.where(is_draft: true)
  end
 
  def show
@@ -77,6 +77,13 @@ def update
 
  def edit
    @review = Review.find(params[:id])
+ end
+ 
+ def destroy
+  @review = Review.find(params[:id])
+     if @review.destroy
+  redirect_to public_reviews_path
+   end
  end
 
  private

@@ -1,4 +1,4 @@
-  <%= form_with model: @review, url: public_reviews_path, local:true do |f| %>
+  <%= form_with model: @review, url: public_hospital_review_path(@review.hospital_id, @review), local:true do |f| %>
 
     <div class="text-center" >
         <h4><%= @review.hospital.name %><br>
@@ -12,6 +12,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[doctor_satisfaction]',
+        score: "<%= @review.doctor_satisfaction %>",
         half: false,
         };
         raty(elem,opt);
@@ -87,6 +88,6 @@
       </div>
     </div>
     <div class="mt-4 pb-3 text-center">
-      <u><%= link_to "下書きを削除", "#{@review.id}", method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'text-danger' %></u>
+      <u><%= link_to "下書きを削除", public_hospital_review_path(@review.hospital_id, @review), method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'text-danger' %></u>
     </div>
   <% end %>
