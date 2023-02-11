@@ -84,3 +84,5 @@ gem 'ransack'
 gem 'geocoder'
 
 gem 'impressionist'
+
+gem 'active_hash'

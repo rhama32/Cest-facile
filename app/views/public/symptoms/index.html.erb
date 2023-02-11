@@ -10,6 +10,10 @@
          <%# end %>
       </th>
       <th>
+       エリア一覧(都道府県)
+　　　　　<%= f.select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい"  %>
+      </th>
+      <th>
          <%= f.submit "検索する", class:"btn btn-success" %>
       </th>
     </tbody>
