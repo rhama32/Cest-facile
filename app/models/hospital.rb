@@ -50,4 +50,7 @@ class Hospital < ApplicationRecord
    #Googleマップの記載
    geocoded_by :address
    after_validation :geocode, if: :address_changed?
+   
+    #PV数計測
+    #is_impressionable
 end

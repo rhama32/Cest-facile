@@ -108,6 +108,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    impressionist (2.0.0)
+      nokogiri (~> 1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -226,8 +228,6 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    simple_calendar (2.4.3)
-      rails (>= 3.0)
     spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -283,6 +283,7 @@ DEPENDENCIES
   enum_help
   font-awesome-sass
   geocoder
+  impressionist
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
@@ -297,7 +298,6 @@ DEPENDENCIES
   ransack
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
-  simple_calendar (~> 2.0)
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)

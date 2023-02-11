@@ -4,6 +4,7 @@
 </div>
 <div class="container">
       <h4><%= @hospital.name %>
+      <%= @hospital.impressionist_count %>
       <div class="container text-right">
        <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
       <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>

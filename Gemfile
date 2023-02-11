@@ -82,3 +82,5 @@ gem "net-imap"
 gem 'ransack'
 
 gem 'geocoder'
+
+gem 'impressionist'

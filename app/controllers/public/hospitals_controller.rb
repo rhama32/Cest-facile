@@ -1,6 +1,7 @@
 class Public::HospitalsController < ApplicationController
- #認証されたユーザーのみしか操作を許可しない。
  before_action :authenticate_customer!, except: [:index,:show]
+ 
+ impressionist :actions => [:show]
 
  def index
   @genres = Genre.all
@@ -27,8 +28,7 @@ class Public::HospitalsController < ApplicationController
  def show
  @genres = Genre.all
  @hospital = Hospital.find(params[:id])
-
-
+ impressionist(@hospital, nil, unique: [:session_hash])
  end
  
   def add_doctor
