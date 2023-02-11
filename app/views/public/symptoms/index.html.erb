@@ -1,17 +1,14 @@
-<h4>症状検索画面</h4>
+<h4>検索画面</h4>
 <%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>
   <table class="table">
     <tbody>
       <th>
-       症状一覧
-         <%# @personal_symptoms.each do |symptom| %>
-          <%#= f.select :personal_symptom, symptom %>
-          <%= f.select :symptom_id, Symptom.all, :id, :name, include_blank: "選択して下さい"  %>
-         <%# end %>
+       ジャンル一覧
+          <%= f.select :genre_id, Genre.pluck(:name, :id), include_blank: "選択して下さい"  %>
       </th>
       <th>
        エリア一覧(都道府県)
-　　　　　<%= f.select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい"  %>
+　　　　　<%= f.select :prefecture, Prefecture.pluck(:name, :name), include_blank: "選択して下さい"  %>
       </th>
       <th>
          <%= f.submit "検索する", class:"btn btn-success" %>

@@ -87,7 +87,9 @@ Rails.application.routes.draw do
     patch "/hospital_doctors/withdraw" => "hospital_doctors#withdraw", as: "withdraw"
    resources :hospital_doctors, only: [:show, :edit, :update]
    resources :reservations, only: [:index, :show, :update]
-   resources :replys, only: [:new, :create, :confirm, :index, :show]
+   resources :reviews, only: [:index] do
+     resources :replies, only: [:new, :create, :confirm, :index, :show]
+ end
    resources :notifications, only: [:index]
 
   end

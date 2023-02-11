@@ -8,8 +8,8 @@
       <div class="col-8">
         <%= form_with model: @symptom, url: admin_symptom_path(@symptom.id) do |f| %>
           <table>
-            <td class="col-3 font-weight-bold"><%= f.label :name, "症状名" %></td>
-            <td class="col-3"><%= f.text_field :name %></td>
+            <td class="col-3 font-weight-bold"><%= f.label :personal_symptom, "症状名" %></td>
+            <td class="col-3"><%= f.text_field :personal_symptom %></td>
             <td class="col-4"><%= f.submit '変更を保存', class: "btn btn-success"%></td>
           </table>
         <% end %>

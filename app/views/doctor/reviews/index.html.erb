@@ -26,7 +26,7 @@
             <td><%= review.waiting_time %></td>
             <td><%= review.comment %></td>
             <td><%= review.total_point %></td>
-            <td><%= link_to "リプライ" , doctor_reply_path(reply.id), class: "btn btn-success" %></td>
+            <td><%= link_to "リプライ" , doctor_review_replies_path(review), class: "btn btn-success" %></td>
           </tr>
           <% end %>
         </tbody>

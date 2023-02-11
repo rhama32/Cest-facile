@@ -7,7 +7,7 @@ before_action :authenticate_admin!
 
  def create
   @symptom = Symptom.new(symptom_params)
-  @symptom.save
+  @symptom.save!
   redirect_to admin_symptoms_path
  end
 

@@ -12,7 +12,7 @@ class Review < ApplicationRecord
   belongs_to :hospital
   belongs_to :customer
   has_many :favorites,dependent: :destroy
-  has_one :reply
+  has_many :replies
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)

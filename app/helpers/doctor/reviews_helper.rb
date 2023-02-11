@@ -1,0 +1,2 @@
+module Doctor::ReviewsHelper
+end
