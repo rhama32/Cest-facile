@@ -120,10 +120,11 @@ justify-content: center;
 }
 
 // レビュー平均点表示(.star-rating-bacまで)
-// .average-score {
-//   display: flex;　// ★と点数を横並びにする
-//   justify-content: center;
-// }
+
+.average-score {
+  display: flex;
+  justify-content: center;
+}
 
 .average-score {
   display: flex;

@@ -28,6 +28,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[room_clean]',
+        score: "<%= @review.room_clean %>",
         half: false,
         };
         raty(elem,opt);
@@ -42,6 +43,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[staff_satisfaction]',
+        score: "<%= @review.staff_satisfaction %>",
         half: false,
         };
         raty(elem,opt);
@@ -57,6 +59,7 @@
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'review[total_point]',
+        score: "<%= @review.total_point %>",
         half: false,
         };
         raty(elem,opt);
