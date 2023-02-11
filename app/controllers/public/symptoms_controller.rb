@@ -11,7 +11,7 @@ class Public::SymptomsController < ApplicationController
  end
 
  def show
-   @hospitals = Hospital.page(params[:page]).per(5)
+   @hospitals = Hospital.find.page(params[:page]).per(5)
  end
 
 end
