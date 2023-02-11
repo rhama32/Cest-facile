@@ -137,15 +137,15 @@ justify-content: center;
   font-size: 17px;
 }
 
-// .star-rating-front {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   overflow: hidden; // 指定幅からはみ出した部分を隠す。
-//   white-space: nowrap;　// widthが足りない時に、折り返さないようにする。
-//   color: #ffcc33;
-//   height: 25px;
-// }
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcc33;
+  height: 25px;
+}
 
 .star-rating-front {
   position: absolute;
