@@ -12,6 +12,6 @@ class Reservation < ApplicationRecord
   enum status: { reservation_pending: 0, reservation_confirmed: 1, tentative_reservation: 2, reception_cancellation: 3 }
   
   def before_today
-    errors.add(:hope_day, 'は、本日以降の予約をしてください。') if hope_day < Date.today
+    errors.add(:hope_day, 'は、明日以降の予約をしてください。') if hope_day > Date.today
   end
 end
