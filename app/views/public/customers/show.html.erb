@@ -1,8 +1,9 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <div class="container">
 <h4>マイページ</h4>
-<p class="font-weight-bold h6">登録情報
+<responsive class="font-weight-bold h6">登録情報
 <% unless @customer.email == "guest@example.com"%>
-  <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></p>
+  <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></responsive>
 <% end %>
 <table class="table table-bordered table-hover">
  <tbody>

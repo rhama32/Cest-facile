@@ -18,19 +18,16 @@
                    <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
                  </i>
                  <i class="fa-solid fa-hospital font-color">
-                   <%= link_to "病院一覧(レビューはこちら)", public_hospitals_path, class: "font-color" %>
+                   <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path, class: "font-color" %>
                  </i>
-                 <i class="fa-solid fa-magnifying-glass font-color">
-                   <%= link_to "病院検索", public_hospitals_path, class: "font-color" %>
+                <i class="fa-solid fa-file font-color">
+                   <%= link_to "病院検索", public_symptoms_path, class: "font-color" %>
                  </i>
                  <i class="fa-solid fa-flag font-color">
                    <%= link_to "予約一覧", public_reservations_path, class: "font-color" %>
                  </i>
                  <i class="fa-solid fa-file font-color">
                    <%= link_to "レビュー一覧", public_reviews_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-file font-color">
-                   <%= link_to "症状検索", public_symptoms_path, class: "font-color" %>
                  </i>
                  <i class="fa-solid fa-users font-color">
                    <%= link_to "フォロー一覧", public_followings_path, class: "font-color" %>

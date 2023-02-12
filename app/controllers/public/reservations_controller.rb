@@ -17,7 +17,6 @@ before_action :authenticate_customer!
    flash[:notice] = "予約の受付が完了しました。"
    redirect_to public_reservations_path
   else
-   # logger.info @reservation.errors.inspect
    flash[:alert] = "予約の受付に失敗しました。"
    redirect_to public_reservations_path
  end
