@@ -67,7 +67,7 @@ def update
 
  def index
   @hospital = Hospital.all
-  @reviews = current_customer.reviews.where(is_draft: true)
+  @reviews = current_customer.reviews.order(is_draft: :desc)
  end
 
  def show

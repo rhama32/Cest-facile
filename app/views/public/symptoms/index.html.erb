@@ -25,14 +25,14 @@
   <table class="table">
     <tbody>
       <th>
-        <% @hospitals.each do |hospitals| %>
-          <% if hospitals.is_active == true %>
+        <% @hospitals.each do |hospital| %>
+          <% if hospital.is_active == true %>
             <div class="col-md-4 shadow p-6 mb-3">
-                診療科目：<%= hospitals.subject %><br>
-                住所：<%= hospitals.address %><br>
-              <%= link_to "この病院の詳細を確認する", public_hospital_path %>
-                <%= image_tag hospitals.image, size:"100x100"  %>
-                <%= hospitals.name %>
+                診療科目：<%= hospital.subject %><br>
+                住所：<%= hospital.address %><br>
+              <%= link_to "この病院の詳細を確認する", public_hospital_path(hospital) %>
+                <%= image_tag hospital.image, size:"100x100"  %>
+                <%= hospital.name %>
               <% end %>
             </div>
           <% end %>

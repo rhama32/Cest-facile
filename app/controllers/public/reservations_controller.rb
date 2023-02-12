@@ -17,7 +17,7 @@ before_action :authenticate_customer!
    flash[:notice] = "予約の受付が完了しました。"
    redirect_to public_reservations_path
   else
-   logger.info @reservation.errors.inspect
+   # logger.info @reservation.errors.inspect
    flash[:alert] = "予約の受付に失敗しました。"
    redirect_to public_reservations_path
  end
@@ -25,11 +25,13 @@ end
 
  def index
   if params[:name] == "two_month"
-   @reservations = current_customer.reservations.where(hope_day: Time.current.since(2.month)..)
+   @reservations = current_customer.reservations.where(hope_day: Time.current..Time.current.since(2.month))
   elsif params[:name] == "four_month"
-   @reservations = current_customer.reservations.where(hope_day: Time.current.since(4.month)..)
-  else
+   @reservations = current_customer.reservations.where(hope_day: Time.current..Time.current.since(4.month))
+  elsif params[:name] == 'old'
    @reservations = current_customer.reservations
+  else
+   @reservations = current_customer.reservations.where.not(hope_day: ..Time.current)
   end
   @public_customers = Customer.all
   @hospitals = Hospital.all

@@ -12,6 +12,7 @@
 <table class="table">
   <thead>
     <tr class="table-secondary">
+      <th>下書き</th>
       <th>投稿者名</th>
       <th>病院・クリニック名</th>
       <th>レビュー投稿日</th>
@@ -29,7 +30,13 @@
 
   <tbody>
     <% @reviews.each do |review| %>
-      
+        <td>
+         <% if review.is_draft %>
+          <span class="text-danger">下書き</span>
+         <% else %>
+          <span class="text-success">投稿済</span>
+         <% end %>
+        </td>
         <td><%= review.customer.last_name %>さん</td>
         <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
         <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>

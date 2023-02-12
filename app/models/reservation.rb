@@ -17,7 +17,7 @@ class Reservation < ApplicationRecord
   end
   
   def maximum_per_customer
-   errors.add(:reservation, 'は1人3件までとなります。') if customer.reservations.count >= 3
+   errors.add(:reservation, 'は1人3件までとなります。') if customer.reservations.where.not(hope_day: ..Time.current).count >= 3
   end
   
 end

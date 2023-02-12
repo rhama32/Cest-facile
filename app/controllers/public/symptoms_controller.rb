@@ -2,12 +2,25 @@ class Public::SymptomsController < ApplicationController
  before_action :authenticate_customer!
 
  def index
-   if params[:genre_id].present?
-   @hospitals = Hospital.where(genre_id: params[:genre_id]).page(params[:page]).per(5)
- elsif params[:prefecture].present?
-   @hospitals = Hospital.address_looks(params[:prefecture]).page(params[:page]).per(5)
- end 
-   @personal_symptoms = Symptom.all
+#   if params[:genre_id].present?
+#   @hospitals = Hospital.where(genre_id: params[:genre_id]).page(params[:page]).per(5)
+# elsif params[:prefecture].present?
+#   @hospitals = Hospital.address_looks(params[:prefecture]).page(params[:page]).per(5)
+# end 
+#   @personal_symptoms = Symptom.all
+
+  if params[:genre_id].present? && params[:prefecture].present?
+    # ジャンル&エリア検索
+    @hospitals = Hospital.where(genre_id: params[:genre_id]).where("address LIKE ?", "%#{params[:prefecture]}%").page(params[:page]).per(5)
+  elsif params[:genre_id].present?
+    # ジャンル検索
+    @hospitals = Hospital.where(genre_id: params[:genre_id]).page(params[:page]).per(5)
+  elsif params[:prefecture].present?
+    # 都道府県
+    @hospitals = Hospital.address_looks(params[:prefecture]).page(params[:page]).per(5)
+  end
+    
+
  end
 
  def show

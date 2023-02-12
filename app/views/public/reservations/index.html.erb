@@ -1,8 +1,9 @@
 
     予約を絞り込みますか？
     <div class="accshow">
-     <%= link_to "2ヶ月先の予約", public_reservations_path(name: "two_month"), class: "btn btn-outline-primary" %>
-     <%= link_to "4ヶ月先の予約", public_reservations_path(name: "four_month"), class: "btn btn-outline-primary" %>
+      <%= link_to "過去の予約", public_reservations_path(name: "old"), class: "btn btn-outline-primary" %>
+     <%= link_to "2ヶ月先までの予約", public_reservations_path(name: "two_month"), class: "btn btn-outline-primary" %>
+     <%= link_to "4ヶ月先までの予約", public_reservations_path(name: "four_month"), class: "btn btn-outline-primary" %>
      <%= link_to "予約一覧の再表示", public_reservations_path, class: "btn btn-warning" %>
     </div>
 
