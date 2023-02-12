@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     resources :symptoms, only: [:index, :show]
     resources :reviews, only: [:index, :show, :edit, :create] do
      resource :favorites, only: [:create, :destroy]
+     resources :replies, only: [:create, :confirm, :index]
     end
 
   end

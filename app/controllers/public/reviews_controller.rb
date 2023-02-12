@@ -72,7 +72,8 @@ def update
 
  def show
   @review = Review.find(params[:id])
-  #@reply = @review.reply
+  @replies = @review.replies
+  @reply = Reply.new(review_id: @review.id)
  end
  
  def hospital_reviews

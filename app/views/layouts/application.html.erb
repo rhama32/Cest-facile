@@ -32,9 +32,11 @@
     <!-- ヘッダーの呼び出し-->
       <body>
         <%= render "layouts/header" %>
+        <div class="container">
           <%= flash[:notice] %>
           <%= flash[:alert] %>
           <%= yield %>
+        </div>
         <%= render "layouts/footer" %>
       </body>
     </div>

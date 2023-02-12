@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_063318) do
 
   create_table "replies", force: :cascade do |t|
     t.integer "doctor_id"
+    t.integer "customer_id"
     t.integer "review_id"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false

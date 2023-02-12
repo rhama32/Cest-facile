@@ -44,27 +44,39 @@
     </tbody>
   </table>
   
-        <table class="table table-bordered table-hover">
-          [コメント欄]
-          <th>投稿者名
-          <td><%= @review.customer_full_name  %></td>
-          </th>
-          <th>コメント
-          <td><%= @review.comment %></td>
-          </th>
-          <th>投稿日時
+  <h4>[コメント欄]</h4>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>投稿者名</th>
+        <th>コメント</th>
+        <th>投稿日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @replies.each do |reply| %>
+        <tr>
+          <% if reply.doctor_id.present? %>
+            <td>D<%= reply.doctor.name %></td>
+          <% elsif reply.customer_id.present? %>
+            <td>C<%= reply.customer.full_name %></td>
+          <% end %>
+          <td><%= reply.comment %></td>
           <td><%= @review.created_at.strftime("%Y年 %m月 %d日") %></td>
-          </th>
-          </table>
-          <table>
-          <th>医療者リプライ
-          <td><%= @reply.comment if @reply %></td>
-          </th>
-          <th>リプライ作成日時
-          <td><%= @reply.created_at.strftime("%Y年 %m月 %d日") if @reply %><td>
-          </th>
-          <th>
-          <td><%#= f.submit "返信する", class:"btn btn-success" %></td>
-          </th>
-        </table>
-        <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "btn btn-primary" %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>      
+       
+  <div class="row">
+    <div class="col-sm-4">
+     <%= form_with model: @reply, url: public_review_replies_path(@review), local: true do |f| %>
+      <%= f.hidden_field :review_id %>
+      <%= f.text_area :comment, rows: 5, class: "form-control" %>
+      <%= f.submit "返信する", class:"btn btn-success" %>
+    <% end %>     
+    </div>
+  </div>
+
+        
+  <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "btn btn-primary" %>

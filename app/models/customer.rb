@@ -15,6 +15,7 @@ class Customer < ApplicationRecord
   validates :telephone_number, presence: true, numericality: {only_integer: true}
 
   has_many :reviews, dependent: :destroy
+  has_many :replies, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :follows, foreign_key: "customer_id", dependent: :destroy
   has_many :doctors, through: :follows

@@ -68,14 +68,18 @@
         <br>
         <div class="mt-2">
          待ち時間(10分単位)
-        <%= @review.waiting_time %>
+        <%= @review.waiting_time %>分
+        </div>
+        <div>
         <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
         </div>
-        <br>
         <div class="mt-2">
         コメント
+        <%= @review.comment %>
+        </div>
+        <div>
         <%= f.text_field :comment %>
-
+        </div>
 
 
 
