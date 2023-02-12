@@ -22,13 +22,15 @@
       <th>コメント</th>
       <th>総合満足度</th>
       <th>レビュー詳細</th>
+      <th>レビュー編集</th>
+      <th>レビュー削除</th>
     </tr>
   </thead>
 
   <tbody>
     <% @reviews.each do |review| %>
       
-        <td><%= review.customer.last_name %><%= review.customer.first_name %></td>
+        <td><%= review.customer.last_name %>さん</td>
         <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
         <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>
         
@@ -107,7 +109,9 @@
           });
         </script>
 
-        <td><%= link_to 'レビュー詳細', public_review_path(review.id), class: "btn btn-success" %></td>
+        <td><%= link_to '詳細', public_review_path(review.id), class: "btn btn-success" %></td>
+        <td><%= link_to '編集', edit_public_hospital_review_path(review.hospital_id, review), class: "btn btn-primary" %></td>
+        <td><%= link_to '削除', public_hospital_review_path(review.hospital_id, review), method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'btn btn-danger' %></td>
       </tr>
     <% end %>
    </tbody>
