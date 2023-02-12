@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :hospitals, only: [:create, :index, :show] do
      resources :hospital_doctors, only: [:index, :show, :create, :destroy]
      resources :reviews, only: [:new, :edit, :update, :destroy]
+     get 'hospital_reviews' => 'reviews#hospital_reviews'
     end
     resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
     
@@ -79,8 +80,8 @@ Rails.application.routes.draw do
   end
 
   namespace :doctor do
-   resource :follows, only: [:index]
-    get 'followers' => 'follows#followers', as: 'followers'
+   resource :followers, only: [:index]
+    get 'followers' => 'followers#index', as: 'followers'
     
     get "/hospital_doctors/unsubscribe" => "hospital_doctors#unsubscribe", as: "unsubsubscribe"
     patch "/hospital_doctors/withdraw" => "hospital_doctors#withdraw", as: "withdraw"

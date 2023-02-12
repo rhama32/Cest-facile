@@ -10,7 +10,7 @@ class Doctor::RepliesController < ApplicationController
  end
 
 def index
- @reviews = Review.find(params[:review_id, :hospital_id])
+ @review = Review.find(params[:review_id])
  #@replies = @review.replies 
 end
 

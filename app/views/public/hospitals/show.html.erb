@@ -9,7 +9,7 @@
        <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
       <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
     <div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
-    <%= link_to 'この病院のレビューを確認する', public_review_path, class: "btn btn-success" %>
+    <%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
       </h4>
                   <script>
               var elem = document.getElementById('hospital_total_review_<%= @hospital.id %>');
