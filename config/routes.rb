@@ -79,8 +79,7 @@ Rails.application.routes.draw do
   end
 
   namespace :doctor do
-   resource :follows, only: [:index, :create, :destroy]
-    get 'followings' => 'follows#followings', as: 'followings'
+   resource :follows, only: [:index]
     get 'followers' => 'follows#followers', as: 'followers'
     
     get "/hospital_doctors/unsubscribe" => "hospital_doctors#unsubscribe", as: "unsubsubscribe"

@@ -10,10 +10,12 @@ class Doctor::RepliesController < ApplicationController
  end
 
 def index
- @review = Review.find(params[:review_id])
- @replys = @review.replies 
+ @reviews = Review.find(params[:review_id, :hospital_id])
+ #@replies = @review.replies 
 end
 
  def show
+ @review = Review.find(params[:review_id])
+ @replies = @review.replies 
  end
 end

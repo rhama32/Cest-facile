@@ -1,0 +1,33 @@
+<h4>レビュー返信画面</h4>
+<div class="row-lg-10">
+<table class="table">
+  <thead>
+    <tr class="table-secondary">
+      <th>病院・クリニック名</th>
+      <th>レビュー投稿日</th>
+      <th>診療の満足度</th>
+      <th>院内の清潔さ</th>
+      <th>スタッフの対応満足度</th>
+      <th>待ち時間</th>
+      <th>コメント</th>
+      <th>総合満足度</th>
+      <th>レビュー返信</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.hospital.name %></td>
+        <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>
+        <td><%= review.doctor_satisfaction %></td>
+        <td><%= review.room_clean %></td>
+        <td><%= review.staff_satisfaction %></td>
+        <td><%= review.waiting_time %></td>
+        <td><%= review.comment %></td>
+        <td><%= review.total_point %></td>
+        <td><%#= link_to '作成', doctor_review_reply_path(review.replies.id), class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+</div>

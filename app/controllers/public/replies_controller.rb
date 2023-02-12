@@ -1,4 +1,4 @@
-class Public::ReplysController < ApplicationController
+class Public::RepliesController < ApplicationController
 before_action :authenticate_customer!
 before_action :authenticate_doctor!
  def new
