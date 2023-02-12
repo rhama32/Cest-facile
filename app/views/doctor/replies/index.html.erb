@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= form_with model: @review, url: public_reviews_path do |f| %>
+    
       <tr>
         <td><%= @review.hospital.name %></td>
         <td><%= @review.created_at.strftime("%Y年 %m月 %d日") %></td>
@@ -29,9 +29,10 @@
   </table>
       <div>会員コメント</div>
       <div><%= @review.comment %></div><br>
-      <div>医師コメント</div>
-      <div><%= f.text_field :comment %></div>
- 
-  <%= f.submit "返信する", class:"btn btn-success" %>
+      <%= form_with model: @reply, url: doctor_review_replies_path(@review), remote: true do |f| %>
+        <%= f.hidden_field :review_id %>
+        <div>医師コメント</div>
+        <div><%= f.text_field :comment %></div>
+      <%= f.submit "返信する", class:"btn btn-success" %>
    <% end %>
 </div>

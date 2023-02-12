@@ -8,6 +8,17 @@
       <div class="container text-right">
        <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
       <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
+      <% score = @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
+      <div>
+        Cestくん評価：
+        <% if score >= 4 %>
+        <i class="fa-regular fa-face-smile-wink"></i>
+        <% elsif score >= 2.5 %>
+        <i class="fa-regular fa-face-smile"></i>
+        <% else %>
+        <i class="fa-solid fa-face-sad-tear"></i>
+        <% end %>
+      </div>
     <div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
     <%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
       </h4>
@@ -19,7 +30,7 @@
                 starHalf: "<%= asset_path('star-half.png') %>",
                 half: true,
                 readOnly: true,
-                score: <%= @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
+                score: <%= score %>
               };
               raty(elem,opt);
             </script>

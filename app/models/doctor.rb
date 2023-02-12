@@ -11,6 +11,8 @@ class Doctor < ApplicationRecord
   has_many :notifications, dependent: :destroy
   belongs_to :hospital, optional: true
   #belongs_to :hospital_doctors
+  
+  has_many :replies
 
   enum approved_status: { unapproved: 1, approved: 2, denied: 3 }
   

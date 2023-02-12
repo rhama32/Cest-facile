@@ -1,3 +1,4 @@
+
 <div class="container">
      <%= render 'search', searches: @searches %>
      <!--ジャンル検索-->
@@ -9,20 +10,32 @@
       <div class="row">
         <% @hospitals.each do |hospital| %>
           <% if hospital.is_active == true %>
+            <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
             <div class="col-md-4 shadow p-6 mb-3">
+                <div>
+                  Cestくん評価：
+                   <% if score >= 4 %>
+                  <i class="fa-regular fa-face-smile-wink"></i>
+                  <% elsif score >= 2.5 %>
+                  <i class="fa-regular fa-face-smile"></i>
+                  <% else %>
+                  <i class="fa-solid fa-face-sad-tear"></i>
+                  <% end %>
+                </div>
                 <div>
                   診療科目：<%= hospital.subject %>
                 </div>
                 <div>
                   住所：<%= hospital.address %>
                 </div>
-                <div id="hospital_total_review_<%= hospital.id %>"></div>
+              <div id="hospital_total_review_<%= hospital.id %>"></div>
               <%= link_to public_hospital_path(hospital) do %>
                 <%= image_tag hospital.image, size:"100x100"  %>
                 <%= hospital.name %>
               <% end %>
             </div>
             <script>
+            
               var elem = document.getElementById('hospital_total_review_<%= hospital.id %>');
               var opt = {  
                 starOn: "<%= asset_path('star-on.png') %>",
@@ -30,7 +43,7 @@
                 starHalf: "<%= asset_path('star-half.png') %>",
                 half: true,
                 readOnly: true,
-                score: <%= hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
+                score: <%= score %>
               };
               raty(elem,opt);
             </script>
