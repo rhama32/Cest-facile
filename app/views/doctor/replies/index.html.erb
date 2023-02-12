@@ -11,10 +11,10 @@
       <th>待ち時間</th>
       <th>コメント</th>
       <th>総合満足度</th>
-      <th>レビュー返信</th>
     </tr>
   </thead>
   <tbody>
+    <%= form_with model: @review, url: public_reviews_path do |f| %>
       <tr>
         <td><%= @review.hospital.name %></td>
         <td><%= @review.created_at.strftime("%Y年 %m月 %d日") %></td>
@@ -24,8 +24,14 @@
         <td><%= @review.waiting_time %></td>
         <td><%= @review.comment %></td>
         <td><%= @review.total_point %></td>
-        <td><%#= link_to '作成', doctor_review_reply_path(review.replies.id), class: "btn btn-success" %></td>
       </tr>
    </tbody>
   </table>
+      <div>会員コメント</div>
+      <div><%= @review.comment %></div><br>
+      <div>医師コメント</div>
+      <div><%= f.text_field :comment %></div>
+ 
+  <%= f.submit "返信する", class:"btn btn-success" %>
+   <% end %>
 </div>

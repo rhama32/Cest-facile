@@ -88,7 +88,7 @@ Rails.application.routes.draw do
    resources :hospital_doctors, only: [:show, :edit, :update]
    resources :reservations, only: [:index, :show, :update]
    resources :reviews, only: [:index] do
-     resources :replies, only: [:new, :create, :confirm, :index, :show]
+     resources :replies, only: [:create, :confirm, :index]
  end
    resources :notifications, only: [:index]
 
