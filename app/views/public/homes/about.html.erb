@@ -1,92 +1,89 @@
 <div class="container">
   <div class="row">
-    <div class="h4 pb-2 mb-4 col-md-12 text border-bottom border-success">Cest-facileとは？</div>
-    <div class="col-md-12 py-3" style="background: url(<%= asset_path "kes.jpg" %>) center; background-size:cover;">
+    <div class="h4 pb-2 mb-4 col-md-12 text border-bottom border-success"><b>Cest-facileとは？</b></div>
+      <div class="col-md-12 py-3" style="background: url(<%= asset_path "kes.jpg" %>) center; background-size:cover;">
+        <div class="text-center">
+          <div class="jumbotron jumbotron-fluid mt-4">
+            <div class="mt-3"><h3><b>医療情報を手軽に簡単に</b></h3></div>
+              <p class="text-primary">
+              <b>Cest-facileは、<br>
+                 「医療を手軽に簡単にを目的とした」<br>
+                 病院レビュー検索サイトです。</b><br>
+              </p>
+              <p>情報に溢れる日本社会において、患者様自身が医療を選択する時代が来ています。<br>
+                 しかしながら、その情報量の多さや煩雑さが仇となり、<br>
+                 かえって情報を手軽に取得出来ないことがあります。<br>
+                 Cest-facileは、医療についての必要なデータのみを収集し、<br>
+                 お使いいただく皆様に手軽にそして簡単に取捨選択していただく、<br>
+                 アプリケーションとなることを目指しています。<br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid py-3 mw-md">
+          <section>
+            <div class="row">
+              <div class="col-md-12">
+              <div class="text-center">
+                <h3 class="text-primary"><b>病院検索機能</b></h3>
+                <p>あなたのお住まいのエリアや、希望の診療科目などから、<br>
+                   最適な病院を検索することが可能です。
+                </p>
+              </div>
+              </div>
+              <div class="col-md-4 mt-1 offset-md-4">
+                <%= image_tag "hos11.jpg", class: "featurette-image img-fluid" %>
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <div class="container-fluid py-5 mw-md">
+          <section>
+            <div class="row">
+              <div class="col-md-12">
+              <div class="text-center">
+                <h3 class="text-primary"><b>レビュー機能</b></h3>
+                <p>Cest-facileは医療機関の基本情報のみでなく、<br>
+                     会員ユーザーのレビューも掲載しています。<br>
+                     ご投稿いただいたレビューは受診いただいた、<br>
+                     皆様からの情報を基にしておりますので、<br>
+                     中立性と公平性の観点からも<br>
+                     満足した結果が得られると考えています。<br>
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4 mt-1 offset-md-4">
+              <%= image_tag "res12.jpg", class: "featurette-image img-fluid" %>
+            </div>
+            </div>
+          </section>
+        </div>
+        
+        <div class="container-fluid mw-md">
+          <section>
+            <div class="row">
+              <div class="col-md-12">
+              <div class="text-center">
+                <h3 class="text-primary"><b>予約機能</b></h3>
+                <p>検索機能によりおすすめの病院が見つかりましたら、<br>
+                   予約を実行することも可能です。<br>
+                   予約については過去の予約も確認できますので、<br>
+          　        次回の通院日を忘れることもありません。<br>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mt-1 offset-md-4">
+              <%= image_tag "cal13.jpg", class: "featurette-image img-fluid" %>
+            </div>
+          </section>
+        </div>
     
-      <div class="text-center">
-        <div class="jumbotron jumbotron-fluid mt-4">
-        <div class="mt-3"><h3>医療情報を手軽に簡単に</h3></div>
-        <p class="text-primary">
-          <b>Cest-facileは、<br>
-         「医療を手軽に簡単にを目的とした」<br>
-           病院レビュー検索サイトです。</b><br>
-
-        </p>
-        <p>情報に溢れる日本社会において、患者様自身が医療を選択する時代が来ています。<br>
-        しかしながら、その情報量の多さや煩雑さが仇となり、<br>
-        かえって情報を手軽に取得出来ないことがあります。<br>
-        Cest-facileは、医療についての必要なデータのみを収集し、<br>
-        お使いいただく皆様に手軽にそして簡単に取捨選択していただく、<br>
-        アプリケーションとなることを目指しています。<br>
-        </p>
-      </div>
-    </div>
-    </div>
-    
-
-  <div class="container-fluid py-5 mw-md">
-    <section>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center">
-            <h3 class="text-primary"><b>病院検索機能</b></h3>
-            あなたのお住まいのエリアや、希望の診療科目などから、<br>
-            最適な病院を検索することが可能です。
-          </div>
+        <div class = "text-center">
+          <h3 class= "mt-3 text-success">
+            <b><p>おっいいな！と思ったあなた、<br>
+                  Cest-facileの一員になりませんか？<b><br>
+          <h3 class= "mt-2 text-black">（登録は無料です）</h3></p>
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-primary btn-lg rounded-pill" %>
         </div>
-        <div class="col-md-4 mt-3 offset-md-4">
-          <%= image_tag "hos11.jpg", class: "featurette-image img-fluid" %>
-        </div>
-      </div>
-    </section>
-
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center">
-            <h3 class="text-primary mt-4"><b>レビュー機能</b></h3>
-            <p>
-             Cest-facileは医療機関の基本情報のみでなく、<br>
-             会員ユーザーのレビューも掲載しています。<br>
-             ご投稿いただいたレビューは受診いただいた、<br>
-             皆様からの情報を基にしておりますので、<br>
-             中立性と公平性の観点からも<br>
-             満足した結果が得られると考えています。<br>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4 mt-3 offset-md-4">
-          <%= image_tag "res12.jpg", class: "featurette-image img-fluid" %>
-        </div>
-      </div>
-
-    <section>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center">
-            <h2 class="text-primary mt-4"><b>予約機能</b></h2>
-            <p>
-            検索機能によりおすすめの病院が見つかりましたら、<br>
-             予約を実行することも可能です。<br>
-             予約については過去の予約も確認できますので、<br>
-          　 次回の通院日を忘れることもありません。<br>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4 mt-3 offset-md-4">
-          <%= image_tag "cal13.jpg", class: "featurette-image img-fluid" %>
-        </div>
-      </div>
-    </section>
-
-    <div class = "text-center">
-     <h2 class= "mt-5 text-success"><b>おっいいな！と思ったあなた、<br>
-     Cest-facileの一員になりませんか？<b><br>
-     <h2 class= "mt-2 text-black">（登録は無料です）</h2>
-     <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-primary btn-lg rounded-pill" %>
-     </h3>
-    </div>
-    <div class="col-md-4 mt-3 offset-md-4">
-      <%= image_tag "cal13.jpg", class: "featurette-image img-fluid" %>
-    </div>
-

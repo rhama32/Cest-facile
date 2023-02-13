@@ -1,37 +1,32 @@
 <div class="container">
   <div class="row">
-  <div class="jumbotron jumbotron-fluid text-black"  style="background: url(<%= asset_path "cest-facile.jpeg" %>) center; background-size:cover;">
-    <div class="text-center py-5">
-      <h4>手軽に安心を</h4>
-      <h5>
-      <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
-      <p>Cest-facile 提携クリニック・病院とともに</p>
-      <p>手軽に安心を手にしましょう！</p>
-      </h5>
-    </div>
-   </div>
-   </div>
-   
- <div class="row">    
-  <div class="btn-container">
-    
-        <% if customer_signed_in? %>
-        あなたの近くの病院を探してみましょう！</br>
-          <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success btn-lg rounded-pill" %>
-        <% else %>
-        <%= link_to "ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
-        <% end %>
+    <div class="jumbotron jumbotron-fluid text-black"  style="background: url(<%= asset_path "cest-facile.jpeg" %>) center; background-size:cover;">
+      <div class="text-center py-5">
+        <h4>手軽に安心を</h4>
+        <h5>
+        <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
+        <p>Cest-facile 提携クリニック・病院とともに</p>
+        <p>手軽に安心を手にしましょう！</p>
+        </h5>
       </div>
     </div>
   </div>
-
-</div>
-<div class="text-center">
-      <h3 style="margin: 20px 0;">新着病院</h3>
-       <div class="row">
+  <div class="row">    
+    <div class="btn-container">
+      <% if customer_signed_in? %>
+        あなたの近くの病院を探してみましょう！</br>
+        <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success btn-lg rounded-pill" %>
+      <% else %>
+        <%= link_to "ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <h3 style="margin: 20px 0;">新着病院</h3>
+      <div class="row">
         <% @hospitals.each do |hospital| %>
-         <div class="col-md-3 mt-5 ">
-         <div class="w-95 h-95 shadow">
+        <div class="col-md-3 mt-5 ">
+        <div class="w-95 h-95 shadow">
           <%= link_to public_hospital_path(hospital) do %>
           <%= image_tag hospital.image, size: '180x180' %>
          <div><%= hospital.name %></div>
