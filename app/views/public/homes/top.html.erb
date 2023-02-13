@@ -1,53 +1,66 @@
 <div class="container">
   <div class="row">
-    <div class="jumbotron jumbotron-fluid text-black"  style="background: url(<%= asset_path "cest-facile.jpeg" %>) center; background-size:cover;">
+    <div class="col-md-12 py-3" style="background: url(<%= asset_path "kes.jpg" %>) center; background-size:cover;">
       <div class="text-center py-5">
-        <h4>手軽に安心を</h4>
+        <div class="jumbotron jumbotron-fluid mt-4">
+        <h2><b>「手軽に安心を」</b></h2>
+        <p class="text-primary">
         <h5>
         <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
         <p>Cest-facile 提携クリニック・病院とともに</p>
         <p>手軽に安心を手にしましょう！</p>
         </h5>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="row">    
     <div class="btn-container">
+      <div class="text-center">
       <% if customer_signed_in? %>
-        あなたの近くの病院を探してみましょう！</br>
+        あなたの近くの病院を探してみましょう！
         <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success btn-lg rounded-pill" %>
+      </div>
       <% else %>
-        <%= link_to "ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
+      <div class="mt-3 text-center">
+        <h5><b>手軽に情報を収集しましょう！</b></h5>
+      </div>
+      <div class="mt-2 text-center">
+        <%= link_to "会員様ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
+      </div>
       <% end %>
     </div>
   </div>
-  <div class="text-center">
-    <h3 style="margin: 20px 0;">新着病院</h3>
-      <div class="row">
-        <% @hospitals.each do |hospital| %>
-        <div class="col-md-3 mt-5 ">
-        <div class="w-95 h-95 shadow">
+  
+    <div class="row">
+      <div class="col-md-12">
+      <div class="text-center">
+        <h2 class="mt-5 col-12 text"><b>アクセス数ランキング</b></h2>
+          <% @hospitals.each do |hospital| %>
+        <div class="col-md-3 mt-4 ">
+        <div class="w-80 h-80 shadow">
           <%= link_to public_hospital_path(hospital) do %>
-          <%= image_tag hospital.image, size: '180x180' %>
-         <div><%= hospital.name %></div>
-          <% end %>
+          <%= image_tag hospital.image, size: '150x150' %>
+         <div>病院名:<%= hospital.name %></div>
+         <% end %>
+         <div>診療科目:<%= hospital.subject %></div>
          </div>
          </div>
          <% end %>
        </div>
       </div>
-
-    
-      <div class="container-fluid py-4 mw-md">
-    <section>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="text-left">
-    <div class="text-left toppage">
-      <h2>診療科目から病院を探す</h2>
-<%= render 'public/hospitals/genrevar', genres: @genres %>
     </div>
-  </section>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mt-4 text-center">
+        <h2><b>診療科目から病院を探す</b></h2>
+        <%= render 'public/hospitals/genrevar', genres: @genres %>
+    </div>
+   </div>
+   </div>
+   </div>
 
       <div class="container-fluid py-4 mw-md">
     <section>
@@ -62,6 +75,5 @@
 
     
       <div class="text-center">
-
   <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class:"btn btn-success center-block", method: :post %>
     </div>
