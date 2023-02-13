@@ -1,12 +1,30 @@
-<!--ジャンル検索-->
-<%= render 'public/hospitals/genrevar', genres: @genres %>
-<link rel="stylesheet" href="homes.scss" />
-<div class="text-center">
-<h2>
-  Cest-facile</br>
-  誰でも手軽に安心を<br/>
-  <%= link_to "〜About〜", about_path, class: "font-color2" %>
-</h2>
+<div class="container">
+  <div class="row">
+  <div class="jumbotron jumbotron-fluid text-black"  style="background: url(<%= asset_path "cest-facile.jpeg" %>) center; background-size:cover;">
+    <div class="text-center py-5">
+      <h4>手軽に安心を</h4>
+      <h5>
+      <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
+      <p>Cest-facile 提携クリニック・病院とともに</p>
+      <p>手軽に安心を手にしましょう！</p>
+      </h5>
+    </div>
+   </div>
+   </div>
+   
+ <div class="row">    
+  <div class="btn-container">
+    
+        <% if customer_signed_in? %>
+        あなたの近くの病院を探してみましょう！</br>
+          <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success btn-lg rounded-pill" %>
+        <% else %>
+        <%= link_to "ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
 <div class="text-center">
       <h3 style="margin: 20px 0;">新着病院</h3>
@@ -23,5 +41,32 @@
          <% end %>
        </div>
       </div>
-  <div class="text-right">
-  </div>
+
+    
+      <div class="container-fluid py-4 mw-md">
+    <section>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="text-left">
+    <div class="text-left toppage">
+      <h2>診療科目から病院を探す</h2>
+<%= render 'public/hospitals/genrevar', genres: @genres %>
+    </div>
+  </section>
+
+      <div class="container-fluid py-4 mw-md">
+    <section>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="text-left">
+    <div class="text-left toppage">
+      <h2>詳細検索から病院を探す</h2>
+<%= link_to "詳細検索", public_symptoms_path, class:"btn btn-success center-block" %>
+    </div>
+  </section>
+
+    
+      <div class="text-center">
+
+  <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class:"btn btn-success center-block", method: :post %>
+    </div>
