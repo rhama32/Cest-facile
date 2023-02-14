@@ -10,7 +10,12 @@
           <% end %>
         </th>
         <th>
-        <%= link_to "医師詳細に進む", public_hospital_hospital_doctor_path(doctor.hospital, doctor) %>
+        <% if doctor.hospital_id.nil? %>
+        <%= link_to "病院一覧", public_hospitals_path %>
+        
+        <% else %>
+        <%= link_to "医師詳細に進む", public_hospital_hospital_doctor_path(doctor.hospital,doctor) %>
+        <% end %>
         </th>
     </tr>
 <% end %>

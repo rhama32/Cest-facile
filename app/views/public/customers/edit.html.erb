@@ -1,6 +1,12 @@
 <div class="container">
-      <h4>会員情報編集</h4>
+    <div class="row">
+      <div class= "text-center">
+      <h4><b>会員情報編集</b></h4>
+    </div>
       <%= form_with model: @customer, url: customers_update_path, method: :PATCH do |f| %>
+    </div>
+  
+<div class="col-md-8 offset-2 ">
         <table class="table table-bordered table-hover">
           <tbody>
             <tr>
@@ -31,17 +37,21 @@
             </tr>
         </tbody>
       </table>
+      
             <% if @customer.last_name != "guestuser" %>
-     
-              <div class="text-center">
-              <div class="fa-solid fa-book">
-              <%= f.submit :"編集を保存",class:"btn btn-success"%>
-              </div>
-              </div></br>
+     <div class="col-md-4 offset-4 ">
+              <class="text-center">
+              <i class="fa-solid fa-book"></i>
+              <%= f.submit :"編集を保存",class:"mt-2 btn btn-success"%>
+              </class>
               
-              <div class="text-center">
-              <div class="fa-solid fa-user-xmark">
-              <%= link_to "退会する", customers_unsubscribe_path(@customer), class:"btn btn-danger" %>
+              <class="text-center">
+              <i class="fa-solid fa-user-xmark"></i>
+              <%= link_to "退会する", customers_unsubscribe_path(@customer), class:"mt-2 btn btn-danger" %>
+              </class>
+      </div>
               <% end %>
       <% end %>
     </div>
+  </div>
+  </div>
