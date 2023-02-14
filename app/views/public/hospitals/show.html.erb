@@ -1,27 +1,33 @@
+<!--ジャンル検索-->
+<%= render 'genrevar', genres: @genres %>
 <div class="container">
-      <!--ジャンル検索-->
-      <%= render 'genrevar', genres: @genres %>
+<div class="row">
+<div class="col-md-8 offset-2">
+<h3 class="mt-4 text-center"><b><%= @hospital.name %></b></h3>
+<h3 class="mt-2 text-center">みんなのアクセス<%= @hospital.impressionist_count %>回</h3>
+<div class="mt-2 text-center">
+<%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class:"mt-2 btn btn-success rounded-pill", data: {"turbolinks" => false} %>
+<%= link_to 'ネットde診療予約', new_public_reservation_path, class: "mt-2 btn btn-primary rounded-pill" %>
+<% score = @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
+
+<div class="mt-3 text-center">
+<b>Cestくん総合評価：</b>
+<% if score >= 4 %>
+<i class="fa-regular fa-face-smile-wink"></i>
+<% elsif score >= 2.5 %>
+<i class="fa-regular fa-face-smile"></i>
+<% else %>
+<i class="fa-solid fa-face-sad-tear"></i>
+<% end %>
 </div>
-<div class="container">
-      <h4><%= @hospital.name %>
-      <div>みんなのアクセス<%= @hospital.impressionist_count %>回</div>
-      <div class="container text-right">
-       <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class: "btn btn-primary", data: {"turbolinks" => false} %>
-      <%= link_to 'ネットde診療予約に進む', new_public_reservation_path, class: "btn btn-success" %>
-      <% score = @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
-      <div>
-        Cestくん評価：
-        <% if score >= 4 %>
-        <i class="fa-regular fa-face-smile-wink"></i>
-        <% elsif score >= 2.5 %>
-        <i class="fa-regular fa-face-smile"></i>
-        <% else %>
-        <i class="fa-solid fa-face-sad-tear"></i>
-        <% end %>
-      </div>
-    <div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
-    <%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
-      </h4>
+<div class="mt-2 text-center">
+<div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
+</div>
+<div class="mt-2 text-center">
+<%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
+</div>
+</div>
+</h3>
                   <script>
               var elem = document.getElementById('hospital_total_review_<%= @hospital.id %>');
               var opt = {  
@@ -38,7 +44,7 @@
       
       
       
-      <table class="table table-bordered table-hover">
+      <table class="mt-4 table table-bordered table-hover">
         <tbody>
           <tr>
             <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"200x200" %></td>
@@ -46,6 +52,10 @@
           <tr>
             <td>郵便番号</td>
             <td><%= @hospital.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @hospital.address %></td>
           </tr>
           <tr>
             <td>病院名</td>
@@ -96,7 +106,7 @@
             <td><%= @hospital.parking %></td>
           </tr>
           <tr>
-            <td>ステータス</td>
+            <td>受付ステータス</td>
             <td>
               <% if @hospital.is_active == true %>
                 対応中
@@ -169,6 +179,9 @@ function codeAddress(){
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
+</div>
+</div>
+</div>
 
                       <!--レビュー評価<div class="eval-star"><%#= hospital.reviews.doctor_satisfaction %>/5点</div>
               <div class="average-score mb-3">
