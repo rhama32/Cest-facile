@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
       <div class= "text-center">
-      <h4><b>会員情報編集</b></h4>
+        <h4><b><%= @customer.full_name %>さんの会員情報編集</b></h4>
+      </div>
     </div>
-      <%= form_with model: @customer, url: customers_update_path, method: :PATCH do |f| %>
-    </div>
-  
-<div class="col-md-8 offset-2 ">
+    
+    <%= form_with model: @customer, url: customers_update_path, method: :PATCH do |f| %>
+      <div class="col-md-8 offset-2 ">
         <table class="table table-bordered table-hover">
           <tbody>
             <tr>
@@ -35,23 +35,17 @@
               <td><%= f.label :"メールアドレス" %></td>
               <td><%= f.text_field :email,size:"50" %></td>
             </tr>
-        </tbody>
-      </table>
-      
-            <% if @customer.last_name != "guestuser" %>
-     <div class="col-md-4 offset-4 ">
-              <class="text-center">
-              <i class="fa-solid fa-book"></i>
-              <%= f.submit :"編集を保存",class:"mt-2 btn btn-success"%>
-              </class>
-              
-              <class="text-center">
-              <i class="fa-solid fa-user-xmark"></i>
-              <%= link_to "退会する", customers_unsubscribe_path(@customer), class:"mt-2 btn btn-danger" %>
-              </class>
-      </div>
-              <% end %>
-      <% end %>
-    </div>
-  </div>
-  </div>
+          </tbody>
+        </table>
+        <% if @customer.last_name != "guestuser" %>
+          <div class="d-flex justify-content-around">
+              <i class="fa-solid fa-book">
+                <%= f.submit :"編集を保存",class:"mt-2 btn btn-success"%>
+              </i>
+              <i class="fa-solid fa-user-xmark">
+                <%= link_to "退会する", customers_unsubscribe_path(@customer), class:"mt-2 btn btn-danger" %>
+              </i>
+          </div>
+        <% end %>
+    <% end %>
+</div>
