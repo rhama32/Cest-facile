@@ -3,57 +3,60 @@
     <div class="col-md-12">
       <h4 class="text-center"><b>マイページ</b></h4>
         <h4 class="text-center">登録情報</h4>
+
         
 <div class="mt-3 text-center">
 <% unless @customer.email == "guest@example.com"%>
 <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %>
 <% end %>
-</div>
-</div>
-</div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      
-      
 
-    <td class="table-secondary">氏名</td>
-    <td class="table-active"><%= @customer.last_name %><%= @customer.first_name %></td>
-   </tr>
-   <tr>
-    <!--td class="bg-primary text-body-emphasis">カナ</td-->
-    <td class="table-secondary">カナ</td>
-    <td class="table-active"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-   </tr>
-   <tr>
-    <td class="table-secondary">郵便番号</td>
-    <td class="table-active"><%= @customer.postal_code %></td>
-   </tr>
-   <tr>
-    <td class="table-secondary">住所</td>
-    <td class="table-active"><%= @customer.address %></td>
-   </tr>
-   <tr>
-    <td class="table-secondary">電話番号</td>
-    <td class="table-active"><%= @customer.telephone_number %></td>
-   </tr>
-   <tr>
-    <td class="table-secondary">メールアドレス</td>
-    <td class="table-active"><%= @customer.email %></td>
-   </tr>
-  </tbody>
+<div class="col-md-8 offset-2 ">
+<table class="mt-4 table table-bordered shadow">
+<tbody>
+<tr>
+<td>氏名</td>
+<th><%= @customer.last_name %><%= @customer.first_name %></th>
+</tr>
+
+<tr>
+<td>カナ</td>
+<th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+</tr>
+
+<tr>
+<td>郵便番号</td>
+<th><%= @customer.postal_code %></th>
+</tr>
+   
+<tr>
+<td>住所</td>
+<th><%= @customer.address %></th>
+</tr>
+   
+<tr>
+    <td>電話番号</td>
+    <th><%= @customer.telephone_number %></th>
+</tr>
+   
+<tr>
+<td>メールアドレス</td>
+<th><%= @customer.email %></th>
+</tr>
+</div>
+</div>
+</div>
+</div>
+</div>
+</tbody>
 </table>
-</div>
-</div>
-</div>
+
     <i class="fa-solid fa-magnifying-glass">
-    <%= link_to '過去のレビュー', public_reviews_path, class: "btn btn-primary" %>
+    <%= link_to '過去のレビュー', public_reviews_path, class: "mt-2  btn btn-primary" %>
     </i>
     <i class="fa-solid fa-users">
-    <%= link_to 'フォロー一覧', public_follows_path, class: "btn btn-primary" %>
+    <%= link_to 'フォロー一覧', public_follows_path, class: "mt-2 btn btn-primary" %>
     </i>
     <i class="fa-solid fa-book">
-    <%= link_to '予約一覧', public_reservations_path, class: "btn btn-primary" %>
+    <%= link_to '予約一覧', public_reservations_path, class: "mt-2 btn btn-primary" %>
     </i>
