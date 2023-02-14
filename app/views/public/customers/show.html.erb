@@ -1,13 +1,24 @@
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <div class="container">
-<h4>マイページ</h4>
-<responsive class="font-weight-bold h6">登録情報
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center"><b>マイページ</b></h4>
+        <h4 class="text-center">登録情報</h4>
+        
+<div class="mt-3 text-center">
 <% unless @customer.email == "guest@example.com"%>
-  <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %></responsive>
+<%= link_to "編集する", customers_edit_path, class:"btn btn-success" %>
 <% end %>
-<table class="table table-bordered table-hover">
- <tbody>
-   <tr>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      
+      
+
     <td class="table-secondary">氏名</td>
     <td class="table-active"><%= @customer.last_name %><%= @customer.first_name %></td>
    </tr>
@@ -34,6 +45,9 @@
    </tr>
   </tbody>
 </table>
+</div>
+</div>
+</div>
     <i class="fa-solid fa-magnifying-glass">
     <%= link_to '過去のレビュー', public_reviews_path, class: "btn btn-primary" %>
     </i>
