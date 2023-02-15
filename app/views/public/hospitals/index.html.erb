@@ -29,8 +29,17 @@
               </div>
               <div id="hospital_total_review_<%= hospital.id %>"></div>
               <%= link_to public_hospital_path(hospital) do %>
-                <%= hospital.name %>
-                <%= image_tag hospital.image, size:"130x130"%>
+              <div class="card" style="width: 18rem;">
+                <class="card-img-top">
+              <%= image_tag hospital.image, size:"130x130"%>
+              <div class="card-body">
+              <p class="card-text"><%= hospital.name %></p>
+              </div>
+              </div>
+              
+              
+                
+                
               <% end %>
 
             <% end %>

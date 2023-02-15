@@ -40,7 +40,7 @@
  </table>
   <% end %>
   </div>
-  <h4 class="mt-2 text-center"><b>病院から探す</b></h4>
+  <h3 class="mt-2 text-center"><b>登録病院から探す</b></h3>
           <% @hospitals.each do |hospital| %>
           <div class="mt-3 col-md-4 shadow">
             <% if hospital.is_active == true %>
@@ -83,6 +83,10 @@
             </script>
             </div>
       <% end %>
+      <%= render 'public/hospitals/genrevar', genres: @genres %>
+   
+      <div class="mt-5">
         <%= paginate @hospitals %>
+      </div>
 </div>
 </div>

@@ -1,6 +1,7 @@
 class Public::ReservationsController < ApplicationController
 before_action :authenticate_customer!
  def new
+  @genres = Genre.all
   @reservation = Reservation.new
   @hospital = Hospital.all
   @hospitals = Hospital.all.page(params[:page]).per(6)

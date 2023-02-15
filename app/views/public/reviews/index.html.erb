@@ -17,7 +17,7 @@
         <div class= "text-left">
          病院画像
          <% if review.hospital != nil %>
-           <%= review.hospital.image %>
+           <%= image_tag review.hospital.get_image(100,100) %>
          <% end %>
          </div>
          
