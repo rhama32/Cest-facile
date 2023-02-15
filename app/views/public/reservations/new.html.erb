@@ -40,9 +40,9 @@
  </table>
   <% end %>
   </div>
-  
+  <h4 class="mt-2 text-center"><b>病院から探す</b></h4>
           <% @hospitals.each do |hospital| %>
-          <div class="mt-3 col-md-8 offset-2 shadow">
+          <div class="mt-3 col-md-4 shadow">
             <% if hospital.is_active == true %>
             <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
               <div class= "text-left">

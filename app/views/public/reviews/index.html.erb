@@ -1,52 +1,45 @@
-<div class="container">
- <div class="row">
-  <div class="col-md-2">
-     <!--ジャンル検索-->
-     <%= render 'search', searches: @searches %>
-  </div>
-
- <div class="row-lg-10">
-<h4>レビュー投稿一覧画面<br>
-    ※得点は5段階評価となっております。
-</h4>
-<table class="table">
-  <thead>
-    <tr class="table-secondary">
-      <th>下書き</th>
-      <th>投稿者名</th>
-      <th>病院・クリニック名</th>
-      <th>レビュー投稿日</th>
-      <th>診療の満足度</th>
-      <th>院内の清潔さ</th>
-      <th>スタッフの対応満足度</th>
-      <th>待ち時間(分)</th>
-      <th>コメント</th>
-      <th>総合満足度</th>
-      <th>レビュー詳細</th>
-      <th>レビュー編集</th>
-      <th>レビュー削除</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-        <td>
-         <% if review.is_draft %>
-          <span class="text-danger">下書き</span>
-         <% else %>
-          <span class="text-success">投稿済</span>
-         <% end %>
-        </td>
-        <td><%= review.customer.last_name %>さん</td>
-        <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
-        <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>
+<!--検索機能-->
+<%= render 'search', searches: @searches %>
+  <div class="container">
+    <div class="row">
+      <h4 class="mt-2 text-center"><b><%= @customer.full_name %>さんの投稿一覧</b></h4>
+        <table>
+          <% @reviews.each do |review| %>
+            <div class="col-md-4 shadow">
+              <div class= "text-left">投稿状況
+                <% if review.is_draft %>
+                  <span class="text-danger">下書き</span>
+                <% else %>
+                  <span class="text-success">投稿済</span>
+                <% end %>
+              </div>
         
-        <td>
+        <div class= "text-left">
+         病院画像
+         <% if review.hospital != nil %>
+           <%= review.hospital.image %>
+         <% end %>
+         </div>
+         
+        <div class= "text-left">
+         病院名
+         <% if review.hospital != nil %>
+           <%= review.hospital.name %>
+         <% end %>
+         </div>
+         
+        <div class= "text-left">
+         投稿日
+         <%= review.created_at.strftime("%Y年 %m月 %d日") %>
+        </div>
+        
+        <div class= "text-left">
+         診療の満足度
         <div class="star-group">
         <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
         <div class="eval-star"><%= review.doctor_satisfaction %>/5点</div>
         </div>
-        </td>
+        </div>
         <script>
          $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
           size: 38,
@@ -59,12 +52,13 @@
           });
         </script>
         
-        <td>
+        <div class= "text-left">
+         院内の清潔さ
         <div class="star-group">
-        <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
+        <div class="detail-value", id="star-comf-<%= review.id %>"></div>
         <div class="eval-star"><%= review.room_clean %>/5点</div>
         </div>
-        </td>
+        </div>
          <script>
          $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
           size: 38,
@@ -76,13 +70,15 @@
           score: <%= review.room_clean %>,              //scoreオプションで評価内容を取得
           });
         </script>
+
         
-        <td>
+        <div class= "text-left">
+         スタッフの対応満足度
         <div class="star-group">
         <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
         <div class="eval-star"><%= review.staff_satisfaction %>/5点</div>
         </div>
-        </td>
+        </div>
         <script>
          $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
           size: 38,
@@ -94,16 +90,14 @@
           score: <%= review.staff_satisfaction %>,              //scoreオプションで評価内容を取得
           });
         </script>
-        
-        <td><%= review.waiting_time %></td>
-        <td><%= review.comment %></td>
-        
-        <td>
+       
+        <div class= "text-left">
+         総合満足度
         <div class="star-group">
         <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
         <div class="eval-star"><%= review.total_point %>/5点</div>
         </div>
-        </td>
+        </div>
         <script>
          $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
           size: 38,
@@ -115,12 +109,25 @@
           score: <%= review.total_point %>,              //scoreオプションで評価内容を取得
           });
         </script>
+        <div class= "text-left">
+          待ち時間
+          <%= review.waiting_time %>分
+        </div>
+        <div class= "text-left">コメント</div>
+        <div class= "bg-light text-left"><%= review.comment %></div>
+        
 
-        <td><%= link_to '詳細', public_review_path(review.id), class: "btn btn-success" %></td>
-        <td><%= link_to '編集', edit_public_hospital_review_path(review.hospital_id, review), class: "btn btn-primary" %></td>
-        <td><%= link_to '削除', public_hospital_review_path(review.hospital_id, review), method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'btn btn-danger' %></td>
-      </tr>
+        <div>
+          <%= link_to '詳細', public_review_path(review.id), class: "btn btn-success" %>
+          <%= link_to '編集', edit_public_hospital_review_path(review.hospital_id, review), class: "btn btn-primary" %>
+          <%= link_to '削除', public_hospital_review_path(review.hospital_id, review), method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'btn btn-danger' %>
+        </div>
+      </div>
     <% end %>
-   </tbody>
+    </thead>
   </table>
+
+<%= paginate @reviews %>
+</div>
+</div>
 </div>

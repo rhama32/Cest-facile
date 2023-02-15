@@ -66,11 +66,13 @@ def update
   end
 
  def index
+  @customer = current_customer
   @hospital = Hospital.all
-  @reviews = current_customer.reviews.order(is_draft: :desc)
+  @reviews = current_customer.reviews.order(is_draft: :desc).page(params[:page]).per(2)
  end
 
  def show
+  @customer = current_customer
   @review = Review.find(params[:id])
   @replies = @review.replies
   @reply = Reply.new(review_id: @review.id)
