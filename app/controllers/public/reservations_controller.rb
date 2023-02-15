@@ -3,7 +3,7 @@ before_action :authenticate_customer!
  def new
   @reservation = Reservation.new
   @hospital = Hospital.all
-  
+  @hospitals = Hospital.all.page(params[:page]).per(6)
  end
 
  def confirm
@@ -23,6 +23,7 @@ before_action :authenticate_customer!
 end
 
  def index
+  @customer = current_customer
   if params[:name] == "two_month"
    @reservations = current_customer.reservations.where(hope_day: Time.current..Time.current.since(2.month))
   elsif params[:name] == "four_month"
