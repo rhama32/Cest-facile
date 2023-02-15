@@ -5,7 +5,7 @@
         <h4 class="bg-light text-center">病院新規登録</h4>
       </div>
     </div>
-          <%= form_with model: @hospital, url: admin_hospitals_path do |f| %>
+          <%= form_with model: @hospital, url: admin_hospitals_path method: :post do |f| %>
             <table class="table table-borderless">
               <tbody>
                 <tr>

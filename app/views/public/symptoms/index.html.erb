@@ -1,3 +1,5 @@
+<%= render 'public/hospitals/genrevar', genres: @genres %>
+
 
 <h4>検索画面</h4>
 <%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>

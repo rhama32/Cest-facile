@@ -1,4 +1,5 @@
 <header>
+  
   <div class="header">
     <nav class="navbar navbar-light mb-2">
       <div class="container">
@@ -7,105 +8,113 @@
             <%= image_tag asset_path('cest-facile.jpeg'),size: '80x80' %>
           <% end %>
         </p>
-          <!-- 顧客サインイン後-->
-            <% if customer_signed_in? %>
-             <span>ようこそ！<%= current_customer.last_name %> <%= current_customer.first_name %>さん</span>
-               <ul class="nav justify-content-end">
-                 <i class="fa-solid fa-building font-color">
-                   <%= link_to "About", about_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-user font-color">
-                   <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-hospital font-color">
-                   <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path, class: "font-color" %>
-                 </i>
-                <i class="fa-solid fa-file font-color">
-                   <%= link_to "病院検索", public_symptoms_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-flag font-color">
-                   <%= link_to "予約一覧", public_reservations_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-file font-color">
-                   <%= link_to "個人レビュー", public_reviews_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-users font-color">
-                   <%= link_to "フォロー一覧", public_followings_path, class: "font-color" %>
-                 </i>
-                 <i class="fa-solid fa-right-from-bracket font-color">
-                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "font-color" %>
-                 </i>
-               </ul>
-          <!--管理者がログインした場合-->
-            <% elsif admin_signed_in? %>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "会員一覧", admin_customers_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "ジャンル一覧", admin_genres_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "予約一覧", admin_reservations_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "レビュー管理一覧", admin_reviews_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "医療提供者申請一覧", admin_doctors_path, class: "font-color" %>
-              </li>
-              <li class="fa-solid fa-file font-color">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "font-color" %>
-              </li>
-          <!--医療提供者がログインした場合-->
-            <% elsif doctor_signed_in? %>
-              <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <%= link_to "About us", about_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                 <%= link_to "通知確認画面", doctor_notifications_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "予約確認画面", doctor_reservations_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "コメント確認画面", doctor_reviews_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "医療提供者マイページ", doctor_hospital_doctor_path(current_doctor), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "フォロワー一覧", doctor_followers_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
-                </li>
-              </ul>
-          <!--サインインしていない場合-->
-            <% else %>
-              <i class="fa-solid fa-file font-color">
-                <%= link_to "About", about_path %>
-              </i>
-              <i class="fa-solid fa-hospital">
-                <%= link_to "病院一覧", public_hospitals_path %>
-             </i>
-              <i class="fa-solid fa-user-plus">
-                <%= link_to "新規登録", new_customer_registration_path %>
-              </i>
-              <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
-                <%= link_to "会員様ログイン", customer_session_path %>
-              </i>
-              <i class="fa-solid fa-lock">
-                <%= link_to "管理者ログイン", admin_session_path %>
-              </i>
-              <i class="fa-solid fa-lock">
-                <%= link_to "医療者ログイン", doctor_session_path %>
-              </i>
-            <% end %>
+        <!-- 顧客サインイン後-->
+        <% if customer_signed_in? %>
+          <div class="text-left">
+            ようこそ！<%= current_customer.last_name %> <%= current_customer.first_name %>さん
           </div>
-        </nav>
+          <%= link_to '#', class: 'nav-link p-1 mx-2', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <% end %>
+
+           <ul class="dropdown-menu dropdown-menu-right">
+             <i class="fa-solid fa-building font-color">
+               <%= link_to "About", about_path %>
+             </i>
+             <i class="fa-solid fa-user font-color">
+               <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-hospital font-color">
+               <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-file font-color">
+               <%= link_to "病院検索", public_symptoms_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-flag font-color">
+               <%= link_to "予約一覧", public_reservations_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-file font-color">
+               <%= link_to "個人レビュー", public_reviews_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-users font-color">
+               <%= link_to "フォロー一覧", public_followings_path, class: "font-color" %>
+             </i>
+             <i class="fa-solid fa-right-from-bracket font-color">
+               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "font-color" %>
+             </i>
+           </ul>
+      <!--管理者がログインした場合-->
+        <% elsif admin_signed_in? %>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "会員一覧", admin_customers_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "予約一覧", admin_reservations_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "レビュー管理一覧", admin_reviews_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "医療提供者申請一覧", admin_doctors_path, class: "font-color" %>
+          </li>
+          <li class="fa-solid fa-file font-color">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "font-color" %>
+          </li>
+      <!--医療提供者がログインした場合-->
+        <% elsif doctor_signed_in? %>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <%= link_to "About us", about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "通知確認画面", doctor_notifications_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "予約確認画面", doctor_reservations_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "コメント確認画面", doctor_reviews_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "医療提供者マイページ", doctor_hospital_doctor_path(current_doctor), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "フォロワー一覧", doctor_followers_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+      <!--サインインしていない場合-->
+        <% else %>
+          <i class="fa-solid fa-file font-color">
+            <%= link_to "About", about_path %>
+          </i>
+          <i class="fa-solid fa-hospital">
+            <%= link_to "病院一覧", public_hospitals_path %>
+         </i>
+          <i class="fa-solid fa-user-plus">
+            <%= link_to "新規登録", new_customer_registration_path %>
+          </i>
+          <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
+            <%= link_to "会員様ログイン", customer_session_path %>
+          </i>
+          <i class="fa-solid fa-lock">
+            <%= link_to "管理者ログイン", admin_session_path %>
+          </i>
+          <i class="fa-solid fa-lock">
+            <%= link_to "医療者ログイン", doctor_session_path %>
+          </i>
+        <% end %>
       </div>
+    </nav>
+  </div>
 </header>

@@ -8,26 +8,10 @@
               <%= csrf_meta_tags %>
               <%= csp_meta_tag %>
                 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+                <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
                 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--トップへ戻るの実装-->
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <p class="pagetop"><a href="#wrap">▲</a></p>
-          <script>
-            $(document).ready(function() {
-            var pagetop = $('.pagetop');
-              $(window).scroll(function () {
-                if ($(this).scrollTop() > 10) {
-                  pagetop.fadeIn();
-               } else {
-                 pagetop.fadeOut();
-             }
-           });
-           pagetop.click(function () {
-               $('body, html').animate({ scrollTop: 0 }, 50);
-                  return false;
-       });
-    });
-      </script>
+               
+  
     </head>
     <!-- ヘッダーの呼び出し-->
       <body>

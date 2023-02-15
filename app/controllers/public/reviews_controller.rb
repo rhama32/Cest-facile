@@ -9,7 +9,6 @@ before_action :authenticate_customer!
  end
 
  def create
-  
   @review = current_customer.reviews.build(review_params)
   @hospital = @review.hospital
   @review.customer_id = current_customer.id
@@ -25,7 +24,7 @@ before_action :authenticate_customer!
   #下書きボタンを押した時
   else
     @review.update(is_draft: true)
-    if @review.save
+    if @review.save!(validate: false)
      flash[:notice] = "レビューの下書きを保存しました。"
      redirect_to edit_public_review_path(@review.id)
     else
@@ -68,7 +67,7 @@ def update
  def index
   @customer = current_customer
   @hospital = Hospital.all
-  @reviews = current_customer.reviews.order(is_draft: :desc).page(params[:page]).per(2)
+  @reviews = current_customer.reviews.order(created_at: :desc).page(params[:page]).per(2)
  end
 
  def show

@@ -4,13 +4,14 @@
 // that code so it'll be compiled.
 import $ from "jquery";
 import Rails from "@rails/ujs"
-//import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-Rails.start()
-//Turbolinks.start()
-ActiveStorage.start()
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"
 
 
 window.$ = window.jQuery = require('jquery');
@@ -22,6 +23,10 @@ window.raty = function(elem,opt){
     raty.init();
     return raty;
 }
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
 
 //= require jquery3
 //= require popper

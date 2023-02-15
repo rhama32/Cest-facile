@@ -2,7 +2,7 @@ class Public::SymptomsController < ApplicationController
  before_action :authenticate_customer!
 
  def index
-
+@genres = Genre.all
   if params[:genre_id].present? && params[:prefecture].present?
     # ジャンル&エリア検索
     @hospitals = Hospital.where(genre_id: params[:genre_id]).where("address LIKE ?", "%#{params[:prefecture]}%").page(params[:page]).per(5)

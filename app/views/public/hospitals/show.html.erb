@@ -2,7 +2,7 @@
 <%= render 'genrevar', genres: @genres %>
 <div class="container">
 <div class="row">
-<div class="col-md-8 offset-2">
+<div class="offset-0 col-md-8 offset-md-2">
 <h3 class="mt-4 text-center"><b><%= @hospital.name %></b></h3>
 <h3 class="mt-2 text-center">みんなのアクセス<%= @hospital.impressionist_count %>回</h3>
 <div class="mt-2 text-center">
@@ -119,7 +119,7 @@
             <input id="address" type="textbox" value="検索バー">
             <input type="button" value="Encode" onclick="codeAddress()">
               <div id="display">検索後は表示までしばらくお待ちください。</div>
-              <div id='map'></div>
+              <div id='map' class=></div>
           </td>
           </tr>
         </tbody>
@@ -130,7 +130,7 @@
 <style>
 #map {
   height: 400px;
-  width: 400px;
+  width: 100%;
 }
 </style>
 
