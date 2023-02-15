@@ -41,14 +41,11 @@
               raty(elem,opt);
             </script>
 
-      
-      
-      
+      <div class="mt-2 text-center">
+        <%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"250x250" %>
+      </div>
       <table class="mt-4 table table-bordered table-hover">
         <tbody>
-          <tr>
-            <td><%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"200x200" %></td>
-          </tr>
           <tr>
             <td>郵便番号</td>
             <td><%= @hospital.postal_code %></td>
@@ -182,16 +179,3 @@ function codeAddress(){
 </div>
 </div>
 </div>
-
-                      <!--レビュー評価<div class="eval-star"><%#= hospital.reviews.doctor_satisfaction %>/5点</div>
-              <div class="average-score mb-3">
-                <div class="star-rating ml-2">
-                  <div class="star-rating-front" style="width: <%#= hospital.reviews.doctor_satisfaction.avg_score_percentage %>%">★★★★★
-                  </div>
-                    <div class="star-rating-back">★★★★★
-                    </div>
-                </div>
-                <div class="average-score-display">
-                （<%#= hospital.reviews.doctor_satisfaction.avg_score_percentage %>点）
-                </div>
-              </div>-->
