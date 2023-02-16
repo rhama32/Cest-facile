@@ -20,53 +20,53 @@
           <% end %>
 
            <ul class="dropdown-menu dropdown-menu-right">
-             <i class="fa-solid fa-building font-color">
+             <i class="fa-solid fa-building">
                <%= link_to "About", about_path %>
              </i>
-             <i class="fa-solid fa-user font-color">
-               <%= link_to "マイページ", customers_mypage_path, class: "font-color" %>
+             <i class="fa-solid fa-user">
+               <%= link_to "マイページ", customers_mypage_path %>
              </i>
-             <i class="fa-solid fa-hospital font-color">
-               <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path, class: "font-color" %>
+             <i class="fa-solid fa-hospital">
+               <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path %>
              </i>
-             <i class="fa-solid fa-file font-color">
-               <%= link_to "病院検索", public_symptoms_path, class: "font-color" %>
+             <i class="fa-solid fa-file">
+               <%= link_to "病院検索", public_symptoms_path %>
              </i>
-             <i class="fa-solid fa-flag font-color">
-               <%= link_to "予約一覧", public_reservations_path, class: "font-color" %>
+             <i class="fa-solid fa-flag">
+               <%= link_to "予約一覧", public_reservations_path %>
              </i>
-             <i class="fa-solid fa-file font-color">
-               <%= link_to "個人レビュー", public_reviews_path, class: "font-color" %>
+             <i class="fa-solid fa-file">
+               <%= link_to "個人レビュー", public_reviews_path %>
              </i>
-             <i class="fa-solid fa-users font-color">
-               <%= link_to "フォロー一覧", public_followings_path, class: "font-color" %>
+             <i class="fa-solid fa-users">
+               <%= link_to "フォロー一覧", public_followings_path %>
              </i>
-             <i class="fa-solid fa-right-from-bracket font-color">
-               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "font-color" %>
+             <i class="fa-solid fa-right-from-bracket">
+               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
              </i>
            </ul>
       <!--管理者がログインした場合-->
         <% elsif admin_signed_in? %>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "病院一覧", admin_hospitals_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "病院一覧", admin_hospitals_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "会員一覧", admin_customers_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "会員一覧", admin_customers_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "ジャンル一覧", admin_genres_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "予約一覧", admin_reservations_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "予約一覧", admin_reservations_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "レビュー管理一覧", admin_reviews_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "レビュー管理一覧", admin_reviews_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "医療提供者申請一覧", admin_doctors_path, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "医療提供者申請一覧", admin_doctors_path %>
           </li>
-          <li class="fa-solid fa-file font-color">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "font-color" %>
+          <li class="fa-solid fa-file">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
       <!--医療提供者がログインした場合-->
         <% elsif doctor_signed_in? %>
@@ -95,7 +95,7 @@
           </ul>
       <!--サインインしていない場合-->
         <% else %>
-          <i class="fa-solid fa-file font-color">
+          <i class="fa-solid fa-file">
             <%= link_to "About", about_path %>
           </i>
           <i class="fa-solid fa-hospital">
