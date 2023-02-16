@@ -2,8 +2,10 @@ class Public::FollowsController < ApplicationController
  before_action :authenticate_customer!
 
  def index
+  @customer = current_customer
   @follows = current_customer.follows
   @doctor = Doctor.all
+  #@genres = Genre.all
  end
 
  def show
@@ -27,6 +29,8 @@ class Public::FollowsController < ApplicationController
  def followings
   @customer = current_customer
   @doctors = current_customer.doctors
+  #@genres = Genre.all
+  #@hospitals = Hospital.all
  end
 # フォロワー一覧
  def followers

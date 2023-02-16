@@ -1,19 +1,18 @@
 <div class="container">
-
-  <div class="row-lg-10">
-  <table class="table">
-    <thead>
-      <tr class="table-secondary">
-         <th>医療者ID</th>
-         <th>フォロー中の医療者</th>
-         <th>フォロー機能</th>
-         <th>医療者詳細ページ</th>
-      </tr>
-    </thead>
-    <tbody>
-      <h4><%= @customer.full_name %>さんのフォロー一覧(全<%= @doctors.count %>人)</h4>
-            <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+    <table class="table">
+      <thead>
+        <tr class="table-secondary mt-2 text-nowrap">
+          <th>医療者ID</th>
+          <th>フォロー中の医療者</th>
+          <th>フォロー機能</th>
+          <th>下記リンクへ移動</th>
         </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
       </div>
-    </tbody>
   </table>
+</div>
+</div>
