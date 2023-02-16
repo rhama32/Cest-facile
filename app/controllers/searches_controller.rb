@@ -9,6 +9,7 @@ before_action :authenticate_customer!
   else
      @reviews = Review.looks(params[:search], params[:word])
   end
+  @reviews = Review.all.page(params[:page]).per(5)
  end
 
  def hospital_search

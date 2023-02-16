@@ -67,7 +67,7 @@ def update
  def index
   @customer = current_customer
   @hospital = Hospital.all
-  @reviews = current_customer.reviews.order(created_at: :desc).page(params[:page]).per(2)
+  @reviews = current_customer.reviews.order(created_at: :desc).page(params[:page]).per(5)
  end
 
  def show
