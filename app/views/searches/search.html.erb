@@ -9,7 +9,7 @@
   
   
   <div class="offset-0 col-md-8 offset-md-2">
-    <table class="table table-hover table-inverse">
+    <table class="table table-hover table-inverse text-center">
       <th>コメント内容</th>
       <th>作成日時</th>
       <th>詳細ページ</th>
@@ -28,9 +28,9 @@
             <td><%= review.comment %></td>
             <td><%= review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
             <% unless review.is_draft %>
-              <td><%= link_to "ページ詳細", public_review_path(review), class: "btn btn-warning" %></td>
+              <td><%= link_to "ページ詳細", public_review_path(review), class: "btn btn-primary" %></td>
             <%else%>
-             <td><%= link_to "編集", public_review_path(review), class: "btn btn-warning" %></td>
+             <td><%= link_to "編集", edit_public_review_path(review), class: "btn btn-warning" %></td>
             <%end%>
           </tr>
         <% end %>
