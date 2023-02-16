@@ -36,21 +36,21 @@
   </div>
   
     <div class="row">
-      <div class="col-md-12">
-      <div class="text-center">
-        <h2 class="mt-5 col-12 text"><b>アクセス数ランキング</b></h2>
+      <div class="col-md-12 text-center">
+        <h2 class="mt-5"><b>アクセス数ランキング</b></h2>
+      </div>
           <% @hospitals.each do |hospital| %>
-        <div class="col-md-3 mt-4 ">
-        <div class="w-80 h-80 shadow">
+          <div class="mt-4 col-md-4 text-center">
           <%= link_to public_hospital_path(hospital) do %>
-          <%= image_tag hospital.image, size: '150x150' %>
+          <%= image_tag hospital.image, size: '250x250' %>
          <div>病院名:<%= hospital.name %></div>
          <% end %>
          <div>診療科目:<%= hospital.subject %></div>
          <div>みんなのアクセス<%= hospital.impressionist_count %>回</div>
-         </div>
-         </div>
+          </div>
          <% end %>
+        
+         
        </div>
       </div>
     </div>
