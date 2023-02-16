@@ -5,11 +5,10 @@ before_action :authenticate_customer!
   @range = params[:range]
 
   if @range == "Customer"
-     @customers = Customer.looks(params[:search], params[:word])
+     @customers = Customer.looks(params[:search], params[:word]).page(params[:page]).per(5)
   else
-     @reviews = Review.looks(params[:search], params[:word])
+     @reviews = Review.looks(params[:search], params[:word]).page(params[:page]).per(5)
   end
-  @reviews = Review.all.page(params[:page]).per(5)
  end
 
  def hospital_search

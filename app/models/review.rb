@@ -23,15 +23,15 @@ class Review < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @review = Review.where("comment LIKE?","#{word}")
+      Review.where("comment LIKE?","#{word}")
     elsif search == "forward_match"
-      @review = Review.where("comment LIKE?","#{word}%")
+      Review.where("comment LIKE?","#{word}%")
     elsif search == "backward_match"
-      @review = Review.where("comment LIKE?","%#{word}")
+      Review.where("comment LIKE?","%#{word}")
     elsif search == "partial_match"
-      @review = Review.where("comment LIKE?","%#{word}%")
+      Review.where("comment LIKE?","%#{word}%")
     else
-      @review = Review.all
+      Review.all
     end
   end
   

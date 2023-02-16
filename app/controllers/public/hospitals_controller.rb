@@ -28,7 +28,9 @@ class Public::HospitalsController < ApplicationController
  def show
  @genres = Genre.all
  @hospital = Hospital.find(params[:id])
- impressionist(@hospital, nil, unique: [:session_hash])
+   if session.id.present?
+    impressionist @hospital, nil, unique: %i[impressionable_type impressionable_id session_hash]
+  end
  end
  
   def add_doctor

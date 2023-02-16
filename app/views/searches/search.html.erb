@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
+    <% if @range == "Customer" %>
+    <h4 class="text-center"><b>顧客検索結果</b></h4>
+    <% else %>
       <h4 class="text-center"><b>レビュー検索結果</b></h4>
+    <% end %>
   </div>
+  
+  
   <div class="offset-0 col-md-8 offset-md-2">
     <table class="table table-hover table-inverse">
       <th>コメント内容</th>
@@ -10,7 +16,9 @@
       <% if @range == "Customer" %>
       <thead>
       <% @customers.each do |customer| %>
+      <tr>
         <td><%= "#{customer.last_name} #{customer.first_name}" %></td>
+      </tr>
       <% end %>
       </thead>
       <% else %>
@@ -18,15 +26,23 @@
         <% @reviews.each do |review| %>
           <tr>
             <td><%= review.comment %></td>
-            <td><%= review.created_at %></td>
-            <td><%= link_to "ページ詳細", public_review_path(review), class: "btn btn-warning" %></td>
+            <td><%= review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
+            <% unless review.is_draft %>
+              <td><%= link_to "ページ詳細", public_review_path(review), class: "btn btn-warning" %></td>
+            <%else%>
+             <td><%= link_to "編集", public_review_path(review), class: "btn btn-warning" %></td>
+            <%end%>
           </tr>
         <% end %>
       </tbody>
       <% end %>
     </table>
     <div class= "text-center mt-4">
+       <% if @range == "Customer" %>
+       <%= paginate @customers %>
+       <% else %>
       <%= paginate @reviews %>
+      <% end %>
     </div>
   </div>
 </div>
