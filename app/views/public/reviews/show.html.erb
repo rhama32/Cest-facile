@@ -1,76 +1,81 @@
 <div class="container">
-  <div class="row">
-     <h4 class="mt-2 text-center"><b><%= @customer.full_name %>さんの投稿詳細</b></h4>
-      <h5 class="text-center" id="favorite_buttons_<%= @review.id %>">
-　<%= render "public/favorites/favorites", review: @review %>
-      </h5>
-       <div class="mt-2 col-md-8 offset-2">
-        <table>
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <h3 class="mt-3 text-center"><b><%= @customer.full_name %>さんの投稿詳細</b></h3>
+        <h5 class="mt-3 text-center" id="favorite_buttons_<%= @review.id %>">
+          <%= render "public/favorites/favorites", review: @review %>
+        </h5>
+    </div>
+    <div class="col-md-8">
+      <table class="mt-4 table table-hover shadow">
+        <tbody>
+          <tr>
+            <td class="nowrap">病院名</td>
+            <th class="nowrap"><%= @review.hospital.name %></th>
+          </tr>
+          <tr>
+            <td class="nowrap">投稿日</td>
+            <th class="nowrap"><%= @review.created_at.strftime("%Y年 %m月 %d日") %></th>
+          </tr>
+          <tr>
+            <td class="nowrap">診療の満足度</td>
+            <th><%= @review.doctor_satisfaction %>/5点</th>
+          </tr>
+          <tr>
+            <td class="nowrap">院内の清潔さ</td>
+            <th><%= @review.room_clean %>/5点</th>            
+          </tr>
+          <tr>
+            <td class="nowrap">スタッフの対応満足度</td>
+            <th><%= @review.staff_satisfaction %>/5点</th>
+          </tr>
+          <tr>
+            <td class="nowrap">待ち時間（分）</td>
+            <th><%= @review.waiting_time %>分</th>           
+          </tr>
+          <tr>
+            <td class="nowrap">総合満足度</td>
+            <th><%= @review.total_point %>/5点</th>            
+          </tr>
+          <tr>
+            <td class="nowrap">コメント</td>
+            <th><%= @review.comment %></th>            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-8">
+      <h4><b>＜コメント欄＞</b></h4>
+        <table class="table table-bordered table-hover">
           <thead>
-            <tbody>
-              <tr>
-                <th class="nowrap">病院名</th>
-                <td class="nowrap"><%= @review.hospital.name %></td>
-                
-                <th class="nowrap">投稿日</th>
-                <td class="nowrap"><%= @review.created_at.strftime("%Y年 %m月 %d日") %></td>
-                
-                <th class="nowrap">診療の満足度</th>
-                <td><%= @review.doctor_satisfaction %>/5点</td>
-                
-                <th class="nowrap">院内の清潔さ</th>
-                <td><%= @review.room_clean %>/5点</td>
-                
-                <th class="nowrap">スタッフの対応満足度</th>
-                <td><%= @review.staff_satisfaction %>/5点</td>
-                
-                <th class="nowrap">待ち時間（分）</th>
-                <td><%= @review.waiting_time %>分</td>
-                
-                <th class="nowrap">総合満足度</th>
-                <td><%= @review.total_point %>/5点</td>
-                
-                <th class="nowrap">コメント</th>
-                <td><%= @review.comment %></td>
+            <tr>
+              <th>投稿者名</th>
+              <th>コメント</th>
+              <th>投稿日時</th>
             </tr>
           </thead>
+          <tbody>
+            <% @replies.each do |reply| %>
+              <tr>
+                <% if reply.doctor_id.present? %>
+                  <td><%= reply.doctor.name %></td>
+                <% elsif reply.customer_id.present? %>
+                  <td><%= reply.customer.full_name %></td>
+                <% end %>
+                  <td><%= reply.comment %></td>
+                  <td><%= @review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
-  
-  <h4><b>＜コメント欄＞</b></h4>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>投稿者名</th>
-        <th>コメント</th>
-        <th>投稿日時</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @replies.each do |reply| %>
-        <tr>
-          <% if reply.doctor_id.present? %>
-            <td>D<%= reply.doctor.name %></td>
-          <% elsif reply.customer_id.present? %>
-            <td>C<%= reply.customer.full_name %></td>
+          <%= form_with model: @reply, url: public_review_replies_path(@review), local: true do |f| %>
+            <%= f.hidden_field :review_id %>
+            <%= f.text_area :comment, rows: 5, class: "form-control" %>
+            <div class="text-center">
+            <%= f.submit "返信する", class:"mt-4 btn btn-success rounded-pill mr-5" %>
           <% end %>
-          <td><%= reply.comment %></td>
-          <td><%= @review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
-        </tr>
-      <% end %>
+        <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "mt-4 btn btn-primary rounded-pill ml-5" %>
       </div>
-    </tbody>
-  </table>      
-    
-  <div class="row">
-    <div class="col-md-8 offset-2">
-     <%= form_with model: @reply, url: public_review_replies_path(@review), local: true do |f| %>
-      <%= f.hidden_field :review_id %>
-      <%= f.text_area :comment, rows: 5, class: "form-control" %>
-      <div class="text-center">
-      <%= f.submit "返信する", class:"mt-2 btn btn-success rounded-pill" %>
-      </div>
-    <% end %>
     </div>
-    <div class="text-center">
-  <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "mt-3 btn btn-primary rounded-pill" %>
+  </div>
 </div>
