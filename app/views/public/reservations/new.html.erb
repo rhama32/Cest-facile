@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-2">
+    <div class="col-sm-12">
       <h3 class="mt-3 text-center"><b>ネットde診療予約</b></h3>
 
 
-        <div class="mt-4 text-center">
+        <div class="col-sm-12 mt-4 text-center">
         <h5><b>予約手順</b></h5>
         <h6 class= "mt-3">①予約日を選択　</h6>
         <h6 class= "mt-3">②希望時間を選択</h6>
@@ -19,7 +19,9 @@
 </div>
 
 <%= form_with model: @reservation, url: public_reservations_path, method: :post do |f| %>
-<table class="mt-4 table table-bordered table-hover">
+
+
+<table class="col-sm-12 mt-4 table table-bordered table-hover">
   <thead>
    <tr class="table-secondary">
       <th>予約希望日</th>

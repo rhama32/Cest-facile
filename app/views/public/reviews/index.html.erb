@@ -3,8 +3,10 @@
   <div class="container">
     <div class="row">
       <h4 class="mt-2 text-center"><b><%= @customer.full_name %>さんの投稿一覧</b></h4>
-        <table>
-          <% @reviews.each do |review| %>
+        <table class="mt-4 table table-hover shadow">
+          <tbody>
+            <tr>
+              <% @reviews.each do |review| %>
             <div class="col-md-4 shadow">
               <div class= "text-left">投稿状況
                 <% if review.is_draft %>
