@@ -1,16 +1,8 @@
 <div class="container">
   <div class="row">
      <h4 class="mt-2 text-center"><b><%= @customer.full_name %>さんの投稿詳細</b></h4>
-      <h5 class="text-center">
-        <% if @review.favorited_by?(current_customer) %>
-          <%= link_to public_review_favorites_path(@review.id), method: :delete, remote: true do %>
-            ♥<%= @review.favorites.count %> いいね
-        <% end %>
-        <% else %>
-          <%= link_to public_review_favorites_path(@review.id), method: :post, remote: true do %>
-            ♡<%= @review.favorites.count %> いいね
-        <% end %>
-        <% end %>
+      <h5 class="text-center" id="favorite_buttons_<%= @review.id %>">
+　<%= render "public/favorites/favorites", review: @review %>
       </h5>
        <div class="mt-2 col-md-8 offset-2">
         <table>
