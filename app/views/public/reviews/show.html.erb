@@ -52,9 +52,16 @@
               <th>投稿者名</th>
               <th>コメント</th>
               <th>投稿日時</th>
+              <th>削除</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td><%= @review.customer.full_name %></td>
+              <td><%= @review.comment %></td>
+              <td><%= @review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
+              <td><%= link_to '削除', public_review_path(@review), method: :delete, remote: true, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+            </tr>
             <% @replies.each do |reply| %>
               <tr>
                 <% if reply.doctor_id.present? %>
@@ -68,14 +75,9 @@
             <% end %>
           </tbody>
         </table>
-          <%= form_with model: @reply, url: public_review_replies_path(@review), local: true do |f| %>
-            <%= f.hidden_field :review_id %>
-            <%= f.text_area :comment, rows: 5, class: "form-control" %>
-            <div class="text-center">
-            <%= f.submit "返信する", class:"mt-4 btn btn-success rounded-pill mr-5" %>
-          <% end %>
+        <div id="comments-area"><%= render "public/review_comments/comment", review: @review, reply: @reply %>
         <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "mt-4 btn btn-primary rounded-pill ml-5" %>
-      </div>
+        </div>
     </div>
   </div>
 </div>

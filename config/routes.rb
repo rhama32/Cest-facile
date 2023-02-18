@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
     
     resources :symptoms, only: [:index, :show]
-    resources :reviews, only: [:index, :show, :edit, :create] do
+    resources :reviews, only: [:index, :show, :edit, :create, :destroy] do
      resource :favorites, only: [:create, :destroy]
      resources :replies, only: [:create, :confirm, :index]
     end

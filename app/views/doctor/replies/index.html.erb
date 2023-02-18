@@ -1,6 +1,9 @@
-<h4>レビュー返信画面</h4>
-<div class="row-lg-10">
-<table class="table">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12">
+      <h3 class="mt-3 text-center"><b>レビュー返信画面</b></h3>
+    </div>
+<table class="mt-3 table">
   <thead>
     <tr class="table-secondary">
       <th>病院・クリニック名</th>
@@ -14,10 +17,9 @@
     </tr>
   </thead>
   <tbody>
-    
       <tr>
         <td><%= @review.hospital.name %></td>
-        <td><%= @review.created_at.strftime("%Y年 %m月 %d日") %></td>
+        <td><%= @review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
         <td><%= @review.doctor_satisfaction %></td>
         <td><%= @review.room_clean %></td>
         <td><%= @review.staff_satisfaction %></td>
@@ -25,14 +27,33 @@
         <td><%= @review.comment %></td>
         <td><%= @review.total_point %></td>
       </tr>
-   </tbody>
+    </tbody>
   </table>
-      <div>会員コメント</div>
-      <div><%= @review.comment %></div><br>
+<table class="mt-3 table">
+      <thead>
+        <tr class="table-secondary">
+          <th>投稿者</th>
+          <th>投稿日時</th>
+          <th>コメント</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @review.customer.full_name %></td>
+          <td><%= @review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
+          <td><%= @review.comment %></td>
+          <td><%= @reply.comment %></td>
+          <%# if @reply.exists? %>
+          <%#= @reply.created_at.strftime("%Y年 %m月 %d日 %H:%M") %>
+          <%# end %>
+          <td><%= link_to '削除', public_review_path(@review), method: :delete, remote: true, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+        </tr>
+      </tbody>
+    </table>
       <%= form_with model: @reply, url: doctor_review_replies_path(@review), remote: true do |f| %>
         <%= f.hidden_field :review_id %>
-        <div>医師コメント</div>
-        <div><%= f.text_field :comment %></div>
-      <%= f.submit "返信する", class:"btn btn-success" %>
+        <%= f.text_area :comment, :placeholder => "返信コメントはこちら" %>
+      <div><%= f.submit "返信する", class:"mt-5 btn btn-success" %></div>
    <% end %>
 </div>

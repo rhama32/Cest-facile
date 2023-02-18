@@ -79,7 +79,8 @@ def update
  
  def hospital_reviews
   @hospital = Hospital.find(params[:hospital_id])
-  @reviews = @hospital.reviews
+  @reviews = @hospital.reviews.page(params[:page]).per(6)
+  
  end
 
  def edit
@@ -91,6 +92,13 @@ def update
      if @review.destroy
   redirect_to public_reviews_path, notice: "レビューを削除しました。"
    end
+ end
+ 
+ def comment_destroy
+  @review = Review.find(params[:review_id])
+  @reply = current_customer.replies.build(reply_params)
+  @reply.destroy
+  @reply = Reply.new
  end
 
  private

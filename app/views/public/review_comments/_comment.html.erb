@@ -1,0 +1,6 @@
+<%= form_with model: @reply, url: public_review_replies_path(@review), remote: true do |f| %>
+  <%= f.hidden_field :review_id %>
+  <%= f.text_area :comment, rows: 5, class: "form-control" %>
+  <div class="text-center">
+  <%= f.submit "返信する", class:"mt-4 btn btn-success rounded-pill mr-5" %>
+<% end %>
