@@ -290,7 +290,7 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   image_processing (~> 1.2)
-  impressionist
+  impressionist (~> 1.6.1)
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
