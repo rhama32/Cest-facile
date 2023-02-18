@@ -10,6 +10,7 @@ before_action :authenticate_customer!
 
  def create
   @review = current_customer.reviews.build(review_params)
+  #@review.staff_satisfaction = 0
   @hospital = @review.hospital
   @review.customer_id = current_customer.id
   if params[:post]

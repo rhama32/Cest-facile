@@ -1,6 +1,4 @@
 <%= render 'public/hospitals/genrevar', genres: @genres %>
-
-
 <h4>検索画面</h4>
 <%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>
   <table class="table">
@@ -20,7 +18,7 @@
   </table>
 <% end %>
 
-<% if @hospitals %>
+<% if params[:genre_id]||params[:prefecture] %>
 <h4>
 症状検索結果画面<br>
 あなたの症状から最も最適な病院を検索しました。

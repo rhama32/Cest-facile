@@ -5,9 +5,11 @@ before_action :authenticate_customer!
   @range = params[:range]
 
   if @range == "Customer"
-     @customers = Customer.looks(params[:search], params[:word]).page(params[:page]).per(5)
+     customers = Customer.looks(params[:search], params[:word])
+     @customers = customers.where(id: current_customer.id).page(params[:page]).per(5)
   else
-     @reviews = Review.looks(params[:search], params[:word]).page(params[:page]).per(5)
+     reviews = Review.looks(params[:search], params[:word])
+     @reviews = reviews.where(customer_id: current_customer.id).page(params[:page]).per(5)
   end
  end
 

@@ -6,8 +6,8 @@
           <%= render "public/favorites/favorites", review: @review %>
         </h5>
     </div>
-    <div class="col-md-8">
-      <table class="mt-4 table table-hover shadow">
+    <div class="col-md-6">
+      <table class="mt-4 table table-hover shadow text-nowrap">
         <tbody>
           <tr>
             <td class="nowrap">病院名</td>
@@ -45,7 +45,7 @@
       </table>
     </div>
     <% if @customer == current_customer %>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <h4><b>＜コメント欄＞</b></h4>
       <div id="comment">
         <%= render "public/replies/replies", review: @review %>
