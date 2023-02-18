@@ -1,5 +1,5 @@
 # Cest facile
-
+![サイトのページ](app/assets/images/introduction1.png)
 ## URL
  http:
 

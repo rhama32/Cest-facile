@@ -20,26 +20,26 @@
 
 <%= form_with model: @reservation, url: public_reservations_path, method: :post do |f| %>
 
-
-<table class="col-sm-12 mt-4 table table-bordered table-hover">
-  <thead>
-   <tr class="table-secondary">
-      <th>予約希望日</th>
-      <th>予約希望時間</th>
-      <th>予約希望院</th>
-      <th>実行ボタン</th>
-  </thead>
-  <tbody>
-       <th><%= f.date_field :hope_day %></th>
-       <th><%= f.time_select :hope_time, {:start_time => '08', :end_time => '20', :minute_step => 30} %></th>
-       <th>
-           
-           <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
-       </th>
-      <th><%= f.submit "予約する", class:"btn btn-success" %></th>
-      
-   </tbody> 
- </table>
+<div class="tb-wrap">
+  <table class="col-sm-12 mt-4 table table-bordered table-hover reservation-table">
+    <thead>
+     <tr class="table-secondary">
+        <th>予約希望日</th>
+        <th>予約希望時間</th>
+        <th>予約希望院</th>
+        <th>実行ボタン</th>
+    </thead>
+    <tbody>
+         <td><%= f.date_field :hope_day %></td>
+         <td><%= f.time_select :hope_time, {:start_time => '08', :end_time => '20', :minute_step => 30} %></td>
+         <td>
+             <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
+         </td>
+        <td><%= f.submit "予約する", class:"btn btn-success" %></td>
+        
+     </tbody> 
+   </table>
+</div>
   <% end %>
   </div>
   <h3 class="mt-2 text-center"><b>登録病院から探す</b></h3>

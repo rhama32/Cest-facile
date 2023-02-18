@@ -5,14 +5,6 @@ class Public::SymptomsController < ApplicationController
   @genres = Genre.all
   @hospitals = Hospital.all.page(params[:page]).per(6)
 
-  if params[:genre_id]
-    @genre = Genre.find(params[:genre_id])
-    @hospitals = @genre.hospitals.page(params[:page]).per(6)
-  elsif @hospital_search
-    @hospitals = @hospitals_search.page(params[:page]).per(6)
-    @hospitals_count = @search_hospitals.all.count
-  end
-  
   if params[:genre_id].present? && params[:prefecture].present?
     # ジャンル&エリア検索
     @hospitals = Hospital.where(genre_id: params[:genre_id]).where("address LIKE ?", "%#{params[:prefecture]}%").page(params[:page]).per(5)

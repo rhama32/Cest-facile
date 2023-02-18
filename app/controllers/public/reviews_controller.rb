@@ -71,8 +71,8 @@ def update
  end
 
  def show
-  @customer = current_customer
   @review = Review.find(params[:id])
+  @customer = @review.customer
   @replies = @review.replies
   @reply = Reply.new(review_id: @review.id)
  end

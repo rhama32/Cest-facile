@@ -25,12 +25,12 @@
                 <td>医療者免許</td>
                 <td>(表)<%#= f.file_field :image, accept:"image/*", :placeholder => "医療免許の表を添付してください。", size:"20" %>
                         <%#= f.file_field :image, accept:"image/*", :placeholder => "医療免許の裏を添付してください。", size:"20" %>
-                 <div class="form-group illust_image_group card text-center m-1 shadow">
+                 <div class="form-group illust_image_group card text-center m-1 shadow lisence-card">
                 <%= f.file_field :image, accept: "image/jpg, image/jpeg, image/png", class:"img_field_input", style: 'display:none;', id: "img_field-0" %>
                  <% if f.object.image.attached? %>
-                  <%= image_tag f.object.image, fallback: 'no_pictureimage.png', class: "center-block img-thumbnail img-responsive img_prev mx-auto d-block", id: "img_prev-0" %>
+                  <%= image_tag f.object.image, fallback: 'no_pictureimage.png', class: "center-block img-thumbnail lisence-photo img-responsive img_prev mx-auto d-block", id: "img_prev-0" %>
                  <% else %>
-                  <%= image_tag 'no_pictureimage.png', class: "center-block img-thumbnail img-responsive img_prev mx-auto d-block", id: "img_prev-0" %>
+                  <%= image_tag 'no_pictureimage.png', class: "center-block img-thumbnail lisence-photo img-responsive img_prev mx-auto d-block", id: "img_prev-0" %>
                  <% end %>
                  </div>
                 </td>
@@ -87,7 +87,6 @@
   const formGroup = $target.parent()
   const targetId = $target.attr('id').replace("img_prev-", "")
   const eventTarget = $(`#img_field-${targetId}`)
-  console.log(eventTarget)
   eventTarget.click()
  })
 </script>

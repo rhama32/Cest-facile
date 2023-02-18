@@ -44,6 +44,7 @@
         </tbody>
       </table>
     </div>
+    <% if @customer == current_customer %>
     <div class="col-md-8">
       <h4><b>＜コメント欄＞</b></h4>
       <div id="comment">
@@ -53,5 +54,6 @@
         <%= link_to 'レビュー投稿一覧に戻る', public_reviews_path, class: "mt-4 btn btn-primary rounded-pill ml-5" %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
