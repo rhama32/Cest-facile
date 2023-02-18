@@ -9,10 +9,13 @@ before_action :authenticate_customer!
   
   def create
     @review = Review.find(params[:review_id])
+    # @replies = @review.replies
     @reply = current_customer.replies.build(reply_params)
-    if @reply.save
-    else
-    end
+    @reply.save
+    # if @reply.save
+    #   redirect_to 
+    # else
+    # end
   end
   
   def index

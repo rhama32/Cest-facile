@@ -1,4 +1,4 @@
-<%= form_with model: @reply, url: public_review_replies_path(@review), remote: true do |f| %>
+<%= form_with model: @reply, url: public_review_replies_path(@review), local: false do |f| %>
   <%= f.hidden_field :review_id %>
   <%= f.text_area :comment, rows: 5, class: "form-control" %>
   <div class="text-center">
