@@ -1,7 +1,7 @@
 <% if customer_signed_in? %>
   <div class="container">
     <div class="row">
-      <div class="colmd-12 text-center">
+      <div class="colmd-12 text-center d-grid col-xs-2 mx-auto">
       <div class="mt-2 search_form">
         <%= form_with url: hospital_search_path, local: true, method: :get do |f| %>
           <%= f.text_field :word, :placeholder => "右側の項目を選択ください！", size: "25" %>
@@ -11,5 +11,6 @@
       </div>
       </div>
     </div>
-  </div>
+
 <% end %>
+  </div>

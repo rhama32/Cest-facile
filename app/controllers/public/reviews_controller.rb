@@ -49,7 +49,7 @@ def update
       end
     # ②公開済みレビューの更新の場合
     elsif params[:update_post]
-      @review.attributes = public_reviews_path
+      @review.attributes = review_params
       if @review.save
         redirect_to public_reviews_path(@review.id), notice: "公開済みのレビューを更新しました。"
       else

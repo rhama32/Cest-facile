@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="mt-2 col-md-8 offset-2">
-    <table class="table">
+  <div class="offset-0 col-xs-8 offset-xs-2">
+    
+<table class="table text-overflow text-center">
       <thead>
-        <tr class="table-secondary mt-2 text-nowrap">
+
+          <tr>
           <th>医療者ID</th>
-          <th>フォロー中の医療者</th>
+          <th>フォロー中</th>
           <th>フォロー機能</th>
-          <th>下記リンクへ移動</th>
+          <th>リンクへ移動</th>
         </tr>
       </thead>
       <tbody>
         <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
-      </div>
+      </tbody>
   </table>
+  </div>
 </div>
 </div>

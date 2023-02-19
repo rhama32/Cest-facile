@@ -23,6 +23,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fdf5e6;
+}
+
 .header {
   width: 100%; /* 横幅いっぱい */
   height: 130px; /* 高さ120px */
@@ -31,8 +35,8 @@
 
 .main {
   width: 100%; /* 横幅いっぱい */
-  height: 2500px; /* 高さ1400px（多めに設定） */
-  background-color: #fdf5e6;
+  // height: 2500px; /* 高さ1400px（多めに設定） */
+  // background-color: #fdf5e6;
 }
 
 .footer {

@@ -3,45 +3,45 @@
   <div class="header">
     <nav class="navbar navbar-light mb-2">
       <div class="container">
-        <p class="text-left">
+        <div class="text-left">
           <%= link_to root_path, data: {"turbolinks" => false} do %>
             <%= image_tag asset_path('cest-facile.jpeg'),size: '80x80' %>
           <% end %>
-        </p>
+        </div>
         <!-- 顧客サインイン後-->
         <% if customer_signed_in? %>
-          <div class="text-left">
-            ようこそ！<%= current_customer.last_name %> <%= current_customer.first_name %>さん
+          <div class="text-center">
+            ようこそ！<br><%= current_customer.last_name %> <%= current_customer.first_name %>さん
           </div>
-          <%= link_to '#', class: 'nav-link p-1 mx-2', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+          <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           <% end %>
 
-           <ul class="dropdown-menu dropdown-menu-right">
-             <i class="fa-solid fa-building">
+           <ul class="dropdown-menu dropdown-menu-right p-3">
+             <i class="fa-solid fa-building mr-2">
                <%= link_to "About", about_path %>
              </i>
-             <i class="fa-solid fa-user">
+             <i class="fa-solid fa-user mr-2">
                <%= link_to "マイページ", customers_mypage_path %>
              </i>
-             <i class="fa-solid fa-hospital">
+             <i class="fa-solid fa-hospital mr-2">
                <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path %>
              </i>
-             <i class="fa-solid fa-file">
+             <i class="fa-solid fa-file mr-2">
                <%= link_to "病院検索", public_symptoms_path %>
              </i>
-             <i class="fa-solid fa-flag">
+             <i class="fa-solid fa-flag mr-2">
                <%= link_to "予約一覧", public_reservations_path %>
              </i>
-             <i class="fa-solid fa-file">
+             <i class="fa-solid fa-file mr-2">
                <%= link_to "個人レビュー", public_reviews_path %>
              </i>
-             <i class="fa-solid fa-users">
+             <i class="fa-solid fa-users mr-2">
                <%= link_to "フォロー一覧", public_followings_path %>
              </i>
-             <i class="fa-solid fa-right-from-bracket">
+             <i class="fa-solid fa-right-from-bracket mr-2">
                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
              </i>
            </ul>
