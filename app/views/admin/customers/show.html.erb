@@ -1,11 +1,10 @@
 <div class="container">
-  <div class="row-lg-10">
-    <div class="col-11 offset-md-1">
-      <div class="bg-light text-center">
-        <%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細
+<div class="row">
+<div class="col-sm-12">
+  <h4 class="mt-3 text-center"><b><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</b></h4>
+        
       </div>
-    </div>
-    <table class="table">
+    <table class="table text-center">
         <tbody>
           <div class="row-lg-11">
             <tr>
@@ -47,7 +46,7 @@
           </div>
         </tbody>
       </table>
-    <div class="form-group">
+    <div class="form-group text-center">
       <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %>
       <%= link_to '会員一覧に戻る', admin_customers_path, class: "btn btn-primary" %>
     </div>

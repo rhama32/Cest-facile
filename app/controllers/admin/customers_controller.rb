@@ -5,7 +5,7 @@ before_action :authenticate_admin!
 
 #顧客一覧画面
 def index
- @admin_customers = Customer.all.page(params[:page])
+ @admin_customers = Customer.all.page(params[:page]).per(10)
 end
 
 #顧客詳細画面
