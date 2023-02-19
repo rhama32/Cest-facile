@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-  resources :genres, only: [:index,:create,:edit,:update]
+  resources :genres, only: [:index,:create,:edit,:update, :destroy]
   resources:customers, only: [:index, :show, :edit, :update]
   resources :hospitals, only: [:index,:create, :new,  :show, :edit, :update, :destroy]
   resources :reservations, only: [:index, :show, :update, :destroy]

@@ -23,6 +23,13 @@ before_action :authenticate_admin!
   render :edit
   end
  end
+ 
+   def destroy
+  @genre = Genre.find(params[:id])
+   if @genre.destroy
+  redirect_to admin_genres_path
+   end
+  end
 
  private
  def genre_params

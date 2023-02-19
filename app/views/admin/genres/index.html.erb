@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row-lg-11">
-    <div class="col-3">
-      <h4 class="bg-light text-center">ジャンル一覧</h4>
+<div class="row">
+<div class="col-sm-12">
+<h4 class="mt-3 text-center"><b>ジャンル一覧</b></h4>
     </div>
       <table class="table">
         <thead>
@@ -12,13 +12,16 @@
           <% end %>
               <tr class="table-secondary">
                 <th>ジャンル</th>
+                <th>編集</th>
+                <th>削除</th>
               </tr>
         </thead>
           <tbody>
             <% @genres.each do |genre| %>
               <tr class="border-bottom">
                 <td><%= genre.name %></td>
-                <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-warning" %></td>
+                <td><%= link_to '編集', edit_admin_genre_path(genre.id), class: "btn btn-warning" %></td>
+                <td><%= link_to '削除', admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
               </tr>
               <% end %>
           </tbody>
