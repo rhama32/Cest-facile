@@ -47,6 +47,16 @@
            </ul>
       <!--管理者がログインした場合-->
         <% elsif admin_signed_in? %>
+                  <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <% end %>
+        
+        
+        
+        
+        <ul class="dropdown-menu dropdown-menu-right p-3">
           <li class="fa-solid fa-file">
             <%= link_to "病院一覧", admin_hospitals_path %>
           </li>
@@ -68,8 +78,17 @@
           <li class="fa-solid fa-file">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
+        </ul>
       <!--医療提供者がログインした場合-->
+      <ul class="dropdown-menu dropdown-menu-right p-3">
         <% elsif doctor_signed_in? %>
+        
+                          <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <% end %>
+          
           <ul class="nav justify-content-end">
             <li class="nav-item">
               <%= link_to "About us", about_path, class: "nav-link" %>
@@ -93,8 +112,16 @@
               <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
             </li>
           </ul>
+        </ul>
       <!--サインインしていない場合-->
         <% else %>
+                          <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <% end %>
+        
+        <ul class="dropdown-menu dropdown-menu-right p-3">
           <i class="fa-solid fa-file">
             <%= link_to "About", about_path %>
           </i>
@@ -113,6 +140,7 @@
           <i class="fa-solid fa-lock">
             <%= link_to "医療者ログイン", doctor_session_path %>
           </i>
+        </ul>
         <% end %>
       </div>
     </nav>
