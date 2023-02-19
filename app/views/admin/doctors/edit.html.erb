@@ -1,10 +1,9 @@
 <div class="container">
-  <div class="row-lg-10">
-    <div class="col-11 offset-md-1">
-      <div class="bg-light text-center">
-        <p><%= @doctor.name %>さんの医療者情報編集</p>
-      </div>
-    </div>
+<div class="row">
+<div class="col-sm-12">
+<h4 class="mt-3 text-center"><b><%= @doctor.name %>さんの医療者情報編集</b></h4>
+</div>
+
           <%= form_with model: @doctor, url: admin_doctor_path(@doctor, m: 'doctor'), method: :patch do |f| %>
             <table class="table table-bordered table-hover">
               <tbody>
@@ -34,7 +33,9 @@
                 </tr>
               </tbody>
             </table>
+          <div class="text-center">
           <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
           <% end %>
         </div>
       </div>
