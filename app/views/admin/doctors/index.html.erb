@@ -1,46 +1,51 @@
 <h4>医療提供者申請一覧</h4>
-  <div class="row-lg-10">
+  <div class="row">
     <table class="table table-bordered table-hover">
       <thead>
-        <tr class="table-secondary">
-          <th>申請者ID</th>
-          <th>申請者氏名</th>
-          <th>病院ID</th>
-          <th>所属院</th>
-          <th>医療者免許</th>
-          <th>申請ステータス</th>
-          <th>医療提供者削除</th>
-          <th>医療提供者詳細</th>
-        </tr>
-      </thead>
-            <tbody>
-              <% @doctors.each do |doctor| %>
+        <tr class="d-grid col-md-5 mx-auto">
+                       <% @doctors.each do |doctor| %>
               <%= form_with(model: doctor, url: admin_doctor_path(doctor), method: :patch, local: true) do |f| %>
-                <tr>
-                  <td><%= doctor.id %></td>
-                  <td><%= doctor.name %></td>
-                  <td><%= doctor.hospital&.id %></td>
-                  <td><%= doctor.hospital&.name %></td>
-                  <td><% if doctor.image.attached? %>
-                      <%= image_tag doctor.image, size: "100x100" %>
-                      <% end %>
-                  </td>
-                  <td><% if doctor.unapproved? %>
-                        <%= link_to "承認する", admin_doctor_path(doctor, approved_status: 'approved'), method: :patch, "data-confirm" => "本当に承認しますか？",  class:"btn btn-danger" %>
-                        <%= link_to "承認しない", admin_doctor_path(doctor, approved_status: 'denied'), method: :patch, "data-confirm" => "本当に承認を拒否しますか？", class:"btn btn-secondary" %>
+          <th>申請者ID
+          <%= doctor.id %></th>
+          <th>申請者氏名
+          <%= doctor.name %></th>
+          <th>病院ID
+          <%= doctor.hospital&.id %></th>
+          <th>所属院
+          <%= doctor.hospital&.name %></th>
+          <th>医療者免許
+<% if doctor.image.attached? %>
+<%= image_tag doctor.image, size: "100x100" %>
+<% end %>
+</th>
+          <th>申請ステータス
+                            <% if doctor.unapproved? %>
+                        
+                        <th><%= link_to "承認する", admin_doctor_path(doctor, approved_status: 'approved'), method: :patch, "data-confirm" => "本当に承認しますか？",  class:"btn btn-danger" %></th>
+                        <th><%= link_to "承認しない", admin_doctor_path(doctor, approved_status: 'denied'), method: :patch, "data-confirm" => "本当に承認を拒否しますか？", class:"btn btn-secondary" %></th>
                       <% else %>
 　　　　　　　          <%= doctor.approved_status_i18n %>
                       <% end %>
-                  </td>
-                  <td><%= link_to '　削除　', admin_doctor_path(doctor.id), method: :delete, data: { confirm: "医療提供者を削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
-                  <td><%= link_to '　詳細　', admin_doctor_path(doctor.id), class: "btn btn-primary" %></td>
+                      </th>
+          <th>医療提供者削除
+           <%= link_to '　削除　', admin_doctor_path(doctor.id), method: :delete, data: { confirm: "医療提供者を削除しても宜しいですか？" }, class: "btn btn-danger" %></th>
+          <th>医療提供者詳細
+          <%= link_to '　詳細　', admin_doctor_path(doctor.id), class: "btn btn-primary" %></th>
+      
+ 
+              <% end %>
+              <% end %>
                 </tr>
-              <% end %>
-              <% end %>
-            </tbody>
+            </thead>
           </table>
+          <div class="mt-3 text-center">
             <%= link_to '病院一覧に戻る', admin_hospitals_path, class: "btn btn-primary" %>
+          </div>
+          <div class="mt-3 text-center">
             <%= link_to '会員一覧に戻る', admin_customers_path, class: "btn btn-warning" %>
+          </div>
+          <div class="mt-3 text-center">
             <%= link_to '予約一覧に戻る', admin_reservations_path, class: "btn btn-success" %>
+          </div>
         </div>
       <div class="pagination justify-content-center"><%#= paginate @reservations %></div>
