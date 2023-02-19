@@ -1,44 +1,38 @@
 <div class="container">
   <div class="row">
-  <div class="offset-0 col-xs-8 offset-xs-2">
+    <div class="offset-0 col-xs-8 offset-xs-2">
     <h4 class="text-center"><b>予約履歴詳細画面</b></h4>
-
-
-  <table class="col-md-6 table d-grid col-md-8 mx-auto text-center">
-   <thead>
-    <tr class="d-grid col-md-8 mx-auto">
-     <th>予約日</th>
-     <th><%= @reservation.hope_day.strftime("%Y年 %m月 %d日") %></th>
-    </tr>
-     
-     <tr class="d-grid col-md-8 mx-auto">
-     <th>来院予約時間</th>
-     <th><%= @reservation.hope_time.strftime("%H:%M") %></th>
-     </tr>
-
-     <tr class="d-grid col-md-8 mx-auto">
-     <th>予約院</th>
-    <th><%= @hospital.name %></th>
-    </tr>
-     
-     <tr class="d-grid col-md-8 mx-auto">
-     <th>予約ステータス</th>
-      <% if @reservation.status == 'reservation_pending' %>
-      <th class="text-primary font-weight-bold">申請中</th>
-      <% elsif @reservation.status == 'reservation_confirmed' %>
-      <th class="text-success font-weight-bold">予約確定</th>
-      <% elsif @reservation.status == 'tentative_reservation' %>
-      <th class="text-secondary font-weight-bold">仮予約中</th>
-      <% else %>
-      <th class="text-danger font-weight-bold">受付キャンセル</th>
-      <% end %>
-      </th>
-    </tr>
-   </thead>
+      <table class="col-md-6 table d-grid col-md-8 mx-auto text-center">
+        <thead>
+          <tr class="d-grid col-md-8 mx-auto">
+            <th>予約日</th>
+            <th><%= @reservation.hope_day.strftime("%Y年 %m月 %d日") %></th>
+          </tr>
+          <tr class="d-grid col-md-8 mx-auto">
+            <th>来院予約時間</th>
+            <th><%= @reservation.hope_time.strftime("%H:%M") %></th>
+          </tr>
+          <tr class="d-grid col-md-8 mx-auto">
+            <th>予約院</th>
+            <th><%= @hospital.name %></th>
+          </tr>
+          <tr class="d-grid col-md-8 mx-auto">
+            <th>予約ステータス</th>
+              <% if @reservation.status == 'reservation_pending' %>
+            <th class="text-primary font-weight-bold">申請中</th>
+              <% elsif @reservation.status == 'reservation_confirmed' %>
+            <th class="text-success font-weight-bold">予約確定</th>
+              <% elsif @reservation.status == 'tentative_reservation' %>
+            <th class="text-secondary font-weight-bold">仮予約中</th>
+              <% else %>
+            <th class="text-danger font-weight-bold">受付キャンセル</th>
+              <% end %>
+          </tr>
+        </thead>
       </table>
       <div class="d-grid col-md-2 mx-auto">
-      <%= link_to "予約一覧に戻る", public_reservations_path, class: "btn btn-primary" %>
-    </div>
+        <%= link_to "予約一覧に戻る", public_reservations_path, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
-  </div>
+</div>
