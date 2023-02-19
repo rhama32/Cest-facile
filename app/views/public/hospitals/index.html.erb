@@ -7,39 +7,40 @@
           <h4 class="mt-3"><b>病院一覧(全<%= @count %>件)</b></h4>
         </div>
         
-          <% @hospitals.each do |hospital| %>
+        <% @hospitals.each do |hospital| %>
           <div class="offset-0 col-md-10 w-50 shadow overflow-auto text-center">
             <% if hospital.is_active == true %>
-            <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
-              <div class= "text-center text-nowrap">
-              Cestくん評価：
-                 <% if score >= 4 %>
-                <i class="fa-regular fa-face-smile-wink"></i>
-                <% elsif score >= 2.5 %>
-                <i class="fa-regular fa-face-smile"></i>
-                <% else %>
-                <i class="fa-solid fa-face-sad-tear"></i>
-                <% end %>
-              </div>
-              <div class= "text-center text-nowrap">
-                  診療科目：<%= hospital.subject %>
-              </div>
-              <div class= "text-center text-nowrap">
-                 登録住所：<%= hospital.address %>
-              </div>
-              <div id="hospital_total_review_<%= hospital.id %>"></div>
-              <%= link_to public_hospital_path(hospital) do %>
-              
-              <div class="text-center card d-block mx-auto" style="width: 172px;">
-                <%= image_tag hospital.image, size:"170x170"%>
+              <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
+                <div class= "text-center text-nowrap">
+                Cestくん評価：
+                  <% if score >= 4 %>
+                    <i class="fa-regular fa-face-smile-wink"></i>
+                  <% elsif score >= 2.5 %>
+                    <i class="fa-regular fa-face-smile"></i>
+                  <% else %>
+                    <i class="fa-solid fa-face-sad-tear"></i>
+                  <% end %>
+                </div>
+                <div class= "text-center text-nowrap">
+                診療科目：<%= hospital.subject %>
+                </div>
+                <div class= "text-center text-nowrap">
+                登録住所：<%= hospital.address %>
+                </div>
+                <div id="hospital_total_review_<%= hospital.id %>"></div>
+                  <%= link_to public_hospital_path(hospital) do %>
+                <div class="text-center card d-block mx-auto" style="width: 172px;">
+                  <%= image_tag hospital.image, size:"170x170"%>
                   <div class="card-body text-center text-nowrap">
                     <p class="card-text">
-                    <%= hospital.name %>
+                      <%= hospital.name %>
                     </p>
                   </div>
-              </div>
+                </div>
               <% end %>
             <% end %>
+            
+            <!-- 星評価の読み込み !-->
             <script>
               var elem = document.getElementById('hospital_total_review_<%= hospital.id %>');
               var opt = {  
@@ -52,8 +53,9 @@
               };
               raty(elem,opt);
             </script>
+
             </div>
-      <% end %>
-      <div class= "text-center mt-4">
-        <%= paginate @hospitals %>
-      </div>
+          <% end %>
+          <div class= "text-center mt-4">
+            <%= paginate @hospitals %>
+          </div>

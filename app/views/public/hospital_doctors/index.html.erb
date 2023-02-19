@@ -1,52 +1,47 @@
 <div class="container">
   <div class="row">
-  <div class="offset-0 col-md-8 offset-md-2">
+    <div class="offset-0 col-md-8 offset-md-2">
       <h4 class="text-center"><b><%= @hospital.name %>医師一覧</b></h4>
-  </div>
+    </div>
     <div class="offset-0 col-md-8 offset-md-2 text-center">
-    <table class="table">
-      <thead>
-        <tr class="table-secondary d-grid col-md-8 mx-auto">
-          <% @hospital_doctors.each do |hospital_doctor| %>
-          
+      <table class="table">
+        <thead>
+          <tr class="table-secondary d-grid col-md-8 mx-auto">
+            <% @hospital_doctors.each do |hospital_doctor| %>
           <tr>
-          <th>医療者ID</th>
-          <th><%= hospital_doctor.id %></th>
+            <th>医療者ID</th>
+            <th><%= hospital_doctor.id %></th>
           </tr>
-          
           <tr>
-          <th>病院ID</th>
-          <th><%= hospital_doctor.hospital.id %></th>
+            <th>病院ID</th>
+            <th><%= hospital_doctor.hospital.id %></th>
           </tr>
-          
           <tr>
-          <th>医療提供者名</th>
-          <th><%= link_to public_hospital_hospital_doctor_path(@hospital, hospital_doctor.id) do %>
-              <%= hospital_doctor.name %>
-              <% end %>
-          </th>
+            <th>医療提供者名</th>
+            <th><%= link_to public_hospital_hospital_doctor_path(@hospital, hospital_doctor.id) do %>
+                <%= hospital_doctor.name %>
+                <% end %>
+            </th>
           </tr>
-          
           <tr>
-          <th>病院名</th>
-          <th><%= link_to public_hospital_path(@hospital.id) do %>
-          <%= hospital_doctor.hospital.name %>
-          <% end %>
-          </th>
+            <th>病院名</th>
+            <th><%= link_to public_hospital_path(@hospital.id) do %>
+                <%= hospital_doctor.hospital.name %>
+                <% end %>
+            </th>
           </tr>
-          
           <tr>
-          <th>フォロー機能</th>
-          <th><% if current_customer.following?(hospital_doctor) %>
-          <%= link_to "フォロー外す", public_follows_path(doctor_id: hospital_doctor.id), method: :delete %>
-          <% else %>
-          <%= link_to "フォローする", public_follows_path(doctor_id: hospital_doctor.id), method: :post %>
-          <% end %>
-          </th>
+            <th>フォロー機能</th>
+            <th><% if current_customer.following?(hospital_doctor) %>
+                <%= link_to "フォロー外す", public_follows_path(doctor_id: hospital_doctor.id), method: :delete %>
+                <% else %>
+                <%= link_to "フォローする", public_follows_path(doctor_id: hospital_doctor.id), method: :post %>
+                <% end %>
+              </th>
           </tr>
-          <% end %>
-        </tbody>
-      </table>  
+            <% end %>
+          </thead>
+        </table>  
         <div class="d-grid col-6 mx-auto">
           <%= link_to 'トップページ', root_path, class: "mt-4 btn btn-success" %>
         </div>
@@ -54,18 +49,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

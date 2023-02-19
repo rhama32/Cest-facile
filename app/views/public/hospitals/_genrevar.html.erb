@@ -2,16 +2,16 @@
 <div class= "container">
   <div class="row">
     <div class="col-md-12">
-    <div class="mt-4 text-center">
-      <h2><b>診療科目から病院を探す</b></h2>
-        <div class="mt-4 font-weight-bold">
-        <b>
-          <% @genres.each do |genre| %>
-            <%= link_to genre.name, public_hospitals_path(genre_id: genre.id), class: "text-primary" %>
-          <% end %>
-        </b>
+      <div class="mt-4 text-center">
+        <h2><b>診療科目から病院を探す</b></h2>
+          <div class="mt-4 font-weight-bold">
+          <b>
+            <% @genres.each do |genre| %>
+              <%= link_to genre.name, public_hospitals_path(genre_id: genre.id), class: "text-primary" %>
+            <% end %>
+          </b>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>

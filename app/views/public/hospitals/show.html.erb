@@ -1,184 +1,184 @@
 <!--ジャンル検索-->
-<%= render 'genrevar', genres: @genres %>
-<div class="container">
-<div class="row">
-<div class="offset-0 col-md-8 offset-md-2">
-<h3 class="mt-4 text-center"><b><%= @hospital.name %></b></h3>
-<h3 class="mt-2 text-center">みんなのアクセス<%= @hospital.impressionist_count %>回</h3>
-<div class="mt-2 text-center">
-<%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class:"mt-2 btn btn-success rounded-pill", data: {"turbolinks" => false} %>
-<%= link_to 'ネットde診療予約', new_public_reservation_path, class: "mt-2 btn btn-primary rounded-pill" %>
-<% score = @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
-
-<div class="mt-3 text-center">
-<b>Cestくん総合評価：</b>
-<% if score >= 4 %>
-<i class="fa-regular fa-face-smile-wink"></i>
-<% elsif score >= 2.5 %>
-<i class="fa-regular fa-face-smile"></i>
-<% else %>
-<i class="fa-solid fa-face-sad-tear"></i>
-<% end %>
-</div>
-<div class="mt-2 text-center">
-<div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
-</div>
-<div class="mt-2 text-center">
-<%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
-</div>
-<div class="mt-2 text-center">
-<%= link_to '個人レビュー一覧', public_reviews_path, class: "mt-2 btn btn-primary rounded-pill" %>
-</div>
-</div>
-</h3>
-                  <script>
-              var elem = document.getElementById('hospital_total_review_<%= @hospital.id %>');
-              var opt = {  
-                starOn: "<%= asset_path('star-on.png') %>",
-                starOff: "<%= asset_path('star-off.png') %>",
-                starHalf: "<%= asset_path('star-half.png') %>",
-                half: true,
-                readOnly: true,
-                score: <%= score %>
-              };
-              raty(elem,opt);
-            </script>
-
-      <div class="mt-2 text-center">
-        <%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"250x250" %>
-      </div>
-      <table class="mt-4 table table-bordered table-hover">
-        <tbody>
-          <tr>
-            <td>郵便番号</td>
-            <td><%= @hospital.postal_code %></td>
-          </tr>
-          <tr>
-            <td>住所</td>
-            <td><%= @hospital.address %></td>
-          </tr>
-          <tr>
-            <td>病院名</td>
-            <td><%= @hospital.name %></td>
-          </tr>
-          <tr>
-            <td>病院名（カナ）</td>
-            <td><%= @hospital.hospital_name_kana %></td>
-          </tr>
-          <tr>
-            <td>医師名</td>
-            <td><% @hospital.doctors.each do |doctor| %>
-                <%= doctor.name %>
-                <% if customer_signed_in? %>
-                <% if current_customer.following?(doctor) %>
-                  <%= link_to "フォローを外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
-                <% else %>
-                  <%= link_to "フォロー", public_follows_path(doctor_id: doctor.id), method: :post %>
-                <% end %>
-              <% end %>
-              <% end %>
-              <%= link_to '医師一覧画面に進む', public_hospital_hospital_doctors_path(@hospital), class: "btn btn-success" %>
-            </td>
-          </tr>
-          </tr>
-          <tr>
-            <td>病院説明</td>
-            <td><%= @hospital.introduction %></td>
-          </tr>
-          <tr>
-            <td>電話番号</td>
-            <td><%= @hospital.telephone_number %></td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td><%= @hospital.genre.name %></td>
-          </tr>
-          <tr>
-            <td>診療科目</td>
-            <td><%= @hospital.subject %> </td>
-          </tr>
-          <tr>
-            <td>診療時間</td>
-            <td><%= @hospital.hospital_time %> </td>
-          </tr>
-          <tr>
-            <td>駐車場</td>
-            <td><%= @hospital.parking %></td>
-          </tr>
-          <tr>
-            <td>受付ステータス</td>
-            <td>
-              <% if @hospital.is_active == true %>
-                対応中
+  <%= render 'genrevar', genres: @genres %>
+    <div class="container">
+    <div class="row">
+      <div class="offset-0 col-md-8 offset-md-2">
+        <h3 class="mt-4 text-center"><b><%= @hospital.name %></b></h3>
+        <h3 class="mt-2 text-center">みんなのアクセス<%= @hospital.impressionist_count %>回</h3>
+          <div class="mt-2 text-center">
+            <%= link_to "レビューを書く", new_public_hospital_review_path(@hospital), class:"mt-2 btn btn-success rounded-pill", data: {"turbolinks" => false} %>
+            <%= link_to 'ネットde診療予約', new_public_reservation_path, class: "mt-2 btn btn-primary rounded-pill" %>
+            <% score = @hospital.reviews.published.average(:total_point).nil? ? 0 : @hospital.reviews.published.average(:total_point).round(1) %>
+ 
+            <div class="mt-3 text-center">
+              <b>Cestくん総合評価：</b>
+              <% if score >= 4 %>
+                <i class="fa-regular fa-face-smile-wink"></i>
+              <% elsif score >= 2.5 %>
+                <i class="fa-regular fa-face-smile"></i>
               <% else %>
-                対応停止中
+                <i class="fa-solid fa-face-sad-tear"></i>
               <% end %>
-            </td>
-          </tr>
-      <!--Googleマップの記載 89行目までと101行目から-->
-          <tr>
-            <td>Googleマップ</td>
-          <td>
-            <input id="address" type="textbox" value="検索バー">
-            <input type="button" value="Encode" onclick="codeAddress()">
-              <div id="display">検索後は表示までしばらくお待ちください。</div>
-              <div id='map' class=></div>
-          </td>
-          </tr>
-        </tbody>
-      </table>
-      <%= link_to '病院一覧画面に戻る', public_hospitals_path, class: "btn btn-primary" %>
+            </div>
+            <div class="mt-2 text-center">
+              <div id="hospital_total_review_<%= @hospital.id %>">総合評価</div>
+            </div>
+            <div class="mt-2 text-center">
+              <%= link_to 'この病院のレビューを確認する', public_hospital_hospital_reviews_path(@hospital), class: "btn btn-success" %>
+            </div>
+            <div class="mt-2 text-center">
+              <%= link_to '個人レビュー一覧', public_reviews_path, class: "mt-2 btn btn-primary rounded-pill" %>
+            </div>
+          </div>
+          
+          <script>
+            var elem = document.getElementById('hospital_total_review_<%= @hospital.id %>');
+            var opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              half: true,
+              readOnly: true,
+              score: <%= score %>
+            };
+            raty(elem,opt);
+          </script>
 
-<!--Googleマップの記載-->
-<style>
-#map {
-  height: 400px;
-  width: 100%;
-}
-</style>
+          <div class="mt-2 text-center">
+            <%= image_tag @hospital.image, class:"img-fluid d-block mx-auto", size:"250x250" %>
+          </div>
+          <table class="mt-4 table table-bordered table-hover">
+            <tbody>
+              <tr>
+                <td>郵便番号</td>
+                <td><%= @hospital.postal_code %></td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= @hospital.address %></td>
+              </tr>
+              <tr>
+                <td>病院名</td>
+                <td><%= @hospital.name %></td>
+              </tr>
+              <tr>
+                <td>病院名（カナ）</td>
+                <td><%= @hospital.hospital_name_kana %></td>
+              </tr>
+              <tr>
+                <td>医師名</td>
+                <td><% @hospital.doctors.each do |doctor| %>
+                      <%= doctor.name %>
+                      <% if customer_signed_in? %>
+                        <% if current_customer.following?(doctor) %>
+                          <%= link_to "フォローを外す", public_follows_path(doctor_id: doctor.id), method: :delete %>
+                        <% else %>
+                          <%= link_to "フォロー", public_follows_path(doctor_id: doctor.id), method: :post %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <%= link_to '医師一覧画面に進む', public_hospital_hospital_doctors_path(@hospital), class: "btn btn-success" %>
+                </td>
+              </tr>
+              <tr>
+                <td>病院説明</td>
+                <td><%= @hospital.introduction %></td>
+              </tr>
+              <tr>
+                <td>電話番号</td>
+                <td><%= @hospital.telephone_number %></td>
+              </tr>
+              <tr>
+                <td>ジャンル</td>
+                <td><%= @hospital.genre.name %></td>
+              </tr>
+              <tr>
+                <td>診療科目</td>
+                <td><%= @hospital.subject %> </td>
+              </tr>
+              <tr>
+                <td>診療時間</td>
+                <td><%= @hospital.hospital_time %> </td>
+              </tr>
+              <tr>
+                <td>駐車場</td>
+                <td><%= @hospital.parking %></td>
+              </tr>
+              <tr>
+                <td>受付ステータス</td>
+                <td>
+                  <% if @hospital.is_active == true %>
+                    対応中
+                  <% else %>
+                    対応停止中
+                  <% end %>
+                </td>
+              </tr>
 
-<script>
-
-let map
-let geocoder
-const display = document.getElementById('display')
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-  test ={lat: <%= @hospital.latitude %>, lng: <%= @hospital.longitude %>};
-  //test = {lat: 34.73348, lng:135.500109}
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    //latが緯度、lngが経度
-    center: test,
-    //数値は0〜21まで指定できます。数値が大きいほど拡大
-    zoom: 12,
-  });
-   //positionに指定した座標にピンを表示
-  marker = new google.maps.Marker({
-    position:  test,
-    map: map
-  });
-}
-
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-      display.textContent = "検索結果：" + results[ 0 ].geometry.location
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
-</div>
-</div>
-</div>
+          <!--Googleマップの記載 89行目までと101行目から-->
+              <tr>
+                <td>Googleマップ</td>
+                <td>
+                  <input id="address" type="textbox" value="検索バー">
+                  <input type="button" value="Encode" onclick="codeAddress()">
+                    <div id="display">検索後は表示までしばらくお待ちください。</div>
+                    <div id='map' class=></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <%= link_to '病院一覧画面に戻る', public_hospitals_path, class: "btn btn-primary" %>
+    
+          <!--Googleマップの記載-->
+          <style>
+          #map {
+            height: 400px;
+            width: 100%;
+          }
+          </style>
+          
+          <script>
+          
+          let map
+          let geocoder
+          const display = document.getElementById('display')
+          
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+            test ={lat: <%= @hospital.latitude %>, lng: <%= @hospital.longitude %>};
+            //test = {lat: 34.73348, lng:135.500109}
+          
+            map = new google.maps.Map(document.getElementById('map'), {
+              //latが緯度、lngが経度
+              center: test,
+              //数値は0〜21まで指定できます。数値が大きいほど拡大
+              zoom: 12,
+            });
+             //positionに指定した座標にピンを表示
+            marker = new google.maps.Marker({
+              position:  test,
+              map: map
+            });
+          }
+          
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+          
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                display.textContent = "検索結果：" + results[ 0 ].geometry.location
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });
+          }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
+        </div>
+      </div>
+    </div>

@@ -2,15 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="colmd-12 text-center d-grid col-xs-2 mx-auto">
-      <div class="mt-2 search_form">
-        <%= form_with url: hospital_search_path, local: true, method: :get do |f| %>
-          <%= f.text_field :word, :placeholder => "右側の項目を選択ください！", size: "25" %>
-          <%= f.select :range, options_for_select(['病院名','お住まいのエリア']) %>
-          <%= f.submit "検索", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+        <div class="mt-2 search_form">
+          <%= form_with url: hospital_search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word, :placeholder => "右側の項目を選択ください！", size: "25" %>
+            <%= f.select :range, options_for_select(['病院名','お住まいのエリア']) %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
-
-<% end %>
   </div>
+<% end %>

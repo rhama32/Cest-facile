@@ -1,56 +1,55 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h4 class= "text-center"><b>新規会員登録</b><br>
-        (※1分で登録が完了します。)
-      </h4>
-      
-   <h6 class="text-center">
-    <%= form_for(resource, as: resource_name, url: customer_registration_path) do |f| %>
-     <%= render "public/shared/error_messages", resource: resource %>
-     <table class="table table-borderless text-nowrap">
+  <div class="col-md-12">
+    <h4 class= "text-center"><b>新規会員登録</b><br>
+      (※1分で登録が完了します。)
+    </h4>
+
+    <h6 class="text-center">
+      <%= form_for(resource, as: resource_name, url: customer_registration_path) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+    <table class="table table-borderless text-nowrap">
       <tbody>
-       <tr>
-        <td>名前</td>
-        <td>(姓)<%= f.text_field :last_name,:placeholder => "令和",size:"20" %> </td>
-        <td>(名)<%= f.text_field :first_name,:placeholder => "太郎",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>フリガナ</td>
-        <td>(セイ)<%= f.text_field :last_name_kana,:placeholder => "レイワ",size:"20" %> </td>
-        <td>(メイ)<%= f.text_field :first_name_kana,:placeholder => "タロウ",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>メールアドレス</td>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email",:placeholder => "sample@example.com",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>郵便番号（ハイフンなし）</td>
-        <td><%= f.text_field :postal_code,:placeholder => "0001111",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>住所</td>
-        <td><%= f.text_field :address,:placeholder => "大阪府大阪市中央区南船場0-0-0",size:"50" %></td>
-       </tr>
-       <tr>
-        <td>電話番号（ハイフンなし）</td>
-        <td><%= f.text_field :telephone_number,:placeholder => "00011112222",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
-        <td><%= f.password_field :password, autocomplete: "new-password",size:"20" %></td>
-       </tr>
-       <tr>
-        <td>パスワード(確認用)</td>
-        <td><%= f.password_field :password_confirmation,size:"20" %></td>
-       </tr>
-       <tr>
-        <td></td>
-        <td><%= f.submit "新規登録", class:"mt-3 btn btn-success center-block" %></td>
-       </tr>
+        <tr>
+          <td>名前</td>
+          <td>(姓)<%= f.text_field :last_name,:placeholder => "令和",size:"20" %> </td>
+          <td>(名)<%= f.text_field :first_name,:placeholder => "太郎",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td>(セイ)<%= f.text_field :last_name_kana,:placeholder => "レイワ",size:"20" %> </td>
+          <td>(メイ)<%= f.text_field :first_name_kana,:placeholder => "タロウ",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",:placeholder => "sample@example.com",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>郵便番号（ハイフンなし）</td>
+          <td><%= f.text_field :postal_code,:placeholder => "0001111",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address,:placeholder => "大阪府大阪市中央区南船場0-0-0",size:"50" %></td>
+        </tr>
+        <tr>
+          <td>電話番号（ハイフンなし）</td>
+          <td><%= f.text_field :telephone_number,:placeholder => "00011112222",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
+          <td><%= f.password_field :password, autocomplete: "new-password",size:"20" %></td>
+        </tr>
+        <tr>
+          <td>パスワード(確認用)</td>
+          <td><%= f.password_field :password_confirmation,size:"20" %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit "新規登録", class:"mt-3 btn btn-success center-block" %></td>
+        </tr>
       </tbody>
-     </table>
-    <% end %>
-   </div>
- </div>
+    </table>
+      <% end %>
+    </div>
+  </div>
 </div>

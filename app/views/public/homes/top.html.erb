@@ -3,13 +3,13 @@
     <div class="col-md-12 py-3" style="background: url(<%= asset_path "kes.jpg" %>) center; background-size:cover;">
       <div class="text-center py-5">
         <div class="jumbotron jumbotron-fluid mt-4">
-        <h2><b>「手軽に安心を」</b></h2>
-        <p class="text-primary">
-        <h5>
-        <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
-        <p>Cest-facile 提携クリニック・病院とともに</p>
-        <p>手軽に安心を手にしましょう！</p>
-        </h5>
+          <h2><b>「手軽に安心を」</b></h2>
+            <p class="text-primary">
+              <h5>
+                <p>全国の医療機関を手軽に探せる検索・口コミ・受付予約サイト</p>
+                <p>Cest-facile 提携クリニック・病院とともに</p>
+                <p>手軽に安心を手にしましょう！</p>
+              </h5>
         </div>
       </div>
     </div>
@@ -20,67 +20,61 @@
       <div class="mt-2 text-center">
       <% if customer_signed_in? %>
         <h4><b>あなたの近くの病院を探してみましょう！</b></h4>
-      </div>
-      <div class="text-center">
-        <%= link_to "病院検索", public_symptoms_path, class: "mt-3 btn btn-success btn-lg rounded-pill" %>
-      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to "病院検索", public_symptoms_path, class: "mt-3 btn btn-success btn-lg rounded-pill" %>
+    </div>
       <% else %>
-      <div class="mt-3 text-center">
-        <h5><b>手軽に情報を収集しましょう！</b></h5>
-      </div>
-      <div class="mt-2 text-center">
-        <%= link_to "会員様ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
-      </div>
+    <div class="mt-3 text-center">
+      <h5><b>手軽に情報を収集しましょう！</b></h5>
+    </div>
+    <div class="mt-2 text-center">
+      <%= link_to "会員様ログイン", customer_session_path, class: "btn btn-success btn-lg" %>
+    </div>
       <% end %>
     </div>
   </div>
   
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h2 class="mt-5"><b>アクセス数ランキング</b></h2>
-      </div>
-          <% @hospitals.each do |hospital| %>
-          <div class="mt-4 col-md-4 text-center">
-          <%= link_to public_hospital_path(hospital) do %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 class="mt-5"><b>アクセス数ランキング</b></h2>
+    </div>
+    <% @hospitals.each do |hospital| %>
+      <div class="mt-4 col-md-4 text-center">
+        <%= link_to public_hospital_path(hospital) do %>
           <%= image_tag hospital.image, size: '250x250' %>
-         <div>病院名:<%= hospital.name %></div>
-         <% end %>
-         <div>診療科目:<%= hospital.subject %></div>
-         <div>みんなのアクセス<%= hospital.impressionist_count %>回</div>
-          </div>
-         <% end %>
-        
-         
-       </div>
+          <div>病院名:<%= hospital.name %></div>
+        <% end %>
+          <div>診療科目:<%= hospital.subject %></div>
+          <div>みんなのアクセス<%= hospital.impressionist_count %>回</div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mt-5 text-center">
+        <%= render 'public/hospitals/genrevar', genres: @genres %>
       </div>
     </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mt-5 text-center">
+        <h2><b>詳細検索から病院を探す</b></h2>
+        <div class="mt-2 text-center">
+          <%= link_to "詳細検索", public_symptoms_path, class:"mt-3 btn btn-success center-block" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="mt-5 text-center">
-        
-        <%= render 'public/hospitals/genrevar', genres: @genres %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class=" mt-5 text-center">
+        <h2><b>ゲストでもCest-facileを体験出来ます！</b></h2>
+          <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "mt-4 btn btn-success center-block", method: :post %>
+      </div>
     </div>
-   </div>
-   </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mt-5 text-center">
-      <h2><b>詳細検索から病院を探す</b></h2>
-      <div class="mt-2 text-center">
-<%= link_to "詳細検索", public_symptoms_path, class:"mt-3 btn btn-success center-block" %>
-    </div>
-    </div>
-    </div>
-    </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class=" mt-5 text-center">
-            <h2><b>ゲストでもCest-facileを体験出来ます！</b></h2>
-  <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "mt-4 btn btn-success center-block", method: :post %>
-    </div>
-    </div>
-    </div>
-    </div>
+  </div>
