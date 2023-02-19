@@ -1,47 +1,50 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-xs-6">
-<%= render 'public/hospitals/genrevar', genres: @genres %>
-<h3 class="mt-5 text-center"><b>検索から探す</b></h3>
-<%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>
-    <div class="col-xs-8">
-      <table class="table">
-    <tbody>
-     <tr class="d-grid col-md-6 mx-auto">
-      <th>ジャンル一覧</th>
-      <th><%= f.select :genre_id, Genre.pluck(:name, :id), include_blank: "選択して下さい"  %></th>
-    </tr>
-    <tr class="d-grid col-md-6 mx-auto">
-      <th>エリア一覧(都道府県)</th>
-　　　<th><%= f.select :prefecture, Prefecture.pluck(:name, :name), include_blank: "選択して下さい"  %></th>
-　　</tr>
-　　<tr class="d-grid col-md-12 text-center">
-      <th><%= f.submit "検索する", class:"btn btn-success" %></th>
-    </tr>
-    </tbody>
-  </table>
-<% end %>
-
-<% if params[:genre_id]||params[:prefecture] %>
-<h3 class="mt-5 text-center"><b>症状検索結果画面<br>最適な病院を検索しました。</b></h3>
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-  <% @hospitals.each do |hospital| %>
-    <div class="col">
-      <div class="card">
-        <%= image_tag hospital.image, size:"100x370", class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= hospital.name %></h5>
-          <h5 class="card-title">診療科目：<%= hospital.subject %></h5>
-          <h5 class="card-title">住所：<%= hospital.address %><br></h5>
-          <h5 class="card-title"><%= link_to "この病院の詳細を確認する", public_hospital_path(hospital) %></h5>
-        </div>
+      <%= render 'public/hospitals/genrevar', genres: @genres %>
+      
+    <h3 class="mt-5 text-center"><b>検索から探す</b></h3>
+      <%= form_with model: @symptom, method: :get, url: public_symptoms_path do |f| %>
+      <div class="col-xs-8">
+        <table class="table">
+          <tbody>
+            <tr class="d-grid col-md-6 mx-auto">
+              <th>ジャンル一覧</th>
+              <th><%= f.select :genre_id, Genre.pluck(:name, :id), include_blank: "選択して下さい"  %></th>
+            </tr>
+            <tr class="d-grid col-md-6 mx-auto">
+              <th>エリア一覧(都道府県)</th>
+      　　    　<th><%= f.select :prefecture, Prefecture.pluck(:name, :name), include_blank: "選択して下さい"  %></th>
+      　　    </tr>
+      　　    <tr class="d-grid col-md-12 text-center">
+              <th><%= f.submit "検索する", class:"btn btn-success" %></th>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      
+      <% if params[:genre_id]||params[:prefecture] %>
+        <h3 class="mt-5 text-center"><b>症状検索結果画面<br>最適な病院を検索しました。</b></h3>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <% @hospitals.each do |hospital| %>
+              <div class="col">
+                <div class="card">
+                  <%= image_tag hospital.image, size:"100x370", class: "card-img-top" %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= hospital.name %></h5>
+                    <h5 class="card-title">診療科目：<%= hospital.subject %></h5>
+                    <h5 class="card-title">住所：<%= hospital.address %><br></h5>
+                    <h5 class="card-title"><%= link_to "この病院の詳細を確認する", public_hospital_path(hospital) %></h5>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="mt-3">
+            <%= paginate @hospitals %>
+          </div>
+      <% end %>
       </div>
     </div>
-    
-   <% end %>
+  </div>
 </div>
-<div class="mt-3">
-<%= paginate @hospitals %>
-</div>
-<% end %>

@@ -1,8 +1,8 @@
 <div class="col-xs-6">
-<%= form_with model: @reply, url: public_review_replies_path(@review), local: false do |f| %>
-  <%= f.hidden_field :review_id %>
-  <%= f.text_area :comment, rows: 5, class: "form-control" %>
-  <div class="d-grid col-3 mx-auto">
-  <%= f.submit "返信する", class:"mt-4 btn btn-success" %>
-<% end %>
+  <%= form_with model: @reply, url: public_review_replies_path(@review), local: false do |f| %>
+    <%= f.hidden_field :review_id %>
+    <%= f.text_area :comment, rows: 5, class: "form-control" %>
+    <div class="d-grid col-3 mx-auto">
+    <%= f.submit "返信する", class:"mt-4 btn btn-success" %>
+  <% end %>
 </div>

@@ -1,94 +1,87 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h3 class="mt-3 text-center"><b>ネットde診療予約</b></h3>
-
-
-        <div class="col-sm-12 mt-4 text-center">
+  <div class="col-sm-12">
+    <h3 class="mt-3 text-center"><b>ネットde診療予約</b></h3>
+      <div class="col-sm-12 mt-4 text-center">
         <h5><b>予約手順</b></h5>
         <h6 class= "mt-3">①予約日を選択　</h6>
         <h6 class= "mt-3">②希望時間を選択</h6>
         <h6 class= "mt-3">③対象院を選択　</h6>
         <h6 class= "mt-3 text-danger"><b>※予約は最短で明日以降となります。</b></h6>
         <h6 class= "mt-3 text-danger"><b>※予約はお一人様3件までとなります。</b></h6>
-        </div>
-
-<div class="mt-3 text-center">
-  <%= link_to "病院一覧", public_hospitals_path, class: "btn btn-primary rounded-pill" %>
-  <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success rounded-pill" %>
-</div>
-
-<%= form_with model: @reservation, url: public_reservations_path, method: :post do |f| %>
-
-<div class="tb-wrap">
-  <table class="col-sm-12 mt-4 table table-bordered table-hover reservation-table">
-    <thead>
-     <tr class="table-secondary">
-        <th>予約希望日</th>
-        <th>予約希望時間</th>
-        <th>予約希望院</th>
-        <th>実行ボタン</th>
-    </thead>
-    <tbody>
-         <td><%= f.date_field :hope_day %></td>
-         <td><%= f.time_select :hope_time, {:start_time => '08', :end_time => '20', :minute_step => 30} %></td>
-         <td>
-             <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
-         </td>
-        <td><%= f.submit "予約する", class:"btn btn-success" %></td>
-        
-     </tbody> 
-   </table>
-</div>
-  <% end %>
-  </div>
-  <h3 class="mt-2 text-center"><b>登録病院から探す</b></h3>
-          <% @hospitals.each do |hospital| %>
-          <div class="mt-3 col-md-4 shadow">
-            <% if hospital.is_active == true %>
-            <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
-              <div class= "text-left">
-                Cestくん評価：
-                 <% if score >= 4 %>
-                <i class="fa-regular fa-face-smile-wink"></i>
-                <% elsif score >= 2.5 %>
-                <i class="fa-regular fa-face-smile"></i>
-                <% else %>
-                <i class="fa-solid fa-face-sad-tear"></i>
-                <% end %>
-              </div>
-              <div class= "text-left">
-                  診療科目　　：<%= hospital.subject %>
-              </div>
-              <div class= "text-left">
-                  住所　　　　：<%= hospital.address %>
-              </div>
-              <div id="hospital_total_review_<%= hospital.id %>"></div>
-              <%= link_to public_hospital_path(hospital) do %>
-                <%= hospital.name %>
-                <%= image_tag hospital.image, size:"130x130"%>
-              <% end %>
-
-            <% end %>
-
-            <script>
-              var elem = document.getElementById('hospital_total_review_<%= hospital.id %>');
-              var opt = {  
-                starOn: "<%= asset_path('star-on.png') %>",
-                starOff: "<%= asset_path('star-off.png') %>",
-                starHalf: "<%= asset_path('star-half.png') %>",
-                half: true,
-                readOnly: true,
-                score: <%= score %>
-              };
-              raty(elem,opt);
-            </script>
-            </div>
-      <% end %>
-      <%= render 'public/hospitals/genrevar', genres: @genres %>
-   
-      <div class="mt-5">
-        <%= paginate @hospitals %>
       </div>
-</div>
+      <div class="mt-3 text-center">
+        <%= link_to "病院一覧", public_hospitals_path, class: "btn btn-primary rounded-pill" %>
+        <%= link_to "病院検索", public_symptoms_path, class: "btn btn-success rounded-pill" %>
+      </div>
+      <%= form_with model: @reservation, url: public_reservations_path, method: :post do |f| %>
+        <div class="tb-wrap">
+          <table class="col-sm-12 mt-4 table table-bordered table-hover reservation-table">
+            <thead>
+              <tr class="table-secondary">
+                <th>予約希望日</th>
+                <th>予約希望時間</th>
+                <th>予約希望院</th>
+                <th>実行ボタン</th>
+            </thead>
+            <tbody>
+              <td><%= f.date_field :hope_day %></td>
+              <td><%= f.time_select :hope_time, {:start_time => '08', :end_time => '20', :minute_step => 30} %></td>
+              <td>
+                  <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
+              </td>
+              <td><%= f.submit "予約する", class:"btn btn-success" %></td>
+            </tbody> 
+          </table>
+        </div>
+      <% end %>
+    </div>
+    <h3 class="mt-2 text-center"><b>登録病院から探す</b></h3>
+      <% @hospitals.each do |hospital| %>
+        <div class="mt-3 col-md-4 shadow">
+        <% if hospital.is_active == true %>
+        <% score = hospital.reviews.published.average(:total_point).nil? ? 0 : hospital.reviews.published.average(:total_point).round(1) %>
+        <div class= "text-left">
+        Cestくん評価：
+          <% if score >= 4 %>
+            <i class="fa-regular fa-face-smile-wink"></i>
+          <% elsif score >= 2.5 %>
+            <i class="fa-regular fa-face-smile"></i>
+          <% else %>
+            <i class="fa-solid fa-face-sad-tear"></i>
+          <% end %>
+        </div>
+        <div class= "text-left">
+          診療科目　　：<%= hospital.subject %>
+        </div>
+        <div class= "text-left">
+          住所　　　　：<%= hospital.address %>
+        </div>
+        <div id="hospital_total_review_<%= hospital.id %>"></div>
+        <%= link_to public_hospital_path(hospital) do %>
+          <%= hospital.name %>
+          <%= image_tag hospital.image, size:"130x130"%>
+        <% end %>
+      <% end %>
+
+      <!-- Raty星評価 !-->
+      <script>
+        var elem = document.getElementById('hospital_total_review_<%= hospital.id %>');
+        var opt = {  
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          half: true,
+          readOnly: true,
+          score: <%= score %>
+        };
+        raty(elem,opt);
+      </script>
+      </div>
+    <% end %>
+    <%= render 'public/hospitals/genrevar', genres: @genres %>
+    <div class="mt-5">
+      <%= paginate @hospitals %>
+    </div>
+  </div>
 </div>

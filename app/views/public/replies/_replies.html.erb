@@ -13,22 +13,17 @@
       <td><%= review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
       <%#= link_to '削除', public_review_path(review), method: :delete, remote: true, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %>
     </tr>
-    <div>
-
       <% review.replies.each do |reply| %>
-        <tr>
-          <% if reply.doctor_id.present? %>
-            <td><%= reply.doctor.name %></td>
-          <% elsif reply.customer_id.present? %>
-            <td><%= reply.customer.full_name %></td>
-          <% end %>
-          <div>
+    <tr>
+        <% if reply.doctor_id.present? %>
+          <td><%= reply.doctor.name %></td>
+        <% elsif reply.customer_id.present? %>
+          <td><%= reply.customer.full_name %></td>
+        <% end %>
             <td><%= reply.comment %></td>
             <td class= "text-overflow"><%= reply.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
             <%#= link_to '削除', public_review_path(reply), method: :delete, remote: true, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %>
-          </div>
-        </tr>
+    </tr>
       <% end %>
-    </div>
   </tbody>
 </table>
