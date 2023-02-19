@@ -1,5 +1,4 @@
 <header>
-  
   <div class="header">
     <nav class="navbar navbar-light mb-2">
       <div class="container">
@@ -8,88 +7,83 @@
             <%= image_tag asset_path('cest-facile.jpeg'),size: '80x80' %>
           <% end %>
         </div>
-        <!-- 顧客サインイン後-->
-        <% if customer_signed_in? %>
-          <div class="text-center">
-            ようこそ！<br><%= current_customer.last_name %> <%= current_customer.first_name %>さん
-          </div>
+    <!-- 顧客サインイン後-->
+      <% if customer_signed_in? %>
+        <div class="text-center">
+          ようこそ！<br><%= current_customer.last_name %> <%= current_customer.first_name %>さん
+        </div>
+        <!-- ハンバーガメニュー実装 21行目まで!-->
           <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           <% end %>
-
            <ul class="dropdown-menu dropdown-menu-right p-3">
-             <i class="fa-solid fa-building mr-2">
+             <li class="fa-solid fa-building mr-2">
                <%= link_to "About", about_path %>
-             </i>
-             <i class="fa-solid fa-user mr-2">
+             </li>
+             <li class="fa-solid fa-user mr-2">
                <%= link_to "マイページ", customers_mypage_path %>
-             </i>
-             <i class="fa-solid fa-hospital mr-2">
+             </li>
+             <li class="fa-solid fa-hospital mr-2">
                <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path %>
-             </i>
-             <i class="fa-solid fa-file mr-2">
+             </li>
+             <li class="fa-solid fa-file mr-2">
                <%= link_to "病院検索", public_symptoms_path %>
-             </i>
-             <i class="fa-solid fa-flag mr-2">
+             </li>
+             <li class="fa-solid fa-flag mr-2">
                <%= link_to "予約一覧", public_reservations_path %>
-             </i>
-             <i class="fa-solid fa-file mr-2">
+             </li>
+             <li class="fa-solid fa-file mr-2">
                <%= link_to "個人レビュー", public_reviews_path %>
-             </i>
-             <i class="fa-solid fa-users mr-2">
+             </li>
+             <li class="fa-solid fa-users mr-2">
                <%= link_to "フォロー一覧", public_followings_path %>
-             </i>
-             <i class="fa-solid fa-right-from-bracket mr-2">
+             </li>
+             <li class="fa-solid fa-right-from-bracket mr-2">
                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-             </i>
+             </li>
            </ul>
-      <!--管理者がログインした場合-->
-        <% elsif admin_signed_in? %>
-                  <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+    <!--管理者がログインした場合-->
+      <% elsif admin_signed_in? %>
+      <!-- ハンバーガメニュー実装 55行目まで!-->
+        <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <% end %>
+          <ul class="dropdown-menu dropdown-menu-right p-3">
+            <li class="fa-solid fa-file">
+              <%= link_to "病院一覧", admin_hospitals_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "会員一覧", admin_customers_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "ジャンル一覧", admin_genres_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "予約一覧", admin_reservations_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "レビュー管理一覧", admin_reviews_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "医療提供者申請一覧", admin_doctors_path %>
+            </li>
+            <li class="fa-solid fa-file">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          </ul>
+        <!--医療提供者がログインした場合-->
+          <% elsif doctor_signed_in? %>
+            <!-- ハンバーガメニュー実装 86行目まで!-->
+            <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
           <% end %>
-        
-        
-        
-        
-        <ul class="dropdown-menu dropdown-menu-right p-3">
-          <li class="fa-solid fa-file">
-            <%= link_to "病院一覧", admin_hospitals_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "会員一覧", admin_customers_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "ジャンル一覧", admin_genres_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "予約一覧", admin_reservations_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "レビュー管理一覧", admin_reviews_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "医療提供者申請一覧", admin_doctors_path %>
-          </li>
-          <li class="fa-solid fa-file">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </li>
-        </ul>
-      <!--医療提供者がログインした場合-->
-      <ul class="dropdown-menu dropdown-menu-right p-3">
-        <% elsif doctor_signed_in? %>
-        
-                          <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          <% end %>
-          
-          <ul class="nav justify-content-end">
+          <ul class="dropdown-menu dropdown-menu-right p-3">
             <li class="nav-item">
               <%= link_to "About us", about_path, class: "nav-link" %>
             </li>
@@ -112,35 +106,34 @@
               <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
             </li>
           </ul>
-        </ul>
       <!--サインインしていない場合-->
-        <% else %>
-                          <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+          <% else %>
+          <!--ハンバーガーメニュー実装117行目まで !-->
+            <%= link_to '#', class: 'nav-link', 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do %>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
           <% end %>
-        
-        <ul class="dropdown-menu dropdown-menu-right p-3">
-          <i class="fa-solid fa-file">
-            <%= link_to "About", about_path %>
-          </i>
-          <i class="fa-solid fa-hospital">
-            <%= link_to "病院一覧", public_hospitals_path %>
-         </i>
-          <i class="fa-solid fa-user-plus">
-            <%= link_to "新規登録", new_customer_registration_path %>
-          </i>
-          <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
-            <%= link_to "会員様ログイン", customer_session_path %>
-          </i>
-          <i class="fa-solid fa-lock">
-            <%= link_to "管理者ログイン", admin_session_path %>
-          </i>
-          <i class="fa-solid fa-lock">
-            <%= link_to "医療者ログイン", doctor_session_path %>
-          </i>
-        </ul>
+          <ul class="dropdown-menu dropdown-menu-right p-3">
+            <i class="fa-solid fa-file">
+              <%= link_to "About", about_path %>
+            </i>
+            <i class="fa-solid fa-hospital">
+              <%= link_to "病院一覧", public_hospitals_path %>
+           </i>
+            <i class="fa-solid fa-user-plus">
+              <%= link_to "新規登録", new_customer_registration_path %>
+            </i>
+            <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
+              <%= link_to "会員様ログイン", customer_session_path %>
+            </i>
+            <i class="fa-solid fa-lock">
+              <%= link_to "管理者ログイン", admin_session_path %>
+            </i>
+            <i class="fa-solid fa-lock">
+              <%= link_to "医療者ログイン", doctor_session_path %>
+            </i>
+          </ul>
         <% end %>
       </div>
     </nav>

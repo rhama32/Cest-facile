@@ -1,29 +1,28 @@
 <div class="container">
-<div class="row">
-<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-12">
       <h4 class="mt-3 text-center"><b>管理者ログイン</b></h4>
     </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+           <tr>
+             <td><%= f.label :メールアドレス %></td>
+             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+           </tr>
+           <tr>
+              <td><%= f.label :パスワード %></td>
+              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+           </tr>
+        　  <tr>
+              <td><%= f.submit "ログイン", class:"btn btn-success center-block" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <%= render "admin/shared/links" %>
+    <h5>医療関係者の方で<br>
+        新規登録がお済みでない方</h5>
+    <%= render "doctor/shared/links" %>から新規登録を行ってください。
   </div>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <td><%= f.label :メールアドレス %></td>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :パスワード %></td>
-                <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-              </tr>
-        　     <tr>
-                <td><%= f.submit "ログイン", class:"btn btn-success center-block" %></td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      <%= render "admin/shared/links" %>
-        <h5>医療関係者の方で<br>
-            新規登録がお済みでない方</h5>
-      <%= render "doctor/shared/links" %>から新規登録を行ってください。
-    </div>
-  </div>
+</div>

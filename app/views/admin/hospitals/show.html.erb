@@ -1,139 +1,140 @@
 <div class="container">
-<div class="row">
-<div class="offset-0 col-xs-8">
-<h4 class="mt-3"><b>病院詳細</b></h4>
+  <div class="row">
+    <div class="offset-0 col-xs-8">
+      <h4 class="mt-3"><b>病院詳細</b></h4>
     </div>
-  </div>
-        <div class="mt-3">
-          
+    <div class="mt-3">
       <table class="mt-4 table-bordered table-hover">
         <tbody>
           <tr>
-                <td>病院画像</td>
-                <td><%= image_tag @hospital.image, size:"200x200" %></td>
-              </tr>
-              <tr>
-                <td>郵便番号</td>
-                <td><%= @hospital.postal_code %></td>
-              </tr>
-              <tr>
-                <td>住所</td>
-                <td><%= @hospital.address %></td>
-              </tr>
-              <tr>
-                <td>病院名</td>
-                <td><%= @hospital.name %></td>
-              </tr>
-              <tr>
-                <td>病院名（カナ）</td>
-                <td><%= @hospital.hospital_name_kana %></td>
-              </tr>
-              <tr>
-                <td>病院説明</td>
-                <td><%= @hospital.introduction %></td>
-              </tr>
-              <tr>
-                <td>医師名</td>
-                <td><% @hospital.doctors.each do |doctor| %>
-                    <%= link_to doctor.name, admin_doctor_path(doctor.id) %>
-                    <% end %>
-                </td>
-              <tr>
-                <td>電話番号</td>
-                <td><%= @hospital.telephone_number %></td>
-              </tr>
-              <tr>
-                <td>ジャンル</td>
-                <td><%= @hospital.genre.name %></td>
-              </tr>
-              <tr>
-                <td>診療科目</td>
-                <td><%= @hospital.subject %> </td>
-              </tr>
-              <tr>
-                <td>診療時間</td>
-                <td><%= @hospital.hospital_time %> </td>
-              </tr>
-              <tr>
-                <td>駐車場</td>
-                <td><%= @hospital.parking %></td>
-              </tr>
-              <tr>
-                <td>ステータス</td>
-                <td><% if @hospital.is_active == true %>
-                      対応中
-                    <% else %>
-                      対応停止中
-                    <% end %>
-                </td>
-              </tr>
-            <!--Googleマップの記載-->
-              <tr>
-                <td>Googleマップ<br>
-                    対象院の住所を表示しています。
-                </td>
-                <td>
-                  <input id="address" type="textbox" value="検索バー">
-                  <input type="button" value="Encode" onclick="codeAddress()">
-                  <div id="display">検索後は表示までしばらくお待ちください。</div>
-                  <div id='map'></div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    <li class="mt-4 col-xs-4">
+            <td>病院画像</td>
+            <td><%= image_tag @hospital.image, size:"200x200" %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @hospital.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @hospital.address %></td>
+          </tr>
+          <tr>
+            <td>病院名</td>
+            <td><%= @hospital.name %></td>
+          </tr>
+          <tr>
+            <td>病院名（カナ）</td>
+            <td><%= @hospital.hospital_name_kana %></td>
+          </tr>
+          <tr>
+            <td>病院説明</td>
+            <td><%= @hospital.introduction %></td>
+          </tr>
+          <tr>
+            <td>医師名</td>
+            <td><% @hospital.doctors.each do |doctor| %>
+                <%= link_to doctor.name, admin_doctor_path(doctor.id) %>
+                <% end %>
+            </td>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @hospital.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @hospital.genre.name %></td>
+          </tr>
+          <tr>
+            <td>診療科目</td>
+            <td><%= @hospital.subject %> </td>
+          </tr>
+          <tr>
+            <td>診療時間</td>
+            <td><%= @hospital.hospital_time %> </td>
+          </tr>
+          <tr>
+            <td>駐車場</td>
+            <td><%= @hospital.parking %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td><% if @hospital.is_active == true %>
+                  対応中
+                <% else %>
+                  対応停止中
+                <% end %>
+            </td>
+          </tr>
+
+          <!-- Googleマップの記載 !-->
+          <tr>
+            <td>Googleマップ<br>
+                対象院の住所を表示しています。
+            </td>
+            <td>
+              <input id="address" type="textbox" value="検索バー">
+              <input type="button" value="Encode" onclick="codeAddress()">
+              <div id="display">検索後は表示までしばらくお待ちください。</div>
+              <div id='map'></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 col-xs-4">
       <%= link_to "　　編集する　　", edit_admin_hospital_path(params[:id]),class:"btn btn-success center-block" %>
       <%= link_to '　病院一覧に戻る　', admin_hospitals_path, class: "btn btn-primary" %>
-    </li>
-        <!--Googleマップの記載-->
-        <style>
-        #map {
-          height: 250px;
-          width: 250px;
-        }
-        </style>
-        
-        <script>
-        
-        let map
-        let geocoder
-        const display = document.getElementById('display')
-        
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
-          test ={lat: <%= @hospital.latitude %>, lng: <%= @hospital.longitude %>};
-          //test = {lat: 34.73348, lng:135.500109}
-        
-          map = new google.maps.Map(document.getElementById('map'), {
-            //latが緯度、lngが経度
-            center: test,
-            //数値は0〜21まで指定できます。数値が大きいほど拡大
-            zoom: 12,
+    </div>
+  </div>
+</div>
+
+    <!--Googleマップの記載! -->
+    <style>
+    #map {
+      height: 250px;
+      width: 250px;
+    }
+    </style>
+    
+    <script>
+    
+    let map
+    let geocoder
+    const display = document.getElementById('display')
+    
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      test ={lat: <%= @hospital.latitude %>, lng: <%= @hospital.longitude %>};
+      //test = {lat: 34.73348, lng:135.500109}
+    
+      map = new google.maps.Map(document.getElementById('map'), {
+        //latが緯度、lngが経度
+        center: test,
+        //数値は0〜21まで指定できます。数値が大きいほど拡大
+        zoom: 12,
+      });
+       //positionに指定した座標にピンを表示
+      marker = new google.maps.Marker({
+        position:  test,
+        map: map
+      });
+    }
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById('address').value;
+    
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
           });
-           //positionに指定した座標にピンを表示
-          marker = new google.maps.Marker({
-            position:  test,
-            map: map
-          });
+          display.textContent = "検索結果：" + results[ 0 ].geometry.location
+        } else {
+          alert('該当する結果がありませんでした：' + status);
         }
-        
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-        
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-              display.textContent = "検索結果：" + results[ 0 ].geometry.location
-            } else {
-              alert('該当する結果がありませんでした：' + status);
-            }
-          });
-        }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GoogleMap_KEY']%>&callback=initMap" async defer></script>

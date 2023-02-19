@@ -1,6 +1,6 @@
 <div class="container">
-<div class="row">
-<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-12">
       <h4 class="mt-3 text-center"><b>会員一覧</b></h4>
     </div>
     <div class="row-lg-10">
@@ -13,16 +13,16 @@
             <th>ステータス</th>
           </tr>
         </thead>
-          <tbody>
-            <% @admin_customers.each do |admin_customer| %>
-　          <tr>
+        <tbody>
+          <% @admin_customers.each do |admin_customer| %>
+            <tr>
               <th><%= admin_customer.id %></th>
               <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
               <th><%= admin_customer.email %></th>
               <th><% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
                   <% elsif admin_customer.is_deleted == true %>退会
                   <% end %>
-            <% end %>
+          <% end %>
               </th>
             </tr>
           </div>

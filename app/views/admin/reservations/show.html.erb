@@ -1,37 +1,37 @@
 <div class="container">
-<div class="row">
-<div class="col-sm-12">
-<h4 class="text-center"><b>管理者予約履歴詳細</b></h4>
-<h5 class="text-center"><%= "#{@reservation.customer.last_name} #{@reservation.customer.first_name}" %>さんの予約詳細</h5>
-</div>
-            <div class="col-xs-12">
-              <table class="table table-bordered table-hover">
-                <thead>
-                  <tr class="table-secondary">
-                    <th>予約日</th>
-                    <th>予約時間</th>
-                    <th>予約院</th>
-                    <th>予約ステータス</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <th class="text-nowrap"><%= @reservation.hope_day.strftime("%Y年 %m月 %d日") %></th>
-                    <th><%= @reservation.hope_time.strftime("%H:%M") %></th>
-                    <th><%= @reservation.hospital.name %></th>
-                    <th><% if @reservation.status == 'reservation_pending' %>
-                          <p class="text-primary font-weight-bold">申請中</p>
-                        <% elsif @reservation.status == 'reservation_confirmed' %>
-                          <p class="text-success font-weight-bold">予約確定</p>
-                        <% elsif @reservation.status == 'tentative_reservation' %>
-                          <p class="text-warning font-weight-bold">仮予約中</p>
-                        <% else %>
-                          <p class="text-danger font-weight-bold">受付キャンセル</p>
-                        <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="text-center"><b>管理者予約履歴詳細</b></h4>
+      <h5 class="text-center"><%= "#{@reservation.customer.last_name} #{@reservation.customer.first_name}" %>さんの予約詳細</h5>
+    </div>
+    <div class="col-xs-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr class="table-secondary">
+            <th>予約日</th>
+            <th>予約時間</th>
+            <th>予約院</th>
+            <th>予約ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+            <th class="text-nowrap"><%= @reservation.hope_day.strftime("%Y年 %m月 %d日") %></th>
+            <th><%= @reservation.hope_time.strftime("%H:%M") %></th>
+            <th><%= @reservation.hospital.name %></th>
+            <th><% if @reservation.status == 'reservation_pending' %>
+                  <p class="text-primary font-weight-bold">申請中</p>
+                <% elsif @reservation.status == 'reservation_confirmed' %>
+                  <p class="text-success font-weight-bold">予約確定</p>
+                <% elsif @reservation.status == 'tentative_reservation' %>
+                  <p class="text-warning font-weight-bold">仮予約中</p>
+                <% else %>
+                  <p class="text-danger font-weight-bold">受付キャンセル</p>
+                <% end %>
+        </tbody>
+      </table>
       <div class="text-center">
         <%= link_to '会員予約一覧に戻る', admin_reservations_path, class: "btn btn-primary" %>
-       </div>
+      </div>
+    </div>
+  </div>
+</div>

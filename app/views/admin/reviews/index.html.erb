@@ -1,41 +1,39 @@
-<div class="container">
 <div class="row">
-<div class="col-sm-12">
-<h4 class="mt-3 text-center"><b>レビュー管理一覧</b></h4>
-    </div>
-      <div class="table-responsive">
-      <table class="mt-4 table table-hover text-nowrap table table-bordered border-secondary">
-        <tbody>
-            <tr class="table-secondary text-overflow">
-              <th>投稿者名</th>
-              <th>病院・クリニック名</th>
-              <th>レビュー投稿日</th>
-              <th>診療の満足度</th>
-              <th>院内の清潔さ</th>
-              <th>スタッフの対応満足度</th>
-              <th>待ち時間(分)</th>
-              <th>コメント</th>
-              <th>総合満足度</th>
-              <th>レビュー削除</th>
-              <th>レビュー詳細</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @reviews.each do |review| %>
-              <tr>
-                <td><%= "#{review.customer.last_name} #{review.customer.first_name}" %></td>
-                <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
-                <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>
-                <td><%= review.doctor_satisfaction %></td>
-                <td><%= review.room_clean %></td>
-                <td><%= review.staff_satisfaction %></td>
-                <td><%= review.waiting_time %></td>
-                <td><%= review.comment %></td>
-                <td><%= review.total_point %></td>
-                <td><%= link_to '　削除　', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
-                <td><%= link_to '　詳細　', admin_review_path(review.id), class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+  <h4 class="mt-3 text-center"><b>レビュー管理一覧</b></h4>
+    <div class="table-responsive">
+    <table class="mt-4 table table-hover text-nowrap table table-bordered border-secondary">
+      <thead>
+        <tr class="table-secondary text-overflow">
+          <th>投稿者名</th>
+          <th>病院・クリニック名</th>
+          <th>レビュー投稿日</th>
+          <th>診療の満足度</th>
+          <th>院内の清潔さ</th>
+          <th>スタッフの対応満足度</th>
+          <th>待ち時間(分)</th>
+          <th>コメント</th>
+          <th>総合満足度</th>
+          <th>レビュー削除</th>
+          <th>レビュー詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= "#{review.customer.last_name} #{review.customer.first_name}" %></td>
+            <td><% if review.hospital != nil %><%= review.hospital.name %><% end %></td>
+            <td><%= review.created_at.strftime("%Y年 %m月 %d日") %></td>
+            <td><%= review.doctor_satisfaction %></td>
+            <td><%= review.room_clean %></td>
+            <td><%= review.staff_satisfaction %></td>
+            <td><%= review.waiting_time %></td>
+            <td><%= review.comment %></td>
+            <td><%= review.total_point %></td>
+            <td><%= link_to '　削除　', admin_review_path(review.id), method: :delete, data: { confirm: "コメントを削除しても宜しいですか？" }, class: "btn btn-danger" %></td>
+            <td><%= link_to '　詳細　', admin_review_path(review.id), class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
