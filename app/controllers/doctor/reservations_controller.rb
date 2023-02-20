@@ -3,7 +3,7 @@ class Doctor::ReservationsController < ApplicationController
  def index
   @reservations = []
   # 所属先医療施設がある場合
-  if current_doctor.hospital != nil
+  if current_doctor.hospital_id != nil
    @reservations = current_doctor.hospital.reservations.page(params[:page]).per(5)
   end
  end
@@ -28,7 +28,7 @@ class Doctor::ReservationsController < ApplicationController
   redirect_to doctor_reservations_path
  end
 
-   def doctor_reservation_params
+  def doctor_reservation_params
     params.require(:reservation).permit(:status)
   end
 end

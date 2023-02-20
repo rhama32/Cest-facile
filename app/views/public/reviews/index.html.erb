@@ -19,7 +19,7 @@
         <div class= "text-left">
          病院画像
          <% if review.hospital != nil %>
-           <%= image_tag review.hospital.get_image(100,100) %>
+           <%= image_tag review.hospital.image, size:"170x170"%>
          <% end %>
          </div>
          

@@ -38,15 +38,16 @@ class Customer < ApplicationRecord
   end
 
   def self.guest
-     find_or_create_by(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64,
-      first_name = 'ゲスト',
-      last_name = '太郎',
-      first_name_kana =  'げすと',
-      last_name_kana =  'たろう',
-      postal_code = '1234567',
-      address = '東京県渋谷市新宿区1-11-111',
-      telephone_number =  '09012345678'
+     find_or_create_by!(email: 'guest@example.com',
+      first_name: 'ゲスト',
+      last_name: '太郎',
+      first_name_kana: 'げすと',
+      last_name_kana: 'たろう',
+      postal_code: '1234567',
+      address: '東京県渋谷市新宿区1-11-111',
+      telephone_number: '09012345678') do |user|
+      user.password = SecureRandom.urlsafe_base64
+     
       end
   end
 
