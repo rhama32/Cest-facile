@@ -19,16 +19,16 @@
             </button>
           <% end %>
            <ul class="dropdown-menu dropdown-menu-right p-3">
-             <li class="fa-solid fa-building mr-2">
+             <li class="fa-solid fa-pen-fancy mr-2">
                <%= link_to "About", about_path %>
              </li>
-             <li class="fa-solid fa-user mr-2">
+             <li class="fa-solid fa-users mr-2">
                <%= link_to "マイページ", customers_mypage_path %>
              </li>
              <li class="fa-solid fa-hospital mr-2">
                <%= link_to "病院一覧(レビュー/予約はこちら)", public_hospitals_path %>
              </li>
-             <li class="fa-solid fa-file mr-2">
+             <li class="fa-solid fa-magnifying-glass mr-2">
                <%= link_to "病院検索", public_symptoms_path %>
              </li>
              <li class="fa-solid fa-flag mr-2">
@@ -53,25 +53,25 @@
           </button>
         <% end %>
           <ul class="dropdown-menu dropdown-menu-right p-3">
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-hospital mr-2">
               <%= link_to "病院一覧", admin_hospitals_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-person mr-2">
               <%= link_to "会員一覧", admin_customers_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-users mr-2">
               <%= link_to "ジャンル一覧", admin_genres_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-book mr-2">
               <%= link_to "予約一覧", admin_reservations_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-pen-fancy mr-2">
               <%= link_to "レビュー管理一覧", admin_reviews_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-users mr-2">
               <%= link_to "医療提供者申請一覧", admin_doctors_path %>
             </li>
-            <li class="fa-solid fa-file">
+            <li class="fa-solid fa-right-from-bracket mr-2">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
           </ul>
@@ -84,26 +84,26 @@
               </button>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right p-3">
-            <li class="nav-item">
-              <%= link_to "About us", about_path, class: "nav-link" %>
+            <li class="fa-sharp fa-solid fa-building mr-2">
+              <%= link_to "About us", about_path %>
             </li>
-            <li class="nav-item">
-             <%= link_to "通知確認画面", doctor_notifications_path, class: "nav-link" %>
+            <li class="fa-solid fa-envelope mr-2">
+             <%= link_to "通知確認画面", doctor_notifications_path %>
             </li>
-            <li class="nav-item">
-              <%= link_to "予約確認画面", doctor_reservations_path, class: "nav-link" %>
+            <li class="fa-solid fa-users mr-2">
+              <%= link_to "予約確認画面", doctor_reservations_path %>
             </li>
-            <li class="nav-item">
-              <%= link_to "コメント確認画面", doctor_reviews_path, class: "nav-link" %>
+            <li class="fa-solid fa-file mr-2">
+              <%= link_to "コメント確認画面", doctor_reviews_path %>
             </li>
-            <li class="nav-item">
-              <%= link_to "医療提供者マイページ", doctor_hospital_doctor_path(current_doctor), class: "nav-link" %>
+            <li class="fa-solid fa-user mr-2">
+              <%= link_to "医療提供者マイページ", doctor_hospital_doctor_path(current_doctor) %>
             </li>
-            <li class="nav-item">
-              <%= link_to "フォロワー一覧", doctor_followers_path, class: "nav-link" %>
+            <li class="fa-solid fa-users mr-2">
+              <%= link_to "フォロワー一覧", doctor_followers_path %>
             </li>
-            <li class="nav-item">
-              <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete, class: "nav-link" %>
+            <li class="fa-solid fa-right-from-bracket mr-2">
+              <%= link_to "医療提供者ログアウト", destroy_doctor_session_path, method: :delete %>
             </li>
           </ul>
       <!--サインインしていない場合-->
@@ -115,24 +115,24 @@
               </button>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right p-3">
-            <i class="fa-solid fa-file">
+            <li class="fa-solid fa-file mr-2">
               <%= link_to "About", about_path %>
-            </i>
-            <i class="fa-solid fa-hospital">
+            </li>
+            <li class="fa-solid fa-hospital mr-2">
               <%= link_to "病院一覧", public_hospitals_path %>
-           </i>
-            <i class="fa-solid fa-user-plus">
+           </li>
+            <li class="fa-solid fa-user-plus mr-2">
               <%= link_to "新規登録", new_customer_registration_path %>
-            </i>
-            <i class="fa-solid fa-solid fa-arrow-right-to-bracket">
+            </li>
+            <li class="fa-solid fa-solid fa-arrow-right-to-bracket mr-2">
               <%= link_to "会員様ログイン", customer_session_path %>
-            </i>
-            <i class="fa-solid fa-lock">
+            </li>
+            <li class="fa-solid fa-lock mr-2">
               <%= link_to "管理者ログイン", admin_session_path %>
-            </i>
-            <i class="fa-solid fa-lock">
+            </li>
+            <li class="fa-solid fa-hospital-user mr-2">
               <%= link_to "医療者ログイン", doctor_session_path %>
-            </i>
+            </li>
           </ul>
         <% end %>
       </div>
