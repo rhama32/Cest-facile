@@ -7,7 +7,7 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr class="table-secondary">
-            <th>予約者ID</th>
+            <th>予約ID</th>
             <th>予約者氏名</th>
             <th>病院ID</th>
             <th>予約院</th>
@@ -19,14 +19,15 @@
         </thead>
         <tbody>
         <% @reservations.each do |reservation| %>
-          <%= form_with(model: reservation, url: doctor_reservation_path(reservation), method: :patch, local: true) do |f| %>
-            <tr>
+          <tr>
+            <%= form_with(model: reservation, url: doctor_reservation_path(reservation), method: :patch, local: true) do |f| %>
               <td><%= reservation.id %></td>
               <td><%= reservation.customer.last_name + reservation.customer.first_name %></td>
               <td><%= reservation.hospital.id %></td>
               <td><%= reservation.hospital.name %></td>
               <td><%= link_to reservation.hope_day.strftime("%Y年 %m月 %d日"), doctor_reservation_path(reservation.id) %></td>
               <td><%= reservation.hope_time.strftime("%H:%M") %></td>
+              
               <td><% if reservation.status == 'reservation_pending' %>
                     <p class="text-primary font-weight-bold">申請中</p>  
                   <% elsif reservation.status == 'reservation_confirmed' %>
@@ -37,11 +38,14 @@
                     <p class="text-danger font-weight-bold">受付キャンセル</p>
                   <% end %>
               </td>
-              <td><%= f.select :status, Reservation.statuses_i18n.invert, {} %>
-                    <%= f.submit "変更" %>
-                  <% end %>
-              </td>
-            </tr>
+              <% if reservation.hope_day > Time.current %>
+                <td>
+                  <%= f.select :status, Reservation.statuses_i18n.invert, {} %>
+                  <%= f.submit "変更" %>
+                </td>
+              <% end %>
+            <% end %>
+          </tr>
         <% end %>
         </tbody>
       </table>

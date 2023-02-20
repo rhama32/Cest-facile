@@ -10,7 +10,7 @@ class Doctor::ReservationsController < ApplicationController
 
  def show
   @reservation = Reservation.find(params[:id])
-  @admin_customer = Customer.find(params[:id])
+  @customer = @reservation.customer
   #@hospital = Hospital.find(params[:id])
  end
 
@@ -19,15 +19,16 @@ class Doctor::ReservationsController < ApplicationController
 
  def update
   @reservation = Reservation.find(params[:id])
+  #byebug
   if @reservation.update(doctor_reservation_params)
    flash[:notice] = "情報の変更が完了しました."
-   redirect_to doctor_reservation_path
   else
    flash[:alret] = "変更の保存に失敗しました"
   end
+  redirect_to doctor_reservations_path
  end
 
-    def doctor_reservation_params
+   def doctor_reservation_params
     params.require(:reservation).permit(:status)
   end
 end
