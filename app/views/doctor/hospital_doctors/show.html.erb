@@ -1,43 +1,42 @@
 <% if current_doctor.approved? %>
   <div class="container">
-    <div class="row-lg-10">
-      <div class="col-11 offset-md-1">
-        <div class="bg-light text-center">
-          <%= @doctor.name %>さんの医療提供者情報詳細
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-xs-6">
+        <h3 class="mt-3 text-center"><b><%= @doctor.name %>さんの<br>医療提供者マイページ</b></h3>
       </div>
-        <h4>医療提供者マイページ</h4>
-          <p class="font-weight h5"> 登録情報 <%= link_to "編集する", edit_doctor_hospital_doctor_path(@doctor), class:"btn btn-success" %></p>
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <td class="table-secondary">氏名</td>
-                  <td><%= @doctor.name %></td>
-                </tr>
-                <tr>
-                  <td class="table-secondary">メールアドレス</td>
-                  <td><%= @doctor.email %></td>
-                </tr>
-                <tr>
-                  <td class="table-secondary">所属院名</td>
-                  <td><%= @hospital&.name %></td>
-                </tr>
-                <tr>
-                  <td class="table-secondary">会員ステータス</td>
-                  <td><% @doctor.approved_status %>
-                      <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
-                      <% elsif @doctor.approved_status == 'denied' %>承認却下
-                      <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <h5><b>登録情報</b></h5>
+        <div class="mt-3"><%= link_to "編集する", edit_doctor_hospital_doctor_path(@doctor), class:"btn btn-success" %></div>
+          <table class="mt-3 table table-bordered table-hover">
+            <tbody>
+            <tr>
+              <td class="table-secondary">氏名</td>
+              <td><%= @doctor.name %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">メールアドレス</td>
+              <td><%= @doctor.email %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">所属院名</td>
+              <td><%= @hospital&.name %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">会員ステータス</td>
+              <td><% @doctor.approved_status %>
+                  <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+                  <% elsif @doctor.approved_status == 'denied' %>承認却下
+                  <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <div class="d-flex justify-content-around">
+        <%= link_to 'レビュー一覧', doctor_reviews_path, class: "btn btn-primary" %>
+        <%= link_to 'フォロワー一覧', doctor_followers_path, class: "btn btn-success" %>
+        <%= link_to '予約一覧', doctor_reservations_path, class: "btn btn-warning" %>
       </div>
-    <%= link_to 'レビュー一覧', public_reviews_path, class: "btn btn-success" %>
-    <%= link_to 'フォロワー一覧', root_path, class: "btn btn-success" %>
-    <%= link_to '予約一覧', doctor_reservations_path, class: "btn btn-success" %>
+    </div>
+  </div>
 <% else %>
   申請の承認をお待ちください。
 <% end %>
