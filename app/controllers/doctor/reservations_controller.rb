@@ -4,7 +4,7 @@ class Doctor::ReservationsController < ApplicationController
   @reservations = []
   # 所属先医療施設がある場合
   if current_doctor.hospital != nil
-   @reservations = current_doctor.hospital.reservations
+   @reservations = current_doctor.hospital.reservations.page(params[:page]).per(5)
   end
  end
 

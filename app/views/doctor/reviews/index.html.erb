@@ -1,7 +1,10 @@
 <% if current_doctor.approved? %>
-  <h4>レビュー確認画面</h4>
-    <div class="row-lg-10">
-      <table class="table">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="mt-3 text-center"><b>レビュー確認画面</b></h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr class="table-secondary">
             <th>病院・クリニック名</th>
@@ -17,21 +20,25 @@
         </thead>
         <tbody>
           <% @reviews.each do |review| %>
-          <tr>
-            <td><%= review.hospital.name %></td>
-            <td><%= review.created_at %></td>
-            <td><%= review.doctor_satisfaction %>/5点</td>
-            <td><%= review.room_clean %>/5点</td>
-            <td><%= review.staff_satisfaction %>/5点</td>
-            <td><%= review.waiting_time %>分</td>
-            <td><%= review.comment %></td>
-            <td><%= review.total_point %>/5点</td>
-            <td><%= link_to "リプライ" , doctor_review_replies_path(review), class: "btn btn-success" %></td>
-          </tr>
+            <tr>
+              <td><%= review.hospital.name %></td>
+              <td><%= review.created_at.strftime("%Y年 %m月 %d日 %H:%M") %></td>
+              <td><%= review.doctor_satisfaction %>/5点</td>
+              <td><%= review.room_clean %>/5点</td>
+              <td><%= review.staff_satisfaction %>/5点</td>
+              <td><%= review.waiting_time %>分</td>
+              <td><%= review.comment %></td>
+              <td><%= review.total_point %>/5点</td>
+              <td><%= link_to "リプライ" , doctor_review_replies_path(review), class: "btn btn-success" %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="mt-2 pagination justify-content-center">
+    <%= paginate @reviews %>
+  </div>
 <% else %>
   申請の承認をお待ちください。
 <% end %>
