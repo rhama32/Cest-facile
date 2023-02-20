@@ -1,40 +1,39 @@
 <% if current_doctor.approved? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-10">
-        <h4>医療提供者情報編集</h4>
-          <%= form_with model: @doctor, url: doctor_hospital_doctor_path, method: :PATCH do |f| %>
-            <table class="table table-borderless">
-              <tbody>
-                <tr>
-                  <td><%= f.label "氏名" %></td>
-                  <td><%= f.text_field :name %></td>
-                </tr>
-                <tr>
-                  <td><%= f.label "メールアドレス" %></td>
-                  <td><%= f.text_field :email %></td>
-                </tr>
-                <tr>
-                  <td><%= f.label "所属院名" %></td>
-                  <td><%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "所属院選択"}, :required => true %></td>
-                </tr>
-                <tr>
-                  <td>会員ステータス</td>
-                  <td><% @doctor.approved_status %>
-                      <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
-                      <% elsif @doctor.approved_status == 'denied' %>承認却下
-                      <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td><%= f.submit "編集内容を保存",class: "btn btn-success"%></td>
-                  <td><%= link_to "退会する", doctor_unsubsubscribe_path, class:"btn btn-danger" %></td>
-                </tr>
-              </tbody>
-            </table>
-          <% end %>
-      </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="mt-3 text-center"><b><%= @doctor.name %>さんの医療提供者情報編集</h4>
     </div>
+    <%= form_with model: @doctor, url: doctor_hospital_doctor_path, method: :PATCH do |f| %>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td><%= f.label "氏名" %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "メールアドレス" %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "所属院名" %></td>
+            <td><%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "所属院選択"}, :required => true %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td><% @doctor.approved_status %>
+                <% if @doctor.approved_status == 'approved' %><p class= "text-success" >承認</p>
+                <% elsif @doctor.approved_status == 'denied' %>承認却下
+                <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+    <div class="text-center">
+      <%= f.submit "編集内容を保存",class: "mt-3 mr-5 btn btn-success"%>
+      <%= link_to "退会する", doctor_unsubsubscribe_path, class:"mt-3 ml-5 btn btn-danger" %>
+    </div>
+    <% end %>
   </div>
 <% else %>
   申請の承認をお待ちください。

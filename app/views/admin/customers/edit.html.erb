@@ -4,6 +4,7 @@
       <h4 class="mt-3 text-center"><b><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員情報編集</h4>
     </div>
     <%= form_with model: @admin_customer, url: admin_customer_path, method: :patch do |f| %>
+    <div class="table-responsive">
     <table class="table">
       <tbody>
         <tr>
@@ -12,11 +13,11 @@
         </tr>
         <tr>
           <th>氏名</th>
-          <th><%= f.text_field :last_name %> <%= f.text_field :first_name %></th>
+          <th><%= f.text_field :last_name, size:"15" %> <%= f.text_field :first_name, size:"15" %></th>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <th><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></th>
+          <th><%= f.text_field :last_name_kana, size:"15" %> <%= f.text_field :first_name_kana, size:"15" %></th>
         </tr>
         <tr>
           <th>郵便番号</th>
