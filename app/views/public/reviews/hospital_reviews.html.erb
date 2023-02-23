@@ -1,120 +1,79 @@
+<% if @hospital.reviews.exists? %>
 <div class="container">
   <div class="row">
     <h4 class="mt-2 text-center"><b><%= @hospital.name %>のレビュー</b></h4>
       <table class="mt-4 table table-hover shadow">
         <tbody>
           <tr>
-            <% @reviews.each do |review| %>
-            <div class="col-md-4 shadow">
-              <div class= "text-left">
-              <% if review.is_draft? %>
-                <span class="text-success">投稿済</span>
-              </div>
-              <div class= "text-left">
-               病院画像
-               <% if review.hospital != nil %>
-                 <%= image_tag review.hospital.get_image(100,100) %>
-               <% end %>
+            <% @hospital.reviews.each do |review| %>
+              <div class="col-md-4 shadow">
+                <div class= "text-left">
+                  <% unless review.is_draft? %>
+                  <span class="text-success">投稿済</span>
+                </div>
+                <div class= "text-left">
+                病院画像
+                  <% if review.hospital != nil %>
+                    <%= image_tag review.hospital.get_image(100,100) %>
+                  <% end %>
                </div>
-              <div class= "text-left">
+               <div class= "text-left">
                病院名
-               <% if review.hospital != nil %>
-                 <%= review.hospital.name %>
-               <% end %>
+                 <% if review.hospital != nil %>
+                   <%= review.hospital.name %>
+                 <% end %>
+               </div>
+               <div class= "text-left">
+               投稿日
+                 <%= review.created_at.strftime("%Y年 %m月 %d日") %>
+               </div>
+               <div class= "text-left">
+               診療の満足度
+                 <div class="star-group">
+                 <div class="eval-star"><%= review.doctor_satisfaction %>/5点</div>
+                 </div>
                </div>
               <div class= "text-left">
-               投稿日
-               <%= review.created_at.strftime("%Y年 %m月 %d日") %>
+              院内の清潔さ
+                <div class="star-group">
+                <div class="eval-star"><%= review.room_clean %>/5点</div>
+                </div>
               </div>
               <div class= "text-left">
-               診療の満足度
-              <div class="star-group">
-              <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
-              <div class="eval-star"><%= review.doctor_satisfaction %>/5点</div>
+              スタッフの対応満足度
+                <div class="star-group">
+                <div class="eval-star"><%= review.staff_satisfaction %>/5点</div>
+                </div>
               </div>
-              </div>
-              <script>
-               $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
-                size: 38,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: false,
-                readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
-                score: <%= review.doctor_satisfaction %>,              //scoreオプションで評価内容を取得
-                });
-              </script>
               <div class= "text-left">
-               院内の清潔さ
-              <div class="star-group">
-              <div class="detail-value", id="star-comf-<%= review.id %>"></div>
-              <div class="eval-star"><%= review.room_clean %>/5点</div>
+              総合満足度
+                <div class="star-group">
+                <div class="eval-star"><%= review.total_point %>/5点</div>
+                </div>
               </div>
-              </div>
-               <script>
-               $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
-                size: 38,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: false,
-                readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
-                score: <%= review.room_clean %>,              //scoreオプションで評価内容を取得
-                });
-              </script>
               <div class= "text-left">
-               スタッフの対応満足度
-              <div class="star-group">
-              <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
-              <div class="eval-star"><%= review.staff_satisfaction %>/5点</div>
-              </div>
-              </div>
-              <script>
-               $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
-                size: 38,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: false,
-                readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
-                score: <%= review.staff_satisfaction %>,              //scoreオプションで評価内容を取得
-                });
-              </script>
-             
-              <div class= "text-left">
-               総合満足度
-              <div class="star-group">
-              <div class="detail-value", id="star-comf-<%= review.id %>"></div> 
-              <div class="eval-star"><%= review.total_point %>/5点</div>
-              </div>
-              </div>
-              <script>
-               $('#star-comf-<%= review.id %>').raty({      //.idでどの評価であるかを取得
-                size: 38,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: false,
-                readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
-                score: <%= review.total_point %>,              //scoreオプションで評価内容を取得
-                });
-              </script>
-              <div class= "text-left">
-                待ち時間
+              待ち時間
                 <%= review.waiting_time %>分
               </div>
               <div class= "text-left">コメント</div>
-              <div class= "bg-light text-left"><%= review.comment %></div>
-              <div>
-                <%= link_to '詳細', public_review_path(review.id), class: "btn btn-success" %>
+                <div class= "bg-light text-left"><%= review.comment %></div>
+                <div>
+                  <%= link_to '詳細', public_review_path(review.id), class: "btn btn-success" %>
+                </div>
               </div>
-            </div>
+                  <% end %>
             <% end %>
-          <% end %>
           </thead>
         </table>
-
-<%= paginate @reviews %>
-</div>
-</div>
-</div>
+      <%= paginate @reviews %>
+    </div>
+  </div>
+<% else %>
+  <h5 class= "mt-5 text-center">
+    <b>まだレビュー投稿がありません<br>
+    レビューを投稿してみましょう！</b>
+  </h5>
+  <div class="mt-3 text-center">
+    <%= link_to 'レビュー入力へ進む', new_public_hospital_review_path(@hospital.id), class: "btn btn-success" %>
+  </div>
+<% end %>

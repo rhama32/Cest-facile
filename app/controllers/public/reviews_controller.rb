@@ -80,7 +80,7 @@ def update
  
  def hospital_reviews
   @hospital = Hospital.find(params[:hospital_id])
-  @reviews = @hospital.reviews.page(params[:page]).per(6)
+  @reviews = @hospital.reviews.order(created_at: :desc).page(params[:page]).per(6)
   
  end
 
