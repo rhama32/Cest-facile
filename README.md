@@ -1,7 +1,7 @@
 # Cest facile
 ![サイトのページ](app/assets/images/introduction2.jpg)
 ## URL
- http:
+ https://cest-facile.jp/
 
 ## サイト概要
 
@@ -9,11 +9,8 @@
   Cest-facileはフランス語で「手軽に・簡単に」という意味を持ち、  
  病院を検索し予約やレビューなどが出来るアプリケーションです。  
  
-  病院を探しているユーザーは自分が抱えている症状をもとに、  
- 適切な病院を探し予約をすることが可能です。    
- 
-  万が一、最適な病院を選択出来ないと判断した場合には、  
- ジャンル・エリア等の項目からオススメの病院を確認することも出来ます。
+  病院を探しているユーザーは、
+ ジャンル・エリア等の項目からオススメの病院を確認することが出来ます。  
  
   また病院検索や予約の他にも健康情報等を収集するページも設けており、  
  健康意識の高まりがある昨今、  
@@ -76,11 +73,10 @@
   
 ## 設計書
 
-・要件定義書 []  
-・アプリケーション詳細設計書 []  
-・ER図 []  
-・画面遷移図 []   
-・ワイヤーフレーム []   
+・[要件定義書](https://docs.google.com/spreadsheets/d/1oZdWzLsM9g0dWtrkGDPtBk6HjLN4c3g4b7i-lMQJYJ0/edit#gid=0)  
+・[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/15bPE2QYrCBH2v1KatOFgX9GU32jrxDNJ/edit#gid=549108681)  
+・[ER図](https://app.diagrams.net/?libs=general;er#G1Q_iOKKHh6PrSUcrju63NVuPgczXO0OiY)  
+・[画面遷移図・ワイヤーフレーム](https://app.diagrams.net/#G1BYclJ0HYfWqwHKBTXYlbYlFkBohjy4vE)   
 
 ## 開発環境
 

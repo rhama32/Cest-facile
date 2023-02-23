@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     get 'followings' => 'follows#followings', as: 'followings'
     get 'followers' => 'follows#followers', as: 'followers'
     resources :hospitals, only: [:create, :index, :show] do
-     resources :hospital_doctors, only: [:index, :show, :create, :destroy]
+     resources :hospital_doctors, only: [:index, :show]
      resources :reviews, only: [:new, :edit, :update, :destroy]
      get 'hospital_reviews' => 'reviews#hospital_reviews'
     end
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     resources :symptoms, only: [:index, :show]
     resources :reviews, only: [:index, :show, :edit, :create, :destroy] do
      resource :favorites, only: [:create, :destroy]
-     resources :replies, only: [:create, :confirm, :index]
+     resources :replies, only: [:create]
     end
 
   end
