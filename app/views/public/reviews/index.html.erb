@@ -75,7 +75,7 @@
                   <%= link_to '編集', edit_public_hospital_review_path(review.hospital_id, review), class: "btn btn-primary mr-3" %>
                 </li>
                 <li class="fa-solid fa-trash">
-                  <%= link_to '削除', public_hospital_review_path(review.hospital_id, review), method: :delete, data: {confirm: "この下書きを削除しますか？"}, class:'btn btn-danger mr-3' %>
+                  <%= link_to '削除', public_hospital_review_path(review.hospital_id, review), method: :delete, data: {confirm: "削除しますか？"}, class:'btn btn-danger mr-3' %>
                 </li>
               </div>
             </div>
