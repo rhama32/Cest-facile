@@ -26,10 +26,11 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   #ゲストログイン機能
-    def guest_sign_in
+  def guest_sign_in
     user = Customer.guest
-    
+
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
-    end
+  end
+  
 end

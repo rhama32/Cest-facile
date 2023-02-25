@@ -17,30 +17,31 @@ class Public::HospitalsController < ApplicationController
 
  #一覧表示の病院数
   @count = 0
-  @hospitals.each do |hospital|
-   if hospital.is_active == true
-    @count = @count + 1
-   end
-  end
+    @hospitals.each do |hospital|
+      if hospital.is_active == true
+      @count = @count + 1
+      end
+    end
  end
 
  #病院の詳細画面
- def show
- @genres = Genre.all
- @hospital = Hospital.find(params[:id])
-   if session.id.present?
-    impressionist @hospital, nil, unique: %i[impressionable_type impressionable_id session_hash]
+  def show
+    @genres = Genre.all
+    @hospital = Hospital.find(params[:id])
+    if session.id.present?
+      impressionist @hospital, nil, unique: %i[impressionable_type impressionable_id session_hash]
+    end
   end
- end
  
   def add_doctor
     @doctor = Doctor.find(params[:hospital_doctor_id])
     current_customer = Customer.find(params[:customer_id])
     @doctor.current_customer << current_customer
     redirect_to root_path, notice: "ドクターを追加しました。"
- end
+  end
 
- def hospital_params
-  params.require(:hospital).permit(:name, :introduction)
- end
+  def hospital_params
+    params.require(:hospital).permit(:name, :introduction)
+  end
+  
 end

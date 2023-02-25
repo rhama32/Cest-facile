@@ -1,4 +1,5 @@
 class Public::RepliesController < ApplicationController
+  
 before_action :authenticate_customer!
 before_action :require_current_customer, only: [:create]
 
@@ -10,14 +11,8 @@ before_action :require_current_customer, only: [:create]
   
   def create
     @review = Review.find(params[:review_id])
-    #byebug
-    # @replies = @review.replies
     @reply = current_customer.replies.build(reply_params)
     @reply.save
-    # if @reply.save
-    #   redirect_to 
-    # else
-    # end
   end
   
   def index
@@ -27,10 +22,9 @@ before_action :require_current_customer, only: [:create]
   end
   
   private
-  
-  def reply_params
-    params.require(:reply).permit(:comment, :review_id)
-  end
+    def reply_params
+      params.require(:reply).permit(:comment, :review_id)
+    end
   
   def require_current_customer
     @review = Review.find(params[:review_id])
@@ -39,4 +33,5 @@ before_action :require_current_customer, only: [:create]
       redirect_to about_path
     end
   end
+  
 end
