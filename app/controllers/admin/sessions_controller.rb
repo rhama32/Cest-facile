@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
+
+#管理者でログインしていない場合、ログイン画面へ遷移。
   before_action :authenticate_admin!
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -26,9 +28,9 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
-  private
-  
+private
   def after_sign_in_path_for(resource)
     admin_customers_path
   end
+
 end

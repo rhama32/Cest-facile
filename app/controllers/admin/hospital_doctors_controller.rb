@@ -1,17 +1,21 @@
 class Admin::HospitalDoctorsController < ApplicationController
- before_action :authenticate_admin!
- def show
- end
 
- def edit
- end
+#管理者でログインしていない場合、ログイン画面へ遷移。 
+before_action :authenticate_admin!
 
- def update
- end
+def show
+end
 
- def unsubscribe
- end
+def edit
+end
 
- def withdraw
- end
+def update
+end
+
+def unsubscribe
+end
+
+def withdraw
+end
+
 end

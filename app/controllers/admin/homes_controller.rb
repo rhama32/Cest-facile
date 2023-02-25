@@ -1,13 +1,15 @@
 class Admin::HomesController < ApplicationController
 
- before_action :authenticate_admin!
+#管理者でログインしていない場合、ログイン画面へ遷移。
+before_action :authenticate_admin!
 
-  def top
+def top
   @admin = Customer.all.page(params[:page])
+end
+
+private
+  def order_params
+    params.require(:order).permit(:status)
   end
 
-  private
-	def order_params
-	 params.require(:order).permit(:status)
-	end
 end

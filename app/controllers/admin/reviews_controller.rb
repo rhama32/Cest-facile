@@ -1,30 +1,33 @@
 class Admin::ReviewsController < ApplicationController
+
+#管理者でログインしていない場合、ログイン画面へ遷移。
 before_action :authenticate_admin!
- def index
+
+def index
   @hospital = Hospital.all
   @reviews = Review.all
- end
+end
 
- def show
+def show
   @review = Review.find(params[:id])
   #@reply = @reviews.reply
- end
+end
 
- def edit
- end
+def edit
+end
 
- def update
- end
+def update
+end
 
- def destroy
+def destroy
   @review = Review.find(params[:id])
   @review.destroy
   redirect_to admin_reviews_path
- end
+end
 
- private
+private
   def review_params
-   params.require(:review).permit(:customer_id, :hospital_id, :doctor_satisfaction, :room_clean, :staff_satisfaction, :waiting_time, :comment, :total_point)
+    params.require(:review).permit(:customer_id, :hospital_id, :doctor_satisfaction, :room_clean, :staff_satisfaction, :waiting_time, :comment, :total_point)
   end
-
+  
 end

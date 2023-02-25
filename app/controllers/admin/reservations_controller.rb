@@ -1,33 +1,43 @@
 class Admin::ReservationsController < ApplicationController
+
+#管理者でログインしていない場合、ログイン画面へ遷移。
 before_action :authenticate_admin!
- def index
+
+#予約一覧
+def index
   @reservations = Reservation.all
- end
+end
 
- def show
+#予約詳細
+def show
   @reservation = Reservation.find(params[:id])
- end
+end
 
- def edit
- end
+#予約編集
+def edit
+end
 
- def update
+#予約ステータス更新
+def update
   @reservation = Reservation.find(params[:id])
   if @reservation.update(admin_reservation_params)
-   flash[:notice] = "情報の変更が完了しました."
-   redirect_to admin_reservation_path
+    flash[:notice] = "情報の変更が完了しました."
+    redirect_to admin_reservation_path
   else
-   render :show, flash[:alret] = "変更の保存に失敗しました"
+    render :show, flash[:alret] = "変更の保存に失敗しました"
   end
- end
+end
  
- def destroy
+#予約削除
+def destroy
   @reservation = Reservation.find(params[:id])
   @reservation.destroy
   redirect_to admin_reservations_path
- end
+end
 
-   def admin_reservation_params
-    params.require(:reservation).permit(:status)
-  end
+#ストロングパラメータ
+def admin_reservation_params
+  params.require(:reservation).permit(:status)
+end
+
 end

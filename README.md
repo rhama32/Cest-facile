@@ -76,7 +76,7 @@
 ・[要件定義書](https://docs.google.com/spreadsheets/d/1oZdWzLsM9g0dWtrkGDPtBk6HjLN4c3g4b7i-lMQJYJ0/edit#gid=0)  
 ・[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/15bPE2QYrCBH2v1KatOFgX9GU32jrxDNJ/edit#gid=549108681)  
 ・[ER図](https://app.diagrams.net/?libs=general;er#G1Q_iOKKHh6PrSUcrju63NVuPgczXO0OiY)  
-・[画面遷移図・ワイヤーフレーム](https://app.diagrams.net/#G1BYclJ0HYfWqwHKBTXYlbYlFkBohjy4vE)   
+・[画面遷移図・ワイヤーフレーム](https://app.diagrams.net/#G1BYclJ0HYfWqwHKBTXYlbYlFkBohjy4vE) 
 
 ## 開発環境
 

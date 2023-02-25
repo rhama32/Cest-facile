@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::PasswordsController < Devise::PasswordsController
+  
+  #管理者でログインしていない場合、ログイン画面へ遷移。
   before_action :authenticate_admin!
   # GET /resource/password/new
   # def new
