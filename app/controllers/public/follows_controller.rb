@@ -2,8 +2,8 @@ class Public::FollowsController < ApplicationController
   
   #顧客ログインをしていない場合、ログイン画面へ遷移。
   before_action :authenticate_customer!
-　
-　#フォロー一覧
+  
+ #フォロー詳細
   def index
     @customer = current_customer
     @follows = current_customer.follows
