@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Doctor::PasswordsController < Devise::PasswordsController
+  #医療者でログインしていない場合、ログイン画面へ遷移。
+  before_action :authenticate_doctor!
+  
   # GET /resource/password/new
   # def new
   #   super

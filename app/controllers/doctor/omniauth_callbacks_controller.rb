@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Doctor::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  
+  #医療者でログインしていない場合、ログイン画面へ遷移。
+  before_action :authenticate_doctor!
+  
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

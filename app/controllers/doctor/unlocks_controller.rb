@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Doctor::UnlocksController < Devise::UnlocksController
+  #医療者でログインしていない場合、ログイン画面へ遷移。
+  before_action :authenticate_doctor!
+  
   # GET /resource/unlock/new
   # def new
   #   super

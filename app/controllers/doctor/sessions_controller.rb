@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Doctor::SessionsController < Devise::SessionsController
+  #医療者でログインしていない場合、ログイン画面へ遷移。
+  before_action :authenticate_doctor!
+  
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

@@ -1,34 +1,41 @@
 class Doctor::ReservationsController < ApplicationController
- before_action :authenticate_doctor!
- def index
-  @reservations = []
-  # 所属先医療施設がある場合
-  if current_doctor.hospital_id != nil
-   @reservations = current_doctor.hospital.reservations.page(params[:page]).per(5)
-  end
- end
+  
+  #医療者でログインしていない場合、ログイン画面へ遷移。
+  before_action :authenticate_doctor!
 
- def show
+#予約一覧
+def index
+  @reservations = []
+  #所属先医療施設がある場合
+  if current_doctor.hospital_id != nil
+  @reservations = current_doctor.hospital.reservations.page(params[:page]).per(5)
+  end
+end
+
+#予約詳細
+def show
   @reservation = Reservation.find(params[:id])
   @customer = @reservation.customer
-  #@hospital = Hospital.find(params[:id])
- end
+end
 
- def edit
- end
+#予約編集
+def edit
+end
 
- def update
+#予約編集・更新
+def update
   @reservation = Reservation.find(params[:id])
-  #byebug
   if @reservation.update(doctor_reservation_params)
-   flash[:notice] = "情報の変更が完了しました."
+    flash[:notice] = "情報の変更が完了しました."
   else
-   flash[:alret] = "変更の保存に失敗しました"
+    flash[:alret] = "変更の保存に失敗しました"
   end
   redirect_to doctor_reservations_path
- end
+end
 
-  def doctor_reservation_params
-    params.require(:reservation).permit(:status)
-  end
+#ストロングパラメータ
+def doctor_reservation_params
+  params.require(:reservation).permit(:status)
+end
+
 end
