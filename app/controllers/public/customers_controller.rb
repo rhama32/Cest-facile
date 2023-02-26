@@ -34,13 +34,6 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def add_doctor
-    @doctor = Doctor.find(params[:hospital_doctor_id])
-    customer = Customer.find(params[:customer_id])
-    @doctor.customers << customer
-    redirect_to root_path, notice: "ドクターを追加しました。"
-  end
-
   private
     def customer_params
       params.require(:customer).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)

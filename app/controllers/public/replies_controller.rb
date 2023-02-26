@@ -3,22 +3,10 @@ class Public::RepliesController < ApplicationController
 before_action :authenticate_customer!
 before_action :require_current_customer, only: [:create]
 
-  def new
-  end
-  
-  def confirm
-  end
-  
   def create
     @review = Review.find(params[:review_id])
     @reply = current_customer.replies.build(reply_params)
     @reply.save
-  end
-  
-  def index
-  end
-  
-  def show
   end
   
   private

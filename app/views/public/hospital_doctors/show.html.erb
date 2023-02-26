@@ -1,14 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="offset-0 col-xs-8 offset-xs-2">
-      <h4 class="text-center"><b><%=@customer.full_name %>さんがフォロー中</b></h4>
+      <h4 class="text-center"><b><%= current_customer.full_name %>さんがフォロー中</b></h4>
       <h5 class="mt-2 text-center"><%= @hospital_doctor.name %>さんの医療者情報詳細</h5>
         <table class="text-center table-sm">
           <tbody>
-            <tr>
-              <th>医療者ID</th>
-              <th><%= @hospital_doctor.id %></th>
-            </tr>
             <tr>
               <th>氏名</th>
               <th><%= @hospital_doctor.name %></th>

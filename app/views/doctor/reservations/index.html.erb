@@ -8,9 +8,7 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr class="table-secondary">
-            <th>予約ID</th>
             <th>予約者氏名</th>
-            <th>病院ID</th>
             <th>予約院</th>
             <th>予約日</th>
             <th>予約時間</th>
@@ -22,9 +20,7 @@
         <% @reservations.each do |reservation| %>
           <tr>
             <%= form_with(model: reservation, url: doctor_reservation_path(reservation), method: :patch, local: true) do |f| %>
-              <td><%= reservation.id %></td>
               <td><%= reservation.customer.last_name + reservation.customer.first_name %></td>
-              <td><%= reservation.hospital.id %></td>
               <td><%= reservation.hospital.name %></td>
               <td><%= link_to reservation.hope_day.strftime("%Y年 %m月 %d日"), doctor_reservation_path(reservation.id) %></td>
               <td><%= reservation.hope_time.strftime("%H:%M") %></td>

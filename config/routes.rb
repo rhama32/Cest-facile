@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'customers_mypage'
     get 'customers/information/edit' => 'customers#edit', as: 'customers_edit'
-    get 'unsubscribe/:id' => 'customers#unsubscribe', as: 'customers_unsubscribe'
+    get 'unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     patch 'customers/information' => 'customers#update', as: 'customers_update'
     patch 'withdraw' => 'customers#withdraw', as: 'customers_withdraw'
   end
@@ -59,9 +59,11 @@ Rails.application.routes.draw do
      resources :reviews, only: [:new, :edit, :update, :destroy]
      get 'hospital_reviews' => 'reviews#hospital_reviews'
     end
-    resources :reservations, only: [:new, :show, :create, :index, :update, :destroy]
+    resources :reservations, only: [:new, :show, :create, :index, :update, :destroy] do
+      get 'confirm', to: 'reservations#confirm'
+    end
     
-    resources :symptoms, only: [:index, :show]
+    resources :symptoms, only: [:index]
     resources :reviews, only: [:index, :show, :edit, :create, :destroy] do
      resource :favorites, only: [:create, :destroy]
      resources :replies, only: [:create]

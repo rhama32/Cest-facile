@@ -3,26 +3,17 @@ class Public::HospitalsController < ApplicationController
  
  impressionist :actions => [:show]
 
- def index
+  def index
   @genres = Genre.all
-  @hospitals = Hospital.where(is_active: true).page(params[:page]).per(6)
-
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals.page(params[:page]).per(6)
-  elsif @hospital_search
-    @hospitals = @hospitals_search.page(params[:page]).per(6)
-    @hospitals_count = @search_hospitals.all.count
+  else
+    @hospitals = Hospital.where(is_active: true).page(params[:page]).per(6)
   end
-
  #一覧表示の病院数
-  @count = 0
-    @hospitals.each do |hospital|
-      if hospital.is_active == true
-      @count = @count + 1
-      end
-    end
- end
+  @count = @hospitals.where(is_active: true).count
+  end
 
  #病院の詳細画面
   def show
@@ -31,13 +22,6 @@ class Public::HospitalsController < ApplicationController
     if session.id.present?
       impressionist @hospital, nil, unique: %i[impressionable_type impressionable_id session_hash]
     end
-  end
- 
-  def add_doctor
-    @doctor = Doctor.find(params[:hospital_doctor_id])
-    current_customer = Customer.find(params[:customer_id])
-    @doctor.current_customer << current_customer
-    redirect_to root_path, notice: "ドクターを追加しました。"
   end
 
   def hospital_params

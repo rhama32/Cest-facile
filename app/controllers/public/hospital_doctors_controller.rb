@@ -8,8 +8,6 @@ class Public::HospitalDoctorsController < ApplicationController
  
  def show
     @hospital_doctor = Doctor.find(params[:id])
-    @hospital = Hospital.find_by(id: @hospital_doctor.hospital_id)
-    @customer = current_customer
  end
  
 end

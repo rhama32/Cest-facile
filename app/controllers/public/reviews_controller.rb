@@ -68,7 +68,6 @@ before_action :ensure_customer, only: [:edit]
   end
 
   def index
-    @customer = current_customer
     @hospital = Hospital.all
     @reviews = current_customer.reviews.order(created_at: :desc).page(params[:page]).per(5)
   end
@@ -111,7 +110,7 @@ before_action :ensure_customer, only: [:edit]
   def ensure_customer
     @review = Review.find(params[:id])
     unless @review.customer == current_customer
-      redirect_to root_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to root_path(current_customer) , notice: '他ユーザーのレビュー編集画面へは遷移出来ません。'
     end
   end
 

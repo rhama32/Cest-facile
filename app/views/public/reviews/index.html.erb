@@ -1,8 +1,8 @@
 <!--検索機能-->
-<%= render 'search', searches: @searches %>
+<%= render 'search' %>
   <div class="container">
     <div class="row">
-      <h4 class="mt-2 text-center"><b><%= @customer.full_name %>さんの投稿一覧</b></h4>
+      <h4 class="mt-2 text-center"><b><%= current_customer.full_name %>さんの投稿一覧</b></h4>
         <table>
           <tbody>
             <tr>

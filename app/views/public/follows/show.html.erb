@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <h4>
-        <%= @customer.full_name %>さんのフォロー一覧(全<%= @follows.count %>人)</h4>
+        <%= current_customer.full_name %>さんのフォロー一覧(全<%= @follows.count %>人)</h4>
         <%= render partial: 'public/follows/follow', locals: {doctors: @doctors} %>
     </tbody>
   </table>

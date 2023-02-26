@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="offset-0 col-md-8 offset-md-2">
-      <h3 class="mt-3 text-center"><b><%= @customer.full_name %>さんのフォロー</b></h3>
+      <h3 class="mt-3 text-center"><b><%= current_customer.full_name %>さんのフォロー</b></h3>
       <h3 class="mt-2 text-center"><b>(全<%= @doctors.count %>人)</b></h3>
     </div>
     <div class="offset-0 col-md-8 offset-md-2 text-center">
       <thead>
         <% doctors.each do |doctor| %>
           <tr>
-            <th><%= doctor.id %></th>
             <th><%= doctor.name %></th>
             <th>
                 <% if current_customer.following?(doctor) %>
@@ -30,7 +29,3 @@
     </div>
   </div>
 </div>
-        <!--ジャンル検索-->
-          <%#= render 'genrevar', genres: @genres %>
-        <!--病院一覧から探す-->
-          <%#= render 'hospital/index', hospitals: @hospitals %>

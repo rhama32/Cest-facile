@@ -11,6 +11,7 @@ class Public::ReservationsController < ApplicationController
   end
   
   def confirm
+    @reservation = Reservation.find(params[:reservation_id])
   end
   
   def create
@@ -19,7 +20,7 @@ class Public::ReservationsController < ApplicationController
     @reservation.status = 0
       if @reservation.save
         flash[:notice] = "予約の受付が完了しました。"
-        redirect_to public_reservations_path
+        redirect_to public_reservation_confirm_path(@reservation)
       else
         flash[:alert] = "予約の受付に失敗しました。"
         redirect_to public_reservations_path
@@ -43,11 +44,7 @@ class Public::ReservationsController < ApplicationController
   
   def show
     @reservation = Reservation.find(params[:id])
-    @public_customers = current_customer
     @hospital = @reservation.hospital
-  end
-  
-  def edit
   end
   
   def update

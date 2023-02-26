@@ -5,14 +5,12 @@ class Public::FollowsController < ApplicationController
   
  #フォロー詳細
   def index
-    @customer = current_customer
     @follows = current_customer.follows
     @doctor = Doctor.all
   end
   
   #フォロー詳細
   def show
-    @customer = current_customer
     @follows = current_customer.follows
     @doctors = current_customer.doctors
   end
@@ -31,7 +29,6 @@ class Public::FollowsController < ApplicationController
   
   # フォロー一覧
   def followings
-    @customer = current_customer
     @doctors = current_customer.doctors
   end
   
