@@ -1,6 +1,7 @@
 class Public::ReservationsController < ApplicationController
 
   before_action :authenticate_customer!
+  before_action :ensure_reservation_customer, only: [:show]
   
   def new
     @genres = Genre.all
@@ -69,5 +70,12 @@ class Public::ReservationsController < ApplicationController
     def reservation_params
       params.require(:reservation).permit(:customer_id, :hospital_id, :hope_day, :hope_time)
     end
+
+  def ensure_reservation_customer
+    @reservations = Reservation.find(params[:id])
+    unless @reservations.customer == current_customer
+      redirect_to root_path(current_customer) , notice: '他ユーザーの予約画面へは遷移できません。'
+    end
+  end
 
 end

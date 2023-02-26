@@ -25,12 +25,12 @@
                 <th>実行ボタン</th>
             </thead>
             <tbody>
-              <td><%= f.date_field :hope_day %></td>
+              <td><%= f.date_field :hope_day , :required => true %></td>
               <td><%= f.time_select :hope_time, {:start_time => '08', :end_time => '20', :minute_step => 30} %></td>
               <td>
                   <%= f.select :hospital_id, Hospital.pluck(:name,:id),{:prompt => "希望院選択"}, :required => true %>
               </td>
-              <td><%= f.submit "予約する", class:"btn btn-success" %></td>
+              <td><%= f.submit "予約する", class: "btn btn-success" %></td>
             </tbody> 
           </table>
         </div>

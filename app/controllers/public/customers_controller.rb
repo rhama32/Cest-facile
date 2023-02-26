@@ -48,8 +48,8 @@ class Public::CustomersController < ApplicationController
 
   def ensure_guest_user
     @customer = current_customer
-    if @customer.last_name?
-      redirect_to root_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    if @customer.guest_user?
+      redirect_to root_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

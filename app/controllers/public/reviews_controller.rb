@@ -1,6 +1,8 @@
 class Public::ReviewsController < ApplicationController
 
 before_action :authenticate_customer!
+before_action :ensure_customer, only: [:edit]
+  
   def new
     @hospital = Hospital.find(params[:hospital_id])
     @review = @hospital.reviews.build
@@ -84,7 +86,7 @@ before_action :authenticate_customer!
   end
 
   def edit
-    @review = Review.find(params[:id])
+  
   end
  
   def destroy
@@ -105,5 +107,13 @@ before_action :authenticate_customer!
   def review_params
     params.require(:review).permit(:customer_id, :hospital_id, :doctor_satisfaction, :room_clean, :staff_satisfaction, :waiting_time, :comment, :total_point)
   end
+
+  def ensure_customer
+    @review = Review.find(params[:id])
+    unless @review.customer == current_customer
+      redirect_to root_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+
 
 end

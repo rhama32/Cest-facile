@@ -71,8 +71,8 @@ class Customer < ApplicationRecord
   end
   
   
-  def last_name?
-    last_name == "guestuser"
+  def guest_user?
+   email == "guest@example.com"
   end
   
   
