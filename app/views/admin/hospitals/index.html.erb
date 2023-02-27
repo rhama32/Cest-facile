@@ -26,22 +26,27 @@
             <tr>
               <th><%= hospital.id %></th>
               <th><%= link_to admin_hospital_path(hospital.id) do %>
-                  <%= hospital.name %>
+                    <%= hospital.name %>
                   <% end %>
               </th>
               <th><%= hospital.genre.name %></th>
-              <th><% if hospital.is_active == true %>
-                    <p class="text-success font-weight-bold">対応中</p>
-                  <% else %>
-                    <p class="text-secondary font-weight-bold">対応停止中</p>
-                  <% end %>
+              <th>
+                <% if hospital.is_active == true %>
+                  <p class="text-success font-weight-bold">対応中</p>
+                <% else %>
+                  <p class="text-secondary font-weight-bold">対応停止中</p>
+                <% end %>
               </th>
-              <th><%= link_to '削除する', admin_hospital_path(hospital.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></th>
+              <th>
+                <%= link_to '削除する' , admin_hospital_path(hospital.id), method: :delete, "data-confirm"=> "本当に削除しますか？", class: "btn btn-danger" %>
+              </th>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="pagination justify-content-center"><%= paginate @hospitals %></div>
+    <div class="pagination justify-content-center">
+      <%= paginate @hospitals %>
+    </div>
   </div>
 </div>
