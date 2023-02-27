@@ -16,18 +16,26 @@
         <tbody>
           <% @admin_customers.each do |admin_customer| %>
             <tr>
-              <th><%= admin_customer.id %></th>
-              <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
-              <th><%= admin_customer.email %></th>
-              <th><% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
-                  <% elsif admin_customer.is_deleted == true %>退会
-                  <% end %>
-          <% end %>
+              <th>
+                <%= admin_customer.id %>
+              </th>
+              <th>
+                <%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %>
+              </th>
+              <th>
+                <%= admin_customer.email %>
+              </th>
+              <th>
+                <% if admin_customer.is_deleted == false %>
+                  <div class="text-success">有効</div>
+                <% elsif admin_customer.is_deleted == true %>退会
+                <% end %>
               </th>
             </tr>
-          </div>
+          <% end %>
         </tbody>
       </table>
+    </div>
     <div class="pagination justify-content-center">
       <%= paginate @admin_customers %>
     </div>
