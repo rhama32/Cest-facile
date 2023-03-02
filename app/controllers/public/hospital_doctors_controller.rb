@@ -1,4 +1,5 @@
 class Public::HospitalDoctorsController < ApplicationController
+  
   before_action :authenticate_customer!
  
   def index
@@ -9,5 +10,5 @@ class Public::HospitalDoctorsController < ApplicationController
  def show
     @hospital_doctor = Doctor.find(params[:id])
  end
- 
+
 end

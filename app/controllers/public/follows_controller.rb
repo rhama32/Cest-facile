@@ -36,5 +36,5 @@ class Public::FollowsController < ApplicationController
   def followers
     current_customer.followers
   end
-  
+
 end

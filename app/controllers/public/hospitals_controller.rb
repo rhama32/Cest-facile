@@ -1,10 +1,10 @@
 class Public::HospitalsController < ApplicationController
- before_action :authenticate_customer!, except: [:index,:show]
+  before_action :authenticate_customer!, except: [:index,:show]
  
- impressionist :actions => [:show]
+  impressionist :actions => [:show]
 
   def index
-  @genres = Genre.all
+    @genres = Genre.all
   if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @hospitals = @genre.hospitals.page(params[:page]).per(6)
@@ -12,7 +12,7 @@ class Public::HospitalsController < ApplicationController
     @hospitals = Hospital.where(is_active: true).page(params[:page]).per(6)
   end
  #一覧表示の病院数
-  @count = @hospitals.where(is_active: true).count
+    @count = @hospitals.where(is_active: true).count
   end
 
  #病院の詳細画面
@@ -27,5 +27,5 @@ class Public::HospitalsController < ApplicationController
   def hospital_params
     params.require(:hospital).permit(:name, :introduction)
   end
-  
+
 end

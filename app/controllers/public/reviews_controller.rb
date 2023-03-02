@@ -1,7 +1,7 @@
 class Public::ReviewsController < ApplicationController
 
-before_action :authenticate_customer!
-before_action :ensure_customer, only: [:edit]
+  before_action :authenticate_customer!
+  before_action :ensure_customer, only: [:edit]
   
   def new
     @hospital = Hospital.find(params[:hospital_id])
@@ -113,6 +113,5 @@ before_action :ensure_customer, only: [:edit]
       redirect_to root_path(current_customer) , notice: '他ユーザーのレビュー編集画面へは遷移出来ません。'
     end
   end
-
 
 end

@@ -1,7 +1,7 @@
 class Public::SymptomsController < ApplicationController
   before_action :authenticate_customer!
 
- def index
+  def index
     @genres = Genre.all
     @hospitals = Hospital.all.page(params[:page]).per(6)
 
@@ -15,6 +15,6 @@ class Public::SymptomsController < ApplicationController
       # 都道府県
       @hospitals = Hospital.address_looks(params[:prefecture]).page(params[:page]).per(5)
     end
- end
+  end
 
 end

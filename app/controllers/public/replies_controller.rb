@@ -1,7 +1,7 @@
 class Public::RepliesController < ApplicationController
   
-before_action :authenticate_customer!
-before_action :require_current_customer, only: [:create]
+  before_action :authenticate_customer!
+  before_action :require_current_customer, only: [:create]
 
   def create
     @review = Review.find(params[:review_id])
@@ -21,5 +21,5 @@ before_action :require_current_customer, only: [:create]
       redirect_to about_path
     end
   end
-  
+
 end
