@@ -75,7 +75,7 @@
       <div class=" mt-5 text-center">
         <% unless customer_signed_in? || admin_signed_in? || doctor_signed_in? %>
         <h2><b>ゲストでもCest-facileを体験出来ます！</b></h2>
-          <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "mt-4 btn btn-success center-block", method: :post %>
+          <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "mt-4 btn btn-success center-block", method: :post %>
         <% end %>
       </div>
     </div>
