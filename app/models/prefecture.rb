@@ -1,5 +1,6 @@
 class Prefecture < ActiveHash::Base
-  
+
+  #都道府県検索の定義
   self.data = [
     {id: 1, name: '北海道'}, {id: 2, name: '青森県'}, {id: 3, name: '岩手県'},
     {id: 4, name: '宮城県'}, {id: 5, name: '秋田県'}, {id: 6, name: '山形県'},
