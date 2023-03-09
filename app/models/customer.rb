@@ -20,6 +20,7 @@ class Customer < ApplicationRecord
   has_many :follows, foreign_key: "customer_id", dependent: :destroy
   has_many :doctors, through: :follows
   has_many :reservations, dependent: :destroy
+  
   # フォローしたときの処理
   def follow(doctor_id)
     follows.create(doctor_id: doctor_id)
@@ -37,6 +38,7 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  #ゲストユーザーの設定
   def self.guest
      find_or_create_by!(email: 'guest@example.com',
       first_name: 'ゲスト',
@@ -66,11 +68,12 @@ class Customer < ApplicationRecord
     end
   end
   
+  #フルネームの定義
   def full_name
     "#{last_name}#{first_name}"
   end
   
-  
+  #ゲストユーザー
   def guest_user?
    email == "guest@example.com"
   end

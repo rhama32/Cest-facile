@@ -13,9 +13,11 @@ class Doctor < ApplicationRecord
   #belongs_to :hospital_doctors
   
   has_many :replies
-
+  
+  #enumの定義
   enum approved_status: { unapproved: 1, approved: 2, denied: 3 }
   
+  #医師承認の結果の通知
   def save_notification_doctor!(current_admin)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = Notification.new(
