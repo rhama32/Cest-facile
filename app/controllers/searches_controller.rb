@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
 
 before_action :authenticate_customer!
 
+  #顧客とレビューのサーチ
   def search
     @range = params[:range]
     if @range == "Customer"
@@ -13,6 +14,7 @@ before_action :authenticate_customer!
     end
   end
 
+  #病院検索
   def hospital_search
     @range = params[:range]
     if @range == "病院名"

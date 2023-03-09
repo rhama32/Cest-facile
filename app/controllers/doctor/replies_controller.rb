@@ -30,6 +30,7 @@ class Doctor::RepliesController < ApplicationController
     @replies = @review.replies 
   end
   
+  #ストロングパラメータ
   private
   def reply_params
     params.require(:reply).permit(:comment, :review_id)
