@@ -1,95 +1,95 @@
 <div class="container">
   <div class="row">
-      <h3 class="mt-3 text-center"><b>レビュー入力画面</b></h3>
-      <h4 class="mt-2 text-center"><b>対象院：<%= @hospital.name %></b></h4>
-    
-      <div class="text-center">
-        <div class="colmd-12">
-      <%= form_with model: @review, url: public_reviews_path do |f| %>
-        <%= f.hidden_field :hospital_id %>
-        <div class="star-form-group" id="post_doctor_satisfaction">
-          <div class="mt-2">
-        <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
-        <script>
-        var elem = document.getElementById('post_doctor_satisfaction');
-        var opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[doctor_satisfaction]',
-        half: false,
-        };
-        raty(elem,opt);
-        </script>
-        </div>
-        </div>
-        
-        <div class="star-form-group" id="post_room_clean">
-          <div class="mt-2">
-        <%= f.label :room_clean, '院内の清潔さ', class:'star-title' %>
-        <script>
-        var elem = document.getElementById('post_room_clean');
-        var opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[room_clean]',
-        half: false,
-        };
-        raty(elem,opt);
-        </script>
-        </div>
-        </div>
-        <div class="star-form-group" id="post_staff_satisfaction">
-          <div class="mt-2">
-        <%= f.label :staff_satisfaction, 'スタッフの対応満足度', class:'star-title' %>
-        <script>
-        var elem = document.getElementById('post_staff_satisfaction');
-        var opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[staff_satisfaction]',
-        half: false,
-        };
-        raty(elem,opt);
-        </script>
-        </div>
-        </div>
-       
-        <div class="star-form-group" id="post_total_point">
-        <div class="mt-2">
-        <%= f.label :total_point, '総合満足度', class:'star-title' %>
-        <script>
-        var elem = document.getElementById('post_total_point');
-        var opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'review[total_point]',
-        half: false,
-        };
-        raty(elem,opt);
-        </script>
-        </div>
-        </div>
-        <div class="mt-3">
-         待ち時間(10分単位)
-         </div>
-        <%= @review.waiting_time %>
-        <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
-        </div>
-        <div class="mt-3">
-        コメント
-         </div>
-        <%= @review.comment %>
-        <%= f.text_area :comment, size: '40x5' %>
-       </div>
-       
-        <div class="mt-3 text-center">
-        <%= f.submit "投稿する", :name => 'post', class:"btn btn-success" %>
-        <%= f.submit '下書きを保存', :name => 'draft', class:"btn btn-primary" %>
-        </div>
-        </div>
+  <h3 class="mt-3 text-center"><b>レビュー入力画面</b></h3>
+  <h4 class="mt-2 text-center"><b>対象院：<%= @hospital.name %></b></h4>
+  
+  <div class="text-center">
+    <div class="colmd-12">
+    <%= form_with model: @review, url: public_reviews_path do |f| %>
+    <%= f.hidden_field :hospital_id %>
+    <div class="star-form-group" id="post_doctor_satisfaction">
+      <div class="mt-2">
+    <%= f.label :doctor_satisfaction,'診療の満足度', class:'star-title' %>
+    <script>
+    var elem = document.getElementById('post_doctor_satisfaction');
+    var opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[doctor_satisfaction]',
+    half: false,
+    };
+    raty(elem,opt);
+    </script>
     </div>
-<% end %>
+    </div>
+    
+    <div class="star-form-group" id="post_room_clean">
+      <div class="mt-2">
+    <%= f.label :room_clean, '院内の清潔さ', class:'star-title' %>
+    <script>
+    var elem = document.getElementById('post_room_clean');
+    var opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[room_clean]',
+    half: false,
+    };
+    raty(elem,opt);
+    </script>
+    </div>
+    </div>
+    <div class="star-form-group" id="post_staff_satisfaction">
+      <div class="mt-2">
+    <%= f.label :staff_satisfaction, 'スタッフの対応満足度', class:'star-title' %>
+    <script>
+    var elem = document.getElementById('post_staff_satisfaction');
+    var opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[staff_satisfaction]',
+    half: false,
+    };
+    raty(elem,opt);
+    </script>
+    </div>
+    </div>
+   
+    <div class="star-form-group" id="post_total_point">
+    <div class="mt-2">
+    <%= f.label :total_point, '総合満足度', class:'star-title' %>
+    <script>
+    var elem = document.getElementById('post_total_point');
+    var opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[total_point]',
+    half: false,
+    };
+    raty(elem,opt);
+    </script>
+    </div>
+    </div>
+    <div class="mt-3">
+     待ち時間(10分単位)
+     </div>
+    <%= @review.waiting_time %>
+    <%= f.select :waiting_time, [10,20,30,40,50,60] %>分
+    </div>
+    <div class="mt-3">
+    コメント
+     </div>
+    <%= @review.comment %>
+    <%= f.text_area :comment, size: '40x5' %>
+   </div>
+   
+    <div class="mt-3 text-center">
+    <%= f.submit "投稿する", :name => 'post', class:"btn btn-success" %>
+    <%= f.submit '下書きを保存', :name => 'draft', class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>
+    <% end %>
